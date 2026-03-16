@@ -1,0 +1,7 @@
+{
+  "resource_id": "6713a650-f656-46b0-9bbc-b8d138121ab8",
+  "status": "error",
+  "error": "Page.goto: net::ERR_CONNECTION_RESET at https://danam.cats.uni-heidelberg.de/report/6713a650-f656-46b0-9bbc-b8d138121ab8\nCall log:\n  - navigating to \"https://danam.cats.uni-heidelberg.de/report/6713a650-f656-46b0-9bbc-b8d138121ab8\", waiting until \"domcontentloaded\"\n",
+  "url": "https://danam.cats.uni-heidelberg.de/report/6713a650-f656-46b0-9bbc-b8d138121ab8",
+  "scraped_at": "2026-03-16T07:23:39.878456"
+}

@@ -1,0 +1,7 @@
+{
+  "resource_id": "a10c10ff-f2fb-459c-9768-9139e26a1951",
+  "status": "error",
+  "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://danam.cats.uni-heidelberg.de/report/a10c10ff-f2fb-459c-9768-9139e26a1951\", waiting until \"domcontentloaded\"\n",
+  "url": "https://danam.cats.uni-heidelberg.de/report/a10c10ff-f2fb-459c-9768-9139e26a1951",
+  "scraped_at": "2026-03-16T11:04:40.120107"
+}

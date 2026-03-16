@@ -1,0 +1,7 @@
+{
+  "resource_id": "cbbf5aba-3cbc-4d1b-8255-58a7ba411ad9",
+  "status": "error",
+  "error": "Page.goto: net::ERR_CONNECTION_RESET at https://danam.cats.uni-heidelberg.de/report/cbbf5aba-3cbc-4d1b-8255-58a7ba411ad9\nCall log:\n  - navigating to \"https://danam.cats.uni-heidelberg.de/report/cbbf5aba-3cbc-4d1b-8255-58a7ba411ad9\", waiting until \"domcontentloaded\"\n",
+  "url": "https://danam.cats.uni-heidelberg.de/report/cbbf5aba-3cbc-4d1b-8255-58a7ba411ad9",
+  "scraped_at": "2026-03-16T11:58:02.274210"
+}

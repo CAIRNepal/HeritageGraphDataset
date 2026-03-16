@@ -1,0 +1,7 @@
+{
+  "resource_id": "b717f92c-5e11-11ea-8083-0242ac130006",
+  "status": "error",
+  "error": "Page.goto: net::ERR_CONNECTION_RESET at https://danam.cats.uni-heidelberg.de/report/b717f92c-5e11-11ea-8083-0242ac130006\nCall log:\n  - navigating to \"https://danam.cats.uni-heidelberg.de/report/b717f92c-5e11-11ea-8083-0242ac130006\", waiting until \"domcontentloaded\"\n",
+  "url": "https://danam.cats.uni-heidelberg.de/report/b717f92c-5e11-11ea-8083-0242ac130006",
+  "scraped_at": "2026-03-16T11:10:58.348504"
+}

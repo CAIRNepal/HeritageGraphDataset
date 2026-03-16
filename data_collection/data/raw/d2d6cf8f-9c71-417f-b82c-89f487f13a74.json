@@ -1,0 +1,7 @@
+{
+  "resource_id": "d2d6cf8f-9c71-417f-b82c-89f487f13a74",
+  "status": "error",
+  "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://danam.cats.uni-heidelberg.de/report/d2d6cf8f-9c71-417f-b82c-89f487f13a74\", waiting until \"domcontentloaded\"\n",
+  "url": "https://danam.cats.uni-heidelberg.de/report/d2d6cf8f-9c71-417f-b82c-89f487f13a74",
+  "scraped_at": "2026-03-16T11:19:33.131564"
+}
