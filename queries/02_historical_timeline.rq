@@ -1,0 +1,24 @@
+# Query 2: Historical Timeline of Events (Production, Consecration, Destruction)
+# Chronologically ordered timeline linked to monuments
+PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?monumentName ?eventName ?eventType ?dateCE ?period ?eraYear ?description WHERE {
+    ?event hg:isEventOf ?monument ;
+           a ?eventType ;
+           rdfs:label ?eventName .
+    
+    ?monument rdfs:label ?monumentName .
+
+    OPTIONAL { ?event hg:dateBCE_CE ?dateCE }
+    OPTIONAL { ?event hg:historicalPeriod ?period }
+    OPTIONAL { ?event hg:inscriptionalDateEra ?eraYear }
+    OPTIONAL { ?event dcterms:description ?description }
+
+    # Exclude CIDOC-CRM classes to show CAIR-Nepal ontology classes
+    FILTER(!STRSTARTS(STR(?eventType), "http://www.cidoc-crm.org/cidoc-crm/"))
+}
+ORDER BY ?dateCE ?period
+LIMIT 25

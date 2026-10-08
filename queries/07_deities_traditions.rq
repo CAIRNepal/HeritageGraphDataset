@@ -1,0 +1,15 @@
+# Query 7: Deities and Religious Traditions associated with monuments
+PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?monumentName ?tradition ?deityName WHERE {
+    ?monument a hg:ArchitecturalStructure ;
+              rdfs:label ?monumentName ;
+              hg:hasMainDeity ?deity .
+    
+    ?deity rdfs:label ?deityName .
+    
+    OPTIONAL { ?monument hg:hasReligiousTradition ?tradition }
+}
+ORDER BY ?tradition ?deityName
+LIMIT 25

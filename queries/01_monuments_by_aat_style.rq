@@ -1,0 +1,27 @@
+# Query 1: Find monuments classified by Getty AAT Architectural Style
+# Aligned to Linked Open Data (LOD) via http://vocab.getty.edu/aat/
+PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX aat: <http://vocab.getty.edu/aat/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?monument ?monumentName ?danamCode ?aatStyle ?styleLabel WHERE {
+    ?monument a hg:ArchitecturalStructure ;
+              rdfs:label ?monumentName ;
+              hg:hasArchitecturalStyle ?aatStyle .
+    
+    OPTIONAL { ?monument hg:danamCode ?danamCode }
+    
+    # Human-readable labels for standard AAT architectural styles
+    BIND(
+        IF(?aatStyle = aat:300004829, "Pagoda / Tiered",
+        IF(?aatStyle = aat:300446671, "Shikhara",
+        IF(?aatStyle = aat:300001285, "Dome",
+        IF(?aatStyle = aat:300007562, "Chaitya",
+        IF(?aatStyle = aat:300007576, "Stupa", "Other AAT Style")))))
+        AS ?styleLabel
+    )
+}
+ORDER BY ?styleLabel ?monumentName
+LIMIT 25

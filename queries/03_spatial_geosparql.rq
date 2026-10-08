@@ -1,0 +1,27 @@
+# Query 3: Geospatial Distribution of Heritage Monuments
+# Utilizing WGS84 Geo and GeoSPARQL POINT geometries
+PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?monumentName ?district ?municipality ?tola ?lat ?long ?wkt WHERE {
+    ?monument a hg:ArchitecturalStructure ;
+              rdfs:label ?monumentName ;
+              geo:lat ?lat ;
+              geo:long ?long .
+    
+    OPTIONAL {
+        ?monument geosparql:hasGeometry ?geom .
+        ?geom geosparql:asWKT ?wkt .
+    }
+    
+    OPTIONAL {
+        ?monument hg:hasCurrentLocation ?place .
+        OPTIONAL { ?place hg:district ?district }
+        OPTIONAL { ?place hg:municipality ?municipality }
+        OPTIONAL { ?place hg:tola ?tola }
+    }
+}
+ORDER BY ?district ?municipality ?monumentName
+LIMIT 25

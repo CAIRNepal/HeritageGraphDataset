@@ -1,0 +1,22 @@
+# Query 4: Sacred Objects, Murtis, and Architectural Elements housed in monuments
+PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?monumentName ?objectID ?objectName ?objectClass ?material ?location WHERE {
+    ?monument hg:containsObject ?object ;
+              rdfs:label ?monumentName .
+    
+    ?object a ?objectClass ;
+            rdfs:label ?objectName ;
+            dcterms:identifier ?objectID .
+    
+    OPTIONAL { ?object hg:material ?material }
+    OPTIONAL { ?object hg:locationWithinMonument ?location }
+
+    # Exclude CIDOC-CRM classes to show CAIR-Nepal ontology classes
+    FILTER(!STRSTARTS(STR(?objectClass), "http://www.cidoc-crm.org/cidoc-crm/"))
+}
+ORDER BY ?monumentName ?objectID
+LIMIT 25
