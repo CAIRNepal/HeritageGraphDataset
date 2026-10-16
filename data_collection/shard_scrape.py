@@ -24,7 +24,7 @@ import random
 import argparse
 import logging
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # ── re-use all parsing logic from the main scraper ───────────────────────────
 # Make sure danam_scraper_v2.py is in the same directory.
@@ -96,7 +96,7 @@ def scrape_shard(ids, out_dir, shard_id, delay_min=2.0, delay_max=4.0, checkpoin
                     "status": "error",
                     "error": str(e),
                     "url": url,
-                    "scraped_at": datetime.utcnow().isoformat(),
+                    "scraped_at": datetime.now(timezone.utc).isoformat(),
                 }
 
             out_path = out_dir / f"{rid}.json"

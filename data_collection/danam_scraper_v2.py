@@ -28,7 +28,7 @@ import random
 import argparse
 import logging
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 from bs4 import BeautifulSoup
 
@@ -147,7 +147,7 @@ def extract_monument(html, rid):
     record = {
         "resource_id": rid,
         "url": BASE_URL.format(rid=rid),
-        "scraped_at": datetime.utcnow().isoformat(),
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
         "status": "ok",
 
         # ── Names ─────────────────────────────────────────────────────────
@@ -404,7 +404,7 @@ def scrape_one(rid, page):
     except Exception as e:
         log.warning(f"Failed {rid}: {e}")
         return {"resource_id": rid, "status": "error", "error": str(e),
-                "url": url, "scraped_at": datetime.utcnow().isoformat()}
+                "url": url, "scraped_at": datetime.now(timezone.utc).isoformat()}
 
 
 def scrape_all(ids, out_dir, delay_min=2.0, delay_max=4.0, checkpoint_every=50):
