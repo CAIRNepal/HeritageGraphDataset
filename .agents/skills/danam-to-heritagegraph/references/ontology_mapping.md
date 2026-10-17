@@ -1,9 +1,9 @@
-# Mapping DANAM rows to the CulturalHeritageOntology (heritageGraph, v0.1.0-alpha.2)
+# Mapping DANAM rows to the HeritageGraph Ontology (v1.0.0)
 
 Read this when you assign `ontology_class` in events.csv / objects.csv or review the derived
 columns that `prepare.py` adds to monuments.csv. The CSVs are a flat staging layer; the class names
-below are the ontology classes a later CSV→RDF/LinkML step will instantiate. Use class names exactly as
-written (no prefix).
+below are the ontology classes of the CAIR-Nepal HeritageGraph Ontology (`https://cair-nepal.org/heritagegraph/`)
+that a later CSV→RDF/LinkML step will instantiate. Use class names exactly as written (no prefix).
 
 ## monuments.csv → structures
 | DANAM `monument_type` keyword | `ontology_class` | Style (AAT, `has_architectural_style`) |

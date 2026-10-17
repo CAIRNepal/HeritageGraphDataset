@@ -1,6 +1,6 @@
 # Query 6: Condition Assessment and Identified Conservation Threats
 # Identifies damaged/ruined structures needing urgent preservation
-PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 

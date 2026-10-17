@@ -1,6 +1,6 @@
 # Query 3: Geospatial Distribution of Heritage Monuments
 # Utilizing WGS84 Geo and GeoSPARQL POINT geometries
-PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

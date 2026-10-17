@@ -1,0 +1,116 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "HeritageGraph Nepal: Event-Centric Cultural Heritage Knowledge Graph",
+  "identifier": "https://cair-nepal.org/heritagegraph/dataset/v1.0.0",
+  "version": "v1.0.0",
+  "description": "Event-centric Linked Open Data (LOD) cultural heritage Knowledge Graph of Nepal derived from DANAM (Digital Archive of Nepalese Arts and Monuments) narratives and records. Structured in accordance with CAIR-Nepal HeritageGraph Ontology (v1.0.0), CIDOC-CRM (v7.1.2), W3C PROV-O, GeoSPARQL, and Getty AAT.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "CAIR-Nepal (Center for Artificial Intelligence Research Nepal)",
+    "url": "https://cairnepal.org",
+    "email": "contact@cairnepal.org"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "datePublished": "2026-10-17",
+  "dateModified": "2026-10-17T14:45:42Z",
+  "inLanguage": [
+    "en",
+    "ne",
+    "sa"
+  ],
+  "keywords": [
+    "Cultural Heritage",
+    "Nepal",
+    "Knowledge Graph",
+    "Linked Open Data",
+    "CIDOC-CRM",
+    "PROV-O",
+    "DANAM",
+    "Temples",
+    "Inscriptions",
+    "GeoSPARQL"
+  ],
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Nepal (Kathmandu Valley and surrounding regions)"
+  },
+  "releaseNotes": "Standardized release v1.0.0 of HeritageGraph Nepal Knowledge Graph.",
+  "statistics": {
+    "triples": 221364,
+    "monuments": 1652,
+    "events": 5098,
+    "objects": 8806,
+    "places": 1021,
+    "deities": 355,
+    "geometries": 1626,
+    "monumentTypes": {
+      "Temple": 730,
+      "Pati": 273,
+      "Sattal": 101,
+      "Chaitya": 71,
+      "DhungeDhara": 132
+    },
+    "eventTypes": {
+      "Production": 1808,
+      "HistoricalEvent": 1996,
+      "ConditionAssessment": 1592,
+      "DestructionEvent": 695,
+      "TransferOfCustody": 284,
+      "Consecration": 128,
+      "Enshrinement": 87,
+      "RitualEvent": 300
+    },
+    "objectTypes": {
+      "Murti": 1542,
+      "IconographicObject": 3116,
+      "ArchitecturalElement": 292,
+      "HumanMadeObject": 3748,
+      "Paubha": 6
+    }
+  },
+  "namespaces": {
+    "hg": "https://cair-nepal.org/heritagegraph/",
+    "heritageGraph": "https://cair-nepal.org/heritagegraph/",
+    "crm": "http://www.cidoc-crm.org/cidoc-crm/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "geosparql": "http://www.opengis.net/ont/geosparql#",
+    "aat": "http://vocab.getty.edu/aat/",
+    "schema": "https://schema.org/",
+    "void": "http://rdfs.org/ns/void#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "res": "https://data.cairnepal.org/heritage/resource/"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Turtle Serialization",
+      "fileName": "heritagegraph-nepal.ttl",
+      "encodingFormat": "text/turtle",
+      "contentSize": "18.60 MB",
+      "byteSize": 19499008,
+      "sha256": "e2f330cc02498fb45a3c9897401c3c09961af370db89a844e722a109384f3b1b"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "JSON-LD Serialization",
+      "fileName": "heritagegraph-nepal.jsonld",
+      "encodingFormat": "application/ld+json",
+      "contentSize": "33.74 MB",
+      "byteSize": 35382154,
+      "sha256": "a1dc5d8701d9dba1b395ec0d581e43f7e34990d5b5a8b14dc93edfd99ca78bde"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Compressed N-Triples (Bulk Ingestion)",
+      "fileName": "heritagegraph-nepal.nt.gz",
+      "encodingFormat": "application/gzip",
+      "contentSize": "7.18 MB",
+      "byteSize": 7527249,
+      "sha256": "b02d85a6fed6d6d41bb862c243bccc55e6f8627bad0b2306361de001a66d837a"
+    }
+  ],
+  "citation": "CAIR-Nepal. (2026). HeritageGraph Nepal: Event-Centric Cultural Heritage Knowledge Graph (Version v1.0.0) [Data set]. CAIR-Nepal. https://github.com/CAIRNepal/HeritageGraphDataset"
+}
