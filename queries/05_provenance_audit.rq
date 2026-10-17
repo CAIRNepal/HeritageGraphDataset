@@ -1,6 +1,6 @@
 # Query 5: Full Provenance Audit via W3C PROV-O, Dublin Core, and Antigravity Skill
 # Tracing facts to Software Agent (Antigravity), Skill, Organization (CAIR-Nepal), and DANAM URLs
-PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

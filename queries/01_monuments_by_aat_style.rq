@@ -1,6 +1,6 @@
 # Query 1: Find monuments classified by Getty AAT Architectural Style
 # Aligned to Linked Open Data (LOD) via http://vocab.getty.edu/aat/
-PREFIX hg: <https://w3id.org/cair/heritagegraph/>
+PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX aat: <http://vocab.getty.edu/aat/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

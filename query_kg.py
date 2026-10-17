@@ -100,23 +100,37 @@ def execute_sparql(graph: rdflib.Graph, query_str: str) -> tuple[list[dict], lis
 
 def main():
     parser = argparse.ArgumentParser(description="Execute SPARQL queries on HeritageGraph RDF dataset")
-    parser.add_argument("--graph", default="lod_export/heritage_graph.ttl", help="Path to RDF graph (.ttl or .nt)")
+    parser.add_argument("--graph", default=None, help="Path to RDF graph (.ttl or .nt)")
     parser.add_argument("--query", help="Path to .rq SPARQL query file")
     parser.add_argument("--sparql", help="Inline SPARQL query string")
     parser.add_argument("--all", action="store_true", help="Execute all standard queries in queries/*.rq")
     parser.add_argument("--format", choices=["table", "json", "csv"], default="table", help="Output format")
     args = parser.parse_args()
 
-    if not os.path.exists(args.graph):
-        print(f"[!] Error: RDF graph file not found at '{args.graph}'.")
-        print("    Please run `python build_kg.py` first to generate the dataset.")
+    graph_path = args.graph
+    if not graph_path:
+        for cand in [
+            "latest/heritagegraph-nepal.ttl",
+            "lod_export/heritage_graph.ttl",
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "latest", "heritagegraph-nepal.ttl"),
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "lod_export", "heritage_graph.ttl"),
+        ]:
+            if os.path.exists(cand):
+                graph_path = cand
+                break
+        if not graph_path:
+            graph_path = "latest/heritagegraph-nepal.ttl"
+
+    if not os.path.exists(graph_path):
+        print(f"[!] Error: RDF graph file not found at '{graph_path}'.")
+        print("    Please run `python publish_release.py` or `python build_kg.py` first to generate the dataset.")
         sys.exit(1)
 
-    print(f"[*] Loading RDF graph from '{args.graph}'...")
+    print(f"[*] Loading RDF graph from '{graph_path}'...")
     load_start = datetime.now()
     graph = rdflib.Graph()
-    fmt = "nt" if args.graph.endswith(".nt") else "turtle"
-    graph.parse(args.graph, format=fmt)
+    fmt = "nt" if graph_path.endswith(".nt") else "turtle"
+    graph.parse(graph_path, format=fmt)
     load_time = (datetime.now() - load_start).total_seconds()
     print(f"[+] Loaded {len(graph):,} triples in {load_time:.2f} seconds.\n")
 

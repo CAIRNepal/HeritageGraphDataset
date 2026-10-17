@@ -40,7 +40,7 @@ from rdflib.namespace import DCAT, DCTERMS, OWL, RDF, RDFS, VOID, XSD
 csv.field_size_limit(10**9)
 
 # ── Namespaces ────────────────────────────────────────────────────────────────
-HG = Namespace("https://w3id.org/cair/heritagegraph/")
+HG = Namespace("https://cair-nepal.org/heritagegraph/")
 CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 GEO = Namespace("http://www.w3.org/2003/01/geo/wgs84_pos#")
@@ -48,6 +48,14 @@ GEOSPARQL = Namespace("http://www.opengis.net/ont/geosparql#")
 AAT = Namespace("http://vocab.getty.edu/aat/")
 SCHEMA = Namespace("https://schema.org/")
 RES = Namespace("https://data.cairnepal.org/heritage/resource/")
+
+AAT_STYLE_TO_HG = {
+    "300004829": "Pagoda",
+    "300446671": "Shikhara",
+    "300001285": "Dome",
+    "300007562": "Chaitya",
+    "300007576": "Stupa",
+}
 
 # ── Classification Helpers ───────────────────────────────────────────────────
 def slugify(text: str) -> str:
@@ -219,27 +227,37 @@ def build_knowledge_graph(
 
         # Assign specific ontology class
         ont_cls_str = m.get("ontology_class", "").strip()
+        classes_to_add = set()
         if ont_cls_str:
             for cls_name in ont_cls_str.split("|"):
                 cls_clean = cls_name.strip()
                 if cls_clean:
-                    g.add((m_uri, RDF.type, HG[cls_clean]))
+                    classes_to_add.add(cls_clean)
         else:
             mtype = (m.get("monument_type") or "").lower()
             if "temple" in mtype or "mandir" in mtype:
-                g.add((m_uri, RDF.type, HG.Temple))
+                classes_to_add.add("Temple")
             elif "caitya" in mtype or "chaitya" in mtype:
-                g.add((m_uri, RDF.type, HG.Chaitya))
+                classes_to_add.add("Chaitya")
             elif "stupa" in mtype:
-                g.add((m_uri, RDF.type, HG.Stupa))
+                classes_to_add.add("Stupa")
             elif "water architecture" in mtype or "hiti" in mtype or "dhārā" in mtype:
-                g.add((m_uri, RDF.type, HG.DhungeDhara))
+                classes_to_add.add("DhungeDhara")
             elif "pokhari" in mtype:
-                g.add((m_uri, RDF.type, HG.Pokhari))
+                classes_to_add.add("Pokhari")
             elif "pati" in mtype or "phalcā" in mtype:
-                g.add((m_uri, RDF.type, HG.Pati))
+                classes_to_add.add("Pati")
             elif "sattal" in mtype:
-                g.add((m_uri, RDF.type, HG.Sattal))
+                classes_to_add.add("Sattal")
+
+        for c_name in classes_to_add:
+            g.add((m_uri, RDF.type, HG[c_name]))
+            if c_name in ["Temple", "Chaitya", "Stupa", "KumariHouse"]:
+                g.add((m_uri, RDF.type, HG.ReligiousStructure))
+            elif c_name in ["Pati", "Sattal", "Dharmashala"]:
+                g.add((m_uri, RDF.type, HG.RestHouse))
+            elif c_name in ["DhungeDhara", "Pokhari"]:
+                g.add((m_uri, RDF.type, HG.WaterStructure))
 
         # Names & Identifiers
         m_name = m.get("monument_name", "").strip()
@@ -264,12 +282,15 @@ def build_knowledge_graph(
             g.add((m_uri, OWL.sameAs, code_uri))
             g.add((code_uri, OWL.sameAs, m_uri))
 
-        # Architectural Styles (Getty AAT URIs for Linked Open Data)
+        # Architectural Styles (Getty AAT URIs and HeritageGraph individuals)
         aat_styles = clean_clean_aat(m.get("aat_style", ""))
         for aat_id in aat_styles:
             aat_uri = AAT[aat_id]
             g.add((m_uri, HG.hasArchitecturalStyle, aat_uri))
             g.add((m_uri, CRM["P2_has_type"], aat_uri))
+            if aat_id in AAT_STYLE_TO_HG:
+                style_ind = HG[f"ArchitecturalStyle#{AAT_STYLE_TO_HG[aat_id]}"]
+                g.add((m_uri, HG.hasArchitecturalStyle, style_ind))
 
         # Religion & Main Deity
         religion = m.get("religion", "").strip()
@@ -362,19 +383,33 @@ def build_knowledge_graph(
 
         if assess or threats or cond_types:
             assess_uri = RES[f"assessment/{res_id}"]
+            state_uri = RES[f"condition_state/{res_id}"]
             g.add((m_uri, HG.hasConditionAssessment, assess_uri))
             g.add((m_uri, CRM["P44_has_condition"], assess_uri))
-            g.add((assess_uri, RDF.type, HG.ConditionAssessment))
+            g.add((m_uri, CRM["P34i_was_assessed_by"], assess_uri))
             g.add((assess_uri, RDF.type, CRM["E14_Condition_Assessment"]))
+            g.add((assess_uri, RDF.type, HG.ConditionAssessment))
+            g.add((assess_uri, CRM["P34_concerned"], m_uri))
+            g.add((assess_uri, CRM["P35_has_identified"], state_uri))
+            g.add((state_uri, RDF.type, CRM["E3_Condition_State"]))
             g.add((assess_uri, RDFS.label, Literal(f"Condition assessment of {m_name}", lang="en")))
             if assess:
                 g.add((assess_uri, RDFS.comment, Literal(assess, lang="en")))
+                g.add((assess_uri, CRM["P3_has_note"], Literal(assess, lang="en")))
             if cond_types:
                 for c_type in cond_types.split("|"):
                     c_clean = c_type.strip()
                     if c_clean:
                         g.add((assess_uri, HG.conditionType, HG[c_clean]))
                         g.add((m_uri, HG.conditionStatus, Literal(c_clean, lang="en")))
+                        if c_clean in ["Good", "Damaged", "Ruined", "Restored"]:
+                            g.add((state_uri, HG.hasConditionType, HG[f"ConditionType#{c_clean}"]))
+                            if c_clean == "Ruined":
+                                g.add((m_uri, HG.existenceStatus, HG["ExistenceStatus#Ruined"]))
+                            elif c_clean == "Damaged":
+                                g.add((m_uri, HG.existenceStatus, HG["ExistenceStatus#PartiallyExtant"]))
+                            else:
+                                g.add((m_uri, HG.existenceStatus, HG["ExistenceStatus#Extant"]))
             if threats:
                 g.add((assess_uri, HG.identifiedThreats, Literal(threats, lang="en")))
 
@@ -420,6 +455,14 @@ def build_knowledge_graph(
             g.add((ev_uri, RDF.type, CRM["E5_Event"]))
             if ev_class_name == "Production":
                 g.add((ev_uri, RDF.type, CRM["E12_Production"]))
+            elif ev_class_name == "DestructionEvent":
+                g.add((ev_uri, RDF.type, CRM["E6_Destruction"]))
+            elif ev_class_name == "TransferOfCustody":
+                g.add((ev_uri, RDF.type, CRM["E10_Transfer_of_Custody"]))
+            elif ev_class_name == "ConditionAssessment":
+                g.add((ev_uri, RDF.type, CRM["E14_Condition_Assessment"]))
+            elif ev_class_name in ["RitualEvent", "Consecration", "Enshrinement"]:
+                g.add((ev_uri, RDF.type, HG.RitualEvent))
 
             g.add((ev_uri, RDFS.label, Literal(ev_name, lang="en")))
             if ev_desc:
@@ -506,6 +549,10 @@ def build_knowledge_graph(
             obj_class_name = r.get("ontology_class", "").strip() or classify_object(obj_name, obj_type)
             g.add((obj_uri, RDF.type, HG[obj_class_name]))
             g.add((obj_uri, RDF.type, CRM["E22_Human-Made_Object"]))
+            if obj_class_name in ["Murti", "Paubha"]:
+                g.add((obj_uri, RDF.type, HG.IconographicObject))
+            elif obj_class_name == "ArchitecturalElement":
+                g.add((obj_uri, RDF.type, PROV.Entity))
 
             g.add((obj_uri, RDFS.label, Literal(obj_name, lang="en")))
             g.add((obj_uri, DCTERMS.identifier, Literal(obj_id)))
@@ -614,6 +661,8 @@ def main():
     parser.add_argument("--outdir", default="lod_export", help="Output directory for RDF/LOD exports (default: 'lod_export')")
     parser.add_argument("--formats", default="turtle,nt", help="Comma-separated RDF formats: turtle, nt, json-ld (default: 'turtle,nt')")
     parser.add_argument("--sample", type=int, default=None, help="Process only first N monuments for testing/debugging")
+    parser.add_argument("--release", default=None, help="Publish versioned release layout (e.g. v1.0.0, v1.1.0) and update latest/")
+    parser.add_argument("--no-latest", action="store_true", help="When using --release, do not update latest/")
     args = parser.parse_args()
 
     # Intelligent path resolution
@@ -623,7 +672,9 @@ def main():
         if cli_val:
             return cli_val
         if base_dir:
-            return os.path.join(base_dir, filename)
+            cand = os.path.join(base_dir, filename)
+            if os.path.exists(cand):
+                return cand
         for candidate in default_candidates:
             if os.path.exists(candidate):
                 return candidate
@@ -670,6 +721,18 @@ def main():
 
     fmt_list = [f.strip() for f in args.formats.split(",") if f.strip()]
     exported = export_kg(graph, args.outdir, fmt_list)
+
+    if args.release:
+        try:
+            import publish_release
+        except ImportError:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import publish_release
+        publish_release.create_release(
+            version=args.release,
+            graph=graph,
+            update_latest=not args.no_latest,
+        )
 
     elapsed = (datetime.now() - start_time).total_seconds()
     print("\n" + "=" * 60)

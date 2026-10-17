@@ -53,8 +53,9 @@ danam-to-heritagegraph/
     ├── prepare.py                    # Step 1: Prepares candidate JSONLs and monuments.csv
     ├── heritage_dates.py             # Step 2: Date, era (NS, VS, ŚS, MS), & calendar parser
     ├── validate.py                   # Step 3: Strict staging CSV validator
-    ├── build_kg.py                   # Step 4: RDF Knowledge Graph & LOD exporter
-    └── query_kg.py                   # Step 5: SPARQL query execution runner
+    ├── build_kg.py                   # Step 4: RDF Knowledge Graph builder & LOD exporter
+    ├── publish_release.py            # Step 5: Versioned release publisher & checksum manifest
+    └── query_kg.py                   # Step 6: SPARQL query execution runner
 ```
 
 ---
@@ -109,15 +110,24 @@ python .agents/skills/danam-to-heritagegraph/scripts/validate.py --dir staging
   - Invalid calendar fields (`paksha`, `nepali_month`, `tithi`).
 - Warnings (`WARN`) must be audited (e.g. noted era/CE disagreements).
 
-### Step 5: Knowledge Graph Construction & LOD Export
-Generate standards-compliant RDF Linked Open Data using [build_kg.py](./scripts/build_kg.py):
+### Step 5: Knowledge Graph Construction & Release Publishing
+Generate standards-compliant RDF Linked Open Data and publish releases:
 ```bash
-uv run --with rdflib python build_kg.py --dir staging --outdir lod_export --formats turtle,nt
+# Publish a standardized versioned release (e.g., v1.0.0, v1.1.0) and update latest/:
+python publish_release.py --version v1.0.0
+
+# Or rebuild from staging CSVs and publish:
+python publish_release.py --version v1.1.0 --rebuild --dir staging
+
+# Or using build_kg.py with --release flag:
+uv run --with rdflib python build_kg.py --dir staging --release v1.0.0
 ```
-**Outputs produced:**
-- `lod_export/heritage_graph.ttl`: Turtle syntax with human-readable prefixes (`hg:`, `crm:`, `prov:`, `aat:`, `geo:`, `geosparql:`, `schema:`, `void:`, `res:`).
-- `lod_export/heritage_graph.nt`: N-Triples for streaming bulk ingestion into triplestores (GraphDB, Virtuoso, Jena Fuseki, Blazegraph).
-- VoID & DCAT dataset metadata embedded in the graph.
+**Release Outputs produced in `releases/<version>/` and mirrored to `latest/`:**
+- `heritagegraph-nepal.ttl`: Turtle syntax with human-readable prefixes (`hg:`, `crm:`, `prov:`, `aat:`, `geo:`, `geosparql:`, `schema:`, `void:`, `res:`).
+- `heritagegraph-nepal.jsonld`: JSON-LD serialization for web platforms and Schema.org ingestion.
+- `heritagegraph-nepal.nt.gz`: Gzipped N-Triples for streaming bulk ingestion into triplestores (GraphDB, Virtuoso, Jena Fuseki, Blazegraph).
+- `metadata.json`: Machine-readable W3C DCAT & Schema.org dataset metadata and entity statistics.
+- `checksums.sha256`: Cryptographic SHA-256 integrity manifest.
 
 ### Step 6: SPARQL Querying & Verification
 Query the generated RDF Knowledge Graph using [query_kg.py](./scripts/query_kg.py):
