@@ -172,3 +172,9 @@ def test_r1_reused_object_numbers_give_distinct_nodes(graph):
 def test_e1_buddhist_monument_is_extension_class(graph):
     assert not typed(graph, HG.BuddhistMonument)
     assert len(typed(graph, HGN.BuddhistMonument)) == 215
+
+
+def test_e2_main_deity_is_extension_property(graph):
+    assert uses(graph, HG.hasMainDeity) == 0
+    assert uses(graph, HGN.hasMainDeity) == 1049
+    assert set(graph.objects(None, HGN.hasMainDeity)) <= typed(graph, HG.Deity)

@@ -476,3 +476,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 5.
 - Queries (rows without LIMIT): unchanged.
 - The builder does not add hg:ReligiousStructure as an extra type (the subclass axiom states it), so no new shapes apply.
+
+## E2: hg:hasMainDeity → hgn:hasMainDeity
+
+- Test: `tests/test_sync.py::test_e2_main_deity_is_extension_property`.
+- Triples: 229,968 → **229,968**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 16 → **15** (0 classes, 15 properties, 0 IRI values).
+- Extension terms used: 6.
+- Queries (rows without LIMIT): unchanged.
+- Checked first: the ontology's deity properties (hg:enshrinedDeity, hg:invokesDeity: sub-properties of crm:P12 for events; hg:isAboutDeity: crm:P62 for murtis; hg:embodiedDeity: roles) do not link a structure to its deity. Query 07 switched.

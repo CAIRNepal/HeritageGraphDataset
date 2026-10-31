@@ -71,3 +71,13 @@ hgn:BuddhistMonument a owl:Class ;
     rdfs:comment "A Buddhist monastic building or courtyard complex (Newar bāhāḥ, bahī, vihāra), as DANAM classifies it."@en ;
     rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
     rdfs:subClassOf hg:ReligiousStructure .
+
+# ── Deity (E2) ───────────────────────────────────────────────────────────────
+
+hgn:hasMainDeity a owl:ObjectProperty ;
+    rdfs:label "has main deity"@en ;
+    rdfs:comment "The principal deity of a structure, as DANAM records it (main_deity). The ontology links deities to enshrinement events (hg:enshrinedDeity) and to murtis (hg:isAboutDeity), but not directly to a structure."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range hg:Deity ;
+    skos:closeMatch hg:enshrinedDeity .

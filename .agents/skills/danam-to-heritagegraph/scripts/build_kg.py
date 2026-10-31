@@ -350,7 +350,7 @@ def build_knowledge_graph(
         if main_deity:
             d_slug = slugify(main_deity)
             d_uri = RES[f"deity/{d_slug}"]
-            g.add((m_uri, HG.hasMainDeity, d_uri))
+            g.add((m_uri, HGN.hasMainDeity, d_uri))
             if d_slug not in deities_cache:
                 deities_cache[d_slug] = True
                 g.add((d_uri, RDF.type, HG.Deity))
