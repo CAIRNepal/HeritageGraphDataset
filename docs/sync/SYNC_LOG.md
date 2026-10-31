@@ -35,3 +35,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - SHACL results: 75,641 → **75,641** (14 groups).
 - Undeclared terms: 34 → **33** (4 classes, 23 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
+
+## A4: replace hg:Place with crm:E53_Place
+
+- Test: `tests/test_sync.py::test_a4_place_is_crm_e53`.
+- Triples: 214,216 → **214,216**.
+- SHACL results: 75,641 → **76,662** (14 groups).
+- Undeclared terms: 33 → **32** (3 classes, 23 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
+- **Deviation from the plan (+1,021 SHACL results, expected ±0).** All are `rdfs:label` datatype, one per place: typed `crm:E53_Place`, the 1,021 places now fall under the ontology's place shape, and their `@en` labels fail `sh:datatype xsd:string` like every other label. Same cause as C1a, and removed by the C1a fix. No modelling choice involved.

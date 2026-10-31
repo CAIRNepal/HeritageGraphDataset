@@ -29,3 +29,9 @@ def test_a2_production_is_crm_e12(graph):
 def test_a3_condition_assessment_is_crm_e14(graph):
     assert not typed(graph, HG.ConditionAssessment)
     assert len(typed(graph, CRM["E14_Condition_Assessment"])) == 1592
+
+
+def test_a4_place_is_crm_e53(graph):
+    assert not typed(graph, HG.Place)
+    places = set(graph.objects(None, CRM["P53_has_former_or_current_location"]))
+    assert len(places) == 1021 and places <= typed(graph, CRM["E53_Place"])

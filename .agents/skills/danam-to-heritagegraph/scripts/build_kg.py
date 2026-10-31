@@ -63,6 +63,7 @@ CRM_CLASS_FOR = {
     "HumanMadeObject": CRM["E22_Human-Made_Object"],
     "Production": CRM["E12_Production"],
     "ConditionAssessment": CRM["E14_Condition_Assessment"],
+    "Place": CRM["E53_Place"],
 }
 
 
@@ -336,7 +337,7 @@ def build_knowledge_graph(
             g.add((m_uri, CRM["P53_has_former_or_current_location"], p_uri))
             if place_slug not in places_cache:
                 places_cache[place_slug] = True
-                g.add((p_uri, RDF.type, HG.Place))
+                g.add((p_uri, RDF.type, hg_class("Place")))
                 g.add((p_uri, RDF.type, SCHEMA.Place))
                 label_parts = [p for p in [tola, municipality, district] if p]
                 if label_parts:
