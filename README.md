@@ -32,7 +32,7 @@ the pipeline that builds it, and the checks that measure its conformance.
 
 | | count | notes |
 |---|---|---|
-| Triples | 224,853 | builder on `main`; release v1.0.0 has 221,364 |
+| Triples | 224,782 | builder on `main`; release v1.0.0 has 221,364 |
 | Monuments | 1,652 | 730 temples, 273 patis (rest houses), 215 Buddhist monastic buildings, 132 water structures (dhunge dhara), 101 sattals, 71 chaityas; a monument can have more than one type |
 | Events | 5,098 | 1,996 historical events, 1,808 productions, 695 destructions, 284 transfers of custody, 300 ritual events (128 consecrations, 87 enshrinements), 15 condition assessments |
 | Objects | 7,160 | 3,120 iconographic objects (1,543 murtis, 6 paubhas), 292 architectural elements, 3,748 other human-made objects |
@@ -63,6 +63,7 @@ events and objects. Every monument links to the DANAM page it was derived from.
 | events | `crm:E5_Event` and its subclasses, linked by `crm:P12_occurred_in_the_presence_of` / `crm:P12i_was_present_at` |
 | objects | architectural parts by `crm:P46_is_composed_of`; other objects housed in the monument by `hgn:containsObject` |
 | main deity | `hgn:hasMainDeity` → `hg:Deity` |
+| religious tradition | `hg:hasReligiousTradition` → concept of class `hg:ReligiousTradition` (`hgn:tradition-…`), one per value DANAM lists; DANAM's "Unspecified" gives none |
 | provenance | `prov:wasDerivedFrom` → the DANAM page (`prov:Entity`); `prov:generatedAtTime` (collection time) |
 
 **Namespaces**
@@ -86,14 +87,15 @@ The dataset ships the exact files of the ontology version it targets, **Heritage
 and SHA-256 in [`ontology/SOURCE.md`](ontology/SOURCE.md)). `tools/sync/check_alignment.py` measures two things on a
 built graph:
 
-- **Undeclared terms: 0.** Every `hg:` class, property and value used is declared in the ontology. Eleven terms the
-  ontology does not have are defined in the dataset's extension vocabulary [`vocab/hgn.ttl`](vocab/hgn.ttl); each states
-  the closest CIDOC-CRM or HeritageGraph term (`rdfs:subClassOf`, `rdfs:subPropertyOf` or `skos:closeMatch`).
-- **SHACL: 4,012 results** (v1.0.0: 75,641), in two groups:
+- **Undeclared terms: 0.** Every `hg:` class, property and value used is declared in the ontology. What the ontology
+  does not have is defined in the dataset's extension vocabulary [`vocab/hgn.ttl`](vocab/hgn.ttl): 11 classes,
+  properties and identifier kinds, each stating the closest CIDOC-CRM or HeritageGraph term (`rdfs:subClassOf`,
+  `rdfs:subPropertyOf` or `skos:closeMatch`), and the 9 religious traditions DANAM records, as concepts of class
+  `hg:ReligiousTradition` (the ontology declares the class but no values).
+- **SHACL: 200 results** (v1.0.0: 75,641), all from one rule:
 
 | results | shape rule | reason |
 |---|---|---|
-| 3,812 | `hg:hasReligiousTradition` must be an IRI of class `hg:ReligiousTradition` | the religious traditions are still text; the mapping to concepts is prepared and awaits one decision (the DANAM value "Unspecified") |
 | 200 | every `hg:Temple` has one `hg:hasArchitecturalStyle` | DANAM records no style for these 200 temples (listed in the sync log); they are left without one rather than given a guessed style |
 
 Each change made for the alignment is logged with its test and before/after counts in
@@ -223,6 +225,8 @@ scripts there are kept identical to the ones at the repository root).
 - **Coverage follows DANAM**, which documents mainly the Kathmandu Valley (1,433 of the 1,652 records are in Province 3).
 - **Instance IRIs** (`https://data.cairnepal.org/heritage/resource/…`) do not yet resolve, and the extension vocabulary's
   IRI is provisional.
+- **Deity traditions are inherited.** A deity takes the religious tradition(s) of the first monument that names it,
+  not traditions stated for the deity itself. To be revised.
 - **Provenance attribution.** The graph attributes events and objects to a software agent; this will be revised.
 - **`metadata.json` of v1.0.0** counts monuments among the objects and lists a licence that differs from the one in the
   graph; this will be corrected in the next release.
