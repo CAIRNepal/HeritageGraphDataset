@@ -34,8 +34,8 @@ Both records are named Pā̃ḍe Pāṭī and carry the code NWK0410.
 | content | name and code only: no description, location, coordinates, measurements, condition or events | full record: phalcā (arcaded platform) in Sītāpokharī, Bidur Municipality, Nuwakot (Province 3); coordinates; measurements; description (English and Nepali); condition "Ruined"; one event; an inscription of ŚS 1700 |
 | code separator in the Devanagari name | `ll` (two Latin letters) | `||` |
 
-Record A looks like an empty duplicate of record B. Because of the `ll`, staging did not separate the code from A's
-Nepali name (`name_ne` = "पाँडे पाटी ll NWK0410").
+**Record A is an empty duplicate of record B.** Because of the `ll`, staging did not separate the code from A's Nepali
+name (`name_ne` = "पाँडे पाटी ll NWK0410").
 
-**Not yet changed:** the builder links each monument to `res:monument/<code>` with `owl:sameAs`, so under OWL reasoning
-the two records become one individual.
+**Kept as is (decision, 2026-11-01):** the builder links each monument to `res:monument/<code>` with `owl:sameAs`, so
+under OWL reasoning the two records are one individual. That is correct here, because they describe the same monument.
