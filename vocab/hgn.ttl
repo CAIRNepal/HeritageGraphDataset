@@ -123,3 +123,75 @@ hgn:identifiedThreats a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
     rdfs:domain crm:E14_Condition_Assessment ;
     rdfs:subPropertyOf crm:P3_has_note .
+
+# ── Religious traditions (B5) ────────────────────────────────────────────────
+# The values DANAM records in its `religion` field, as written. The ontology declares the class hg:ReligiousTradition but
+# no values. DANAM's "Unspecified" is not a tradition and has no concept: monuments with it get no tradition.
+
+hgn:ReligiousTraditionScheme a skos:ConceptScheme ;
+    rdfs:label "Religious traditions (DANAM)"@en ;
+    rdfs:comment "Religious traditions as DANAM records them for monuments; no hierarchy is asserted because DANAM states none."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Buddhist a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Buddhist"@en ;
+    rdfs:label "Buddhist"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Buddhist\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Shaiva a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Shaiva"@en ;
+    rdfs:label "Shaiva"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Shaiva\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Shakta a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Shakta"@en ;
+    rdfs:label "Shakta"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Shakta\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-HinduBuddhist a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Hindu-Buddhist"@en ;
+    rdfs:label "Hindu-Buddhist"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Hindu-Buddhist\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Hindu a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Hindu"@en ;
+    rdfs:label "Hindu"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Hindu\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Vaishnava a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Vaishnava"@en ;
+    rdfs:label "Vaishnava"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Vaishnava\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Sikh a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Sikh"@en ;
+    rdfs:label "Sikh"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Sikh\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Folk a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Folk"@en ;
+    rdfs:label "Folk"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Folk\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:tradition-Shamanistic a hg:ReligiousTradition, skos:Concept ;
+    skos:inScheme hgn:ReligiousTraditionScheme ;
+    skos:prefLabel "Shamanistic"@en ;
+    rdfs:label "Shamanistic"@en ;
+    rdfs:comment "Religious tradition recorded by DANAM as \"Shamanistic\"."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .

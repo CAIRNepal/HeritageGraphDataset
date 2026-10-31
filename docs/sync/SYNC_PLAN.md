@@ -97,6 +97,8 @@ These come up in review but are not about the ontology:
 - IRIs that do not resolve;
 - missing event dates;
 - typing errors (e.g. renovations typed as destruction).
+- deity traditions: a deity takes the religious tradition(s) of the first monument that names it (`build_kg.py`); revise
+  so the tradition comes from a statement about the deity, or is left out. Not changed in the sync (decision, 2026-11-01).
 
 ---
 

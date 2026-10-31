@@ -567,3 +567,22 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 11.
 - Queries (rows without LIMIT): unchanged.
 - publish_release.py counted hg:Production, hg:Place, hg:HumanMadeObject … for metadata.json, which would now be 0. It now counts the IRI the builder writes (the builder's CRM_CLASS_FOR map), and plain objects as objects with no more specific class. Other metadata.json issues (object total counting monuments too, checksum) are out of scope and unchanged.
+
+## B5: religious traditions as concepts typed hg:ReligiousTradition (nine hgn: concepts); 'Unspecified' gives no tradition
+
+- Test: `tests/test_sync.py::test_b5_religious_traditions_are_concepts`.
+- Triples: 224,853 → **224,782**.
+- SHACL results: 4,012 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Checked first: no shape has sh:minCount on hg:hasReligiousTradition (6 shapes: sh:class hg:ReligiousTradition, sh:nodeKind sh:IRI). Decision (user, 2026-11-01): 'Unspecified' (361 monuments, 15 more in combinations) gives no tradition and has no concept; in combinations the other values are kept. The nine other values map as listed under 'B5' above; values are split on commas. Query 07 now joins a monument's traditions (concept labels) in one cell, so it keeps one row per monument and deity; for monuments with 'Unspecified' alone the cell is empty instead of 'Unspecified'. Unchanged behaviour, noted for later: a deity takes the tradition(s) of the first monument that names it. Also test test_b5_unspecified_gives_no_tradition_and_combinations_keep_the_rest.
+
+## Decisions (2026-11-01)
+
+- **Ontology stays at 1.0.1.** Ontology 1.1.0 (style value "Not recorded") is not released or vendored. The 200 temples
+  for which DANAM records no style stay without one: **200 SHACL results remain**, all `hg:hasArchitecturalStyle`
+  minCount on `hg:Temple` (listed under C1c above). Final state: 200 SHACL results, 0 undeclared terms.
+- **NWK0410:** `owl:sameAs` kept; record A is an empty duplicate of record B (see `SOURCE_ISSUES.md`).
+- **Deity traditions:** a deity takes the tradition(s) of the first monument that names it. Not changed; listed for later
+  in `SYNC_PLAN.md` ("Not part of the sync").
