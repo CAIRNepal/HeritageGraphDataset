@@ -61,3 +61,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - SHACL results: 76,662 → **76,662** (14 groups).
 - Undeclared terms: 31 → **30** (1 classes, 23 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
+
+## A7: replace hg:hasCurrentLocation with crm:P55_has_current_location
+
+- Test: `tests/test_sync.py::test_a7_current_location_is_crm_p55`.
+- Triples: 213,237 → **213,237**.
+- SHACL results: 76,662 → **76,662** (14 groups).
+- Undeclared terms: 30 → **29** (1 classes, 22 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
+- Query 03 switched to crm:P55_has_current_location.

@@ -45,3 +45,8 @@ def test_a5_destruction_is_crm_e6(graph):
 def test_a6_transfer_is_crm_e10(graph):
     assert not typed(graph, HG.TransferOfCustody)
     assert len(typed(graph, CRM["E10_Transfer_of_Custody"])) == 284
+
+
+def test_a7_current_location_is_crm_p55(graph):
+    assert uses(graph, HG.hasCurrentLocation) == 0
+    assert uses(graph, CRM["P55_has_current_location"]) == 1631

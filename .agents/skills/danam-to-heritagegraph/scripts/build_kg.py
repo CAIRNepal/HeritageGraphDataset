@@ -335,7 +335,7 @@ def build_knowledge_graph(
         if district or municipality or tola:
             place_slug = slugify(f"{district}_{municipality}_{tola}")
             p_uri = RES[f"place/{place_slug}"]
-            g.add((m_uri, HG.hasCurrentLocation, p_uri))
+            g.add((m_uri, CRM["P55_has_current_location"], p_uri))
             g.add((m_uri, CRM["P53_has_former_or_current_location"], p_uri))
             if place_slug not in places_cache:
                 places_cache[place_slug] = True
