@@ -114,6 +114,36 @@ def type_concept(g: Graph, scheme_slug: str, scheme_label: str, value: str) -> U
     return concept
 
 
+# DANAM religion value -> extension concept (vocab/hgn.ttl, typed hg:ReligiousTradition). "Unspecified" has no concept.
+RELIGIOUS_TRADITIONS = {
+    "Buddhist": "Buddhist", "Shaiva": "Shaiva", "Shakta": "Shakta", "Hindu-Buddhist": "HinduBuddhist", "Hindu": "Hindu",
+    "Vaishnava": "Vaishnava", "Sikh": "Sikh", "Folk": "Folk", "Shamanistic": "Shamanistic",
+}
+NOT_A_TRADITION = {"Unspecified"}
+
+
+def tradition_concepts(g: Graph, text: str) -> list[URIRef]:
+    """Concepts for the religion values DANAM lists ('Hindu, Buddhist' -> two). 'Unspecified' gives none. A value with no
+    mapping is left out and reported, never guessed."""
+    out = []
+    for value in split_listed(text):
+        if value in NOT_A_TRADITION:
+            continue
+        local = RELIGIOUS_TRADITIONS.get(value)
+        if local is None:
+            print(f"[!] religion value not mapped, left out: {value!r}")
+            continue
+        concept = HGN[f"tradition-{local}"]
+        if (concept, RDF.type, HG.ReligiousTradition) not in g:
+            g.add((concept, RDF.type, HG.ReligiousTradition))
+            g.add((concept, RDF.type, SKOS.Concept))
+            g.add((concept, SKOS.inScheme, HGN.ReligiousTraditionScheme))
+            g.add((concept, RDFS.label, Literal(value, lang="en")))
+        if concept not in out:
+            out.append(concept)
+    return out
+
+
 def split_labels(g: Graph) -> None:
     """The ontology's shapes require rdfs:label to be one plain xsd:string. Each language-tagged label moves to
     skos:prefLabel (unconstrained), and the English one is also kept as the plain rdfs:label."""
@@ -368,8 +398,9 @@ def build_knowledge_graph(
 
         # Religion & Main Deity
         religion = m.get("religion", "").strip()
-        if religion:
-            g.add((m_uri, HG.hasReligiousTradition, Literal(religion, lang="en")))
+        traditions = tradition_concepts(g, religion)
+        for t in traditions:
+            g.add((m_uri, HG.hasReligiousTradition, t))
 
         main_deity = m.get("main_deity", "").strip()
         if main_deity:
@@ -380,8 +411,8 @@ def build_knowledge_graph(
                 deities_cache[d_slug] = True
                 g.add((d_uri, RDF.type, HG.Deity))
                 g.add((d_uri, RDFS.label, Literal(main_deity, lang="en")))
-                if religion:
-                    g.add((d_uri, HG.hasReligiousTradition, Literal(religion, lang="en")))
+                for t in traditions:  # as before: the tradition of the first monument naming the deity
+                    g.add((d_uri, HG.hasReligiousTradition, t))
 
         # Geographic Location & Place
         district = m.get("district", "").strip()

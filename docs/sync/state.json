@@ -1,15 +1,15 @@
 {
- "item": "S1",
- "triples": 224853,
- "shacl_results": 4012,
- "shacl_groups": 3,
+ "item": "B5",
+ "triples": 224782,
+ "shacl_results": 200,
+ "shacl_groups": 1,
  "undeclared": 0,
  "undeclared_detail": {
   "undeclared_classes": 0,
   "undeclared_properties": 0,
   "undeclared_iri_values": 0
  },
- "extension_terms": 11,
+ "extension_terms": 21,
  "queries": {
   "01_monuments_by_aat_style.rq": 606,
   "02_historical_timeline.rq": 5313,

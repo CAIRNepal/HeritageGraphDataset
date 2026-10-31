@@ -1,16 +1,19 @@
 # Query 7: Deities and Religious Traditions associated with monuments
+# One row per monument and main deity; a monument's traditions (DANAM may list several) are joined in one cell.
 PREFIX hgn: <https://w3id.org/heritagegraph-nepal/vocab#>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?monumentName ?tradition ?deityName WHERE {
+SELECT ?monumentName (GROUP_CONCAT(DISTINCT ?tl; separator=", ") AS ?tradition) ?deityName WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
               hgn:hasMainDeity ?deity .
-    
+
     ?deity rdfs:label ?deityName .
-    
-    OPTIONAL { ?monument hg:hasReligiousTradition ?tradition }
+
+    OPTIONAL { ?monument hg:hasReligiousTradition ?t . ?t rdfs:label ?traditionLabel }
+    BIND(COALESCE(?traditionLabel, "") AS ?tl)   # no tradition recorded: empty cell
 }
+GROUP BY ?monument ?monumentName ?deityName
 ORDER BY ?tradition ?deityName
 LIMIT 25

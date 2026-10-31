@@ -241,3 +241,24 @@ def test_s1_release_statistics_follow_changed_terms(graph):
     flat = {k: v for d in st.values() if isinstance(d, dict) for k, v in d.items()}
     assert flat["Production"] == 1808 and flat["DestructionEvent"] == 695 and flat["TransferOfCustody"] == 284
     assert flat["HumanMadeObject"] > 3700
+
+
+TRADITIONS = {"Buddhist": "Buddhist", "Shaiva": "Shaiva", "Shakta": "Shakta", "Hindu-Buddhist": "HinduBuddhist", "Hindu": "Hindu",
+              "Vaishnava": "Vaishnava", "Sikh": "Sikh", "Folk": "Folk", "Shamanistic": "Shamanistic"}
+
+
+def test_b5_religious_traditions_are_concepts(graph):
+    from rdflib import Literal, URIRef
+    values = set(graph.objects(None, HG.hasReligiousTradition))
+    assert values and all(isinstance(v, URIRef) for v in values)
+    assert values <= typed(graph, HG.ReligiousTradition)
+    assert values <= {HGN["tradition-" + t] for t in TRADITIONS.values()}
+    assert not any("Unspecified" in str(v) for v in values)
+
+
+def test_b5_unspecified_gives_no_tradition_and_combinations_keep_the_rest(graph):
+    def trad(rid):
+        return {str(v).rsplit("-", 1)[-1] for v in graph.objects(RES["monument/" + rid], HG.hasReligiousTradition)}
+    assert trad("00fd72ab-5246-418e-b001-825a2f227a57") == set()                        # "Unspecified"
+    assert trad("1d95833c-6cbe-4f96-be3c-fad253fe5f27") == {"Hindu"}                    # "Hindu, Unspecified"
+    assert trad("a12441fe-e7f9-11e9-b125-0242ac130002") == {"HinduBuddhist", "Buddhist"}  # "Hindu-Buddhist, Buddhist"
