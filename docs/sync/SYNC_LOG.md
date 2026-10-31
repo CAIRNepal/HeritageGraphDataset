@@ -18,3 +18,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Queries (rows without LIMIT): **changed:** `04_monument_sacred_objects.rq` 9012 → 9008
 - Query rows changed, accepted: query 04 loses 4 rows from two merged object nodes (kat1150-014, tok0090-001: DANAM reuses each number for two objects, one plain). Each node used to list hg:HumanMadeObject beside its other class. Resolved by the reused-object-numbers item.
 - Query 04 updated: an object with no non-CRM class now shows crm:E22_Human-Made_Object (was hg:HumanMadeObject).
+
+## A2: drop hg:Production (events keep crm:E12_Production)
+
+- Test: `tests/test_sync.py::test_a2_production_is_crm_e12`.
+- Triples: 217,616 → **215,808**.
+- SHACL results: 75,641 → **75,641** (14 groups).
+- Undeclared terms: 35 → **34** (5 classes, 23 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
+- Query 02 updated: an event with no non-CRM class now shows its specific CRM class (crm:E12_Production instead of hg:Production).

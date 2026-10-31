@@ -61,6 +61,7 @@ AAT_STYLE_TO_HG = {
 # because the ontology does not declare the hg: IRI.
 CRM_CLASS_FOR = {
     "HumanMadeObject": CRM["E22_Human-Made_Object"],
+    "Production": CRM["E12_Production"],
 }
 
 

@@ -1,11 +1,11 @@
 {
- "item": "A1",
- "triples": 217616,
+ "item": "A2",
+ "triples": 215808,
  "shacl_results": 75641,
  "shacl_groups": 14,
- "undeclared": 35,
+ "undeclared": 34,
  "undeclared_detail": {
-  "undeclared_classes": 6,
+  "undeclared_classes": 5,
   "undeclared_properties": 23,
   "undeclared_iri_values": 6
  },

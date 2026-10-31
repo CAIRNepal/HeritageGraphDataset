@@ -17,8 +17,10 @@ SELECT ?monumentName ?eventName ?eventType ?dateCE ?period ?eraYear ?description
     OPTIONAL { ?event hg:inscriptionalDateEra ?eraYear }
     OPTIONAL { ?event dcterms:description ?description }
 
-    # Exclude CIDOC-CRM classes to show CAIR-Nepal ontology classes
-    FILTER(!STRSTARTS(STR(?eventType), "http://www.cidoc-crm.org/cidoc-crm/"))
+    # Show the non-CRM classes; for an event that has none, show its specific CRM class (e.g. crm:E12_Production)
+    FILTER(!STRSTARTS(STR(?eventType), STR(crm:))
+           || (?eventType != crm:E5_Event
+               && NOT EXISTS { ?event a ?other FILTER(!STRSTARTS(STR(?other), STR(crm:))) }))
 }
 ORDER BY ?dateCE ?period
 LIMIT 25

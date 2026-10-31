@@ -19,3 +19,8 @@ def test_a1_human_made_object_is_crm_e22(graph):
     assert not typed(graph, HG.HumanMadeObject)
     objects = {s for s in graph.subjects(CRM["P46i_forms_part_of"], None)}
     assert objects and objects <= typed(graph, CRM["E22_Human-Made_Object"])
+
+
+def test_a2_production_is_crm_e12(graph):
+    assert not typed(graph, HG.Production)
+    assert len(typed(graph, CRM["E12_Production"])) == 1808
