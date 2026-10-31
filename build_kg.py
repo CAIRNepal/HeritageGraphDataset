@@ -64,6 +64,7 @@ CRM_CLASS_FOR = {
     "Production": CRM["E12_Production"],
     "ConditionAssessment": CRM["E14_Condition_Assessment"],
     "Place": CRM["E53_Place"],
+    "DestructionEvent": CRM["E6_Destruction"],
 }
 
 

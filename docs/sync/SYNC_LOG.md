@@ -44,3 +44,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 33 → **32** (3 classes, 23 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
 - **Deviation from the plan (+1,021 SHACL results, expected ±0).** All are `rdfs:label` datatype, one per place: typed `crm:E53_Place`, the 1,021 places now fall under the ontology's place shape, and their `@en` labels fail `sh:datatype xsd:string` like every other label. Same cause as C1a, and removed by the C1a fix. No modelling choice involved.
+
+## A5: drop hg:DestructionEvent (events keep crm:E6_Destruction)
+
+- Test: `tests/test_sync.py::test_a5_destruction_is_crm_e6`.
+- Triples: 214,216 → **213,521**.
+- SHACL results: 76,662 → **76,662** (14 groups).
+- Undeclared terms: 32 → **31** (2 classes, 23 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
+- Whether these events are destructions is a typing question, out of scope here.

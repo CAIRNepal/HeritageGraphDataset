@@ -35,3 +35,8 @@ def test_a4_place_is_crm_e53(graph):
     assert not typed(graph, HG.Place)
     places = set(graph.objects(None, CRM["P53_has_former_or_current_location"]))
     assert len(places) == 1021 and places <= typed(graph, CRM["E53_Place"])
+
+
+def test_a5_destruction_is_crm_e6(graph):
+    assert not typed(graph, HG.DestructionEvent)
+    assert len(typed(graph, CRM["E6_Destruction"])) == 695
