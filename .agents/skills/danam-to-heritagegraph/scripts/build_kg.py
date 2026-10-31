@@ -389,26 +389,27 @@ def build_knowledge_graph(
         tola = m.get("tola", "").strip()
         province = m.get("province", "").strip()
 
-        if district or municipality or tola:
-            place_slug = slugify(f"{district}_{municipality}_{tola}")
-            p_uri = RES[f"place/{place_slug}"]
-            g.add((m_uri, CRM["P55_has_current_location"], p_uri))
-            g.add((m_uri, CRM["P53_has_former_or_current_location"], p_uri))
-            if place_slug not in places_cache:
-                places_cache[place_slug] = True
-                g.add((p_uri, RDF.type, hg_class("Place")))
-                g.add((p_uri, RDF.type, SCHEMA.Place))
-                label_parts = [p for p in [tola, municipality, district] if p]
-                if label_parts:
-                    g.add((p_uri, RDFS.label, Literal(", ".join(label_parts), lang="en")))
-                if district:
-                    g.add((p_uri, HG.district, Literal(district, lang="en")))
-                if municipality:
-                    g.add((p_uri, HG.municipality, Literal(municipality, lang="en")))
-                if tola:
-                    g.add((p_uri, HG.tola, Literal(tola, lang="en")))
-                if province:
-                    g.add((p_uri, HG.province, Literal(province)))
+        # Places: a crm:E53_Place per administrative level the record states (province, district, municipality, tola),
+        # labelled as written, typed by hg:placeType, each crm:P89_falls_within the next level up that the record gives.
+        # The monument's current location is the lowest level. Names are not normalised.
+        place_uri, key = None, []
+        for level, name in (("province", f"Province {province}" if province else ""), ("district", district),
+                            ("municipality", municipality), ("tola", tola)):
+            if not name:
+                continue
+            key.append(f"{level}-{slugify(province if level == 'province' else name)}")  # level in the IRI: names repeat across levels
+            parent, place_uri = place_uri, RES["place/" + "/".join(key)]
+            if place_uri not in places_cache:
+                places_cache[place_uri] = True
+                g.add((place_uri, RDF.type, hg_class("Place")))
+                g.add((place_uri, RDF.type, SCHEMA.Place))
+                g.add((place_uri, RDFS.label, Literal(name, lang="en")))
+                g.add((place_uri, HG.placeType, Literal(level)))
+                if parent is not None:
+                    g.add((place_uri, CRM["P89_falls_within"], parent))
+        if place_uri is not None:
+            g.add((m_uri, CRM["P55_has_current_location"], place_uri))
+            g.add((m_uri, CRM["P53_has_former_or_current_location"], place_uri))
 
         # GeoSPARQL & WGS84 Coordinates
         lat_str = m.get("coordinates_lat", "").strip()

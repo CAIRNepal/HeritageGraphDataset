@@ -34,7 +34,7 @@ def test_a3_condition_assessment_is_crm_e14(graph):
 def test_a4_place_is_crm_e53(graph):
     assert not typed(graph, HG.Place)
     places = set(graph.objects(None, CRM["P53_has_former_or_current_location"]))
-    assert len(places) == 1021 and places <= typed(graph, CRM["E53_Place"])
+    assert places and places <= typed(graph, CRM["E53_Place"])  # 1,021 at A4; the E8 hierarchy changes the count
 
 
 def test_a5_destruction_is_crm_e6(graph):
@@ -49,7 +49,7 @@ def test_a6_transfer_is_crm_e10(graph):
 
 def test_a7_current_location_is_crm_p55(graph):
     assert uses(graph, HG.hasCurrentLocation) == 0
-    assert uses(graph, CRM["P55_has_current_location"]) == 1631
+    assert uses(graph, CRM["P55_has_current_location"]) == 1632  # 1,631 at A7; E8 adds the one record with only a province
 
 
 def test_a8_condition_assessment_link_is_crm_p34i(graph):
@@ -212,3 +212,19 @@ def test_e7_building_categories_are_e55_types(graph):
     m = RES["monument/1772bbc6-e73f-11e9-8bc4-0242ac130002"]  # 'kaccī apā (unbaked, sun-dried brick), mā apā (regular fired brick)'
     bricks = {str(graph.value(t, RDFS.label)) for t in graph.objects(m, CRM["P2_has_type"]) if t in in_scheme("brick-type")}
     assert bricks == {"kaccī apā (unbaked, sun-dried brick)", "mā apā (regular fired brick)"}
+
+
+def test_e8_places_are_a_p89_hierarchy(graph):
+    from rdflib import RDFS, Literal
+    for p in (HG.province, HG.district, HG.municipality, HG.tola):
+        assert uses(graph, p) == 0
+    m = RES["monument/0077a8d9-2e9d-4626-8dd0-04272b780ea9"]  # 3 / Kathmandu / Shankharapur Municipality / Gũbāhāḥ
+    chain, place = [], graph.value(m, CRM["P55_has_current_location"])
+    while place is not None:
+        chain.append((str(graph.value(place, HG.placeType)), str(graph.value(place, RDFS.label))))
+        place = graph.value(place, CRM["P89_falls_within"])
+    import unicodedata
+    chain = [(lvl, unicodedata.normalize("NFC", name)) for lvl, name in chain]
+    assert chain == [("tola", unicodedata.normalize("NFC", "Gũbāhāḥ")), ("municipality", "Shankharapur Municipality"), ("district", "Kathmandu"), ("province", "Province 3")]
+    places = typed(graph, CRM["E53_Place"])
+    assert all(len(list(graph.objects(p, HG.placeType))) == 1 for p in places)

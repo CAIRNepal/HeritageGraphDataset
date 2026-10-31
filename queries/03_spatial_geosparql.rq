@@ -19,9 +19,10 @@ SELECT ?monumentName ?district ?municipality ?tola ?lat ?long ?wkt WHERE {
     
     OPTIONAL {
         ?monument crm:P55_has_current_location ?place .
-        OPTIONAL { ?place hg:district ?district }
-        OPTIONAL { ?place hg:municipality ?municipality }
-        OPTIONAL { ?place hg:tola ?tola }
+        # the place and the places it falls within, by administrative level
+        OPTIONAL { ?place crm:P89_falls_within* ?d . ?d hg:placeType "district" ; rdfs:label ?district }
+        OPTIONAL { ?place crm:P89_falls_within* ?mu . ?mu hg:placeType "municipality" ; rdfs:label ?municipality }
+        OPTIONAL { ?place crm:P89_falls_within* ?t . ?t hg:placeType "tola" ; rdfs:label ?tola }
     }
 }
 ORDER BY ?district ?municipality ?monumentName
