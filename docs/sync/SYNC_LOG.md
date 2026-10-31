@@ -70,3 +70,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 30 → **29** (1 classes, 22 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
 - Query 03 switched to crm:P55_has_current_location.
+
+## A8: drop hg:hasConditionAssessment (crm:P34i_was_assessed_by stays)
+
+- Test: `tests/test_sync.py::test_a8_condition_assessment_link_is_crm_p34i`.
+- Triples: 213,237 → **211,660**.
+- SHACL results: 76,662 → **76,662** (14 groups).
+- Undeclared terms: 29 → **28** (1 classes, 21 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
+- Query 06 switched to crm:P34i_was_assessed_by.

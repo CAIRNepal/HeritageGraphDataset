@@ -7,7 +7,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?monumentName ?conditionStatus ?threats ?assessmentComment WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
-              hg:hasConditionAssessment ?assessment .
+              crm:P34i_was_assessed_by ?assessment .
     
     OPTIONAL { ?monument hg:conditionStatus ?conditionStatus }
     OPTIONAL { ?assessment hg:identifiedThreats ?threats }

@@ -50,3 +50,8 @@ def test_a6_transfer_is_crm_e10(graph):
 def test_a7_current_location_is_crm_p55(graph):
     assert uses(graph, HG.hasCurrentLocation) == 0
     assert uses(graph, CRM["P55_has_current_location"]) == 1631
+
+
+def test_a8_condition_assessment_link_is_crm_p34i(graph):
+    assert uses(graph, HG.hasConditionAssessment) == 0
+    assert uses(graph, CRM["P34i_was_assessed_by"]) == 1577
