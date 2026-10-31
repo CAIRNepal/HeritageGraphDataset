@@ -233,3 +233,11 @@ def test_e8_places_are_a_p89_hierarchy(graph):
 def test_e9_condition_text_and_threats_are_extension_properties(graph):
     assert uses(graph, HG.conditionStatus) == 0 and uses(graph, HG.identifiedThreats) == 0
     assert uses(graph, HGN.conditionStatus) == 1659 and uses(graph, HGN.identifiedThreats) == 572
+
+
+def test_s1_release_statistics_follow_changed_terms(graph):
+    import publish_release
+    st = publish_release.compute_graph_stats(graph)
+    flat = {k: v for d in st.values() if isinstance(d, dict) for k, v in d.items()}
+    assert flat["Production"] == 1808 and flat["DestructionEvent"] == 695 and flat["TransferOfCustody"] == 284
+    assert flat["HumanMadeObject"] > 3700

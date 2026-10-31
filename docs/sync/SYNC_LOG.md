@@ -557,3 +557,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 11.
 - Queries (rows without LIMIT): unchanged.
 - hgn:identifiedThreats is a sub-property of crm:P3_has_note rather than P3 itself, because the shapes allow one P3_has_note (xsd:string) and assessments already carry the assessment text there. Query 06 switched. Test B4 updated to read hgn:conditionStatus.
+
+## S1: release statistics (publish_release.py) count the classes the builder now writes
+
+- Test: `tests/test_sync.py::test_s1_release_statistics_follow_changed_terms`.
+- Triples: 224,853 → **224,853**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 11.
+- Queries (rows without LIMIT): unchanged.
+- publish_release.py counted hg:Production, hg:Place, hg:HumanMadeObject … for metadata.json, which would now be 0. It now counts the IRI the builder writes (the builder's CRM_CLASS_FOR map), and plain objects as objects with no more specific class. Other metadata.json issues (object total counting monuments too, checksum) are out of scope and unchanged.

@@ -43,6 +43,9 @@ if sys.platform == "win32":
 import rdflib
 from rdflib import RDF, URIRef
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_kg import CRM_CLASS_FOR as CLASS_WRITTEN_AS  # noqa: E402  hg class name -> IRI the builder writes
+
 
 def compute_sha256(filepath: str) -> str:
     """Compute hex SHA-256 hash of a file."""
@@ -63,12 +66,23 @@ def compute_graph_stats(g: rdflib.Graph) -> dict:
     crm_ns = "http://www.cidoc-crm.org/cidoc-crm/"
 
     def count_class(uri_str: str) -> int:
-        return len(list(g.subjects(RDF.type, URIRef(uri_str))))
+        # Classes the builder writes under another IRI (CIDOC-CRM, or the extension vocabulary) are counted there.
+        local = uri_str[len(hg_ns):] if uri_str.startswith(hg_ns) else None
+        if local in CLASS_WRITTEN_AS:
+            uri_str = str(CLASS_WRITTEN_AS[local])
+        return len(set(g.subjects(RDF.type, URIRef(uri_str))))
+
+    def count_plain_objects() -> int:
+        """Objects with no class more specific than crm:E22_Human-Made_Object (ontology_class HumanMadeObject)."""
+        specific = {URIRef(hg_ns + c) for c in ("Murti", "IconographicObject", "ArchitecturalElement", "Paubha")}
+        objs = set(g.subjects(URIRef("https://w3id.org/heritagegraph-nepal/vocab#isObjectOf"), None)) | \
+               set(g.subjects(URIRef(f"{crm_ns}P46i_forms_part_of"), None))
+        return sum(1 for o in objs if not specific & set(g.objects(o, RDF.type)))
 
     monuments_count = count_class(f"{hg_ns}ArchitecturalStructure")
     events_count = count_class(f"{crm_ns}E5_Event")
     objects_count = count_class(f"{crm_ns}E22_Human-Made_Object")
-    places_count = count_class(f"{hg_ns}Place") or count_class("https://schema.org/Place")
+    places_count = count_class(f"{hg_ns}Place") or count_class("https://schema.org/Place")  # crm:E53_Place
     deities_count = count_class(f"{hg_ns}Deity")
     geometries_count = count_class("http://www.opengis.net/ont/geosparql#Geometry")
 
@@ -89,7 +103,7 @@ def compute_graph_stats(g: rdflib.Graph) -> dict:
         "Murti": count_class(f"{hg_ns}Murti"),
         "IconographicObject": count_class(f"{hg_ns}IconographicObject"),
         "ArchitecturalElement": count_class(f"{hg_ns}ArchitecturalElement"),
-        "HumanMadeObject": count_class(f"{hg_ns}HumanMadeObject"),
+        "HumanMadeObject": count_plain_objects(),
         "Paubha": count_class(f"{hg_ns}Paubha"),
     }
 
