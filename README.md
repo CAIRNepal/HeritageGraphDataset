@@ -94,7 +94,7 @@ built graph:
 | results | shape rule | reason |
 |---|---|---|
 | 3,812 | `hg:hasReligiousTradition` must be an IRI of class `hg:ReligiousTradition` | the religious traditions are still text; the mapping to concepts is prepared and awaits one decision (the DANAM value "Unspecified") |
-| 200 | every `hg:Temple` has one `hg:hasArchitecturalStyle` | DANAM records no style for these 200 temples; ontology 1.1.0 adds the value "Not recorded" for this case |
+| 200 | every `hg:Temple` has one `hg:hasArchitecturalStyle` | DANAM records no style for these 200 temples (listed in the sync log); they are left without one rather than given a guessed style |
 
 Each change made for the alignment is logged with its test and before/after counts in
 [`docs/sync/SYNC_LOG.md`](docs/sync/SYNC_LOG.md); the plan is in [`docs/sync/SYNC_PLAN.md`](docs/sync/SYNC_PLAN.md) and
