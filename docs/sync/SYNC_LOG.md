@@ -27,3 +27,11 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 35 → **34** (5 classes, 23 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
 - Query 02 updated: an event with no non-CRM class now shows its specific CRM class (crm:E12_Production instead of hg:Production).
+
+## A3: drop hg:ConditionAssessment (assessments and assessment events keep crm:E14_Condition_Assessment)
+
+- Test: `tests/test_sync.py::test_a3_condition_assessment_is_crm_e14`.
+- Triples: 215,808 → **214,216**.
+- SHACL results: 75,641 → **75,641** (14 groups).
+- Undeclared terms: 34 → **33** (4 classes, 23 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.

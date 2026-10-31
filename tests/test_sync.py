@@ -24,3 +24,8 @@ def test_a1_human_made_object_is_crm_e22(graph):
 def test_a2_production_is_crm_e12(graph):
     assert not typed(graph, HG.Production)
     assert len(typed(graph, CRM["E12_Production"])) == 1808
+
+
+def test_a3_condition_assessment_is_crm_e14(graph):
+    assert not typed(graph, HG.ConditionAssessment)
+    assert len(typed(graph, CRM["E14_Condition_Assessment"])) == 1592

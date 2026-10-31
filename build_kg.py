@@ -62,6 +62,7 @@ AAT_STYLE_TO_HG = {
 CRM_CLASS_FOR = {
     "HumanMadeObject": CRM["E22_Human-Made_Object"],
     "Production": CRM["E12_Production"],
+    "ConditionAssessment": CRM["E14_Condition_Assessment"],
 }
 
 
@@ -401,7 +402,6 @@ def build_knowledge_graph(
             g.add((m_uri, CRM["P44_has_condition"], assess_uri))
             g.add((m_uri, CRM["P34i_was_assessed_by"], assess_uri))
             g.add((assess_uri, RDF.type, CRM["E14_Condition_Assessment"]))
-            g.add((assess_uri, RDF.type, HG.ConditionAssessment))
             g.add((assess_uri, CRM["P34_concerned"], m_uri))
             g.add((assess_uri, CRM["P35_has_identified"], state_uri))
             g.add((state_uri, RDF.type, CRM["E3_Condition_State"]))
