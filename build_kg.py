@@ -519,10 +519,6 @@ def build_knowledge_graph(
             g.add((ev_uri, CRM["P12_occurred_in_the_presence_of"], m_uri))
             g.add((m_uri, CRM["P12i_was_present_at"], ev_uri))
 
-            try:
-                g.add((ev_uri, HG.eventIndex, Literal(int(idx), datatype=XSD.integer)))
-            except ValueError:
-                pass
 
             # Dates and Timelines
             date_ce = r.get("date_bce_ce", "").strip()
@@ -562,8 +558,6 @@ def build_knowledge_graph(
             if evidence:
                 g.add((ev_uri, HG.evidenceText, Literal(evidence, lang="en")))
 
-            extraction_method = r.get("extraction_method", "").strip() or "source_table"
-            g.add((ev_uri, HG.extractionMethod, Literal(extraction_method)))
             g.add((ev_uri, PROV.wasAttributedTo, agent_antigravity))
             g.add((ev_uri, PROV.wasGeneratedBy, activity_kg))
 

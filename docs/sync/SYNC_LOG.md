@@ -497,3 +497,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Queries (rows without LIMIT): unchanged.
 - An existing term does the job: the C1b identifier pattern with a third identifier kind, instead of a new property. Query 01 reads the code from the identifier node.
 - Two monument records share the DANAM code `NWK0410` (both "Pā̃ḍe Pāṭī": https://danam.cats.uni-heidelberg.de/report/5d2c3e2e-485f-4a4a-be9f-4e2a27a5882e and https://danam.cats.uni-heidelberg.de/report/d3deb842-8858-4cf9-b277-af46111534d9), so 1,627 monuments have 1,626 code nodes. **Not changed here (outside the sync):** the builder's existing `owl:sameAs` between each monument and `res:monument/<code>` makes these two records one individual under OWL reasoning.
+
+## E4: drop hg:eventIndex and hg:extractionMethod (pipeline bookkeeping)
+
+- Test: `tests/test_sync.py::test_e4_no_pipeline_bookkeeping_on_events`.
+- Triples: 234,846 → **224,650**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 14 → **12** (0 classes, 12 properties, 0 IRI values).
+- Extension terms used: 7.
+- Queries (rows without LIMIT): unchanged.
+- Dropped rather than moved: the events export has no extraction_method column, so every event carried the builder's default 'source_table' (not source data); the event index stays in the event IRI (event/<resource_id>_<index>).

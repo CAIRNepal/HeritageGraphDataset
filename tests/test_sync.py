@@ -186,3 +186,7 @@ def test_e3_danam_code_is_an_identifier(graph):
     assert len(identifiers(graph, m, HGN.DanamCode)) == 1
     codes = set(graph.subjects(CRM["P2_has_type"], HGN.DanamCode))
     assert sum(1 for c in codes for _ in graph.subjects(CRM["P1_is_identified_by"], c)) == 1627  # one code is shared by 2 monuments
+
+
+def test_e4_no_pipeline_bookkeeping_on_events(graph):
+    assert uses(graph, HG.eventIndex) == 0 and uses(graph, HG.extractionMethod) == 0
