@@ -507,3 +507,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 7.
 - Queries (rows without LIMIT): unchanged.
 - Dropped rather than moved: the events export has no extraction_method column, so every event carried the builder's default 'source_table' (not source data); the event index stays in the event IRI (event/<resource_id>_<index>).
+
+## E5: remove hg:skill
+
+- Test: `tests/test_sync.py::test_e5_no_skill_property`.
+- Triples: 224,650 → **224,649**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 12 → **11** (0 classes, 11 properties, 0 IRI values).
+- Extension terms used: 7.
+- Queries (rows without LIMIT): unchanged.
+- The agent keeps schema:softwareRequirements naming the skill. Query 05 no longer selects ?skillName. (The AI-agent attribution itself is out of scope.)

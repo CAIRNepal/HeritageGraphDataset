@@ -220,7 +220,6 @@ def build_knowledge_graph(
     g.add((agent_antigravity, RDF.type, PROV.SoftwareAgent))
     g.add((agent_antigravity, RDF.type, PROV.Agent))
     g.add((agent_antigravity, RDFS.label, Literal("Antigravity AI Agent (DeepMind)", lang="en")))
-    g.add((agent_antigravity, HG.skill, Literal("danam-to-heritagegraph", lang="en")))
     g.add((agent_antigravity, SCHEMA.softwareRequirements, Literal("danam-to-heritagegraph skill (CAIR-Nepal)", lang="en")))
 
     agent_cair = RES["agent/cair_nepal"]

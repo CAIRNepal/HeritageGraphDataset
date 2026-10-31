@@ -1,12 +1,12 @@
 {
- "item": "E4",
- "triples": 224650,
+ "item": "E5",
+ "triples": 224649,
  "shacl_results": 4012,
  "shacl_groups": 3,
- "undeclared": 12,
+ "undeclared": 11,
  "undeclared_detail": {
   "undeclared_classes": 0,
-  "undeclared_properties": 12,
+  "undeclared_properties": 11,
   "undeclared_iri_values": 0
  },
  "extension_terms": 7,

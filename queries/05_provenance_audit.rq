@@ -1,12 +1,12 @@
-# Query 5: Full Provenance Audit via W3C PROV-O, Dublin Core, and Antigravity Skill
-# Tracing facts to Software Agent (Antigravity), Skill, Organization (CAIR-Nepal), and DANAM URLs
+# Query 5: Full Provenance Audit via W3C PROV-O and Dublin Core
+# Tracing facts to the software agent, the organization (CAIR-Nepal), and DANAM URLs
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?monumentName ?eventName ?agentName ?skillName ?organizationName ?danamReportURL ?primarySource WHERE {
+SELECT ?monumentName ?eventName ?agentName ?organizationName ?danamReportURL ?primarySource WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
               prov:wasDerivedFrom ?danamReportURL ;
@@ -16,7 +16,6 @@ SELECT ?monumentName ?eventName ?agentName ?skillName ?organizationName ?danamRe
            prov:wasAttributedTo ?agent .
     
     ?agent rdfs:label ?agentName ;
-           hg:skill ?skillName ;
            prov:actedOnBehalfOf ?org .
     
     ?org rdfs:label ?organizationName .

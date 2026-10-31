@@ -190,3 +190,7 @@ def test_e3_danam_code_is_an_identifier(graph):
 
 def test_e4_no_pipeline_bookkeeping_on_events(graph):
     assert uses(graph, HG.eventIndex) == 0 and uses(graph, HG.extractionMethod) == 0
+
+
+def test_e5_no_skill_property(graph):
+    assert uses(graph, HG.skill) == 0
