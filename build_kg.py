@@ -323,7 +323,7 @@ def build_knowledge_graph(
 
         danam_code = m.get("danam_code", "").strip()
         if danam_code:
-            g.add((m_uri, HG.danamCode, Literal(danam_code)))
+            add_identifier(g, m_uri, "danam-code", danam_code, HGN.DanamCode)
             code_uri = RES[f"monument/{danam_code}"]
             g.add((m_uri, OWL.sameAs, code_uri))
             g.add((code_uri, OWL.sameAs, m_uri))

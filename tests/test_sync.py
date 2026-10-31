@@ -178,3 +178,11 @@ def test_e2_main_deity_is_extension_property(graph):
     assert uses(graph, HG.hasMainDeity) == 0
     assert uses(graph, HGN.hasMainDeity) == 1049
     assert set(graph.objects(None, HGN.hasMainDeity)) <= typed(graph, HG.Deity)
+
+
+def test_e3_danam_code_is_an_identifier(graph):
+    assert uses(graph, HG.danamCode) == 0
+    m = RES["monument/0077a8d9-2e9d-4626-8dd0-04272b780ea9"]
+    assert len(identifiers(graph, m, HGN.DanamCode)) == 1
+    codes = set(graph.subjects(CRM["P2_has_type"], HGN.DanamCode))
+    assert sum(1 for c in codes for _ in graph.subjects(CRM["P1_is_identified_by"], c)) == 1627  # one code is shared by 2 monuments

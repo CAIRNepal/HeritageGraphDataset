@@ -81,3 +81,11 @@ hgn:hasMainDeity a owl:ObjectProperty ;
     rdfs:domain hg:ArchitecturalStructure ;
     rdfs:range hg:Deity ;
     skos:closeMatch hg:enshrinedDeity .
+
+hgn:DanamCode a crm:E55_Type, skos:Concept ;
+    skos:inScheme hgn:IdentifierKinds ;
+    skos:prefLabel "DANAM code"@en ;
+    rdfs:label "DANAM code"@en ;
+    rdfs:comment "DANAM's site code for a monument (e.g. SKH0510), as printed after '||' in the record's Devanagari name."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    skos:broadMatch hg:persistentIdentifier .

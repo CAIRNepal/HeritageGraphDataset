@@ -486,3 +486,14 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 6.
 - Queries (rows without LIMIT): unchanged.
 - Checked first: the ontology's deity properties (hg:enshrinedDeity, hg:invokesDeity: sub-properties of crm:P12 for events; hg:isAboutDeity: crm:P62 for murtis; hg:embodiedDeity: roles) do not link a structure to its deity. Query 07 switched.
+
+## E3: hg:danamCode → crm:E42_Identifier of kind hgn:DanamCode (no new property)
+
+- Test: `tests/test_sync.py::test_e3_danam_code_is_an_identifier`.
+- Triples: 229,968 → **234,846**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 15 → **14** (0 classes, 14 properties, 0 IRI values).
+- Extension terms used: 7.
+- Queries (rows without LIMIT): unchanged.
+- An existing term does the job: the C1b identifier pattern with a third identifier kind, instead of a new property. Query 01 reads the code from the identifier node.
+- Two monument records share the DANAM code `NWK0410` (both "Pā̃ḍe Pāṭī": https://danam.cats.uni-heidelberg.de/report/5d2c3e2e-485f-4a4a-be9f-4e2a27a5882e and https://danam.cats.uni-heidelberg.de/report/d3deb842-8858-4cf9-b277-af46111534d9), so 1,627 monuments have 1,626 code nodes. **Not changed here (outside the sync):** the builder's existing `owl:sameAs` between each monument and `res:monument/<code>` makes these two records one individual under OWL reasoning.
