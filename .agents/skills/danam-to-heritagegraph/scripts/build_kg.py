@@ -57,6 +57,18 @@ AAT_STYLE_TO_HG = {
     "300007576": "Stupa",
 }
 
+# hg: classes that the ontology publishes under a CIDOC-CRM IRI (LinkML class_uri). The CRM IRI is written instead,
+# because the ontology does not declare the hg: IRI.
+CRM_CLASS_FOR = {
+    "HumanMadeObject": CRM["E22_Human-Made_Object"],
+}
+
+
+def hg_class(name: str) -> URIRef:
+    """IRI of an ontology class given by its local name (e.g. from an ontology_class cell)."""
+    return CRM_CLASS_FOR.get(name, HG[name])
+
+
 # ── Classification Helpers ───────────────────────────────────────────────────
 def slugify(text: str) -> str:
     """Create a URL-safe IRI slug."""
@@ -451,7 +463,7 @@ def build_knowledge_graph(
 
             # Classify event
             ev_class_name = r.get("ontology_class", "").strip() or classify_event(ev_name, ev_desc)
-            g.add((ev_uri, RDF.type, HG[ev_class_name]))
+            g.add((ev_uri, RDF.type, hg_class(ev_class_name)))
             g.add((ev_uri, RDF.type, CRM["E5_Event"]))
             if ev_class_name == "Production":
                 g.add((ev_uri, RDF.type, CRM["E12_Production"]))
@@ -547,7 +559,7 @@ def build_knowledge_graph(
 
             # Classify object
             obj_class_name = r.get("ontology_class", "").strip() or classify_object(obj_name, obj_type)
-            g.add((obj_uri, RDF.type, HG[obj_class_name]))
+            g.add((obj_uri, RDF.type, hg_class(obj_class_name)))
             g.add((obj_uri, RDF.type, CRM["E22_Human-Made_Object"]))
             if obj_class_name in ["Murti", "Paubha"]:
                 g.add((obj_uri, RDF.type, HG.IconographicObject))

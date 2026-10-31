@@ -15,8 +15,10 @@ SELECT ?monumentName ?objectID ?objectName ?objectClass ?material ?location WHER
     OPTIONAL { ?object hg:material ?material }
     OPTIONAL { ?object hg:locationWithinMonument ?location }
 
-    # Exclude CIDOC-CRM classes to show CAIR-Nepal ontology classes
-    FILTER(!STRSTARTS(STR(?objectClass), "http://www.cidoc-crm.org/cidoc-crm/"))
+    # Show the non-CRM classes; for an object that has none (a plain human-made object), show crm:E22_Human-Made_Object
+    FILTER(!STRSTARTS(STR(?objectClass), STR(crm:))
+           || (?objectClass = crm:E22_Human-Made_Object
+               && NOT EXISTS { ?object a ?other FILTER(!STRSTARTS(STR(?other), STR(crm:))) }))
 }
 ORDER BY ?monumentName ?objectID
 LIMIT 25

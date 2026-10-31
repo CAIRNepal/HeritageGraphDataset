@@ -6,7 +6,7 @@ Usage:
 
 The build uses the same inputs as release v1.0.0 (tests/conftest.py) and writes build/sync/graph.nt (never releases/ or
 latest/). Alignment: tools/sync/check_alignment.py. Queries: every queries/*.rq run without its LIMIT; the row count is
-compared with the previous step's (docs/sync/state.json). Exit status 1 if a query's row count changed.
+compared with the previous step's (docs/sync/state.json). If a query's row count changed, nothing is recorded (exit 1).
 """
 import argparse, glob, json, os, re, subprocess, sys, time
 
@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--test", default="")
     ap.add_argument("--note", default="")
     ap.add_argument("--baseline", action="store_true")
+    ap.add_argument("--accept", default="", help="record despite changed query rows; the reason goes in the log")
     a = ap.parse_args()
     import build_kg
     from conftest import EVENTS, MONUMENTS, OBJECTS
@@ -52,6 +53,9 @@ def main():
     state = {"item": a.item, "triples": len(g), "shacl_results": summ["shacl_results"], "shacl_groups": summ["shacl_groups"],
              "undeclared": undeclared, "undeclared_detail": {k: summ[k] for k in ("undeclared_classes", "undeclared_properties", "undeclared_iri_values")},
              "extension_terms": summ.get("extension_terms"), "queries": qc}
+    if changed and not a.accept:  # nothing is recorded: fix the query (or the change) and rerun
+        print("NOT RECORDED. queries changed:", changed)
+        sys.exit(1)
     if not os.path.exists(LOG):
         open(LOG, "w", encoding="utf-8").write(
             "# Sync log\n\nOne entry per change, newest last. Each entry: what changed, the test that fails before and passes "
@@ -70,13 +74,15 @@ def main():
     lines.append("- Queries (rows without LIMIT): " + ("unchanged." if prev and not changed else
                  (", ".join(f"`{q}` {n:,}" for q, n in qc.items()) if not prev else
                   "**changed:** " + ", ".join(f"`{q}` {b} → {n}" for q, (b, n) in changed.items()))))
+    if changed and a.accept:
+        lines.append(f"- Query rows changed, accepted: {a.accept}")
     if a.note:
         lines.append(f"- {a.note}")
     open(LOG, "a", encoding="utf-8").write("\n".join(lines) + "\n")
     json.dump(state, open(STATE, "w"), indent=1)
     print(json.dumps({k: state[k] for k in ("item", "triples", "shacl_results", "undeclared")}), "queries changed:", changed or "none",
           f"({time.time() - t:.0f}s)")
-    sys.exit(1 if changed else 0)
+    sys.exit(1 if changed and not a.accept else 0)
 
 
 if __name__ == "__main__":
