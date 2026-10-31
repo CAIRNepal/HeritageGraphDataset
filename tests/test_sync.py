@@ -61,3 +61,10 @@ def test_a9_event_links_are_crm_p12(graph):
     assert uses(graph, HG.hasEvent) == 0 and uses(graph, HG.isEventOf) == 0
     assert uses(graph, CRM["P12_occurred_in_the_presence_of"]) == 5098
     assert uses(graph, CRM["P12i_was_present_at"]) == 5098
+
+
+def test_a10_condition_type_only_on_condition_state(graph):
+    assert uses(graph, HG.conditionType) == 0
+    for v in ("Good", "Damaged", "Ruined", "Restored"):
+        assert not any(True for _ in graph.triples((None, None, HG[v])))
+    assert uses(graph, HG.hasConditionType) > 0

@@ -415,7 +415,6 @@ def build_knowledge_graph(
                 for c_type in cond_types.split("|"):
                     c_clean = c_type.strip()
                     if c_clean:
-                        g.add((assess_uri, HG.conditionType, HG[c_clean]))
                         g.add((m_uri, HG.conditionStatus, Literal(c_clean, lang="en")))
                         if c_clean in ["Good", "Damaged", "Ruined", "Restored"]:
                             g.add((state_uri, HG.hasConditionType, HG[f"ConditionType#{c_clean}"]))

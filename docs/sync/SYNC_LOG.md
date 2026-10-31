@@ -88,3 +88,11 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 28 → **26** (1 classes, 19 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
 - Queries 02 and 05 switched to the CRM properties.
+
+## A10: drop hg:conditionType and its undeclared values hg:Good/Damaged/Ruined/Restored (hg:hasConditionType -> hg:ConditionType#… on the condition state stays)
+
+- Test: `tests/test_sync.py::test_a10_condition_type_only_on_condition_state`.
+- Triples: 201,464 → **199,805**.
+- SHACL results: 76,662 → **76,662** (14 groups).
+- Undeclared terms: 26 → **21** (1 classes, 18 properties, 2 IRI values).
+- Queries (rows without LIMIT): unchanged.
