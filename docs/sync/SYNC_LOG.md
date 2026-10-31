@@ -517,3 +517,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 7.
 - Queries (rows without LIMIT): unchanged.
 - The agent keeps schema:softwareRequirements naming the skill. Query 05 no longer selects ?skillName. (The AI-agent attribution itself is out of scope.)
+
+## E6: hg:numStoreys / hg:numRoofs → hgn:numberOfStoreys / hgn:numberOfRoofs
+
+- Test: `tests/test_sync.py::test_e6_storeys_and_roofs_are_extension_properties`.
+- Triples: 224,649 → **224,649**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 11 → **9** (0 classes, 9 properties, 0 IRI values).
+- Extension terms used: 9.
+- Queries (rows without LIMIT): unchanged.
+- Behaviour unchanged: as before, only whole numbers are written, so the 24 half-storey values in DANAM (1.5, 2.5, 4.5) are still left out. That is not a sync matter; noted for later.

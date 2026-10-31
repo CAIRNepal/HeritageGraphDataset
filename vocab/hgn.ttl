@@ -89,3 +89,21 @@ hgn:DanamCode a crm:E55_Type, skos:Concept ;
     rdfs:comment "DANAM's site code for a monument (e.g. SKH0510), as printed after '||' in the record's Devanagari name."@en ;
     rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
     skos:broadMatch hg:persistentIdentifier .
+
+# ── Building attributes (E6) ─────────────────────────────────────────────────
+
+hgn:numberOfStoreys a owl:DatatypeProperty ;
+    rdfs:label "number of storeys"@en ;
+    rdfs:comment "Number of storeys of a structure, as DANAM records it (num_storeys); 0 as in the source."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range xsd:integer ;
+    skos:closeMatch crm:P43_has_dimension .
+
+hgn:numberOfRoofs a owl:DatatypeProperty ;
+    rdfs:label "number of roofs"@en ;
+    rdfs:comment "Number of roofs (roof tiers) of a structure, as DANAM records it (num_roofs); 0 as in the source."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range xsd:integer ;
+    skos:closeMatch crm:P43_has_dimension .

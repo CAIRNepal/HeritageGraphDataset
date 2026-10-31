@@ -194,3 +194,8 @@ def test_e4_no_pipeline_bookkeeping_on_events(graph):
 
 def test_e5_no_skill_property(graph):
     assert uses(graph, HG.skill) == 0
+
+
+def test_e6_storeys_and_roofs_are_extension_properties(graph):
+    assert uses(graph, HG.numStoreys) == 0 and uses(graph, HG.numRoofs) == 0
+    assert uses(graph, HGN.numberOfStoreys) == 1495 and uses(graph, HGN.numberOfRoofs) == 1304

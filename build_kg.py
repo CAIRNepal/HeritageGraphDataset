@@ -406,11 +406,11 @@ def build_knowledge_graph(
         # Physical Architecture Attributes
         storeys = m.get("num_storeys", "").strip()
         if storeys and storeys.isdigit():
-            g.add((m_uri, HG.numStoreys, Literal(int(storeys), datatype=XSD.integer)))
+            g.add((m_uri, HGN.numberOfStoreys, Literal(int(storeys), datatype=XSD.integer)))
 
         roofs = m.get("num_roofs", "").strip()
         if roofs and roofs.isdigit():
-            g.add((m_uri, HG.numRoofs, Literal(int(roofs), datatype=XSD.integer)))
+            g.add((m_uri, HGN.numberOfRoofs, Literal(int(roofs), datatype=XSD.integer)))
 
         roof_type = m.get("roof_type", "").strip()
         if roof_type:
