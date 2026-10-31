@@ -573,6 +573,12 @@ def build_knowledge_graph(
     # ── 4. Objects ────────────────────────────────────────────────────────────
     print(f"[*] Reading objects from {objects_path}...")
     obj_count = 0
+    # DANAM occasionally gives one object number to two different objects. Each row keeps its own node: a number used
+    # by more than one row gets a suffix _1, _2 … (file order) in the node IRI; the identifier keeps the number as written.
+    with open(objects_path, encoding="utf-8-sig") as f:
+        number_rows = Counter(slugify(r["object_id"].strip()) for r in csv.DictReader(f)
+                              if r["resource_id"] in active_mon_ids and r.get("object_id", "").strip())
+    number_seen = Counter()
     with open(objects_path, encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for r in reader:
@@ -582,6 +588,9 @@ def build_knowledge_graph(
 
             obj_id = r.get("object_id", "").strip() or f"{res_id}-obj-{obj_count}"
             obj_slug = slugify(obj_id)
+            if number_rows[obj_slug] > 1:
+                number_seen[obj_slug] += 1
+                obj_slug = f"{obj_slug}_{number_seen[obj_slug]}"
             obj_uri = RES[f"object/{obj_slug}"]
             m_uri = RES[f"monument/{res_id}"]
 

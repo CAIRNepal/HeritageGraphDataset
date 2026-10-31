@@ -95,7 +95,8 @@ def test_b1_p46_only_for_architectural_elements(graph):
     parts = set(graph.objects(None, CRM["P46_is_composed_of"]))
     assert parts and parts <= typed(graph, HG.ArchitecturalElement)
     assert uses(graph, HG.containsObject) == 0 and uses(graph, HG.isObjectOf) == 0
-    assert uses(graph, CRM["P46_is_composed_of"]) + uses(graph, HGN.containsObject) == 7155
+    # one link per object row (7,160); 7,155 before R1, when reused object numbers merged nodes
+    assert uses(graph, CRM["P46_is_composed_of"]) + uses(graph, HGN.containsObject) == 7160
     assert uses(graph, HGN.isObjectOf) == uses(graph, HGN.containsObject)
 
 
@@ -156,3 +157,13 @@ def test_c1b_identifiers_are_crm_e42(graph):
     assert len(identifiers(graph, o, HGN.DanamObjectNumber)) == 1
     ids = set(graph.objects(None, CRM["P1_is_identified_by"]))
     assert ids <= typed(graph, CRM["E42_Identifier"])
+
+
+def test_r1_reused_object_numbers_give_distinct_nodes(graph):
+    from rdflib import RDFS
+    nodes = [RES["object/kat1150-014_1"], RES["object/kat1150-014_2"]]
+    assert not any(True for _ in graph.triples((RES["object/kat1150-014"], None, None)))
+    assert {str(graph.value(n, RDFS.label)) for n in nodes} == {"Garuḍanārāyaṇa", "Gaṇeśa (B)"}
+    for n in nodes:
+        assert len(list(graph.objects(n, RDFS.label))) == 1
+        assert identifiers(graph, n, HGN.DanamObjectNumber) == {"KAT1150-014"}

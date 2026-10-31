@@ -244,3 +244,14 @@ All distinct source strings with their counts:
 - Extension terms used: 4.
 - Queries (rows without LIMIT): unchanged.
 - Checked first: no shape constrains crm:P1_is_identified_by or crm:P190_has_symbolic_content, and none targets crm:E42_Identifier. Kinds: hgn:DanamResourceId (monuments), hgn:DanamObjectNumber (objects). Query 04 reads the object number from the identifier node.
+
+## R1: reused DANAM object numbers: one node per object row
+
+- Test: `tests/test_sync.py::test_r1_reused_object_numbers_give_distinct_nodes`.
+- Triples: 229,929 → **229,968**.
+- SHACL results: 4,028 → **4,012** (3 groups).
+- Undeclared terms: 17 → **17** (1 classes, 16 properties, 0 IRI values).
+- Extension terms used: 4.
+- Queries (rows without LIMIT): **changed:** `04_monument_sacred_objects.rq` 9008 → 9001
+- Query rows changed, accepted: query 04 9,008 → 9,001: the merged nodes used to multiply their two labels by their classes; each object now has one label.
+- The 6 numbers (node IRIs now <number>_1, <number>_2; both keep the DANAM number as identifier): LAL2570-001 (Śikharakūṭa Caitya; Statue of Donor) https://danam.cats.uni-heidelberg.de/report/1798db32-ecce-11e9-8bc4-0242ac130002 · KAT2130-003 (Lion; lion) https://danam.cats.uni-heidelberg.de/report/41dddca9-4465-44d7-9e66-330391c7f252 · LAL0841-006 in two monuments (Viṣṇu; Licchavi Caitya) https://danam.cats.uni-heidelberg.de/report/5d44f5b8-70f8-11ea-966a-0242ac130006 and https://danam.cats.uni-heidelberg.de/report/5f27520c-348e-43da-8160-a2e2729a37c7 · KAT1150-014 (Garuḍanārāyaṇa; Gaṇeśa (B)) https://danam.cats.uni-heidelberg.de/report/7171bc5b-58ee-4d5d-9808-c118c20022de · SUN0010-004 (Statue of Jalaśayana Viṣṇu on the south…; Jalaśayana Viṣṇu; possibly the same statue listed twice, kept as two nodes as instructed) https://danam.cats.uni-heidelberg.de/report/872e0e8c-f0ba-11e9-a3c8-0242ac130002 · TOK0090-001 (Umāmaheśvara; Bell) https://danam.cats.uni-heidelberg.de/report/a0c8744f-2928-4961-b072-638c22e48522. Links monument→object: 7,155 → 7,160 (one per row).
