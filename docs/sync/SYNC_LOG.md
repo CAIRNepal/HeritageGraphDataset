@@ -135,3 +135,13 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Queries (rows without LIMIT): **changed:** `01_monuments_by_aat_style.rq` 1212 → 606
 - Query rows changed, accepted: query 01 1,212 → 606: it used to return each monument twice, once with the AAT concept and once with the ontology style value (labelled 'Other AAT Style'). The 606 AAT answers are unchanged.
 - The 8 monuments with two styles (first kept, second in crm:P3_has_note): 168523f7-0f40-477f-87d9-820220ea2723 (Dome, Shikhara), 170a68d0-e68d-11e9-b125-0242ac130002 (Pagoda, Dome), 20c0e0a0-2b7f-491a-81aa-41dddec3276b (Shikhara, Dome), 28cc6491-dcc2-4cdd-9ee3-4aac928db2d8 (Pagoda, Dome), a2cfeca7-18cd-4ba6-8793-4390725a1375 (Shikhara, Dome), c07ed9a8-8a2b-4453-9478-803722743140 (Dome, Shikhara), c2add511-115d-4d83-bcef-db8ed170a594 (Dome, Shikhara), ca5145f4-e083-451b-a8b6-ae548aefe518 (Shikhara, Dome). Query 01 reads the AAT concept from crm:P2_has_type.
+
+## B3: stop writing hg:existenceStatus (DANAM records condition, not existence)
+
+- Test: `tests/test_sync.py::test_b3_no_existence_status`.
+- Triples: 186,542 → **184,996**.
+- SHACL results: 49,529 → **48,853** (7 groups).
+- Undeclared terms: 18 → **17** (1 classes, 16 properties, 0 IRI values).
+- Extension terms used: 2.
+- Queries (rows without LIMIT): unchanged.
+- Checked first: no shape has sh:minCount ≥ 1 on hg:existenceStatus (13 shapes, all sh:maxCount 1 only).

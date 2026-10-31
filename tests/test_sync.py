@@ -110,3 +110,7 @@ def test_b2_one_ontology_style_aat_on_p2(graph):
     m = RES["monument/168523f7-0f40-477f-87d9-820220ea2723"]
     assert graph.value(m, HG.hasArchitecturalStyle) == HG["ArchitecturalStyle#Dome"]
     assert "Shikhara" in str(graph.value(m, CRM["P3_has_note"]))
+
+
+def test_b3_no_existence_status(graph):
+    assert uses(graph, HG.existenceStatus) == 0
