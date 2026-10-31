@@ -154,3 +154,73 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 17 → **17** (1 classes, 16 properties, 0 IRI values).
 - Extension terms used: 2.
 - Queries (rows without LIMIT): unchanged.
+
+## B5: religious traditions (STOPPED before applying: one open question)
+
+Source column `religion` (monuments; the builder also copies it to the monument's main deity). 1,523 monuments have a value, 46 distinct strings; 129 are blank. Split on `,` they give 10 distinct values:
+
+| source value | monuments | proposed concept (`hgn:`, typed `hg:ReligiousTradition` and `skos:Concept`, in `hgn:ReligiousTraditionScheme`) |
+|---|---|---|
+| Buddhist | 441 | `hgn:tradition-Buddhist`, prefLabel "Buddhist"@en |
+| Unspecified | 376 | **open question** (see below) |
+| Hindu | 275 | `hgn:tradition-Hindu`, prefLabel "Hindu"@en |
+| Shaiva | 256 | `hgn:tradition-Shaiva`, prefLabel "Shaiva"@en |
+| Shakta | 151 | `hgn:tradition-Shakta`, prefLabel "Shakta"@en |
+| Hindu-Buddhist | 119 | `hgn:tradition-HinduBuddhist`, prefLabel "Hindu-Buddhist"@en |
+| Vaishnava | 113 | `hgn:tradition-Vaishnava`, prefLabel "Vaishnava"@en |
+| Folk | 9 | `hgn:tradition-Folk`, prefLabel "Folk"@en |
+| Shamanistic | 7 | `hgn:tradition-Shamanistic`, prefLabel "Shamanistic"@en |
+| Sikh | 2 | `hgn:tradition-Sikh`, prefLabel "Sikh"@en |
+
+Each concept's label is the DANAM string as written. "Hindu-Buddhist" is kept as its own concept, because DANAM uses it as a value of its own, distinct from "Hindu, Buddhist". No hierarchy (e.g. Shaiva under Hindu) is added, because DANAM does not state one.
+
+**Open question:** 361 monuments, and 15 more in combinations, have the value "Unspecified". It reads as "DANAM does not know", not as a tradition. Options: (a) leave it out, so those monuments get no tradition ("blank beats guessed"); (b) make it a concept `hgn:tradition-Unspecified` so the source value is kept. This is a modelling choice not covered by the task, so B5 is not applied yet.
+
+All distinct source strings with their counts:
+
+- `Unspecified` 361
+- `Buddhist` 321
+- `Shaiva` 196
+- `Shakta` 132
+- `Hindu-Buddhist` 112
+- `Hindu` 98
+- `Vaishnava` 93
+- `Hindu, Buddhist` 63
+- `Buddhist, Hindu` 43
+- `Hindu, Shaiva` 18
+- `Shaiva, Hindu` 16
+- `Hindu, Vaishnava` 7
+- `Hindu, Unspecified` 6
+- `Shaiva, Shakta` 5
+- `Vaishnava, Shaiva` 5
+- `Buddhist, Unspecified` 5
+- `Vaishnava, Hindu` 4
+- `Hindu, Shakta, Shaiva` 3
+- `Sikh` 2
+- `Hindu, Shakta` 2
+- `Folk` 2
+- `Folk, Shamanistic, Hindu` 2
+- `Shakta, Shaiva` 2
+- `Hindu-Buddhist, Buddhist` 2
+- `Shaiva, Hindu-Buddhist` 2
+- `Shaiva, Vaishnava` 1
+- `Shamanistic, Folk, Shaiva, Hindu` 1
+- `Shamanistic, Folk` 1
+- `Buddhist, Shaiva` 1
+- `Shakta, Vaishnava, Shaiva` 1
+- `Shaiva, Hindu, Buddhist` 1
+- `Unspecified, Hindu-Buddhist` 1
+- `Hindu, Shaiva, Shakta` 1
+- `Hindu, Hindu-Buddhist, Buddhist` 1
+- `Shakta, Hindu` 1
+- `Shaiva, Vaishnava, Shakta` 1
+- `Folk, Buddhist, Hindu` 1
+- `Shakta, Unspecified` 1
+- `Unspecified, Hindu` 1
+- `Hindu, Shamanistic` 1
+- `Vaishnava, Shaiva, Hindu` 1
+- `Shamanistic, Hindu, Hindu-Buddhist, Folk, Buddhist` 1
+- `Shakta, Buddhist, Hindu` 1
+- `Unspecified, Buddhist` 1
+- `Shakta, Hindu, Shaiva` 1
+- `Folk, Hindu, Shamanistic` 1
