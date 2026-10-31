@@ -9,7 +9,8 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 SELECT ?monument ?monumentName ?danamCode ?aatStyle ?styleLabel WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
-              hg:hasArchitecturalStyle ?aatStyle .
+              crm:P2_has_type ?aatStyle .
+    FILTER(STRSTARTS(STR(?aatStyle), STR(aat:)))
     
     OPTIONAL { ?monument hg:danamCode ?danamCode }
     

@@ -97,3 +97,16 @@ def test_b1_p46_only_for_architectural_elements(graph):
     assert uses(graph, HG.containsObject) == 0 and uses(graph, HG.isObjectOf) == 0
     assert uses(graph, CRM["P46_is_composed_of"]) + uses(graph, HGN.containsObject) == 7155
     assert uses(graph, HGN.isObjectOf) == uses(graph, HGN.containsObject)
+
+
+def test_b2_one_ontology_style_aat_on_p2(graph):
+    from collections import Counter
+    styles = Counter(s for s, o in graph.subject_objects(HG.hasArchitecturalStyle))
+    assert styles and max(styles.values()) == 1
+    assert all(str(o).startswith(str(HG) + "ArchitecturalStyle#") for o in graph.objects(None, HG.hasArchitecturalStyle))
+    aat = [o for o in graph.objects(None, CRM["P2_has_type"]) if str(o).startswith("http://vocab.getty.edu/aat/")]
+    assert len(aat) == 606  # all AAT concepts DANAM lists (598 monuments, 8 with two)
+    # first style DANAM lists is kept; the second goes in a note (DANAM lists Dome, then Shikhara)
+    m = RES["monument/168523f7-0f40-477f-87d9-820220ea2723"]
+    assert graph.value(m, HG.hasArchitecturalStyle) == HG["ArchitecturalStyle#Dome"]
+    assert "Shikhara" in str(graph.value(m, CRM["P3_has_note"]))

@@ -303,15 +303,18 @@ def build_knowledge_graph(
             g.add((m_uri, OWL.sameAs, code_uri))
             g.add((code_uri, OWL.sameAs, m_uri))
 
-        # Architectural Styles (Getty AAT URIs and HeritageGraph individuals)
+        # Architectural styles: every AAT concept DANAM lists on crm:P2_has_type; one ontology style value (the ontology
+        # allows one) on hg:hasArchitecturalStyle, the first DANAM lists. Further styles are recorded in a note.
         aat_styles = clean_clean_aat(m.get("aat_style", ""))
         for aat_id in aat_styles:
-            aat_uri = AAT[aat_id]
-            g.add((m_uri, HG.hasArchitecturalStyle, aat_uri))
-            g.add((m_uri, CRM["P2_has_type"], aat_uri))
-            if aat_id in AAT_STYLE_TO_HG:
-                style_ind = HG[f"ArchitecturalStyle#{AAT_STYLE_TO_HG[aat_id]}"]
-                g.add((m_uri, HG.hasArchitecturalStyle, style_ind))
+            g.add((m_uri, CRM["P2_has_type"], AAT[aat_id]))
+        hg_styles = [AAT_STYLE_TO_HG[a] for a in aat_styles if a in AAT_STYLE_TO_HG]
+        if hg_styles:
+            g.add((m_uri, HG.hasArchitecturalStyle, HG[f"ArchitecturalStyle#{hg_styles[0]}"]))
+        if len(hg_styles) > 1:
+            g.add((m_uri, CRM["P3_has_note"], Literal(
+                f"DANAM also lists the architectural style {', '.join(hg_styles[1:])}; "
+                f"the ontology allows one style per structure, so the first listed ({hg_styles[0]}) is used.")))
 
         # Religion & Main Deity
         religion = m.get("religion", "").strip()
