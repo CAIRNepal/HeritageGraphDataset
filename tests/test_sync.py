@@ -140,3 +140,19 @@ def test_c1a_plain_string_label_and_tagged_pref_labels(graph):
 def rdflib_xsd_string():
     from rdflib import XSD
     return XSD.string
+
+
+def identifiers(graph, node, kind):
+    return {str(graph.value(i, CRM["P190_has_symbolic_content"])) for i in graph.objects(node, CRM["P1_is_identified_by"])
+            if (i, CRM["P2_has_type"], kind) in graph}
+
+
+def test_c1b_identifiers_are_crm_e42(graph):
+    from rdflib import DCTERMS
+    assert uses(graph, DCTERMS.identifier) == 0
+    m = RES["monument/0077a8d9-2e9d-4626-8dd0-04272b780ea9"]
+    assert identifiers(graph, m, HGN.DanamResourceId) == {"0077a8d9-2e9d-4626-8dd0-04272b780ea9"}
+    o = next(graph.subjects(HGN.isObjectOf, None))
+    assert len(identifiers(graph, o, HGN.DanamObjectNumber)) == 1
+    ids = set(graph.objects(None, CRM["P1_is_identified_by"]))
+    assert ids <= typed(graph, CRM["E42_Identifier"])

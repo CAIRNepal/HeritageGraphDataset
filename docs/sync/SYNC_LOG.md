@@ -234,3 +234,13 @@ All distinct source strings with their counts:
 - Extension terms used: 2.
 - Queries (rows without LIMIT): unchanged.
 - Findings checked first: the xsd:string constraint is on rdfs:label (58 shapes: sh:datatype xsd:string, sh:maxCount 1, 18 also sh:minCount 1); skos:prefLabel and skos:altLabel are not constrained by any shape. Monuments' Nepali names (schema:name @ne) are also given as skos:prefLabel @ne.
+
+## C1b: DANAM identifiers as crm:E42_Identifier (crm:P1_is_identified_by, crm:P190_has_symbolic_content, kind on crm:P2_has_type) instead of dcterms:identifier
+
+- Test: `tests/test_sync.py::test_c1b_identifiers_are_crm_e42`.
+- Triples: 203,511 → **229,929**.
+- SHACL results: 22,339 → **4,028** (4 groups).
+- Undeclared terms: 17 → **17** (1 classes, 16 properties, 0 IRI values).
+- Extension terms used: 4.
+- Queries (rows without LIMIT): unchanged.
+- Checked first: no shape constrains crm:P1_is_identified_by or crm:P190_has_symbolic_content, and none targets crm:E42_Identifier. Kinds: hgn:DanamResourceId (monuments), hgn:DanamObjectNumber (objects). Query 04 reads the object number from the identifier node.

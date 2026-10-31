@@ -11,7 +11,9 @@ SELECT ?monumentName ?objectID ?objectName ?objectClass ?material ?location WHER
     
     ?object a ?objectClass ;
             rdfs:label ?objectName ;
-            dcterms:identifier ?objectID .
+            crm:P1_is_identified_by ?identifier .
+    ?identifier crm:P2_has_type hgn:DanamObjectNumber ;
+                crm:P190_has_symbolic_content ?objectID .
     
     OPTIONAL { ?object hg:material ?material }
     OPTIONAL { ?object hg:locationWithinMonument ?location }

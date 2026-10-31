@@ -38,3 +38,28 @@ hgn:isObjectOf a owl:ObjectProperty ;
     rdfs:range hg:ArchitecturalStructure ;
     owl:inverseOf hgn:containsObject ;
     skos:closeMatch crm:P46i_forms_part_of .
+
+# ── Identifier kinds (C1b) ───────────────────────────────────────────────────
+# DANAM identifiers are crm:E42_Identifier nodes (crm:P1_is_identified_by, crm:P190_has_symbolic_content),
+# typed with one of these kinds by crm:P2_has_type.
+
+hgn:IdentifierKinds a skos:ConceptScheme ;
+    rdfs:label "Identifier kinds"@en ;
+    rdfs:comment "Kinds of identifier the dataset records for monuments and objects."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:DanamResourceId a crm:E55_Type, skos:Concept ;
+    skos:inScheme hgn:IdentifierKinds ;
+    skos:prefLabel "DANAM resource ID"@en ;
+    rdfs:label "DANAM resource ID"@en ;
+    rdfs:comment "The UUID of a monument record in the DANAM database (resource_id), as in the record's URL."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    skos:broadMatch hg:persistentIdentifier .
+
+hgn:DanamObjectNumber a crm:E55_Type, skos:Concept ;
+    skos:inScheme hgn:IdentifierKinds ;
+    skos:prefLabel "DANAM object number"@en ;
+    rdfs:label "DANAM object number"@en ;
+    rdfs:comment "The number DANAM gives an object within a monument record (usually AAA0000-000), as written. DANAM occasionally gives the same number to two different objects."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    skos:broadMatch hg:persistentIdentifier .

@@ -77,6 +77,16 @@ def hg_class(name: str) -> URIRef:
     return CRM_CLASS_FOR.get(name, HG[name])
 
 
+def add_identifier(g: Graph, node: URIRef, kind_slug: str, value: str, kind: URIRef) -> None:
+    """Identifier as a crm:E42_Identifier node with its string and kind. (The ontology's shapes require
+    dcterms:identifier to be an xsd:anyURI, so DANAM's identifier strings are not written there.)"""
+    ident = RES[f"identifier/{kind_slug}/{slugify(value)}"]
+    g.add((node, CRM["P1_is_identified_by"], ident))
+    g.add((ident, RDF.type, CRM["E42_Identifier"]))
+    g.add((ident, CRM["P190_has_symbolic_content"], Literal(value)))
+    g.add((ident, CRM["P2_has_type"], kind))
+
+
 def split_labels(g: Graph) -> None:
     """The ontology's shapes require rdfs:label to be one plain xsd:string. Each language-tagged label moves to
     skos:prefLabel (unconstrained), and the English one is also kept as the plain rdfs:label."""
@@ -308,7 +318,7 @@ def build_knowledge_graph(
             g.add((m_uri, SCHEMA.name, Literal(name_ne, lang="ne")))
             g.add((m_uri, SKOS.prefLabel, Literal(name_ne, lang="ne")))
 
-        g.add((m_uri, DCTERMS.identifier, Literal(res_id)))
+        add_identifier(g, m_uri, "danam-resource", res_id, HGN.DanamResourceId)
 
         danam_code = m.get("danam_code", "").strip()
         if danam_code:
@@ -588,7 +598,8 @@ def build_knowledge_graph(
                 g.add((obj_uri, RDF.type, PROV.Entity))
 
             g.add((obj_uri, RDFS.label, Literal(obj_name, lang="en")))
-            g.add((obj_uri, DCTERMS.identifier, Literal(obj_id)))
+            if r.get("object_id", "").strip():  # only an identifier DANAM gives
+                add_identifier(g, obj_uri, "danam-object", obj_id, HGN.DanamObjectNumber)
 
             if obj_type:
                 g.add((obj_uri, HG.objectType, Literal(obj_type, lang="en")))

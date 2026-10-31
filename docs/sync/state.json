@@ -1,15 +1,15 @@
 {
- "item": "C1a",
- "triples": 203511,
- "shacl_results": 22339,
- "shacl_groups": 5,
+ "item": "C1b",
+ "triples": 229929,
+ "shacl_results": 4028,
+ "shacl_groups": 4,
  "undeclared": 17,
  "undeclared_detail": {
   "undeclared_classes": 1,
   "undeclared_properties": 16,
   "undeclared_iri_values": 0
  },
- "extension_terms": 2,
+ "extension_terms": 4,
  "queries": {
   "01_monuments_by_aat_style.rq": 606,
   "02_historical_timeline.rq": 5313,
