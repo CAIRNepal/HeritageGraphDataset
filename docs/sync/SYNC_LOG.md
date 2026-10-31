@@ -53,3 +53,11 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 32 → **31** (2 classes, 23 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
 - Whether these events are destructions is a typing question, out of scope here.
+
+## A6: drop hg:TransferOfCustody (events keep crm:E10_Transfer_of_Custody)
+
+- Test: `tests/test_sync.py::test_a6_transfer_is_crm_e10`.
+- Triples: 213,521 → **213,237**.
+- SHACL results: 76,662 → **76,662** (14 groups).
+- Undeclared terms: 31 → **30** (1 classes, 23 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
