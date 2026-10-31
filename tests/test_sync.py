@@ -199,3 +199,16 @@ def test_e5_no_skill_property(graph):
 def test_e6_storeys_and_roofs_are_extension_properties(graph):
     assert uses(graph, HG.numStoreys) == 0 and uses(graph, HG.numRoofs) == 0
     assert uses(graph, HGN.numberOfStoreys) == 1495 and uses(graph, HGN.numberOfRoofs) == 1304
+
+
+def test_e7_building_categories_are_e55_types(graph):
+    from rdflib import RDFS, SKOS
+    for p in (HG.roofType, HG.brickType, HG.monumentShape):
+        assert uses(graph, p) == 0
+    def in_scheme(scheme):
+        return {c for c in graph.subjects(SKOS.inScheme, RES[f"scheme/{scheme}"])}
+    assert (len(in_scheme("roof-type")), len(in_scheme("brick-type")), len(in_scheme("shape"))) == (10, 10, 5)
+    assert all((c, RDF.type, CRM["E55_Type"]) in graph for c in in_scheme("brick-type"))
+    m = RES["monument/1772bbc6-e73f-11e9-8bc4-0242ac130002"]  # 'kaccī apā (unbaked, sun-dried brick), mā apā (regular fired brick)'
+    bricks = {str(graph.value(t, RDFS.label)) for t in graph.objects(m, CRM["P2_has_type"]) if t in in_scheme("brick-type")}
+    assert bricks == {"kaccī apā (unbaked, sun-dried brick)", "mā apā (regular fired brick)"}

@@ -88,6 +88,32 @@ def add_identifier(g: Graph, node: URIRef, kind_slug: str, value: str, kind: URI
     g.add((ident, CRM["P2_has_type"], kind))
 
 
+BUILDING_CATEGORIES = [  # (DANAM column, concept scheme slug, scheme label)
+    ("roof_type", "roof-type", "Roof types"),
+    ("monument_shape", "shape", "Ground-plan shapes"),
+    ("brick_type", "brick-type", "Brick and masonry types"),
+]
+
+
+def split_listed(text: str) -> list[str]:
+    """Values of a comma-separated DANAM cell; commas inside parentheses do not split ('kaccī apā (unbaked, sun-dried brick)')."""
+    return [v.strip() for v in re.split(r",(?![^()]*\))", text or "") if v.strip()]
+
+
+def type_concept(g: Graph, scheme_slug: str, scheme_label: str, value: str) -> URIRef:
+    """A crm:E55_Type / skos:Concept for a DANAM category value, in a concept scheme per category (created once)."""
+    scheme = RES[f"scheme/{scheme_slug}"]
+    concept = RES[f"type/{scheme_slug}/{slugify(value)}"]
+    if (concept, RDF.type, CRM["E55_Type"]) not in g:
+        g.add((scheme, RDF.type, SKOS.ConceptScheme))
+        g.add((scheme, RDFS.label, Literal(f"{scheme_label} (DANAM)", lang="en")))
+        g.add((concept, RDF.type, CRM["E55_Type"]))
+        g.add((concept, RDF.type, SKOS.Concept))
+        g.add((concept, SKOS.inScheme, scheme))
+        g.add((concept, RDFS.label, Literal(value, lang="en")))
+    return concept
+
+
 def split_labels(g: Graph) -> None:
     """The ontology's shapes require rdfs:label to be one plain xsd:string. Each language-tagged label moves to
     skos:prefLabel (unconstrained), and the English one is also kept as the plain rdfs:label."""
@@ -412,17 +438,11 @@ def build_knowledge_graph(
         if roofs and roofs.isdigit():
             g.add((m_uri, HGN.numberOfRoofs, Literal(int(roofs), datatype=XSD.integer)))
 
-        roof_type = m.get("roof_type", "").strip()
-        if roof_type:
-            g.add((m_uri, HG.roofType, Literal(roof_type, lang="en")))
-
-        shape = m.get("monument_shape", "").strip()
-        if shape:
-            g.add((m_uri, HG.monumentShape, Literal(shape, lang="en")))
-
-        brick = m.get("brick_type", "").strip()
-        if brick:
-            g.add((m_uri, HG.brickType, Literal(brick, lang="en")))
+        # Building categories (roof type, ground-plan shape, brick type): crm:P2_has_type -> crm:E55_Type concepts,
+        # one per value DANAM lists, labelled as written.
+        for column, scheme_slug, scheme_label in BUILDING_CATEGORIES:
+            for value in split_listed(m.get(column, "")):
+                g.add((m_uri, CRM["P2_has_type"], type_concept(g, scheme_slug, scheme_label, value)))
 
         # Condition Assessment & Threats
         assess = m.get("monument_assessment", "").strip()

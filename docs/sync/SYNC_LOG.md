@@ -527,3 +527,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 9.
 - Queries (rows without LIMIT): unchanged.
 - Behaviour unchanged: as before, only whole numbers are written, so the 24 half-storey values in DANAM (1.5, 2.5, 4.5) are still left out. That is not a sync matter; noted for later.
+
+## E7: hg:roofType / hg:monumentShape / hg:brickType → crm:P2_has_type with crm:E55_Type concepts (no new terms)
+
+- Test: `tests/test_sync.py::test_e7_building_categories_are_e55_types`.
+- Triples: 224,649 → **225,156**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 9 → **6** (0 classes, 6 properties, 0 IRI values).
+- Extension terms used: 9.
+- Queries (rows without LIMIT): unchanged.
+- An existing term does the job (as instructed): one crm:E55_Type / skos:Concept per value DANAM lists, labelled as written, in three concept schemes res:scheme/roof-type (10 concepts), res:scheme/shape (5), res:scheme/brick-type (10). Multi-value cells are split on commas outside parentheses, so a monument with 'Hip roof, Gable roof' gets both types. Before, the whole cell was one literal.
