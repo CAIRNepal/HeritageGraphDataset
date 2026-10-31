@@ -114,3 +114,13 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Extension terms used: 0.
 - Queries (rows without LIMIT): unchanged.
 - Checker: undeclared terms are now counted in hg: and hgn:, against the ontology plus vocab/hgn.ttl; extension terms are listed separately. The bare namespace IRI hg: (object of void:vocabulary) is no longer counted as an undeclared term (a vocabulary reference, not a term use): 21 → 20.
+
+## B1: crm:P46_is_composed_of only for hg:ArchitecturalElement; other objects linked by hgn:containsObject / hgn:isObjectOf
+
+- Test: `tests/test_sync.py::test_b1_p46_only_for_architectural_elements`.
+- Triples: 201,458 → **187,148**.
+- SHACL results: 70,752 → **53,159** (11 groups).
+- Undeclared terms: 20 → **18** (1 classes, 16 properties, 1 IRI values).
+- Extension terms used: 2.
+- Queries (rows without LIMIT): unchanged.
+- Query 04 now follows crm:P46_is_composed_of|hgn:containsObject. hg:containsObject / hg:isObjectOf are no longer written (the CRM or hgn: property carries each link).

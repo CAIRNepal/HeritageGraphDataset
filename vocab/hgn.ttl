@@ -18,3 +18,23 @@
     rdfs:comment "Terms used by the HeritageGraph-Nepal dataset that the HeritageGraph ontology (1.0.1) does not declare. Each term states the closest CIDOC-CRM or HeritageGraph term."@en ;
     owl:versionInfo "0.1.0" ;
     rdfs:seeAlso <https://cair-nepal.org/heritagegraph/> .
+
+# ── Objects in a structure (B1) ──────────────────────────────────────────────
+
+hgn:containsObject a owl:ObjectProperty ;
+    rdfs:label "contains object"@en ;
+    rdfs:comment "A structure houses or holds a human-made object (a murti, bell, stone lion, inscription …) that is not one of its architectural parts. For architectural parts the dataset uses crm:P46_is_composed_of, which the ontology's shapes reserve for hg:ArchitecturalElement."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range crm:E22_Human-Made_Object ;
+    owl:inverseOf hgn:isObjectOf ;
+    skos:closeMatch crm:P46_is_composed_of .
+
+hgn:isObjectOf a owl:ObjectProperty ;
+    rdfs:label "is object of"@en ;
+    rdfs:comment "Inverse of hgn:containsObject: the structure that houses or holds this object."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain crm:E22_Human-Made_Object ;
+    rdfs:range hg:ArchitecturalStructure ;
+    owl:inverseOf hgn:containsObject ;
+    skos:closeMatch crm:P46i_forms_part_of .

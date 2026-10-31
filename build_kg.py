@@ -594,11 +594,14 @@ def build_knowledge_graph(
             if date_vs_ns:
                 g.add((obj_uri, HG.inscriptionalDateEra, Literal(date_vs_ns)))
 
-            # Link Object <-> Monument
-            g.add((obj_uri, HG.isObjectOf, m_uri))
-            g.add((obj_uri, CRM["P46i_forms_part_of"], m_uri))
-            g.add((m_uri, HG.containsObject, obj_uri))
-            g.add((m_uri, CRM["P46_is_composed_of"], obj_uri))
+            # Link Object <-> Monument: P46 (composition) only for architectural parts, as the ontology's shapes require;
+            # other objects are housed in the monument (extension property).
+            if obj_class_name == "ArchitecturalElement":
+                g.add((obj_uri, CRM["P46i_forms_part_of"], m_uri))
+                g.add((m_uri, CRM["P46_is_composed_of"], obj_uri))
+            else:
+                g.add((obj_uri, HGN.isObjectOf, m_uri))
+                g.add((m_uri, HGN.containsObject, obj_uri))
 
             # Provenance
             g.add((obj_uri, PROV.wasAttributedTo, agent_antigravity))

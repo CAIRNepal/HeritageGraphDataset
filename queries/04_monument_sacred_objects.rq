@@ -1,11 +1,12 @@
 # Query 4: Sacred Objects, Murtis, and Architectural Elements housed in monuments
+PREFIX hgn: <https://w3id.org/heritagegraph-nepal/vocab#>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 SELECT ?monumentName ?objectID ?objectName ?objectClass ?material ?location WHERE {
-    ?monument hg:containsObject ?object ;
+    ?monument crm:P46_is_composed_of|hgn:containsObject ?object ;
               rdfs:label ?monumentName .
     
     ?object a ?objectClass ;

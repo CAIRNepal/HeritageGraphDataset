@@ -86,3 +86,14 @@ def test_v0_extension_vocabulary_matches_builder_and_declares_used_terms(graph):
     for t in declared - set(vocab.subjects(R.type, OWL.Ontology)):
         for p in (rdflib.RDFS.label, rdflib.RDFS.comment, rdflib.RDFS.isDefinedBy):
             assert vocab.value(t, p) is not None, (t, p)
+
+
+HGN = Namespace("https://w3id.org/heritagegraph-nepal/vocab#")
+
+
+def test_b1_p46_only_for_architectural_elements(graph):
+    parts = set(graph.objects(None, CRM["P46_is_composed_of"]))
+    assert parts and parts <= typed(graph, HG.ArchitecturalElement)
+    assert uses(graph, HG.containsObject) == 0 and uses(graph, HG.isObjectOf) == 0
+    assert uses(graph, CRM["P46_is_composed_of"]) + uses(graph, HGN.containsObject) == 7155
+    assert uses(graph, HGN.isObjectOf) == uses(graph, HGN.containsObject)
