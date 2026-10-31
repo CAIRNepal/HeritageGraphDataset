@@ -485,9 +485,7 @@ def build_knowledge_graph(
                 g.add((ev_uri, RDFS.comment, Literal(ev_desc, lang="en")))
 
             # Link Event <-> Monument
-            g.add((ev_uri, HG.isEventOf, m_uri))
             g.add((ev_uri, CRM["P12_occurred_in_the_presence_of"], m_uri))
-            g.add((m_uri, HG.hasEvent, ev_uri))
             g.add((m_uri, CRM["P12i_was_present_at"], ev_uri))
 
             try:

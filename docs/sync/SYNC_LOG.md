@@ -79,3 +79,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Undeclared terms: 29 → **28** (1 classes, 21 properties, 6 IRI values).
 - Queries (rows without LIMIT): unchanged.
 - Query 06 switched to crm:P34i_was_assessed_by.
+
+## A9: drop hg:hasEvent and hg:isEventOf (crm:P12i_was_present_at / crm:P12_occurred_in_the_presence_of stay)
+
+- Test: `tests/test_sync.py::test_a9_event_links_are_crm_p12`.
+- Triples: 211,660 → **201,464**.
+- SHACL results: 76,662 → **76,662** (14 groups).
+- Undeclared terms: 28 → **26** (1 classes, 19 properties, 6 IRI values).
+- Queries (rows without LIMIT): unchanged.
+- Queries 02 and 05 switched to the CRM properties.

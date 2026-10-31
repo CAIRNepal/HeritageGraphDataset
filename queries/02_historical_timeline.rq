@@ -6,7 +6,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 SELECT ?monumentName ?eventName ?eventType ?dateCE ?period ?eraYear ?description WHERE {
-    ?event hg:isEventOf ?monument ;
+    ?event crm:P12_occurred_in_the_presence_of ?monument ;
            a ?eventType ;
            rdfs:label ?eventName .
     

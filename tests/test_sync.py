@@ -55,3 +55,9 @@ def test_a7_current_location_is_crm_p55(graph):
 def test_a8_condition_assessment_link_is_crm_p34i(graph):
     assert uses(graph, HG.hasConditionAssessment) == 0
     assert uses(graph, CRM["P34i_was_assessed_by"]) == 1577
+
+
+def test_a9_event_links_are_crm_p12(graph):
+    assert uses(graph, HG.hasEvent) == 0 and uses(graph, HG.isEventOf) == 0
+    assert uses(graph, CRM["P12_occurred_in_the_presence_of"]) == 5098
+    assert uses(graph, CRM["P12i_was_present_at"]) == 5098
