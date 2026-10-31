@@ -35,7 +35,7 @@ if sys.platform == "win32":
 
 import rdflib
 from rdflib import Graph, Literal, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS, OWL, RDF, RDFS, VOID, XSD
+from rdflib.namespace import DCAT, DCTERMS, OWL, RDF, RDFS, SKOS, VOID, XSD
 
 csv.field_size_limit(10**9)
 
@@ -48,6 +48,9 @@ GEOSPARQL = Namespace("http://www.opengis.net/ont/geosparql#")
 AAT = Namespace("http://vocab.getty.edu/aat/")
 SCHEMA = Namespace("https://schema.org/")
 RES = Namespace("https://data.cairnepal.org/heritage/resource/")
+# Extension vocabulary (vocab/hgn.ttl) for terms the HeritageGraph ontology does not declare. Temporary base IRI.
+HGN_BASE = "https://w3id.org/heritagegraph-nepal/vocab#"
+HGN = Namespace(HGN_BASE)
 
 AAT_STYLE_TO_HG = {
     "300004829": "Pagoda",
@@ -56,6 +59,71 @@ AAT_STYLE_TO_HG = {
     "300007562": "Chaitya",
     "300007576": "Stupa",
 }
+
+# Class names (from ontology_class cells) that are not written as hg:<name>: the ontology publishes most of these under
+# a CIDOC-CRM IRI (LinkML class_uri) and does not declare the hg: IRI; the rest are extension classes (vocab/hgn.ttl).
+CRM_CLASS_FOR = {
+    "BuddhistMonument": HGN.BuddhistMonument,  # not in the ontology: extension class (vocab/hgn.ttl)
+    "HumanMadeObject": CRM["E22_Human-Made_Object"],
+    "Production": CRM["E12_Production"],
+    "ConditionAssessment": CRM["E14_Condition_Assessment"],
+    "Place": CRM["E53_Place"],
+    "DestructionEvent": CRM["E6_Destruction"],
+    "TransferOfCustody": CRM["E10_Transfer_of_Custody"],
+}
+
+
+def hg_class(name: str) -> URIRef:
+    """IRI of an ontology class given by its local name (e.g. from an ontology_class cell)."""
+    return CRM_CLASS_FOR.get(name, HG[name])
+
+
+def add_identifier(g: Graph, node: URIRef, kind_slug: str, value: str, kind: URIRef) -> None:
+    """Identifier as a crm:E42_Identifier node with its string and kind. (The ontology's shapes require
+    dcterms:identifier to be an xsd:anyURI, so DANAM's identifier strings are not written there.)"""
+    ident = RES[f"identifier/{kind_slug}/{slugify(value)}"]
+    g.add((node, CRM["P1_is_identified_by"], ident))
+    g.add((ident, RDF.type, CRM["E42_Identifier"]))
+    g.add((ident, CRM["P190_has_symbolic_content"], Literal(value)))
+    g.add((ident, CRM["P2_has_type"], kind))
+
+
+BUILDING_CATEGORIES = [  # (DANAM column, concept scheme slug, scheme label)
+    ("roof_type", "roof-type", "Roof types"),
+    ("monument_shape", "shape", "Ground-plan shapes"),
+    ("brick_type", "brick-type", "Brick and masonry types"),
+]
+
+
+def split_listed(text: str) -> list[str]:
+    """Values of a comma-separated DANAM cell; commas inside parentheses do not split ('kaccī apā (unbaked, sun-dried brick)')."""
+    return [v.strip() for v in re.split(r",(?![^()]*\))", text or "") if v.strip()]
+
+
+def type_concept(g: Graph, scheme_slug: str, scheme_label: str, value: str) -> URIRef:
+    """A crm:E55_Type / skos:Concept for a DANAM category value, in a concept scheme per category (created once)."""
+    scheme = RES[f"scheme/{scheme_slug}"]
+    concept = RES[f"type/{scheme_slug}/{slugify(value)}"]
+    if (concept, RDF.type, CRM["E55_Type"]) not in g:
+        g.add((scheme, RDF.type, SKOS.ConceptScheme))
+        g.add((scheme, RDFS.label, Literal(f"{scheme_label} (DANAM)", lang="en")))
+        g.add((concept, RDF.type, CRM["E55_Type"]))
+        g.add((concept, RDF.type, SKOS.Concept))
+        g.add((concept, SKOS.inScheme, scheme))
+        g.add((concept, RDFS.label, Literal(value, lang="en")))
+    return concept
+
+
+def split_labels(g: Graph) -> None:
+    """The ontology's shapes require rdfs:label to be one plain xsd:string. Each language-tagged label moves to
+    skos:prefLabel (unconstrained), and the English one is also kept as the plain rdfs:label."""
+    for s, lit in list(g.subject_objects(RDFS.label)):
+        if lit.language:
+            g.remove((s, RDFS.label, lit))
+            g.add((s, SKOS.prefLabel, lit))
+            if lit.language == "en":
+                g.add((s, RDFS.label, Literal(str(lit))))
+
 
 # ── Classification Helpers ───────────────────────────────────────────────────
 def slugify(text: str) -> str:
@@ -142,6 +210,8 @@ def build_knowledge_graph(
     g.bind("aat", AAT)
     g.bind("schema", SCHEMA)
     g.bind("void", VOID)
+    g.bind("skos", SKOS)
+    g.bind("hgn", HGN)
     g.bind("dcat", DCAT)
     g.bind("dcterms", DCTERMS)
     g.bind("res", RES)
@@ -176,7 +246,6 @@ def build_knowledge_graph(
     g.add((agent_antigravity, RDF.type, PROV.SoftwareAgent))
     g.add((agent_antigravity, RDF.type, PROV.Agent))
     g.add((agent_antigravity, RDFS.label, Literal("Antigravity AI Agent (DeepMind)", lang="en")))
-    g.add((agent_antigravity, HG.skill, Literal("danam-to-heritagegraph", lang="en")))
     g.add((agent_antigravity, SCHEMA.softwareRequirements, Literal("danam-to-heritagegraph skill (CAIR-Nepal)", lang="en")))
 
     agent_cair = RES["agent/cair_nepal"]
@@ -197,6 +266,7 @@ def build_knowledge_graph(
     g.add((activity_kg, RDFS.label, Literal("HeritageGraph Knowledge Graph Construction & LOD Export Activity", lang="en")))
     g.add((activity_kg, PROV.wasAssociatedWith, agent_antigravity))
     g.add((activity_kg, PROV.used, URIRef("https://danam.cats.uni-heidelberg.de")))
+    g.add((URIRef("https://danam.cats.uni-heidelberg.de"), RDF.type, PROV.Entity))
 
     g.add((dataset_uri, PROV.wasAttributedTo, agent_antigravity))
     g.add((dataset_uri, PROV.wasAttributedTo, agent_cair))
@@ -251,7 +321,7 @@ def build_knowledge_graph(
                 classes_to_add.add("Sattal")
 
         for c_name in classes_to_add:
-            g.add((m_uri, RDF.type, HG[c_name]))
+            g.add((m_uri, RDF.type, hg_class(c_name)))
             if c_name in ["Temple", "Chaitya", "Stupa", "KumariHouse"]:
                 g.add((m_uri, RDF.type, HG.ReligiousStructure))
             elif c_name in ["Pati", "Sattal", "Dharmashala"]:
@@ -272,25 +342,29 @@ def build_knowledge_graph(
         name_ne = m.get("name_ne", "").strip() or m.get("name_devanagari", "").strip()
         if name_ne:
             g.add((m_uri, SCHEMA.name, Literal(name_ne, lang="ne")))
+            g.add((m_uri, SKOS.prefLabel, Literal(name_ne, lang="ne")))
 
-        g.add((m_uri, DCTERMS.identifier, Literal(res_id)))
+        add_identifier(g, m_uri, "danam-resource", res_id, HGN.DanamResourceId)
 
         danam_code = m.get("danam_code", "").strip()
         if danam_code:
-            g.add((m_uri, HG.danamCode, Literal(danam_code)))
+            add_identifier(g, m_uri, "danam-code", danam_code, HGN.DanamCode)
             code_uri = RES[f"monument/{danam_code}"]
             g.add((m_uri, OWL.sameAs, code_uri))
             g.add((code_uri, OWL.sameAs, m_uri))
 
-        # Architectural Styles (Getty AAT URIs and HeritageGraph individuals)
+        # Architectural styles: every AAT concept DANAM lists on crm:P2_has_type; one ontology style value (the ontology
+        # allows one) on hg:hasArchitecturalStyle, the first DANAM lists. Further styles are recorded in a note.
         aat_styles = clean_clean_aat(m.get("aat_style", ""))
         for aat_id in aat_styles:
-            aat_uri = AAT[aat_id]
-            g.add((m_uri, HG.hasArchitecturalStyle, aat_uri))
-            g.add((m_uri, CRM["P2_has_type"], aat_uri))
-            if aat_id in AAT_STYLE_TO_HG:
-                style_ind = HG[f"ArchitecturalStyle#{AAT_STYLE_TO_HG[aat_id]}"]
-                g.add((m_uri, HG.hasArchitecturalStyle, style_ind))
+            g.add((m_uri, CRM["P2_has_type"], AAT[aat_id]))
+        hg_styles = [AAT_STYLE_TO_HG[a] for a in aat_styles if a in AAT_STYLE_TO_HG]
+        if hg_styles:
+            g.add((m_uri, HG.hasArchitecturalStyle, HG[f"ArchitecturalStyle#{hg_styles[0]}"]))
+        if len(hg_styles) > 1:
+            g.add((m_uri, CRM["P3_has_note"], Literal(
+                f"DANAM also lists the architectural style {', '.join(hg_styles[1:])}; "
+                f"the ontology allows one style per structure, so the first listed ({hg_styles[0]}) is used.")))
 
         # Religion & Main Deity
         religion = m.get("religion", "").strip()
@@ -301,7 +375,7 @@ def build_knowledge_graph(
         if main_deity:
             d_slug = slugify(main_deity)
             d_uri = RES[f"deity/{d_slug}"]
-            g.add((m_uri, HG.hasMainDeity, d_uri))
+            g.add((m_uri, HGN.hasMainDeity, d_uri))
             if d_slug not in deities_cache:
                 deities_cache[d_slug] = True
                 g.add((d_uri, RDF.type, HG.Deity))
@@ -315,26 +389,27 @@ def build_knowledge_graph(
         tola = m.get("tola", "").strip()
         province = m.get("province", "").strip()
 
-        if district or municipality or tola:
-            place_slug = slugify(f"{district}_{municipality}_{tola}")
-            p_uri = RES[f"place/{place_slug}"]
-            g.add((m_uri, HG.hasCurrentLocation, p_uri))
-            g.add((m_uri, CRM["P53_has_former_or_current_location"], p_uri))
-            if place_slug not in places_cache:
-                places_cache[place_slug] = True
-                g.add((p_uri, RDF.type, HG.Place))
-                g.add((p_uri, RDF.type, SCHEMA.Place))
-                label_parts = [p for p in [tola, municipality, district] if p]
-                if label_parts:
-                    g.add((p_uri, RDFS.label, Literal(", ".join(label_parts), lang="en")))
-                if district:
-                    g.add((p_uri, HG.district, Literal(district, lang="en")))
-                if municipality:
-                    g.add((p_uri, HG.municipality, Literal(municipality, lang="en")))
-                if tola:
-                    g.add((p_uri, HG.tola, Literal(tola, lang="en")))
-                if province:
-                    g.add((p_uri, HG.province, Literal(province)))
+        # Places: a crm:E53_Place per administrative level the record states (province, district, municipality, tola),
+        # labelled as written, typed by hg:placeType, each crm:P89_falls_within the next level up that the record gives.
+        # The monument's current location is the lowest level. Names are not normalised.
+        place_uri, key = None, []
+        for level, name in (("province", f"Province {province}" if province else ""), ("district", district),
+                            ("municipality", municipality), ("tola", tola)):
+            if not name:
+                continue
+            key.append(f"{level}-{slugify(province if level == 'province' else name)}")  # level in the IRI: names repeat across levels
+            parent, place_uri = place_uri, RES["place/" + "/".join(key)]
+            if place_uri not in places_cache:
+                places_cache[place_uri] = True
+                g.add((place_uri, RDF.type, hg_class("Place")))
+                g.add((place_uri, RDF.type, SCHEMA.Place))
+                g.add((place_uri, RDFS.label, Literal(name, lang="en")))
+                g.add((place_uri, HG.placeType, Literal(level)))
+                if parent is not None:
+                    g.add((place_uri, CRM["P89_falls_within"], parent))
+        if place_uri is not None:
+            g.add((m_uri, CRM["P55_has_current_location"], place_uri))
+            g.add((m_uri, CRM["P53_has_former_or_current_location"], place_uri))
 
         # GeoSPARQL & WGS84 Coordinates
         lat_str = m.get("coordinates_lat", "").strip()
@@ -358,23 +433,17 @@ def build_knowledge_graph(
         # Physical Architecture Attributes
         storeys = m.get("num_storeys", "").strip()
         if storeys and storeys.isdigit():
-            g.add((m_uri, HG.numStoreys, Literal(int(storeys), datatype=XSD.integer)))
+            g.add((m_uri, HGN.numberOfStoreys, Literal(int(storeys), datatype=XSD.integer)))
 
         roofs = m.get("num_roofs", "").strip()
         if roofs and roofs.isdigit():
-            g.add((m_uri, HG.numRoofs, Literal(int(roofs), datatype=XSD.integer)))
+            g.add((m_uri, HGN.numberOfRoofs, Literal(int(roofs), datatype=XSD.integer)))
 
-        roof_type = m.get("roof_type", "").strip()
-        if roof_type:
-            g.add((m_uri, HG.roofType, Literal(roof_type, lang="en")))
-
-        shape = m.get("monument_shape", "").strip()
-        if shape:
-            g.add((m_uri, HG.monumentShape, Literal(shape, lang="en")))
-
-        brick = m.get("brick_type", "").strip()
-        if brick:
-            g.add((m_uri, HG.brickType, Literal(brick, lang="en")))
+        # Building categories (roof type, ground-plan shape, brick type): crm:P2_has_type -> crm:E55_Type concepts,
+        # one per value DANAM lists, labelled as written.
+        for column, scheme_slug, scheme_label in BUILDING_CATEGORIES:
+            for value in split_listed(m.get(column, "")):
+                g.add((m_uri, CRM["P2_has_type"], type_concept(g, scheme_slug, scheme_label, value)))
 
         # Condition Assessment & Threats
         assess = m.get("monument_assessment", "").strip()
@@ -384,11 +453,9 @@ def build_knowledge_graph(
         if assess or threats or cond_types:
             assess_uri = RES[f"assessment/{res_id}"]
             state_uri = RES[f"condition_state/{res_id}"]
-            g.add((m_uri, HG.hasConditionAssessment, assess_uri))
             g.add((m_uri, CRM["P44_has_condition"], assess_uri))
             g.add((m_uri, CRM["P34i_was_assessed_by"], assess_uri))
             g.add((assess_uri, RDF.type, CRM["E14_Condition_Assessment"]))
-            g.add((assess_uri, RDF.type, HG.ConditionAssessment))
             g.add((assess_uri, CRM["P34_concerned"], m_uri))
             g.add((assess_uri, CRM["P35_has_identified"], state_uri))
             g.add((state_uri, RDF.type, CRM["E3_Condition_State"]))
@@ -397,26 +464,25 @@ def build_knowledge_graph(
                 g.add((assess_uri, RDFS.comment, Literal(assess, lang="en")))
                 g.add((assess_uri, CRM["P3_has_note"], Literal(assess, lang="en")))
             if cond_types:
-                for c_type in cond_types.split("|"):
-                    c_clean = c_type.strip()
-                    if c_clean:
-                        g.add((assess_uri, HG.conditionType, HG[c_clean]))
-                        g.add((m_uri, HG.conditionStatus, Literal(c_clean, lang="en")))
-                        if c_clean in ["Good", "Damaged", "Ruined", "Restored"]:
-                            g.add((state_uri, HG.hasConditionType, HG[f"ConditionType#{c_clean}"]))
-                            if c_clean == "Ruined":
-                                g.add((m_uri, HG.existenceStatus, HG["ExistenceStatus#Ruined"]))
-                            elif c_clean == "Damaged":
-                                g.add((m_uri, HG.existenceStatus, HG["ExistenceStatus#PartiallyExtant"]))
-                            else:
-                                g.add((m_uri, HG.existenceStatus, HG["ExistenceStatus#Extant"]))
+                listed = [c.strip() for c in cond_types.split("|") if c.strip()]
+                for c_clean in listed:  # the monument-level literal keeps every value DANAM lists
+                    g.add((m_uri, HGN.conditionStatus, Literal(c_clean, lang="en")))
+                # The condition state takes one type (the ontology allows one): the first DANAM lists. Others go in a note.
+                known = [c for c in listed if c in ["Good", "Damaged", "Ruined", "Restored"]]
+                if known:
+                    g.add((state_uri, HG.hasConditionType, HG[f"ConditionType#{known[0]}"]))
+                if len(known) > 1:
+                    g.add((state_uri, CRM["P3_has_note"], Literal(
+                        f"DANAM also lists the condition {', '.join(known[1:])}; "
+                        f"the ontology allows one condition type per state, so the first listed ({known[0]}) is used.")))
             if threats:
-                g.add((assess_uri, HG.identifiedThreats, Literal(threats, lang="en")))
+                g.add((assess_uri, HGN.identifiedThreats, Literal(threats, lang="en")))
 
         # Provenance: Link to original DANAM source report URL
         danam_url = m.get("url", "").strip()
         if danam_url and danam_url.startswith("http"):
             g.add((m_uri, PROV.wasDerivedFrom, URIRef(danam_url)))
+            g.add((URIRef(danam_url), RDF.type, PROV.Entity))
             g.add((m_uri, SCHEMA.url, URIRef(danam_url)))
 
         scraped_at = m.get("scraped_at", "").strip()
@@ -451,7 +517,7 @@ def build_knowledge_graph(
 
             # Classify event
             ev_class_name = r.get("ontology_class", "").strip() or classify_event(ev_name, ev_desc)
-            g.add((ev_uri, RDF.type, HG[ev_class_name]))
+            g.add((ev_uri, RDF.type, hg_class(ev_class_name)))
             g.add((ev_uri, RDF.type, CRM["E5_Event"]))
             if ev_class_name == "Production":
                 g.add((ev_uri, RDF.type, CRM["E12_Production"]))
@@ -470,15 +536,9 @@ def build_knowledge_graph(
                 g.add((ev_uri, RDFS.comment, Literal(ev_desc, lang="en")))
 
             # Link Event <-> Monument
-            g.add((ev_uri, HG.isEventOf, m_uri))
             g.add((ev_uri, CRM["P12_occurred_in_the_presence_of"], m_uri))
-            g.add((m_uri, HG.hasEvent, ev_uri))
             g.add((m_uri, CRM["P12i_was_present_at"], ev_uri))
 
-            try:
-                g.add((ev_uri, HG.eventIndex, Literal(int(idx), datatype=XSD.integer)))
-            except ValueError:
-                pass
 
             # Dates and Timelines
             date_ce = r.get("date_bce_ce", "").strip()
@@ -518,8 +578,6 @@ def build_knowledge_graph(
             if evidence:
                 g.add((ev_uri, HG.evidenceText, Literal(evidence, lang="en")))
 
-            extraction_method = r.get("extraction_method", "").strip() or "source_table"
-            g.add((ev_uri, HG.extractionMethod, Literal(extraction_method)))
             g.add((ev_uri, PROV.wasAttributedTo, agent_antigravity))
             g.add((ev_uri, PROV.wasGeneratedBy, activity_kg))
 
@@ -530,6 +588,12 @@ def build_knowledge_graph(
     # ── 4. Objects ────────────────────────────────────────────────────────────
     print(f"[*] Reading objects from {objects_path}...")
     obj_count = 0
+    # DANAM occasionally gives one object number to two different objects. Each row keeps its own node: a number used
+    # by more than one row gets a suffix _1, _2 … (file order) in the node IRI; the identifier keeps the number as written.
+    with open(objects_path, encoding="utf-8-sig") as f:
+        number_rows = Counter(slugify(r["object_id"].strip()) for r in csv.DictReader(f)
+                              if r["resource_id"] in active_mon_ids and r.get("object_id", "").strip())
+    number_seen = Counter()
     with open(objects_path, encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for r in reader:
@@ -539,6 +603,9 @@ def build_knowledge_graph(
 
             obj_id = r.get("object_id", "").strip() or f"{res_id}-obj-{obj_count}"
             obj_slug = slugify(obj_id)
+            if number_rows[obj_slug] > 1:
+                number_seen[obj_slug] += 1
+                obj_slug = f"{obj_slug}_{number_seen[obj_slug]}"
             obj_uri = RES[f"object/{obj_slug}"]
             m_uri = RES[f"monument/{res_id}"]
 
@@ -547,7 +614,7 @@ def build_knowledge_graph(
 
             # Classify object
             obj_class_name = r.get("ontology_class", "").strip() or classify_object(obj_name, obj_type)
-            g.add((obj_uri, RDF.type, HG[obj_class_name]))
+            g.add((obj_uri, RDF.type, hg_class(obj_class_name)))
             g.add((obj_uri, RDF.type, CRM["E22_Human-Made_Object"]))
             if obj_class_name in ["Murti", "Paubha"]:
                 g.add((obj_uri, RDF.type, HG.IconographicObject))
@@ -555,7 +622,8 @@ def build_knowledge_graph(
                 g.add((obj_uri, RDF.type, PROV.Entity))
 
             g.add((obj_uri, RDFS.label, Literal(obj_name, lang="en")))
-            g.add((obj_uri, DCTERMS.identifier, Literal(obj_id)))
+            if r.get("object_id", "").strip():  # only an identifier DANAM gives
+                add_identifier(g, obj_uri, "danam-object", obj_id, HGN.DanamObjectNumber)
 
             if obj_type:
                 g.add((obj_uri, HG.objectType, Literal(obj_type, lang="en")))
@@ -577,11 +645,14 @@ def build_knowledge_graph(
             if date_vs_ns:
                 g.add((obj_uri, HG.inscriptionalDateEra, Literal(date_vs_ns)))
 
-            # Link Object <-> Monument
-            g.add((obj_uri, HG.isObjectOf, m_uri))
-            g.add((obj_uri, CRM["P46i_forms_part_of"], m_uri))
-            g.add((m_uri, HG.containsObject, obj_uri))
-            g.add((m_uri, CRM["P46_is_composed_of"], obj_uri))
+            # Link Object <-> Monument: P46 (composition) only for architectural parts, as the ontology's shapes require;
+            # other objects are housed in the monument (extension property).
+            if obj_class_name == "ArchitecturalElement":
+                g.add((obj_uri, CRM["P46i_forms_part_of"], m_uri))
+                g.add((m_uri, CRM["P46_is_composed_of"], obj_uri))
+            else:
+                g.add((obj_uri, HGN.isObjectOf, m_uri))
+                g.add((m_uri, HGN.containsObject, obj_uri))
 
             # Provenance
             g.add((obj_uri, PROV.wasAttributedTo, agent_antigravity))
@@ -590,6 +661,8 @@ def build_knowledge_graph(
             obj_count += 1
 
     print(f"[+] Loaded {obj_count} objects into graph.")
+
+    split_labels(g)
 
     # ── Summary & Metadata Update ─────────────────────────────────────────────
     triple_count = len(g)

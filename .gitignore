@@ -13,3 +13,8 @@ ENV/
 .DS_Store
 Thumbs.db
 *.log
+
+# Scratch builds and caches
+build/
+.pytest_cache/
+__pycache__/

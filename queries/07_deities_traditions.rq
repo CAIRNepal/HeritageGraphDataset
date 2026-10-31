@@ -1,11 +1,12 @@
 # Query 7: Deities and Religious Traditions associated with monuments
+PREFIX hgn: <https://w3id.org/heritagegraph-nepal/vocab#>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?monumentName ?tradition ?deityName WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
-              hg:hasMainDeity ?deity .
+              hgn:hasMainDeity ?deity .
     
     ?deity rdfs:label ?deityName .
     

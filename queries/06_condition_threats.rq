@@ -1,5 +1,6 @@
 # Query 6: Condition Assessment and Identified Conservation Threats
 # Identifies damaged/ruined structures needing urgent preservation
+PREFIX hgn: <https://w3id.org/heritagegraph-nepal/vocab#>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -7,10 +8,10 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?monumentName ?conditionStatus ?threats ?assessmentComment WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
-              hg:hasConditionAssessment ?assessment .
+              crm:P34i_was_assessed_by ?assessment .
     
-    OPTIONAL { ?monument hg:conditionStatus ?conditionStatus }
-    OPTIONAL { ?assessment hg:identifiedThreats ?threats }
+    OPTIONAL { ?monument hgn:conditionStatus ?conditionStatus }
+    OPTIONAL { ?assessment hgn:identifiedThreats ?threats }
     OPTIONAL { ?assessment rdfs:comment ?assessmentComment }
 }
 ORDER BY ?conditionStatus ?monumentName

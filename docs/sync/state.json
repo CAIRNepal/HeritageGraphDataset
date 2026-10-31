@@ -1,0 +1,22 @@
+{
+ "item": "S1",
+ "triples": 224853,
+ "shacl_results": 4012,
+ "shacl_groups": 3,
+ "undeclared": 0,
+ "undeclared_detail": {
+  "undeclared_classes": 0,
+  "undeclared_properties": 0,
+  "undeclared_iri_values": 0
+ },
+ "extension_terms": 11,
+ "queries": {
+  "01_monuments_by_aat_style.rq": 606,
+  "02_historical_timeline.rq": 5313,
+  "03_spatial_geosparql.rq": 1626,
+  "04_monument_sacred_objects.rq": 9001,
+  "05_provenance_audit.rq": 5098,
+  "06_condition_threats.rq": 1794,
+  "07_deities_traditions.rq": 1049
+ }
+}

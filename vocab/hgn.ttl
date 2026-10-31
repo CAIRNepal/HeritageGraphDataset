@@ -1,0 +1,125 @@
+# HeritageGraph-Nepal extension vocabulary (hgn:).
+# Terms the HeritageGraph-Nepal dataset needs that the HeritageGraph ontology 1.0.1 does not declare.
+# The ontology itself is not changed (see ontology/SOURCE.md). Each term links to the closest CIDOC-CRM or ontology term.
+# The namespace is temporary; it is set in one place in the builder (HGN_BASE in build_kg.py) and must match the prefix below.
+
+@prefix hgn:     <https://w3id.org/heritagegraph-nepal/vocab#> .
+@prefix hg:      <https://cair-nepal.org/heritagegraph/> .
+@prefix crm:     <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://w3id.org/heritagegraph-nepal/vocab> a owl:Ontology ;
+    rdfs:label "HeritageGraph-Nepal extension vocabulary"@en ;
+    rdfs:comment "Terms used by the HeritageGraph-Nepal dataset that the HeritageGraph ontology (1.0.1) does not declare. Each term states the closest CIDOC-CRM or HeritageGraph term."@en ;
+    owl:versionInfo "0.1.0" ;
+    rdfs:seeAlso <https://cair-nepal.org/heritagegraph/> .
+
+# ── Objects in a structure (B1) ──────────────────────────────────────────────
+
+hgn:containsObject a owl:ObjectProperty ;
+    rdfs:label "contains object"@en ;
+    rdfs:comment "A structure houses or holds a human-made object (a murti, bell, stone lion, inscription …) that is not one of its architectural parts. For architectural parts the dataset uses crm:P46_is_composed_of, which the ontology's shapes reserve for hg:ArchitecturalElement."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range crm:E22_Human-Made_Object ;
+    owl:inverseOf hgn:isObjectOf ;
+    skos:closeMatch crm:P46_is_composed_of .
+
+hgn:isObjectOf a owl:ObjectProperty ;
+    rdfs:label "is object of"@en ;
+    rdfs:comment "Inverse of hgn:containsObject: the structure that houses or holds this object."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain crm:E22_Human-Made_Object ;
+    rdfs:range hg:ArchitecturalStructure ;
+    owl:inverseOf hgn:containsObject ;
+    skos:closeMatch crm:P46i_forms_part_of .
+
+# ── Identifier kinds (C1b) ───────────────────────────────────────────────────
+# DANAM identifiers are crm:E42_Identifier nodes (crm:P1_is_identified_by, crm:P190_has_symbolic_content),
+# typed with one of these kinds by crm:P2_has_type.
+
+hgn:IdentifierKinds a skos:ConceptScheme ;
+    rdfs:label "Identifier kinds"@en ;
+    rdfs:comment "Kinds of identifier the dataset records for monuments and objects."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> .
+
+hgn:DanamResourceId a crm:E55_Type, skos:Concept ;
+    skos:inScheme hgn:IdentifierKinds ;
+    skos:prefLabel "DANAM resource ID"@en ;
+    rdfs:label "DANAM resource ID"@en ;
+    rdfs:comment "The UUID of a monument record in the DANAM database (resource_id), as in the record's URL."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    skos:broadMatch hg:persistentIdentifier .
+
+hgn:DanamObjectNumber a crm:E55_Type, skos:Concept ;
+    skos:inScheme hgn:IdentifierKinds ;
+    skos:prefLabel "DANAM object number"@en ;
+    rdfs:label "DANAM object number"@en ;
+    rdfs:comment "The number DANAM gives an object within a monument record (usually AAA0000-000), as written. DANAM occasionally gives the same number to two different objects."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    skos:broadMatch hg:persistentIdentifier .
+
+# ── Structure classes (E1) ───────────────────────────────────────────────────
+
+hgn:BuddhistMonument a owl:Class ;
+    rdfs:label "Buddhist monastic building"@en ;
+    rdfs:comment "A Buddhist monastic building or courtyard complex (Newar bāhāḥ, bahī, vihāra), as DANAM classifies it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:subClassOf hg:ReligiousStructure .
+
+# ── Deity (E2) ───────────────────────────────────────────────────────────────
+
+hgn:hasMainDeity a owl:ObjectProperty ;
+    rdfs:label "has main deity"@en ;
+    rdfs:comment "The principal deity of a structure, as DANAM records it (main_deity). The ontology links deities to enshrinement events (hg:enshrinedDeity) and to murtis (hg:isAboutDeity), but not directly to a structure."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range hg:Deity ;
+    skos:closeMatch hg:enshrinedDeity .
+
+hgn:DanamCode a crm:E55_Type, skos:Concept ;
+    skos:inScheme hgn:IdentifierKinds ;
+    skos:prefLabel "DANAM code"@en ;
+    rdfs:label "DANAM code"@en ;
+    rdfs:comment "DANAM's site code for a monument (e.g. SKH0510), as printed after '||' in the record's Devanagari name."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    skos:broadMatch hg:persistentIdentifier .
+
+# ── Building attributes (E6) ─────────────────────────────────────────────────
+
+hgn:numberOfStoreys a owl:DatatypeProperty ;
+    rdfs:label "number of storeys"@en ;
+    rdfs:comment "Number of storeys of a structure, as DANAM records it (num_storeys); 0 as in the source."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range xsd:integer ;
+    skos:closeMatch crm:P43_has_dimension .
+
+hgn:numberOfRoofs a owl:DatatypeProperty ;
+    rdfs:label "number of roofs"@en ;
+    rdfs:comment "Number of roofs (roof tiers) of a structure, as DANAM records it (num_roofs); 0 as in the source."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    rdfs:range xsd:integer ;
+    skos:closeMatch crm:P43_has_dimension .
+
+# ── Condition (E9) ───────────────────────────────────────────────────────────
+
+hgn:conditionStatus a owl:DatatypeProperty ;
+    rdfs:label "condition status"@en ;
+    rdfs:comment "Every condition value DANAM lists for a structure (Good, Damaged, Ruined, Restored), as text on the structure. The condition state (crm:E3_Condition_State) carries one of them as hg:hasConditionType, because the ontology allows one; this property keeps all of them."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    skos:closeMatch hg:hasConditionType .
+
+hgn:identifiedThreats a owl:DatatypeProperty ;
+    rdfs:label "identified threats"@en ;
+    rdfs:comment "Threats to a structure, as DANAM's record states them (identified_threats), on the condition assessment."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain crm:E14_Condition_Assessment ;
+    rdfs:subPropertyOf crm:P3_has_note .

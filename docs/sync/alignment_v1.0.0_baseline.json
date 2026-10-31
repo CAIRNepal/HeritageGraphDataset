@@ -1,0 +1,371 @@
+{
+ "summary": {
+  "graph": "latest/heritagegraph-nepal.nt.gz",
+  "triples": 221364,
+  "ontology_version": [
+   "1.0.1"
+  ],
+  "undeclared_classes": 7,
+  "undeclared_properties": 23,
+  "undeclared_iri_values": 6,
+  "shacl_conforms": false,
+  "shacl_results": 75641,
+  "shacl_focus_nodes": 16050,
+  "shacl_groups": 14,
+  "shacl_seconds": 15.4
+ },
+ "undeclared": [
+  {
+   "kind": "class",
+   "term": "hg:HumanMadeObject",
+   "uses": 3748,
+   "linkml": "LinkML class `HumanMadeObject`",
+   "ontology_iri": "crm:E22_Human-Made_Object"
+  },
+  {
+   "kind": "class",
+   "term": "hg:Production",
+   "uses": 1808,
+   "linkml": "LinkML class `Production`",
+   "ontology_iri": "crm:E12_Production"
+  },
+  {
+   "kind": "class",
+   "term": "hg:ConditionAssessment",
+   "uses": 1592,
+   "linkml": "LinkML class `ConditionAssessment`",
+   "ontology_iri": "crm:E14_Condition_Assessment"
+  },
+  {
+   "kind": "class",
+   "term": "hg:Place",
+   "uses": 1021,
+   "linkml": "LinkML class `Place`",
+   "ontology_iri": "crm:E53_Place"
+  },
+  {
+   "kind": "class",
+   "term": "hg:DestructionEvent",
+   "uses": 695,
+   "linkml": "LinkML class `DestructionEvent`",
+   "ontology_iri": "crm:E6_Destruction"
+  },
+  {
+   "kind": "class",
+   "term": "hg:TransferOfCustody",
+   "uses": 284,
+   "linkml": "LinkML class `TransferOfCustody`",
+   "ontology_iri": "crm:E10_Transfer_of_Custody"
+  },
+  {
+   "kind": "class",
+   "term": "hg:BuddhistMonument",
+   "uses": 215,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:containsObject",
+   "uses": 7155,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:isObjectOf",
+   "uses": 7155,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:eventIndex",
+   "uses": 5098,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:extractionMethod",
+   "uses": 5098,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:hasEvent",
+   "uses": 5098,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:isEventOf",
+   "uses": 5098,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:conditionStatus",
+   "uses": 1659,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:conditionType",
+   "uses": 1659,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:hasCurrentLocation",
+   "uses": 1631,
+   "linkml": "LinkML slot `has_current_location`",
+   "ontology_iri": "crm:P55_has_current_location"
+  },
+  {
+   "kind": "property",
+   "term": "hg:danamCode",
+   "uses": 1627,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:hasConditionAssessment",
+   "uses": 1577,
+   "linkml": "LinkML slot `has_condition_assessment`",
+   "ontology_iri": "crm:P34i_was_assessed_by"
+  },
+  {
+   "kind": "property",
+   "term": "hg:numStoreys",
+   "uses": 1495,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:brickType",
+   "uses": 1365,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:numRoofs",
+   "uses": 1304,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:roofType",
+   "uses": 1227,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:hasMainDeity",
+   "uses": 1049,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:municipality",
+   "uses": 1016,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:province",
+   "uses": 1010,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:tola",
+   "uses": 968,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:identifiedThreats",
+   "uses": 572,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:district",
+   "uses": 252,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:monumentShape",
+   "uses": 81,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "property",
+   "term": "hg:skill",
+   "uses": 1,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "IRI value",
+   "term": "hg:Restored",
+   "uses": 628,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "IRI value",
+   "term": "hg:Good",
+   "uses": 488,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "IRI value",
+   "term": "hg:Damaged",
+   "uses": 367,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "IRI value",
+   "term": "hg:ExistenceStatus#Ruined",
+   "uses": 176,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "IRI value",
+   "term": "hg:Ruined",
+   "uses": 176,
+   "linkml": null,
+   "ontology_iri": null
+  },
+  {
+   "kind": "IRI value",
+   "term": "hg:",
+   "uses": 1,
+   "linkml": null,
+   "ontology_iri": null
+  }
+ ],
+ "shacl": [
+  {
+   "path": "rdfs:label",
+   "constraint": "DatatypeConstraintComponent",
+   "severity": "Violation",
+   "results": 25280,
+   "focus_nodes": 15836
+  },
+  {
+   "path": "dcterms:identifier",
+   "constraint": "DatatypeConstraintComponent",
+   "severity": "Violation",
+   "results": 18311,
+   "focus_nodes": 8806
+  },
+  {
+   "path": "crm:P46_is_composed_of",
+   "constraint": "ClassConstraintComponent",
+   "severity": "Violation",
+   "results": 17593,
+   "focus_nodes": 1240
+  },
+  {
+   "path": "prov:wasDerivedFrom",
+   "constraint": "ClassConstraintComponent",
+   "severity": "Violation",
+   "results": 5909,
+   "focus_nodes": 1652
+  },
+  {
+   "path": "hg:hasReligiousTradition",
+   "constraint": "ClassConstraintComponent",
+   "severity": "Violation",
+   "results": 1906,
+   "focus_nodes": 1125
+  },
+  {
+   "path": "hg:hasReligiousTradition",
+   "constraint": "NodeKindConstraintComponent",
+   "severity": "Violation",
+   "results": 1906,
+   "focus_nodes": 1125
+  },
+  {
+   "path": "hg:hasArchitecturalStyle",
+   "constraint": "InConstraintComponent",
+   "severity": "Violation",
+   "results": 1827,
+   "focus_nodes": 598
+  },
+  {
+   "path": "hg:hasArchitecturalStyle",
+   "constraint": "MaxCountConstraintComponent",
+   "severity": "Violation",
+   "results": 1803,
+   "focus_nodes": 598
+  },
+  {
+   "path": "hg:existenceStatus",
+   "constraint": "InConstraintComponent",
+   "severity": "Violation",
+   "results": 426,
+   "focus_nodes": 176
+  },
+  {
+   "path": "hg:existenceStatus",
+   "constraint": "MaxCountConstraintComponent",
+   "severity": "Violation",
+   "results": 250,
+   "focus_nodes": 102
+  },
+  {
+   "path": "hg:hasConditionType",
+   "constraint": "MaxCountConstraintComponent",
+   "severity": "Violation",
+   "results": 213,
+   "focus_nodes": 213
+  },
+  {
+   "path": "hg:hasArchitecturalStyle",
+   "constraint": "MinCountConstraintComponent",
+   "severity": "Violation",
+   "results": 200,
+   "focus_nodes": 200
+  },
+  {
+   "path": "rdfs:label",
+   "constraint": "MaxCountConstraintComponent",
+   "severity": "Violation",
+   "results": 16,
+   "focus_nodes": 6
+  },
+  {
+   "path": "prov:used",
+   "constraint": "ClassConstraintComponent",
+   "severity": "Violation",
+   "results": 1,
+   "focus_nodes": 1
+  }
+ ]
+}

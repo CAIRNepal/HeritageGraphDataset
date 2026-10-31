@@ -1,5 +1,6 @@
 # Query 3: Geospatial Distribution of Heritage Monuments
 # Utilizing WGS84 Geo and GeoSPARQL POINT geometries
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
@@ -17,10 +18,11 @@ SELECT ?monumentName ?district ?municipality ?tola ?lat ?long ?wkt WHERE {
     }
     
     OPTIONAL {
-        ?monument hg:hasCurrentLocation ?place .
-        OPTIONAL { ?place hg:district ?district }
-        OPTIONAL { ?place hg:municipality ?municipality }
-        OPTIONAL { ?place hg:tola ?tola }
+        ?monument crm:P55_has_current_location ?place .
+        # the place and the places it falls within, by administrative level
+        OPTIONAL { ?place crm:P89_falls_within* ?d . ?d hg:placeType "district" ; rdfs:label ?district }
+        OPTIONAL { ?place crm:P89_falls_within* ?mu . ?mu hg:placeType "municipality" ; rdfs:label ?municipality }
+        OPTIONAL { ?place crm:P89_falls_within* ?t . ?t hg:placeType "tola" ; rdfs:label ?tola }
     }
 }
 ORDER BY ?district ?municipality ?monumentName

@@ -1,0 +1,110 @@
+{
+ "summary": {
+  "graph": "build/sync/graph.nt",
+  "triples": 224853,
+  "ontology_version": [
+   "1.0.1"
+  ],
+  "undeclared_classes": 0,
+  "undeclared_properties": 0,
+  "undeclared_iri_values": 0,
+  "extension_terms": 11,
+  "shacl_conforms": false,
+  "shacl_results": 4012,
+  "shacl_focus_nodes": 1134,
+  "shacl_groups": 3,
+  "shacl_seconds": 9.9
+ },
+ "undeclared": [],
+ "extension": [
+  {
+   "kind": "concept",
+   "term": "hgn:DanamObjectNumber",
+   "uses": 7154,
+   "maps_to": "skos:broadMatch hg:persistentIdentifier"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:containsObject",
+   "uses": 6868,
+   "maps_to": "skos:closeMatch crm:P46_is_composed_of"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:isObjectOf",
+   "uses": 6868,
+   "maps_to": "skos:closeMatch crm:P46i_forms_part_of"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:conditionStatus",
+   "uses": 1659,
+   "maps_to": "skos:closeMatch hg:hasConditionType"
+  },
+  {
+   "kind": "concept",
+   "term": "hgn:DanamResourceId",
+   "uses": 1652,
+   "maps_to": "skos:broadMatch hg:persistentIdentifier"
+  },
+  {
+   "kind": "concept",
+   "term": "hgn:DanamCode",
+   "uses": 1626,
+   "maps_to": "skos:broadMatch hg:persistentIdentifier"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:numberOfStoreys",
+   "uses": 1495,
+   "maps_to": "skos:closeMatch crm:P43_has_dimension"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:numberOfRoofs",
+   "uses": 1304,
+   "maps_to": "skos:closeMatch crm:P43_has_dimension"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:hasMainDeity",
+   "uses": 1049,
+   "maps_to": "skos:closeMatch hg:enshrinedDeity"
+  },
+  {
+   "kind": "property",
+   "term": "hgn:identifiedThreats",
+   "uses": 572,
+   "maps_to": "rdfs:subPropertyOf crm:P3_has_note"
+  },
+  {
+   "kind": "class",
+   "term": "hgn:BuddhistMonument",
+   "uses": 215,
+   "maps_to": "rdfs:subClassOf hg:ReligiousStructure"
+  }
+ ],
+ "shacl": [
+  {
+   "path": "hg:hasReligiousTradition",
+   "constraint": "ClassConstraintComponent",
+   "severity": "Violation",
+   "results": 1906,
+   "focus_nodes": 1125
+  },
+  {
+   "path": "hg:hasReligiousTradition",
+   "constraint": "NodeKindConstraintComponent",
+   "severity": "Violation",
+   "results": 1906,
+   "focus_nodes": 1125
+  },
+  {
+   "path": "hg:hasArchitecturalStyle",
+   "constraint": "MinCountConstraintComponent",
+   "severity": "Violation",
+   "results": 200,
+   "focus_nodes": 200
+  }
+ ]
+}
