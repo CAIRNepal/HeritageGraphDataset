@@ -1,476 +1,248 @@
-# CAIR-Nepal HeritageGraphDataset
+# HeritageGraph-Nepal
 
-[![Ontology: CAIR-Nepal HeritageGraph](https://img.shields.io/badge/Ontology-HeritageGraph%20v1.0.0-blue.svg)](https://cair-nepal.org/heritagegraph/)
-[![Standards: CIDOC-CRM v7.1.2](https://img.shields.io/badge/Standard-CIDOC--CRM%20v7.1.2-green.svg)](http://www.cidoc-crm.org/cidoc-crm/)
-[![Provenance: W3C PROV-O](https://img.shields.io/badge/Provenance-W3C%20PROV--O-orange.svg)](http://www.w3.org/ns/prov#)
-[![Vocabulary: Getty AAT](https://img.shields.io/badge/Vocabulary-Getty%20AAT-purple.svg)](http://vocab.getty.edu/aat/)
-[![Linked Data: RDF / SPARQL](https://img.shields.io/badge/Linked%20Data-Turtle%20%7C%20JSON--LD%20%7C%20N--Triples%20%7C%20SPARQL-informational.svg)](https://www.w3.org/TR/turtle/)
-[![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
+A knowledge graph of 1,652 monuments of Nepal (temples, rest houses, water structures, Buddhist monastic
+buildings and others), built from the monument records of the
+[Digital Archive of Nepalese Arts and Monuments (DANAM)](https://danam.cats.uni-heidelberg.de), Heidelberg University.
+The graph uses the [HeritageGraph ontology](https://github.com/CAIRNepal/heritagegraphontology) (CAIR-Nepal), which is
+aligned with CIDOC-CRM and PROV-O, and is validated against the ontology's SHACL shapes. This repository holds the data,
+the pipeline that builds it, and the checks that measure its conformance.
 
-An authoritative, provenance-preserving cultural heritage dataset and Linked Open Data (LOD) Knowledge Graph for Nepal.
-This project ingests monument reports scraped from the **Digital Archive of Nepalese Arts and Monuments (DANAM)**
-(`danam.cats.uni-heidelberg.de`), normalizes inscriptional calendars and architectural typologies into structured staging
-tables, and synthesizes standards-compliant RDF Knowledge Graphs aligned with the **CAIR-Nepal HeritageGraph Ontology (v1.0.0)**,
-**CIDOC-CRM (v7.1.2)**, **W3C PROV-O**, **Getty AAT**, and **GeoSPARQL**.
+> **Status.** The published release is **v1.0.0** (`releases/v1.0.0/`, mirrored in `latest/`). It was built before the
+> alignment with the ontology described below. The builder on `main` produces the aligned graph; the next release will be
+> built from it. Numbers in this README refer to the builder on `main` unless marked v1.0.0.
 
 ---
 
-## Table of Contents
-- [1. Architecture & Pipeline](#1-architecture--pipeline)
-- [2. Repository Structure](#2-repository-structure)
-- [3. Installation & Environment](#3-installation--environment)
-- [4. Pipeline Stage 1: Data Collection (Scraping)](#4-pipeline-stage-1-data-collection-scraping)
-- [5. Pipeline Stage 2: Staging & Provenance Transformation](#5-pipeline-stage-2-staging--provenance-transformation)
-- [6. Pipeline Stage 3: Knowledge Graph (KG) Construction](#6-pipeline-stage-3-knowledge-graph-kg-construction)
-- [7. Pipeline Stage 4: SPARQL Analytics & Benchmark Queries](#7-pipeline-stage-4-sparql-analytics--benchmark-queries)
-- [8. Antigravity Skill (`danam-to-heritagegraph`)](#8-antigravity-skill-danam-to-heritagegraph)
-- [9. Ontological Foundations & Namespaces](#9-ontological-foundations--namespaces)
-- [10. Script Reference & CLI Help](#10-script-reference--cli-help)
-- [11. Quality Assurance (QA) & Verification Lifecycle](#11-quality-assurance-qa--verification-lifecycle)
+## Contents
+
+1. [What the graph contains](#1-what-the-graph-contains)
+2. [Data model](#2-data-model)
+3. [Conformance with the ontology](#3-conformance-with-the-ontology)
+4. [Files and downloads](#4-files-and-downloads)
+5. [Quick start](#5-quick-start)
+6. [How the graph is built](#6-how-the-graph-is-built)
+7. [Repository layout](#7-repository-layout)
+8. [Limitations](#8-limitations)
+9. [Licence and source rights](#9-licence-and-source-rights)
+10. [Citation](#10-citation)
 
 ---
 
-## 1. Architecture & Pipeline
+## 1. What the graph contains
 
-```mermaid
-flowchart TD
-    subgraph DataCollection["1. Data Collection & Scraping"]
-        R[resourceids.csv] -->|Playwright Headless| Scraper[danam_scraper_v2.py / shard_scrape.py]
-        Scraper -->|Raw JSON Cache| RawJSON["data/raw/{uuid}.json"]
-        Scraper -->|Tabular Dumps| Exports["data/exports/ (monuments.csv, events.csv, objects.csv)"]
-    end
-
-    subgraph StagingPipeline["2. Staging & Provenance Transformation"]
-        Exports -->|prepare.py| StagingPrep["staging/monuments.csv<br/>staging/skipped_rows.csv"]
-        Exports -->|prepare.py + heritage_dates.py| Candidates["event_candidates.jsonl<br/>object_candidates.jsonl"]
-        Candidates -->|LLM / Human Extraction| StagingEvents["staging/events.csv"]
-        Candidates -->|LLM / Human Extraction| StagingObjects["staging/objects.csv"]
-        StagingPrep & StagingEvents & StagingObjects -->|Strict Verification| Validator["validate.py (Exit 0)"]
-    end
-
-    subgraph KnowledgeGraph["3. Knowledge Graph & Linked Open Data"]
-        Validator -->|build_kg.py| KGBuilder["RDF Graph Construction Engine"]
-        KGBuilder -->|Turtle Serializer| TTL["latest/heritagegraph-nepal.ttl (205,330 triples)"]
-        KGBuilder -->|JSON-LD Serializer| JSONLD["latest/heritagegraph-nepal.jsonld"]
-        KGBuilder -->|Gzip N-Triples| NT["latest/heritagegraph-nepal.nt.gz (Bulk Triplestores)"]
-        KGBuilder -->|Publisher / SemVer| Releases["releases/v1.0.0/, releases/v1.1.0/"]
-        KGBuilder -->|VoID & DCAT| LODMeta["metadata.json & checksums.sha256"]
-    end
-
-    subgraph SPARQLAnalytics["4. Semantic Queries & Benchmarks"]
-        TTL & NT -->|query_kg.py| SPARQLRunner["SPARQL 1.1 Query Engine"]
-        SPARQLRunner --> Q1["01_monuments_by_aat_style.rq"]
-        SPARQLRunner --> Q2["02_historical_timeline.rq"]
-        SPARQLRunner --> Q3["03_spatial_geosparql.rq"]
-        SPARQLRunner --> Q4["04_monument_sacred_objects.rq"]
-        SPARQLRunner --> Q5["05_provenance_audit.rq"]
-        SPARQLRunner --> Q6["06_condition_threats.rq"]
-        SPARQLRunner --> Q7["07_deities_traditions.rq"]
-    end
-```
-
----
-
-## 2. Repository Structure
-
-```text
-HeritageGraphDataset/
-├── ontology/                             # Official CAIR-Nepal HeritageGraph Ontology
-│   └── HeritageGraph.ttl                 # Authoritative LinkML/OWL RDF ontology definition (v1.0.0)
-├── latest/                               # Rolling mirror of the most recent stable release
-│   ├── heritagegraph-nepal.ttl           # W3C Turtle RDF graph (221,364 triples)
-│   ├── heritagegraph-nepal.jsonld        # JSON-LD serialization (Schema.org / Web LOD)
-│   ├── heritagegraph-nepal.nt.gz         # Gzipped N-Triples (7.18 MB for bulk triplestores)
-│   ├── metadata.json                     # DCAT / Schema.org dataset metadata & statistics
-│   └── checksums.sha256                  # SHA-256 cryptographic integrity hashes
-├── releases/                             # Archival versioned releases (immutable)
-│   ├── v1.0.0/                           # Initial stable release (October 2026)
-│   │   ├── heritagegraph-nepal.ttl
-│   │   ├── heritagegraph-nepal.jsonld
-│   │   ├── heritagegraph-nepal.nt.gz
-│   │   ├── metadata.json
-│   │   └── checksums.sha256
-│   └── v1.1.0/                           # Next scheduled release (Roadmap)
-├── .agents/
-│   └── skills/
-│       └── danam-to-heritagegraph/     # Standard Antigravity agent skill
-│           ├── SKILL.md                 # Workflow runbook & agent instructions
-│           ├── references/              # Specifications & ground-truth mappings
-│           │   ├── column_spec.md       # Exact staging schema & column definitions
-│           │   ├── ontology_mapping.md  # Class mapping rules & Getty AAT styles
-│           │   └── worked_example.md    # Worked ground-truth example (Jogeśvara Mandira)
-│           └── scripts/                 # Core automation tools (cross-platform, UTF-8 hardened)
-│               ├── prepare.py           # Ingestion, typology mapping & candidate generator
-│               ├── heritage_dates.py    # Date, era (NS, VS, ŚS, MS), & calendar parser
-│               ├── validate.py          # Strict staging CSV validator
-│               ├── build_kg.py          # RDF Knowledge Graph builder & LOD exporter
-│               ├── publish_release.py   # Release publisher and checksum generator
-│               └── query_kg.py          # SPARQL query execution runner
-├── data_collection/                     # Scraper subsystem
-│   ├── danam_scraper_v2.py              # Main Playwright scraping & export engine
-│   ├── shard_scrape.py                  # Distributed multi-process shard runner
-│   ├── main.py                          # Data collection CLI dispatcher
-│   ├── resourceids.csv                  # Catalog of DANAM monument IDs
-│   ├── pyproject.toml                   # Scraper dependencies
-│   └── data/
-│       ├── raw/                         # Scraped JSON records (one per monument UUID)
-│       └── exports/                     # Raw CSV exports (monuments.csv, events.csv, objects.csv)
-├── queries/                             # Standard SPARQL benchmark suite (*.rq)
-│   ├── 01_monuments_by_aat_style.rq     # Getty AAT architectural style classification
-│   ├── 02_historical_timeline.rq        # Multi-era chronological historical event timeline
-│   ├── 03_spatial_geosparql.rq          # GeoSPARQL & WGS84 spatial distribution
-│   ├── 04_monument_sacred_objects.rq    # Sacred objects, murtis, and architectural elements
-│   ├── 05_provenance_audit.rq           # W3C PROV-O provenance, sources, & evidence audit
-│   ├── 06_condition_threats.rq          # Conservation assessments & identified threats
-│   └── 07_deities_traditions.rq         # Religious traditions & primary deities
-├── staging/                             # Active staging datasets and candidates
-│   ├── monuments.csv                    # Ingested monuments with derived ontology columns
-│   ├── skipped_rows.csv                 # Catalog of dead/empty records
-│   ├── event_candidates.jsonl           # Pre-filtered candidate sentences for events
-│   └── object_candidates.jsonl          # Pre-filtered candidate mentions for objects
-├── build_kg.py                          # Root convenience wrapper for Knowledge Graph construction
-├── publish_release.py                   # Root utility for versioned release publishing & verification
-├── query_kg.py                          # Root convenience wrapper for SPARQL query execution
-├── RELEASES.md                          # Detailed release architecture, versioning & roadmap
-├── skill/
-│   └── danam-to-heritagegraph.skill     # Standard packaged ZIP distribution of the skill
-├── AGENTS.md                            # Operational rules & guidelines for AI agents
-└── README.md                            # Comprehensive repository documentation (this file)
-```
-
----
-
-## 3. Installation & Environment
-
-### Prerequisites
-- **Python**: Version 3.11 or later
-- **Package Manager**: Standard `pip` or [`uv`](https://github.com/astral-sh/uv) (recommended)
-- **Operating System**: Linux, macOS, or Windows (Windows console UTF-8 stream handling is built-in)
-
-### Dependencies
-Install the required packages:
-```bash
-# Core RDF Knowledge Graph & SPARQL dependencies:
-pip install rdflib
-
-# Scraper dependencies (if performing data collection):
-pip install playwright beautifulsoup4 lxml
-playwright install chromium
-```
-
-Or using `uv` without global installation:
-```bash
-# Run commands directly with rdflib
-uv run --with rdflib python build_kg.py --help
-uv run --with rdflib python query_kg.py --all
-```
-
----
-
-## 4. Pipeline Stage 1: Data Collection (Scraping)
-
-The scraper retrieves JavaScript-rendered monument pages from DANAM using Playwright headless Chromium.
-
-### Running a Test Scrape
-```bash
-cd data_collection
-python danam_scraper_v2.py --csv resourceids.csv --out data/raw --limit 5
-```
-
-### Running Distributed Shards
-To parallelize scraping across multiple terminals:
-```bash
-# Terminal 1: Shard 0 of 4
-python shard_scrape.py --csv resourceids.csv --out data/raw --shard 0 --total-shards 4
-
-# Terminal 2: Shard 1 of 4
-python shard_scrape.py --csv resourceids.csv --out data/raw --shard 1 --total-shards 4
-```
-Each shard maintains an independent checkpoint file (`checkpoint_shard_N.txt`) and is fully idempotent.
-
-### Exporting Scraped Data to CSV
-Once JSON files are written to `data/raw/`:
-```bash
-python danam_scraper_v2.py --csv resourceids.csv --out data/raw --export-only --export-dir data/exports
-```
-This produces three flat tabular files:
-1. `data/exports/monuments.csv` (46 raw attributes)
-2. `data/exports/events.csv` (tabular historical events, FK: `resource_id`)
-3. `data/exports/objects.csv` (tabular objects and elements, FK: `resource_id`)
-
----
-
-## 5. Pipeline Stage 2: Staging & Provenance Transformation
-
-### Ingestion & Candidate Preparation (`prepare.py`)
-Run `prepare.py` on the raw monuments export:
-```bash
-python .agents/skills/danam-to-heritagegraph/scripts/prepare.py --input data_collection/data/exports/monuments.csv --outdir staging
-```
-**What `prepare.py` does:**
-1. Preserves all 46 original DANAM columns verbatim.
-2. Isolates dead pages into `skipped_rows.csv`.
-3. Appends normalized ontology columns:
-   - `danam_code`: e.g. `SKH0510` (extracted from `name_devanagari`).
-   - `name_ne`: Devanagari monument name with the code stripped.
-   - `ontology_class`: e.g. `Temple`, `Chaitya`, `Stupa`, `Pati`, `Sattal`, `DhungeDhara`.
-   - `aat_style`: Getty AAT architectural style (e.g. `aat:300004829` for Pagoda, `aat:300446671` for Shikhara).
-   - `condition_types`: Normalized status (`Good`, `Damaged`, `Ruined`, `Restored`).
-   - `mapping_notes`: Flags for manual review.
-4. Generates `event_candidates.jsonl` and `object_candidates.jsonl` containing extracted sentences, inscriptional dates, object IDs, and citations.
-
-### Date Parsing & Lunisolar Verification (`heritage_dates.py`)
-`heritage_dates.py` parses free text for Nepali era dates, months, lunar fortnights (paksha), and tithis, pairing them with CE years:
-```bash
-# Parse arbitrary text from CLI
-python .agents/skills/danam-to-heritagegraph/scripts/heritage_dates.py "On the 13th of the bright fortnight of Phālguna in 1689 CE (NS 809)"
-
-# Run internal test suite
-python .agents/skills/danam-to-heritagegraph/scripts/heritage_dates.py --test
-```
-**Era Conversion Offsets:**
-| Era Name | Code | Base Offset to CE | Month-Aware Boundary |
-|---|---|---|---|
-| Nepāla Saṃvat | `NS` | +879 / +880 | Months Kārtika, Mārgaśīrṣa, Pauṣa = +879; others = +880 |
-| Vikrama Saṃvat | `VS` / `BS` | -56 / -57 | Months Māgha, Phālguna, Caitra = -56; others = -57 |
-| Śaka Saṃvat | `ŚS` / `SS` | +78 | Fixed +78 |
-| Mānadeva Saṃvat | `MS` | +576 | Fixed +576 (approximate) |
-
-### Strict Quality Validation (`validate.py`)
-Run `validate.py` on the staging directory before Knowledge Graph ingestion:
-```bash
-python .agents/skills/danam-to-heritagegraph/scripts/validate.py --dir staging
-```
-The validator strictly enforces:
-- **Foreign Key Integrity**: Every `resource_id` and `monument_name` in `events.csv` and `objects.csv` must match `monuments.csv` verbatim.
-- **Substring Provenance**: `evidence_text` must be an exact verbatim substring of the monument's `description_en`.
-- **Sequential Indexing**: `event_index` and `object_index` must be 0-based and contiguous (0..n-1).
-- **Calendar Conformance**: Canonical month spellings (`Phālguna`, `Māgha`, etc.), `paksha` (`Śukla` or `Kṛṣṇa`), and `tithi` (1..15).
-- **Exit Code**: Exits `0` only when zero errors remain.
-
----
-
-## 6. Pipeline Stage 3: Knowledge Graph (KG) Construction & Releases
-
-The Knowledge Graph builder transforms staging CSVs into a formal RDF graph aligned with international ontology standards. Releases are versioned following Semantic Versioning (SemVer-KG) and mirrored to `latest/`. See [RELEASES.md](file:///c:/Users/nabin/Desktop/myall/heritageGraphDataset/HeritageGraphDataset/RELEASES.md) for full details.
-
-### Building & Publishing Releases
-```bash
-# Build knowledge graph and publish a versioned release (updates latest/ automatically):
-python publish_release.py --version v1.0.0
-
-# Build and publish a new version directly from staging CSVs:
-python publish_release.py --version v1.1.0 --rebuild --dir staging
-
-# Alternatively, publish using the build_kg.py wrapper:
-python build_kg.py --dir staging --release v1.0.0
-
-# Fast testing on a subset of 50 monuments:
-python build_kg.py --dir staging --sample 50 --outdir lod_export
-```
-
-### Knowledge Graph Metrics (`v1.0.0` / `latest`)
-- **Total RDF Triples**: **221,364**
-- **Monuments / Structures**: **1,652** (730 Temples, 273 Patis, 132 DhungeDharas, 101 Sattals, 71 Chaityas)
-- **Historical Events**: **5,098** (1,996 HistoricalEvents, 1,808 Productions, 1,592 Assessments, 695 Destructions)
-- **Sacred Objects**: **7,160** (1,570 IconographicObjects, 1,542 Murtis, 292 ArchitecturalElements, 3,748 HumanMadeObjects)
-- **Geographic Places**: **1,021**
-- **Documented Deities**: **355**
-- **Point Geometries**: **1,626**
-
-### Release Distribution Artifacts
-All releases and `latest/` contain:
-- `heritagegraph-nepal.ttl`: Human-readable Turtle serialization (18.60 MB)
-- `heritagegraph-nepal.jsonld`: Schema.org-compatible JSON-LD (33.74 MB)
-- `heritagegraph-nepal.nt.gz`: Streaming Gzipped N-Triples for triplestores (7.18 MB)
-- `metadata.json`: Machine-readable DCAT / Schema.org metadata and statistics (3.90 KB)
-- `checksums.sha256`: Cryptographic SHA-256 verification manifest
-
-```bash
-# Verify integrity of downloaded release files:
-cd latest/
-sha256sum -c checksums.sha256
-```
-
----
-
-## 7. Pipeline Stage 4: SPARQL Analytics & Benchmark Queries
-
-The repository includes 7 standard benchmark SPARQL queries located in `queries/`:
-
-| Query File | Description | Ontological Alignment |
+| | count | notes |
 |---|---|---|
-| `01_monuments_by_aat_style.rq` | Classifies monuments by Getty AAT architectural style (Pagoda, Shikhara, Stupa, Chaitya, Dome). | `hg:hasArchitecturalStyle`, `aat:` |
-| `02_historical_timeline.rq` | Extracts chronological event timelines across Licchavi, Malla, Shah, and Rana periods. | `crm:E5_Event`, `hg:period`, `hg:inscriptionalDateEra` |
-| `03_spatial_geosparql.rq` | Queries spatial coordinates (WGS84 lat/lon) and administrative locations (districts, municipalities). | `geo:lat`, `geo:long`, `geosparql:asWKT` |
-| `04_monument_sacred_objects.rq` | Identifies sacred objects, murtis, toranas, bells, and architectural components per monument. | `crm:P46_is_composed_of`, `hg:Murti`, `hg:material` |
-| `05_provenance_audit.rq` | Audits W3C PROV-O provenance, primary source citations, and verbatim evidence text. | `prov:wasDerivedFrom`, `prov:wasAttributedTo`, `dcterms:source` |
-| `06_condition_threats.rq` | Analyzes physical condition assessments and identified threats (earthquakes, erosion, encroachment). | `crm:E14_Condition_Assessment`, `hg:conditionStatus` |
-| `07_deities_traditions.rq` | Maps religious traditions (Hinduism, Buddhism, etc.) and primary enshrined deities. | `hg:Deity`, `hg:hasReligiousTradition` |
+| Triples | 224,853 | builder on `main`; release v1.0.0 has 221,364 |
+| Monuments | 1,652 | 730 temples, 273 patis (rest houses), 215 Buddhist monastic buildings, 132 water structures (dhunge dhara), 101 sattals, 71 chaityas; a monument can have more than one type |
+| Events | 5,098 | 1,996 historical events, 1,808 productions, 695 destructions, 284 transfers of custody, 300 ritual events (128 consecrations, 87 enshrinements), 15 condition assessments |
+| Objects | 7,160 | 3,120 iconographic objects (1,543 murtis, 6 paubhas), 292 architectural elements, 3,748 other human-made objects |
+| Condition assessments | 1,577 | one per monument that DANAM assesses |
+| Places | 1,174 | administrative hierarchy: province, district, municipality, tola |
+| Deities | 355 | main deities named by DANAM |
+| Point geometries | 1,626 | WGS84 coordinates and GeoSPARQL WKT points |
 
-### Running Queries with `query_kg.py`
-```bash
-# Execute all 7 benchmark queries with formatted table output:
-python query_kg.py --all
+Source: DANAM's monument records, collected on 16 March 2026. Of 1,947 listed record IDs, 1,937 records were collected;
+285 of them are empty and are listed in `staging/skipped_rows.csv`, leaving 1,652 monuments.
 
-# Execute a single benchmark query:
-python query_kg.py --query queries/01_monuments_by_aat_style.rq
+## 2. Data model
 
-# Export query results as JSON or CSV:
-python query_kg.py --query queries/02_historical_timeline.rq --format json
-python query_kg.py --query queries/03_spatial_geosparql.rq --format csv
+Each DANAM record becomes one monument with its names, identifiers, location, architectural attributes, condition,
+events and objects. Every monument links to the DANAM page it was derived from.
 
-# Execute an arbitrary inline SPARQL query:
-python query_kg.py --sparql "SELECT ?m ?name WHERE { ?m a hg:Temple ; rdfs:label ?name } LIMIT 10"
-```
+| DANAM content | Modelled as |
+|---|---|
+| monument | `hg:ArchitecturalStructure` and its subclasses (`hg:Temple`, `hg:Pati`, `hg:Sattal`, `hg:Chaitya`, `hg:DhungeDhara` …); also `crm:E22_Human-Made_Object` |
+| names | `rdfs:label` (one English label as a plain string), `skos:prefLabel` (`@en`, `@ne`), `schema:alternateName` |
+| DANAM resource ID, DANAM code, object number | `crm:P1_is_identified_by` → `crm:E42_Identifier` with `crm:P190_has_symbolic_content`; the kind of identifier on `crm:P2_has_type` |
+| location | `crm:P55_has_current_location` → `crm:E53_Place`; places nest through `crm:P89_falls_within`, with `hg:placeType` (province, district, municipality, tola) |
+| coordinates | `geo:lat`, `geo:long`; `geosparql:hasGeometry` → WKT point |
+| architectural style | `hg:hasArchitecturalStyle` → ontology style value (one per monument); the Getty AAT concept on `crm:P2_has_type` |
+| roof type, brick type, ground-plan shape | `crm:P2_has_type` → `crm:E55_Type` concepts, one per value DANAM lists |
+| storeys, roofs | `hgn:numberOfStoreys`, `hgn:numberOfRoofs` |
+| condition | `crm:P34i_was_assessed_by` → `crm:E14_Condition_Assessment` → `crm:P35_has_identified` → `crm:E3_Condition_State` with `hg:hasConditionType`; threats on `hgn:identifiedThreats` |
+| events | `crm:E5_Event` and its subclasses, linked by `crm:P12_occurred_in_the_presence_of` / `crm:P12i_was_present_at` |
+| objects | architectural parts by `crm:P46_is_composed_of`; other objects housed in the monument by `hgn:containsObject` |
+| main deity | `hgn:hasMainDeity` → `hg:Deity` |
+| provenance | `prov:wasDerivedFrom` → the DANAM page (`prov:Entity`); `prov:generatedAtTime` (collection time) |
 
----
-
-## 8. Antigravity Skill (`danam-to-heritagegraph`)
-
-This repository is equipped with an official Antigravity skill located at `.agents/skills/danam-to-heritagegraph/`.
-
-### Structure
-- **`SKILL.md`**: Main instruction runbook containing step-by-step guidance, rules, and commands.
-- **`references/`**: Authoritative specifications:
-  - `column_spec.md`: Column-by-column formatting rules.
-  - `ontology_mapping.md`: Mapping tables from keywords to ontology classes.
-  - `worked_example.md`: Complete worked example of Jogeśvara Mandira.
-- **`scripts/`**: Hardened, self-contained Python scripts for date parsing, candidate extraction, validation, KG building, and querying.
-- **`skill/danam-to-heritagegraph.skill`**: Pre-packaged ZIP archive for one-click installation into external Antigravity environments.
-
-### How the Agent Uses the Skill
-When an agent is asked to "transform heritage data", "extract events from descriptions", "parse NS/VS dates", or "build the knowledge graph", Antigravity automatically activates this skill and follows its standardized runbook.
-
----
-
-## 9. Ontological Foundations & Namespaces
-
-The dataset merges domain-specific cultural concepts with international standards:
+**Namespaces**
 
 ```turtle
-@prefix hg:            <https://cair-nepal.org/heritagegraph/> .
-@prefix heritageGraph: <https://cair-nepal.org/heritagegraph/> .
-@prefix crm:           <http://www.cidoc-crm.org/cidoc-crm/> .
-@prefix prov:          <http://www.w3.org/ns/prov#> .
-@prefix aat:           <http://vocab.getty.edu/aat/> .
-@prefix geo:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix geosparql:     <http://www.opengis.net/ont/geosparql#> .
-@prefix schema:        <https://schema.org/> .
-@prefix void:          <http://rdfs.org/ns/void#> .
-@prefix dcat:          <http://www.w3.org/ns/dcat#> .
-@prefix dcterms:       <http://purl.org/dc/terms/> .
-@prefix res:           <https://data.cairnepal.org/heritage/resource/> .
+@prefix hg:   <https://cair-nepal.org/heritagegraph/> .                 # HeritageGraph ontology
+@prefix hgn:  <https://w3id.org/heritagegraph-nepal/vocab#> .           # this dataset's extension vocabulary (provisional IRI)
+@prefix res:  <https://data.cairnepal.org/heritage/resource/> .         # instances
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix aat:  <http://vocab.getty.edu/aat/> .
+@prefix geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
 ```
 
-### Core Entity Class Mappings
-- **Monuments**: `hg:ArchitecturalStructure` (specialized into `hg:ReligiousStructure`, `hg:RestHouse`, `hg:WaterStructure`, with leaf classes `hg:Temple`, `hg:Stupa`, `hg:Chaitya`, `hg:Pati`, `hg:Sattal`, `hg:Dharmashala`, `hg:DhungeDhara`, `hg:Pokhari`).
-- **Events**: `crm:E5_Event` (specialized into `crm:E12_Production`, `crm:E6_Destruction`, `crm:E10_Transfer_of_Custody`, `crm:E14_Condition_Assessment`, `hg:RitualEvent`, `hg:Consecration`, `hg:Enshrinement`, `hg:HistoricalEvent`).
-- **Objects**: `crm:E22_Human-Made_Object` (specialized into `hg:IconographicObject`, `hg:Murti`, `hg:Paubha`, `hg:ArchitecturalElement`, `hg:PhysicalHeritageThing`).
-- **Geography**: `crm:E53_Place`, `geo:SpatialThing`, `geosparql:Geometry`.
-- **Provenance**: `prov:Entity`, `prov:Activity`, `prov:Agent`, `prov:SoftwareAgent`.
+## 3. Conformance with the ontology
 
----
+The dataset ships the exact files of the ontology version it targets, **HeritageGraph 1.0.1** (`ontology/`; source commit
+and SHA-256 in [`ontology/SOURCE.md`](ontology/SOURCE.md)). `tools/sync/check_alignment.py` measures two things on a
+built graph:
 
-## 10. Script Reference & CLI Help
+- **Undeclared terms: 0.** Every `hg:` class, property and value used is declared in the ontology. Eleven terms the
+  ontology does not have are defined in the dataset's extension vocabulary [`vocab/hgn.ttl`](vocab/hgn.ttl); each states
+  the closest CIDOC-CRM or HeritageGraph term (`rdfs:subClassOf`, `rdfs:subPropertyOf` or `skos:closeMatch`).
+- **SHACL: 4,012 results** (v1.0.0: 75,641), in two groups:
 
-Every script in this repository is hardened, cross-platform, supports `--help`, and handles Windows console UTF-8 stream re-encoding:
+| results | shape rule | reason |
+|---|---|---|
+| 3,812 | `hg:hasReligiousTradition` must be an IRI of class `hg:ReligiousTradition` | the religious traditions are still text; the mapping to concepts is prepared and awaits one decision (the DANAM value "Unspecified") |
+| 200 | every `hg:Temple` has one `hg:hasArchitecturalStyle` | DANAM records no style for these 200 temples; ontology 1.1.0 adds the value "Not recorded" for this case |
 
-| Script | Location | Key Arguments | Purpose |
-|---|---|---|---|
-| `prepare.py` | `.agents/skills/.../scripts/` | `--input <csv>`, `--outdir <dir>` | Ingests raw CSV and prepares staging files and candidates. |
-| `heritage_dates.py` | `.agents/skills/.../scripts/` | `[text]`, `--file <file>`, `--test`, `--compact` | Extracts inscriptional dates, converts eras to CE, and parses lunisolar calendar terms. |
-| `validate.py` | `.agents/skills/.../scripts/` | `--dir <staging_dir>` | Strictly validates staging CSV foreign keys, indices, and verbatim evidence text. |
-| `build_kg.py` | Root & `.agents/skills/.../scripts/` | `--dir <dir>`, `--release <ver>`, `--formats <fmt>`, `--sample <n>` | Builds RDF Knowledge Graph from staging CSVs and optionally publishes a release. |
-| `publish_release.py`| Root & `.agents/skills/.../scripts/` | `--version <ver>`, `--from-existing-ttl <f>`, `--rebuild` | Packages standardized releases, generates SHA-256 manifests, and syncs `latest/`. |
-| `query_kg.py` | Root & `.agents/skills/.../scripts/` | `--all`, `--query <file.rq>`, `--sparql <query>`, `--format <table\|json\|csv>` | Executes SPARQL queries against the generated Knowledge Graph. |
-| `danam_scraper_v2.py`| `data_collection/` | `--csv <file>`, `--out <dir>`, `--limit <n>`, `--export-only` | Playwright scraper that extracts monument pages into JSON and exports flat CSVs. |
-| `shard_scrape.py` | `data_collection/` | `--csv <file>`, `--shard <id>`, `--total-shards <n>` | Multi-process shard runner for parallelized scraping. |
+Each change made for the alignment is logged with its test and before/after counts in
+[`docs/sync/SYNC_LOG.md`](docs/sync/SYNC_LOG.md); the plan is in [`docs/sync/SYNC_PLAN.md`](docs/sync/SYNC_PLAN.md) and
+the full report in [`docs/sync/alignment_after_sync.md`](docs/sync/alignment_after_sync.md).
 
----
+## 4. Files and downloads
 
-## 11. Quality Assurance (QA) & Verification Lifecycle
+Each release directory (`releases/<version>/`, the latest mirrored in `latest/`) contains:
 
-HeritageGraph enforces a multi-tier, zero-tolerance Quality Assurance (QA) lifecycle. Every release must pass all validation gates before publication to ensure strict provenance, epistemological honesty, and standards compliance.
+| file | content |
+|---|---|
+| `heritagegraph-nepal.ttl` | Turtle |
+| `heritagegraph-nepal.jsonld` | JSON-LD |
+| `heritagegraph-nepal.nt.gz` | gzipped N-Triples, for bulk loading into a triplestore |
+| `metadata.json` | DCAT / Schema.org description of the release |
+| `checksums.sha256` | SHA-256 of each file |
 
-### QA Pipeline Architecture
+```bash
+cd releases/v1.0.0 && sha256sum -c checksums.sha256   # macOS: shasum -a 256 -c checksums.sha256
+```
+
+Release policy and history: [RELEASES.md](RELEASES.md).
+
+## 5. Quick start
+
+Requirements: Python 3.11+ and [uv](https://github.com/astral-sh/uv) (or pip). The commands below use uv with the pinned
+versions in `tools/sync/requirements.txt` (rdflib 7.6.0, pySHACL 0.40.1).
+
+```bash
+RUN="uv run --no-project --with-requirements tools/sync/requirements.txt python"
+
+# Build the graph from the source tables into a scratch directory
+$RUN build_kg.py --dir staging --outdir build/kg --formats turtle,nt
+
+# Run the example SPARQL queries in queries/ (written for the graph built on main; v1.0.0 uses older terms)
+$RUN query_kg.py --graph build/kg/heritage_graph.ttl --all
+$RUN query_kg.py --graph build/kg/heritage_graph.ttl --query queries/03_spatial_geosparql.rq --format csv
+
+# Check a built graph against the ontology (undeclared terms + SHACL)
+$RUN tools/sync/check_alignment.py --graph build/kg/heritage_graph.nt --out build/kg/alignment
+
+# Tests
+$RUN -m pytest -q
+```
+
+Example queries (`queries/`):
+
+| query | what it returns |
+|---|---|
+| `01_monuments_by_aat_style.rq` | monuments with their Getty AAT style concept and DANAM code |
+| `02_historical_timeline.rq` | events per monument with type, period and era date where recorded |
+| `03_spatial_geosparql.rq` | coordinates, WKT point, and district / municipality / tola |
+| `04_monument_sacred_objects.rq` | objects per monument with class, DANAM number, material and position |
+| `05_provenance_audit.rq` | monument, event, attributed agent and DANAM page |
+| `06_condition_threats.rq` | condition values, threats and assessment text |
+| `07_deities_traditions.rq` | main deity and religious tradition per monument |
+
+## 6. How the graph is built
 
 ```mermaid
-flowchart TD
-    subgraph Tier1["Tier 1: Ingestion & Structural Integrity QA"]
-        Raw["Raw DANAM Scraped Dumps"] --> Prep["prepare.py"]
-        Prep -->|Isolate Dead/Incomplete Pages| Skip["staging/skipped_rows.csv"]
-        Prep -->|UUID Uniqueness & DANAM Code Pattern| CleanMon["staging/monuments.csv"]
-    end
-
-    subgraph Tier2["Tier 2: Strict Provenance & Substring QA"]
-        CleanMon & EventsCSV["staging/events.csv"] & ObjectsCSV["staging/objects.csv"] --> Val["validate.py"]
-        Val -->|Check 1| FK["Foreign Key & Monument Name Integrity"]
-        Val -->|Check 2| Substr["Exact Verbatim Substring Test<br/>(evidence_text ⊆ description_en)"]
-        Val -->|Check 3| Idx["Contiguous 0-Based Indexing<br/>(0, 1, ..., n-1)"]
-        Val -->|Check 4| CalDict["Calendar Term Conformance<br/>(Canonical IAST Month, Paksha, Tithi 1..15)"]
-        FK & Substr & Idx & CalDict --> ValGate{"Exit Code 0?<br/>Zero Errors Allowed"}
-        ValGate -->|FAIL| Reject["Reject Staging Layer<br/>(Must fix discrepancies)"]
-        ValGate -->|PASS| ValZero["ALL CHECKS PASSED"]
-    end
-
-    subgraph Tier3["Tier 3: Chronological & Era Cross-Verification"]
-        ValZero --> HD["heritage_dates.py --test"]
-        HD -->|Month-Aware Astronomical Offsets| EraCalc["NS (+879/+880) • VS (-56/-57) • ŚS (+78) • MS (+576)"]
-        HD -->|Preserve Historical Contradictions| Anomaly["Non-destructive Discrepancy Recording"]
-    end
-
-    subgraph Tier4["Tier 4: Ontological & Graph Consistency QA"]
-        EraCalc & Anomaly --> KG["build_kg.py --release v1.0.0"]
-        KG -->|HeritageGraph.ttl v1.0.0| OWL["LinkML/OWL Class Hierarchy<br/>& Domain/Range Alignment"]
-        KG -->|Spatial Bounds Validation| Geo["GeoSPARQL & WGS84 Coords<br/>POINT(lon lat) Check"]
-    end
-
-    subgraph Tier5["Tier 5: Automated SPARQL Regression Suite"]
-        OWL & Geo --> SPARQL["query_kg.py --all"]
-        SPARQL --> Q1["01: AAT Architectural Styles"]
-        SPARQL --> Q2["02: Historical Timelines"]
-        SPARQL --> Q3["03: Spatial GeoSPARQL"]
-        SPARQL --> Q4["04: Sacred Objects & Murtis"]
-        SPARQL --> Q5["05: W3C PROV-O Audit"]
-        SPARQL --> Q6["06: Condition & Threats"]
-        SPARQL --> Q7["07: Deities & Traditions"]
-        Q1 & Q2 & Q3 & Q4 & Q5 & Q6 & Q7 -->|All 7 Queries Must Pass| SPARQLPass["7/7 Benchmark Queries Passed"]
-    end
-
-    subgraph Tier6["Tier 6: Cryptographic Manifest & Distribution QA"]
-        SPARQLPass --> Release["publish_release.py"]
-        Release --> Hash["Compute SHA-256 for all serializations"]
-        Release --> DCAT["W3C DCAT & Schema.org metadata.json"]
-        Release --> ChecksumTest["sha256sum -c checksums.sha256"]
-        ChecksumTest --> DistOut["releases/v1.0.0/ & latest/"]
-    end
+flowchart LR
+    A["DANAM record IDs<br/>data_collection/resourceids.csv"] --> B["Collection<br/>danam_scraper_v2.py"]
+    B --> C["DANAM tables<br/>data_collection/data/exports/"]
+    C --> D["Staging<br/>prepare.py → staging/monuments.csv"]
+    D --> E["Graph<br/>build_kg.py"]
+    C -- "events, objects" --> E
+    E --> F["Checks<br/>check_alignment.py, tests"]
+    F --> G["Release<br/>publish_release.py"]
 ```
 
-### Detailed QA Tiers & Verification Gates
+1. **Collection** (`data_collection/`). A Playwright scraper reads each DANAM record page (2–4 s between requests) and
+   writes one JSON file per record, then exports three tables: `monuments.csv` (46 fields), `events.csv` and
+   `objects.csv`.
+   ```bash
+   cd data_collection
+   python danam_scraper_v2.py --csv resourceids.csv --out data/raw --limit 5                 # collect
+   python danam_scraper_v2.py --csv resourceids.csv --out data/raw --export-only --export-dir data/exports
+   ```
+2. **Staging** (`.agents/skills/danam-to-heritagegraph/scripts/prepare.py`). Keeps the 46 DANAM fields unchanged and adds
+   derived columns: DANAM code, Nepali name, ontology class, Getty AAT style, normalised condition values. Empty records go
+   to `staging/skipped_rows.csv`. Events and objects are taken from DANAM's own tables
+   (`data_collection/data/exports/`); the builder uses them when `staging/` has no `events.csv` / `objects.csv`.
+3. **Graph** (`build_kg.py`). Turns the tables into RDF as described in [§2](#2-data-model). Values are written as DANAM
+   gives them; a value DANAM does not give is left out. Where the ontology allows one value but DANAM lists several (an
+   architectural style, a condition type), the first is used and the others are kept in a note.
+4. **Checks.** `tools/sync/check_alignment.py` (undeclared terms, SHACL against the ontology's shapes) and the tests in
+   `tests/`.
+5. **Release** (`publish_release.py`). Writes the serialisations, `metadata.json` and checksums to `releases/<version>/`
+   and mirrors them to `latest/`.
 
-| QA Tier | Verification Scope | Tool / Script | Enforcement Criteria & Pass Conditions |
-|---|---|---|---|
-| **Tier 1: Ingestion QA** | Raw scraping dumps | `prepare.py` | • Deduplicates rows by monument UUID (`resource_id`).<br>• Validates DANAM code structure (`[A-Z]{3}\d{4}`).<br>• Segregates incomplete or dead pages to `skipped_rows.csv`. |
-| **Tier 2: Provenance QA** | Staging CSV tables | `validate.py` | • **Exact Substring Rule**: `evidence_text` MUST be an exact character-for-character substring of `description_en`. Rephrased text fails validation.<br>• **Foreign Key Integrity**: Every event and object row must reference a valid `resource_id` and verbatim `monument_name`.<br>• **Contiguous Indexing**: `event_index` and `object_index` must be 0-based and sequential ($0, 1, \dots, n-1$) without gaps.<br>• **Calendar Conformance**: Month names must match canonical IAST forms (`Phālguna`, `Māgha`, etc.), `paksha` must be `Śukla` or `Kṛṣṇa`, and `tithi` must be integer $1 \le t \le 15$. |
-| **Tier 3: Chronological QA** | Historical date claims | `heritage_dates.py` | • Converts inscriptional dates using astronomical boundary-aware offsets (e.g. NS $+879$ for Kārtika–Pauṣa, $+880$ otherwise).<br>• Detects era-CE internal contradictions in sources without altering source testimony. |
-| **Tier 4: Ontological QA** | RDF Knowledge Graph | `build_kg.py` | • Validates against authoritative `ontology/HeritageGraph.ttl` (v1.0.0).<br>• Enforces LinkML/OWL class hierarchy (`ReligiousStructure`, `RestHouse`, `WaterStructure`).<br>• GeoSPARQL coordinate validation (WGS84 decimal lat/long within Nepal bounding box and WKT Point literals). |
-| **Tier 5: SPARQL Regression** | Query capability | `query_kg.py --all` | • Executes all 7 canonical SPARQL benchmark queries in `queries/*.rq`.<br>• Validates that Getty AAT style classifications, multi-era timelines, and PROV-O provenance trails return valid result sets. |
-| **Tier 6: Release QA** | Public distribution | `publish_release.py` | • Generates cryptographic SHA-256 hashes for all formats (`.ttl`, `.jsonld`, `.nt.gz`, `metadata.json`).<br>• Verifies checksum manifest using standard `sha256sum -c checksums.sha256`.<br>• Validates DCAT & Schema.org `metadata.json` entity statistics and byte sizes. |
+The same pipeline is packaged as an agent skill in `.agents/skills/danam-to-heritagegraph/` (runbook in `SKILL.md`; the
+scripts there are kept identical to the ones at the repository root).
 
-### Core Epistemological Invariants
+## 7. Repository layout
 
-Every automated pipeline and human curator adheres to four core invariants:
+```text
+├── ontology/                HeritageGraph ontology 1.0.1: OWL, SHACL shapes, LinkML source; SOURCE.md; archive/ (1.0.0)
+├── vocab/hgn.ttl            extension vocabulary for terms the ontology does not declare
+├── releases/v1.0.0/         published release (immutable)
+├── latest/                  copy of the latest release
+├── data_collection/         scraper, DANAM record IDs, collected records (data/raw/) and tables (data/exports/)
+├── staging/                 staged monument table, skipped records, candidate sentences
+├── queries/                 example SPARQL queries
+├── build_kg.py              graph builder
+├── query_kg.py              SPARQL runner
+├── publish_release.py       release writer
+├── tools/sync/              conformance checker, pinned requirements, per-change check script
+├── tests/                   tests (pytest)
+├── docs/sync/               alignment plan, change log and reports
+├── .agents/skills/danam-to-heritagegraph/   the pipeline as an agent skill (runbook, references, scripts)
+├── RELEASES.md              release policy
+└── AGENTS.md                rules for automated agents working in this repository
+```
 
-1. **"Blank Beats Guessed"**: Never extrapolate or hallucinate dates, actors, materials, or deities. If the source is silent, leave the field blank.
-2. **Unbroken Substring Provenance**: Every extracted statement must link to the verbatim sentence in `description_en`. This ensures that downstream users can audit every fact back to the primary literature.
-3. **Non-Destructive Contradiction Preservation**: When historical sources contradict each other or state impossible dates (e.g. `ŚS 1422 (i.e., 500 CE)`), keep the written values as-is, detail the contradiction in `event_description`, and flag the record rather than silently modifying it.
-4. **No Artificial Metric Padding**: The number of extracted rows need not match the DANAM database counters (`event_count`, `object_count`). Page counters reflect internal database rows, whereas narrative prose covers only documented facts.
+## 8. Limitations
+
+- **No event dates.** DANAM's event tables, as collected, carry no dates, so no event in the graph has a date. Dates
+  appear in DANAM's descriptive text; they are not yet extracted.
+- **Event and object types are assigned by keyword rules** (`classify_event`, `classify_object` in `build_kg.py`), not by
+  hand. They have not yet been evaluated against a manual sample; some are known to be wrong (e.g. renovations typed as
+  destruction).
+- **Place names are not normalised.** The same municipality can appear under two spellings (e.g. "Lalitpur" and "Lalitpur
+  Metropolitan City"), and records that omit a level (often the district) give separate place nodes.
+- **Source quirks are kept, not corrected.** Two records share the DANAM code `NWK0410`; DANAM reuses six object numbers
+  for two objects each (each object keeps its own node); 24 half-storey values (1.5, 2.5, 4.5) are not written.
+- **Coverage follows DANAM**, which documents mainly the Kathmandu Valley (1,433 of the 1,652 records are in Province 3).
+- **Instance IRIs** (`https://data.cairnepal.org/heritage/resource/…`) do not yet resolve, and the extension vocabulary's
+  IRI is provisional.
+- **Provenance attribution.** The graph attributes events and objects to a software agent; this will be revised.
+- **`metadata.json` of v1.0.0** counts monuments among the objects and lists a licence that differs from the one in the
+  graph; this will be corrected in the next release.
+
+## 9. Licence and source rights
+
+> **TODO (authors):** choose and state the licence of the data (e.g. CC BY-SA 4.0, matching DANAM's deposit) and of the
+> code (e.g. Apache-2.0), add a `LICENSE` file, and state the permission obtained from DANAM.
+
+The monument records, descriptions and images are the work of DANAM, Heidelberg University
+(<https://danam.cats.uni-heidelberg.de>). Every monument in the graph links to the DANAM page it was derived from.
+Users should credit DANAM as the source of the content.
+
+## 10. Citation
+
+> **TODO (authors):** add the dataset DOI (e.g. Zenodo), the author list and a `CITATION.cff`.
+
+If you use the ontology, cite it as given in the
+[ontology repository](https://github.com/CAIRNepal/heritagegraphontology/blob/main/CITATION.cff).
 
 ---
 
-## License & Attribution
-
-This dataset and codebase are developed by **CAIR-Nepal** (Centre for Artificial Intelligence Research Nepal).
-Monument reports and source materials originate from the **Digital Archive of Nepalese Arts and Monuments (DANAM)**, Heidelberg University (`danam.cats.uni-heidelberg.de`).
-Distributed for academic research, cultural preservation, and natural language processing.
+Maintained by [CAIR-Nepal](https://cair-nepal.org). Issues and questions: use the repository's issue tracker.
