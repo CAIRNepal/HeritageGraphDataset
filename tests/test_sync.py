@@ -125,7 +125,7 @@ def test_b4_one_condition_type_per_state_rest_in_note(graph):
     state = RES["condition_state/00cf6d20-71a7-4382-9746-ac988a0bd323"]
     assert graph.value(state, HG.hasConditionType) == HG["ConditionType#Ruined"]
     assert "Damaged" in str(graph.value(state, CRM["P3_has_note"]))
-    assert {str(o) for o in graph.objects(m, HG.conditionStatus)} == {"Ruined", "Damaged"}
+    assert {str(o) for o in graph.objects(m, HGN.conditionStatus)} == {"Ruined", "Damaged"}  # hg: until E9
 
 
 def test_c1a_plain_string_label_and_tagged_pref_labels(graph):
@@ -228,3 +228,8 @@ def test_e8_places_are_a_p89_hierarchy(graph):
     assert chain == [("tola", unicodedata.normalize("NFC", "Gũbāhāḥ")), ("municipality", "Shankharapur Municipality"), ("district", "Kathmandu"), ("province", "Province 3")]
     places = typed(graph, CRM["E53_Place"])
     assert all(len(list(graph.objects(p, HG.placeType))) == 1 for p in places)
+
+
+def test_e9_condition_text_and_threats_are_extension_properties(graph):
+    assert uses(graph, HG.conditionStatus) == 0 and uses(graph, HG.identifiedThreats) == 0
+    assert uses(graph, HGN.conditionStatus) == 1659 and uses(graph, HGN.identifiedThreats) == 572

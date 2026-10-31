@@ -107,3 +107,19 @@ hgn:numberOfRoofs a owl:DatatypeProperty ;
     rdfs:domain hg:ArchitecturalStructure ;
     rdfs:range xsd:integer ;
     skos:closeMatch crm:P43_has_dimension .
+
+# ── Condition (E9) ───────────────────────────────────────────────────────────
+
+hgn:conditionStatus a owl:DatatypeProperty ;
+    rdfs:label "condition status"@en ;
+    rdfs:comment "Every condition value DANAM lists for a structure (Good, Damaged, Ruined, Restored), as text on the structure. The condition state (crm:E3_Condition_State) carries one of them as hg:hasConditionType, because the ontology allows one; this property keeps all of them."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain hg:ArchitecturalStructure ;
+    skos:closeMatch hg:hasConditionType .
+
+hgn:identifiedThreats a owl:DatatypeProperty ;
+    rdfs:label "identified threats"@en ;
+    rdfs:comment "Threats to a structure, as DANAM's record states them (identified_threats), on the condition assessment."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:domain crm:E14_Condition_Assessment ;
+    rdfs:subPropertyOf crm:P3_has_note .

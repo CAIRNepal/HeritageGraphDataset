@@ -547,3 +547,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 9.
 - Queries (rows without LIMIT): unchanged.
 - An existing term does the job: one crm:E53_Place per level the record states, labelled as written (province number N as 'Province N'), hg:placeType from the ontology (free text: province / district / municipality / tola), each place crm:P89_falls_within the next level up the record gives; the monument's crm:P55 is its lowest level. Place IRIs carry the level and the chain (place/province-3/district-kathmandu/municipality-…/tola-…). Names are not normalised (e.g. 'Lalitpur' and 'Lalitpur Metropolitan City' stay separate), and a level missing from a record is skipped, so records that differ only in a missing level give separate nodes, as before. The one record with only a province now gets a location (crm:P55 1,631 → 1,632; tests A4/A7 updated). Query 03 reads the levels through crm:P89_falls_within*.
+
+## E9: hg:conditionStatus / hg:identifiedThreats → hgn:conditionStatus / hgn:identifiedThreats
+
+- Test: `tests/test_sync.py::test_e9_condition_text_and_threats_are_extension_properties`.
+- Triples: 224,853 → **224,853**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 2 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 11.
+- Queries (rows without LIMIT): unchanged.
+- hgn:identifiedThreats is a sub-property of crm:P3_has_note rather than P3 itself, because the shapes allow one P3_has_note (xsd:string) and assessments already carry the assessment text there. Query 06 switched. Test B4 updated to read hgn:conditionStatus.

@@ -466,7 +466,7 @@ def build_knowledge_graph(
             if cond_types:
                 listed = [c.strip() for c in cond_types.split("|") if c.strip()]
                 for c_clean in listed:  # the monument-level literal keeps every value DANAM lists
-                    g.add((m_uri, HG.conditionStatus, Literal(c_clean, lang="en")))
+                    g.add((m_uri, HGN.conditionStatus, Literal(c_clean, lang="en")))
                 # The condition state takes one type (the ontology allows one): the first DANAM lists. Others go in a note.
                 known = [c for c in listed if c in ["Good", "Damaged", "Ruined", "Restored"]]
                 if known:
@@ -476,7 +476,7 @@ def build_knowledge_graph(
                         f"DANAM also lists the condition {', '.join(known[1:])}; "
                         f"the ontology allows one condition type per state, so the first listed ({known[0]}) is used.")))
             if threats:
-                g.add((assess_uri, HG.identifiedThreats, Literal(threats, lang="en")))
+                g.add((assess_uri, HGN.identifiedThreats, Literal(threats, lang="en")))
 
         # Provenance: Link to original DANAM source report URL
         danam_url = m.get("url", "").strip()
