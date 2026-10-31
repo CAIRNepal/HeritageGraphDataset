@@ -68,3 +68,8 @@ def test_a10_condition_type_only_on_condition_state(graph):
     for v in ("Good", "Damaged", "Ruined", "Restored"):
         assert not any(True for _ in graph.triples((None, None, HG[v])))
     assert uses(graph, HG.hasConditionType) > 0
+
+
+def test_a11_sources_are_prov_entities(graph):
+    sources = set(graph.objects(None, PROV.wasDerivedFrom)) | set(graph.objects(None, PROV.used))
+    assert sources and sources <= typed(graph, PROV.Entity)

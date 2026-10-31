@@ -96,3 +96,11 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - SHACL results: 76,662 → **76,662** (14 groups).
 - Undeclared terms: 26 → **21** (1 classes, 18 properties, 2 IRI values).
 - Queries (rows without LIMIT): unchanged.
+
+## A11: type the DANAM pages (prov:wasDerivedFrom) and the DANAM site (prov:used) as prov:Entity
+
+- Test: `tests/test_sync.py::test_a11_sources_are_prov_entities`.
+- Triples: 199,805 → **201,458**.
+- SHACL results: 76,662 → **70,752** (12 groups).
+- Undeclared terms: 21 → **21** (1 classes, 18 properties, 2 IRI values).
+- Queries (rows without LIMIT): unchanged.

@@ -214,6 +214,7 @@ def build_knowledge_graph(
     g.add((activity_kg, RDFS.label, Literal("HeritageGraph Knowledge Graph Construction & LOD Export Activity", lang="en")))
     g.add((activity_kg, PROV.wasAssociatedWith, agent_antigravity))
     g.add((activity_kg, PROV.used, URIRef("https://danam.cats.uni-heidelberg.de")))
+    g.add((URIRef("https://danam.cats.uni-heidelberg.de"), RDF.type, PROV.Entity))
 
     g.add((dataset_uri, PROV.wasAttributedTo, agent_antigravity))
     g.add((dataset_uri, PROV.wasAttributedTo, agent_cair))
@@ -431,6 +432,7 @@ def build_knowledge_graph(
         danam_url = m.get("url", "").strip()
         if danam_url and danam_url.startswith("http"):
             g.add((m_uri, PROV.wasDerivedFrom, URIRef(danam_url)))
+            g.add((URIRef(danam_url), RDF.type, PROV.Entity))
             g.add((m_uri, SCHEMA.url, URIRef(danam_url)))
 
         scraped_at = m.get("scraped_at", "").strip()
