@@ -125,3 +125,18 @@ def test_b4_one_condition_type_per_state_rest_in_note(graph):
     assert graph.value(state, HG.hasConditionType) == HG["ConditionType#Ruined"]
     assert "Damaged" in str(graph.value(state, CRM["P3_has_note"]))
     assert {str(o) for o in graph.objects(m, HG.conditionStatus)} == {"Ruined", "Damaged"}
+
+
+def test_c1a_plain_string_label_and_tagged_pref_labels(graph):
+    from rdflib import RDFS, SKOS, Literal
+    labels = list(graph.subject_objects(RDFS.label))
+    assert labels and all(l.language is None and l.datatype in (None, rdflib_xsd_string()) for _, l in labels)
+    for s, l in labels[:2000]:
+        assert Literal(str(l), lang="en") in set(graph.objects(s, SKOS.prefLabel))
+    m = RES["monument/0077a8d9-2e9d-4626-8dd0-04272b780ea9"]
+    assert Literal("जोगेश्वर मन्दिर", lang="ne") in set(graph.objects(m, SKOS.prefLabel))
+
+
+def rdflib_xsd_string():
+    from rdflib import XSD
+    return XSD.string

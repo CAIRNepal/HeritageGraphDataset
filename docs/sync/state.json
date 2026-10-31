@@ -1,8 +1,8 @@
 {
- "item": "B4",
- "triples": 184992,
- "shacl_results": 48640,
- "shacl_groups": 6,
+ "item": "C1a",
+ "triples": 203511,
+ "shacl_results": 22339,
+ "shacl_groups": 5,
  "undeclared": 17,
  "undeclared_detail": {
   "undeclared_classes": 1,

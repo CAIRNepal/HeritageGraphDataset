@@ -224,3 +224,13 @@ All distinct source strings with their counts:
 - `Unspecified, Buddhist` 1
 - `Shakta, Hindu, Shaiva` 1
 - `Folk, Hindu, Shamanistic` 1
+
+## C1a: rdfs:label is one plain-string English label; language-tagged labels (@en, @ne) on skos:prefLabel
+
+- Test: `tests/test_sync.py::test_c1a_plain_string_label_and_tagged_pref_labels`.
+- Triples: 184,992 → **203,511**.
+- SHACL results: 48,640 → **22,339** (5 groups).
+- Undeclared terms: 17 → **17** (1 classes, 16 properties, 0 IRI values).
+- Extension terms used: 2.
+- Queries (rows without LIMIT): unchanged.
+- Findings checked first: the xsd:string constraint is on rdfs:label (58 shapes: sh:datatype xsd:string, sh:maxCount 1, 18 also sh:minCount 1); skos:prefLabel and skos:altLabel are not constrained by any shape. Monuments' Nepali names (schema:name @ne) are also given as skos:prefLabel @ne.

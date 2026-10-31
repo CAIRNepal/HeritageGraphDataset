@@ -35,7 +35,7 @@ if sys.platform == "win32":
 
 import rdflib
 from rdflib import Graph, Literal, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS, OWL, RDF, RDFS, VOID, XSD
+from rdflib.namespace import DCAT, DCTERMS, OWL, RDF, RDFS, SKOS, VOID, XSD
 
 csv.field_size_limit(10**9)
 
@@ -75,6 +75,17 @@ CRM_CLASS_FOR = {
 def hg_class(name: str) -> URIRef:
     """IRI of an ontology class given by its local name (e.g. from an ontology_class cell)."""
     return CRM_CLASS_FOR.get(name, HG[name])
+
+
+def split_labels(g: Graph) -> None:
+    """The ontology's shapes require rdfs:label to be one plain xsd:string. Each language-tagged label moves to
+    skos:prefLabel (unconstrained), and the English one is also kept as the plain rdfs:label."""
+    for s, lit in list(g.subject_objects(RDFS.label)):
+        if lit.language:
+            g.remove((s, RDFS.label, lit))
+            g.add((s, SKOS.prefLabel, lit))
+            if lit.language == "en":
+                g.add((s, RDFS.label, Literal(str(lit))))
 
 
 # ── Classification Helpers ───────────────────────────────────────────────────
@@ -162,6 +173,8 @@ def build_knowledge_graph(
     g.bind("aat", AAT)
     g.bind("schema", SCHEMA)
     g.bind("void", VOID)
+    g.bind("skos", SKOS)
+    g.bind("hgn", HGN)
     g.bind("dcat", DCAT)
     g.bind("dcterms", DCTERMS)
     g.bind("res", RES)
@@ -293,6 +306,7 @@ def build_knowledge_graph(
         name_ne = m.get("name_ne", "").strip() or m.get("name_devanagari", "").strip()
         if name_ne:
             g.add((m_uri, SCHEMA.name, Literal(name_ne, lang="ne")))
+            g.add((m_uri, SKOS.prefLabel, Literal(name_ne, lang="ne")))
 
         g.add((m_uri, DCTERMS.identifier, Literal(res_id)))
 
@@ -612,6 +626,8 @@ def build_knowledge_graph(
             obj_count += 1
 
     print(f"[+] Loaded {obj_count} objects into graph.")
+
+    split_labels(g)
 
     # ── Summary & Metadata Update ─────────────────────────────────────────────
     triple_count = len(g)
