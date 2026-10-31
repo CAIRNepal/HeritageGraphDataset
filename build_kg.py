@@ -48,6 +48,9 @@ GEOSPARQL = Namespace("http://www.opengis.net/ont/geosparql#")
 AAT = Namespace("http://vocab.getty.edu/aat/")
 SCHEMA = Namespace("https://schema.org/")
 RES = Namespace("https://data.cairnepal.org/heritage/resource/")
+# Extension vocabulary (vocab/hgn.ttl) for terms the HeritageGraph ontology does not declare. Temporary base IRI.
+HGN_BASE = "https://w3id.org/heritagegraph-nepal/vocab#"
+HGN = Namespace(HGN_BASE)
 
 AAT_STYLE_TO_HG = {
     "300004829": "Pagoda",

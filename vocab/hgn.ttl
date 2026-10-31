@@ -1,0 +1,20 @@
+# HeritageGraph-Nepal extension vocabulary (hgn:).
+# Terms the HeritageGraph-Nepal dataset needs that the HeritageGraph ontology 1.0.1 does not declare.
+# The ontology itself is not changed (see ontology/SOURCE.md). Each term links to the closest CIDOC-CRM or ontology term.
+# The namespace is temporary; it is set in one place in the builder (HGN_BASE in build_kg.py) and must match the prefix below.
+
+@prefix hgn:     <https://w3id.org/heritagegraph-nepal/vocab#> .
+@prefix hg:      <https://cair-nepal.org/heritagegraph/> .
+@prefix crm:     <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://w3id.org/heritagegraph-nepal/vocab> a owl:Ontology ;
+    rdfs:label "HeritageGraph-Nepal extension vocabulary"@en ;
+    rdfs:comment "Terms used by the HeritageGraph-Nepal dataset that the HeritageGraph ontology (1.0.1) does not declare. Each term states the closest CIDOC-CRM or HeritageGraph term."@en ;
+    owl:versionInfo "0.1.0" ;
+    rdfs:seeAlso <https://cair-nepal.org/heritagegraph/> .

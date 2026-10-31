@@ -73,3 +73,16 @@ def test_a10_condition_type_only_on_condition_state(graph):
 def test_a11_sources_are_prov_entities(graph):
     sources = set(graph.objects(None, PROV.wasDerivedFrom)) | set(graph.objects(None, PROV.used))
     assert sources and sources <= typed(graph, PROV.Entity)
+
+
+def test_v0_extension_vocabulary_matches_builder_and_declares_used_terms(graph):
+    import os, rdflib, build_kg
+    from rdflib import OWL, RDF as R
+    vocab = rdflib.Graph().parse(os.path.join(os.path.dirname(__file__), "..", "vocab", "hgn.ttl"))
+    assert str(dict(vocab.namespaces())["hgn"]) == build_kg.HGN_BASE
+    declared = set(vocab.subjects(R.type, None))
+    used = {t for s, p, o in graph for t in (p, o) if str(t).startswith(build_kg.HGN_BASE)}
+    assert used <= declared, sorted(used - declared)
+    for t in declared - set(vocab.subjects(R.type, OWL.Ontology)):
+        for p in (rdflib.RDFS.label, rdflib.RDFS.comment, rdflib.RDFS.isDefinedBy):
+            assert vocab.value(t, p) is not None, (t, p)

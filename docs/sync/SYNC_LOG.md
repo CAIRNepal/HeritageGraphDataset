@@ -104,3 +104,13 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - SHACL results: 76,662 → **70,752** (12 groups).
 - Undeclared terms: 21 → **21** (1 classes, 18 properties, 2 IRI values).
 - Queries (rows without LIMIT): unchanged.
+
+## V0: add the extension vocabulary vocab/hgn.ttl (no terms yet; base IRI HGN_BASE in the builder) and check against ontology + vocabulary
+
+- Test: `tests/test_sync.py::test_v0_extension_vocabulary_matches_builder_and_declares_used_terms`.
+- Triples: 201,458 → **201,458**.
+- SHACL results: 70,752 → **70,752** (12 groups).
+- Undeclared terms: 21 → **20** (1 classes, 18 properties, 1 IRI values).
+- Extension terms used: 0.
+- Queries (rows without LIMIT): unchanged.
+- Checker: undeclared terms are now counted in hg: and hgn:, against the ontology plus vocab/hgn.ttl; extension terms are listed separately. The bare namespace IRI hg: (object of void:vocabulary) is no longer counted as an undeclared term (a vocabulary reference, not a term use): 21 → 20.
