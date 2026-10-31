@@ -167,3 +167,8 @@ def test_r1_reused_object_numbers_give_distinct_nodes(graph):
     for n in nodes:
         assert len(list(graph.objects(n, RDFS.label))) == 1
         assert identifiers(graph, n, HGN.DanamObjectNumber) == {"KAT1150-014"}
+
+
+def test_e1_buddhist_monument_is_extension_class(graph):
+    assert not typed(graph, HG.BuddhistMonument)
+    assert len(typed(graph, HGN.BuddhistMonument)) == 215

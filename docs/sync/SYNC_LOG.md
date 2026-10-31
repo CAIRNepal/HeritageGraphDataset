@@ -466,3 +466,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 | Ṭũḍikhela Gaṇeśa Mandira | NWK0310 | https://danam.cats.uni-heidelberg.de/report/73366095-3dfc-48c7-9aee-0d8b5ddc2bba |
 
 </details>
+
+## E1: hg:BuddhistMonument → hgn:BuddhistMonument (rdfs:subClassOf hg:ReligiousStructure)
+
+- Test: `tests/test_sync.py::test_e1_buddhist_monument_is_extension_class`.
+- Triples: 229,968 → **229,968**.
+- SHACL results: 4,012 → **4,012** (3 groups).
+- Undeclared terms: 17 → **16** (0 classes, 16 properties, 0 IRI values).
+- Extension terms used: 5.
+- Queries (rows without LIMIT): unchanged.
+- The builder does not add hg:ReligiousStructure as an extra type (the subclass axiom states it), so no new shapes apply.

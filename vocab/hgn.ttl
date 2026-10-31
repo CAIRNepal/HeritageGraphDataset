@@ -63,3 +63,11 @@ hgn:DanamObjectNumber a crm:E55_Type, skos:Concept ;
     rdfs:comment "The number DANAM gives an object within a monument record (usually AAA0000-000), as written. DANAM occasionally gives the same number to two different objects."@en ;
     rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
     skos:broadMatch hg:persistentIdentifier .
+
+# ── Structure classes (E1) ───────────────────────────────────────────────────
+
+hgn:BuddhistMonument a owl:Class ;
+    rdfs:label "Buddhist monastic building"@en ;
+    rdfs:comment "A Buddhist monastic building or courtyard complex (Newar bāhāḥ, bahī, vihāra), as DANAM classifies it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/heritagegraph-nepal/vocab> ;
+    rdfs:subClassOf hg:ReligiousStructure .

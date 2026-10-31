@@ -60,9 +60,10 @@ AAT_STYLE_TO_HG = {
     "300007576": "Stupa",
 }
 
-# hg: classes that the ontology publishes under a CIDOC-CRM IRI (LinkML class_uri). The CRM IRI is written instead,
-# because the ontology does not declare the hg: IRI.
+# Class names (from ontology_class cells) that are not written as hg:<name>: the ontology publishes most of these under
+# a CIDOC-CRM IRI (LinkML class_uri) and does not declare the hg: IRI; the rest are extension classes (vocab/hgn.ttl).
 CRM_CLASS_FOR = {
+    "BuddhistMonument": HGN.BuddhistMonument,  # not in the ontology: extension class (vocab/hgn.ttl)
     "HumanMadeObject": CRM["E22_Human-Made_Object"],
     "Production": CRM["E12_Production"],
     "ConditionAssessment": CRM["E14_Condition_Assessment"],
@@ -295,7 +296,7 @@ def build_knowledge_graph(
                 classes_to_add.add("Sattal")
 
         for c_name in classes_to_add:
-            g.add((m_uri, RDF.type, HG[c_name]))
+            g.add((m_uri, RDF.type, hg_class(c_name)))
             if c_name in ["Temple", "Chaitya", "Stupa", "KumariHouse"]:
                 g.add((m_uri, RDF.type, HG.ReligiousStructure))
             elif c_name in ["Pati", "Sattal", "Dharmashala"]:
