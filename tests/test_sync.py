@@ -114,3 +114,14 @@ def test_b2_one_ontology_style_aat_on_p2(graph):
 
 def test_b3_no_existence_status(graph):
     assert uses(graph, HG.existenceStatus) == 0
+
+
+def test_b4_one_condition_type_per_state_rest_in_note(graph):
+    from collections import Counter
+    per_state = Counter(s for s, _ in graph.subject_objects(HG.hasConditionType))
+    assert per_state and max(per_state.values()) == 1
+    m = RES["monument/00cf6d20-71a7-4382-9746-ac988a0bd323"]  # DANAM: Ruined|Damaged
+    state = RES["condition_state/00cf6d20-71a7-4382-9746-ac988a0bd323"]
+    assert graph.value(state, HG.hasConditionType) == HG["ConditionType#Ruined"]
+    assert "Damaged" in str(graph.value(state, CRM["P3_has_note"]))
+    assert {str(o) for o in graph.objects(m, HG.conditionStatus)} == {"Ruined", "Damaged"}

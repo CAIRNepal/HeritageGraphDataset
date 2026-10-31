@@ -145,3 +145,12 @@ One entry per change, newest last. Each entry: what changed, the test that fails
 - Extension terms used: 2.
 - Queries (rows without LIMIT): unchanged.
 - Checked first: no shape has sh:minCount ≥ 1 on hg:existenceStatus (13 shapes, all sh:maxCount 1 only).
+
+## B4: one condition type per condition state (first DANAM lists); the others in a note; the monument literal keeps all
+
+- Test: `tests/test_sync.py::test_b4_one_condition_type_per_state_rest_in_note`.
+- Triples: 184,996 → **184,992**.
+- SHACL results: 48,853 → **48,640** (6 groups).
+- Undeclared terms: 17 → **17** (1 classes, 16 properties, 0 IRI values).
+- Extension terms used: 2.
+- Queries (rows without LIMIT): unchanged.
