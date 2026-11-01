@@ -183,7 +183,7 @@ QUESTIONS = {
     "02_historical_timeline.rq": "What events happened at each monument, of what type, and in which period or era year?",
     "03_spatial_geosparql.rq": "Where is each monument: coordinates, point geometry, district, municipality and tola?",
     "04_monument_sacred_objects.rq": "Which objects does each monument contain or consist of, with class, DANAM number, material and position?",
-    "05_provenance_audit.rq": "For each event, which agent is it attributed to, and from which DANAM page is the monument derived?",
+    "05_provenance_audit.rq": "For each event, which DANAM page is it derived from, who is that page attributed to, and which software (repository, commit) built the graph on whose behalf?",
     "06_condition_threats.rq": "What condition does DANAM record for each monument, and which threats and assessments?",
     "07_deities_traditions.rq": "Which main deity and which religious traditions does each monument have?",
 }
@@ -590,7 +590,14 @@ def main() -> int:
          (["# … (trimmed)"] if len(ttl) > 60 else []) + ["```"]
 
     # ── K. Known open issues ─────────────────────────────────────────────────────────────────────────────────────
-    agent = RES["agent/antigravity_agent"]
+    software_attr = sum(1 for _, o_ in g.subject_objects(PROV.wasAttributedTo) if (o_, RDF.type, PROV.SoftwareAgent) in g)
+    danam_agent = RES["agent/danam_heidelberg"]
+    pages = set(g.subjects(PROV.wasAttributedTo, danam_agent))
+    derived = sum(1 for _, o_ in g.subject_objects(PROV.wasDerivedFrom) if o_ in pages)
+    desc_en = sum(1 for m_ in monuments for o_ in g.objects(m_, DCTERMS.description) if getattr(o_, "language", None) == "en")
+    desc_ne = sum(1 for m_ in monuments for o_ in g.objects(m_, DCTERMS.description) if getattr(o_, "language", None) == "ne")
+    import publish_release
+    next_objects = publish_release.compute_graph_stats(g)["objects"]
     graph_licence = [str(o) for o in g.objects(None, DCTERMS.license)]
     meta = json.load(open(os.path.join(REPO, "latest", "metadata.json")))
     manifest = dict(reversed(l.split()) for l in open(os.path.join(REPO, "latest", "checksums.sha256")) if l.strip())
@@ -621,15 +628,31 @@ def main() -> int:
             naming[d_].add(frozenset(g.objects(mm, HG.hasReligiousTradition)))
     conflicting = [d_ for d_, sets in naming.items() if len(sets) > 1]
     p45_literals = sum(1 for _, _, o_ in g.triples((None, CRM.P45_consists_of, None)) if isinstance(o_, Literal))
-    L += ["", "## K. Known open issues (not fixed yet)", ""]
+    L += ["", "## K. Issues fixed in round 1 (`fix/round1`; measured on the current graph)", ""]
+    L += md_table(["issue", "now", "measured"], [
+        ["AI-agent provenance (F1)", "no statement is attributed to a software agent; DANAM report pages are attributed to DANAM "
+         "(`prov:Organization`); monuments, events and objects are `prov:wasDerivedFrom` their page; the construction activity is "
+         "associated with the pipeline software, acting on behalf of CAIR-Nepal",
+         f"{N('AgentAttributions', software_attr)} attributions to software; {N('DanamPages', len(pages))} pages attributed to DANAM; "
+         f"{N('DerivedFromPage', derived)} `prov:wasDerivedFrom` statements"],
+        ["`crm:P44_has_condition` target (F3)", "points to the `crm:E3_Condition_State`",
+         f"{N('ConditionTargetWrong', sum(1 for _, o_ in g.subject_objects(CRM.P44_has_condition) if o_ in typed[CRM.E14_Condition_Assessment]))} statements still point to an assessment"],
+        ["Deity tradition rule (F4)", "deities get no tradition (DANAM states traditions per monument only)",
+         f"{N('DeityTraditionStatements', len(deity_trad))} deity tradition statements; before the fix "
+         f"{N('DeitiesConflicting', len(conflicting))} deities were named by monuments with different traditions"],
+        ["Monument descriptions (F5)", "`dcterms:description` with `@en` / `@ne`, as in DANAM",
+         f"{N('DescriptionsEn', desc_en)} English, {N('DescriptionsNe', desc_ne)} Nepali; "
+         f"{N('DescriptionsNotWritten', sum(1 for m_ in mons if m_['description_en'].strip()) - desc_en)} English descriptions missing"],
+        ["`metadata.json` object count (F7)", "the release step counts distinct object nodes (not monuments too) and checks every checksum after writing; "
+         "the published v1.0.0 files are not regenerated",
+         f"next release: {N('NextReleaseObjects', next_objects)} objects"],
+    ])
+    L += ["", "## K2. Known open issues (not fixed yet)", ""]
     L += md_table(["issue", "what is wrong", "affected"], [
-        ["AI-agent provenance", f"events and objects are `prov:wasAttributedTo` `{short(agent)}` (\"{g.value(agent, RDFS.label)}\"), "
-         "a software agent, not the people or source that made the statements",
-         f"{N('AgentAttributions', sum(1 for _ in g.triples((None, PROV.wasAttributedTo, agent))))} statements"],
         ["Licence mismatch", f"graph `dcterms:license`: {', '.join(graph_licence)}; `latest/metadata.json`: {meta.get('license')}", "1 dataset description"],
-        ["`metadata.json` counts", f"v1.0.0 reports {N('MetaObjects', meta['statistics']['objects'])} objects; the v1.0.0 graph has "
+        ["`metadata.json` counts (published v1.0.0)", f"v1.0.0 reports {N('MetaObjects', meta['statistics']['objects'])} objects; the v1.0.0 graph has "
          f"{N('ReleaseObjects', rel_objects)} (the count includes the {N('Monuments', len(mons))} monuments, which are also `crm:E22`)", "1 file"],
-        ["`metadata.json` checksum", "file(s) in `latest/` whose SHA-256 differs from `checksums.sha256`: " + (", ".join(bad_sums) or "none"),
+        ["`metadata.json` checksum (published v1.0.0)", "the file was edited after its checksum was written; file(s) in `latest/` whose SHA-256 differs from `checksums.sha256`: " + (", ".join(bad_sums) or "none"),
          f"{N('BadChecksums', len(bad_sums))} file(s)"],
         ["Non-resolving IRIs", f"instance IRIs use `{RES}`; {resolve}",
          f"{N('ResIris', len(res_iris))} IRIs in {N('ResTriples', res_triples)} triples"],
@@ -639,16 +662,9 @@ def main() -> int:
          "description mentions renovation, restoration, rebuilding or repair (keyword check, not a manual audit)",
          f"{N('DestructionRenovation', len(reno_destr))} of {N('DestructionEvents', len(destr))} destruction events"],
         ["Object typing (keyword rules)", "objects are typed by keyword rules; not evaluated against a manual sample", f"{N('Objects', len(objects))} objects"],
-        ["Deity tradition rule", "a deity takes the tradition(s) of the first monument that names it",
-         f"{N('DeityTraditionStatements', len(deity_trad))} statements; {N('DeitiesConflicting', len(conflicting))} deities are named by monuments with different traditions"],
         ["Materials as text (found while compiling)", "the builder writes object materials as text on `crm:P45_consists_of`, where "
          "CIDOC-CRM expects a `crm:E57_Material`; the current export has no materials, so it does not show yet",
          f"{N('MaterialLiterals', p45_literals)} statements now"],
-        ["`crm:P44_has_condition` target (found while compiling)", "the monument's `crm:P44_has_condition` points to the condition "
-         "assessment (`crm:E14`); CIDOC-CRM expects the condition state (`crm:E3`)",
-         f"{N('ConditionTargetWrong', sum(1 for _, o_ in g.subject_objects(CRM.P44_has_condition) if o_ in typed[CRM.E14_Condition_Assessment]))} statements"],
-        ["Monument descriptions not in the graph (found while compiling)", "`description_en` / `description_ne` are not written to the graph",
-         f"{N('DescriptionsNotWritten', sum(1 for m_ in mons if m_['description_en'].strip()))} English descriptions"],
     ])
 
     # ── write ────────────────────────────────────────────────────────────────────────────────────────────────────
