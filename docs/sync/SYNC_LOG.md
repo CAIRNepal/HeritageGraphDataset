@@ -586,3 +586,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - **NWK0410:** `owl:sameAs` kept; record A is an empty duplicate of record B (see `SOURCE_ISSUES.md`).
 - **Deity traditions:** a deity takes the tradition(s) of the first monument that names it. Not changed; listed for later
   in `SYNC_PLAN.md` ("Not part of the sync").
+
+## F1: provenance: AI-agent attribution removed; DANAM pages attributed to DANAM; construction by the pipeline software on behalf of CAIR-Nepal
+
+- Test: `tests/test_fixes.py::test_f1_provenance_danam_source_and_pipeline_software`.
+- Triples: 224,782 → **226,436**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Removed the 'Antigravity AI Agent (DeepMind)' agent and its 12,259 prov:wasAttributedTo statements (5,098 events, 7,160 objects, the dataset). Each DANAM report page (and the DANAM site) is a prov:Entity prov:wasAttributedTo DANAM, a prov:Organization labelled as the site names itself ('Digital Archive of Nepalese Arts and Monuments (DANAM)'; comment: database of the Nepal Heritage Documentation Project, Heidelberg). Monuments, events and objects are prov:wasDerivedFrom their monument's page (events and objects newly). The construction activity prov:wasAssociatedWith a prov:SoftwareAgent (schema:codeRepository the GitHub repo, schema:softwareVersion the git commit of the build, '-dirty' if tracked files are modified), which prov:actedOnBehalfOf CAIR-Nepal. The dataset is attributed to CAIR-Nepal only.
