@@ -84,3 +84,16 @@ def test_f6_every_listed_id_has_a_raw_file_and_seven_fetches_failed():
     assert ids == files
     failed = [f for f in files if json.load(open(os.path.join(raw, f + ".json"), encoding="utf-8"))["status"] != "ok"]
     assert len(failed) == 7
+
+
+def test_f7_metadata_counts_distinct_objects_and_checksums_match(graph, tmp_path):
+    """A scratch release (tmp_path, never releases/ or latest/): objects = distinct object nodes, not monuments too;
+    every file matches checksums.sha256. The licence field is not changed here (decision pending)."""
+    import json
+    import publish_release
+    rel, latest = publish_release.create_release("v0.0.0-test", graph=graph, base_dir=str(tmp_path))
+    meta = json.load(open(f"{rel}/metadata.json", encoding="utf-8"))
+    assert meta["statistics"]["objects"] == 7160  # 7,154 object numbers; 6 numbers are used twice, each row its own node
+    assert meta["statistics"]["monuments"] == 1652
+    assert publish_release.verify_checksums(rel) == [] and publish_release.verify_checksums(latest) == []
+    assert meta["license"] == "https://creativecommons.org/licenses/by/4.0/"

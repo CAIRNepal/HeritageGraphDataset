@@ -56,6 +56,17 @@ def compute_sha256(filepath: str) -> str:
     return h.hexdigest()
 
 
+def verify_checksums(release_dir: str) -> list[str]:
+    """Files in release_dir whose SHA-256 differs from checksums.sha256 (empty list: all match)."""
+    bad = []
+    for line in open(os.path.join(release_dir, "checksums.sha256"), encoding="utf-8"):
+        if line.strip():
+            digest, name = line.split(None, 1)
+            if compute_sha256(os.path.join(release_dir, name.strip())) != digest:
+                bad.append(name.strip())
+    return bad
+
+
 def compute_graph_stats(g: rdflib.Graph) -> dict:
     """Compute detailed dataset and entity statistics from the RDF graph."""
     print("[*] Computing graph statistics...")
@@ -72,16 +83,19 @@ def compute_graph_stats(g: rdflib.Graph) -> dict:
             uri_str = str(CLASS_WRITTEN_AS[local])
         return len(set(g.subjects(RDF.type, URIRef(uri_str))))
 
+    # Objects: the nodes linked to a monument (housed in it, or part of it). Monuments are crm:E22_Human-Made_Object
+    # too, so counting that class would include them.
+    objs = set(g.subjects(URIRef("https://w3id.org/heritagegraph-nepal/vocab#isObjectOf"), None)) | \
+           set(g.subjects(URIRef(f"{crm_ns}P46i_forms_part_of"), None))
+
     def count_plain_objects() -> int:
         """Objects with no class more specific than crm:E22_Human-Made_Object (ontology_class HumanMadeObject)."""
         specific = {URIRef(hg_ns + c) for c in ("Murti", "IconographicObject", "ArchitecturalElement", "Paubha")}
-        objs = set(g.subjects(URIRef("https://w3id.org/heritagegraph-nepal/vocab#isObjectOf"), None)) | \
-               set(g.subjects(URIRef(f"{crm_ns}P46i_forms_part_of"), None))
         return sum(1 for o in objs if not specific & set(g.objects(o, RDF.type)))
 
     monuments_count = count_class(f"{hg_ns}ArchitecturalStructure")
     events_count = count_class(f"{crm_ns}E5_Event")
-    objects_count = count_class(f"{crm_ns}E22_Human-Made_Object")
+    objects_count = len(objs)
     places_count = count_class(f"{hg_ns}Place") or count_class("https://schema.org/Place")  # crm:E53_Place
     deities_count = count_class(f"{hg_ns}Deity")
     geometries_count = count_class("http://www.opengis.net/ont/geosparql#Geometry")
@@ -320,6 +334,9 @@ def create_release(
     with open(checksums_dest, "w", encoding="utf-8") as f:
         f.write("\n".join(checksum_lines) + "\n")
     print(f"[+] Wrote SHA-256 checksums: {checksums_dest}")
+    bad = verify_checksums(release_dir)
+    if bad:
+        raise RuntimeError(f"checksums.sha256 does not match: {', '.join(bad)}")
 
     # Step 8: Update latest/
     if update_latest:
