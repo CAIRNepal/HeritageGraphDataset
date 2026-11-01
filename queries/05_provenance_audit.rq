@@ -1,25 +1,32 @@
-# Query 5: Full Provenance Audit via W3C PROV-O and Dublin Core
-# Tracing facts to the software agent, the organization (CAIR-Nepal), and DANAM URLs
+# Query 5: Provenance audit via W3C PROV-O
+# For each event: the DANAM report page it is derived from, the organisation that page is attributed to (DANAM), and the
+# software that built the graph (with its repository and commit), acting on behalf of CAIR-Nepal.
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX hg: <https://cair-nepal.org/heritagegraph/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
 
-SELECT ?monumentName ?eventName ?agentName ?organizationName ?danamReportURL ?primarySource WHERE {
+SELECT ?monumentName ?eventName ?sourcePage ?sourceName ?softwareName ?softwareRepository ?softwareCommit ?responsibleOrganization WHERE {
     ?monument a hg:ArchitecturalStructure ;
               rdfs:label ?monumentName ;
-              prov:wasDerivedFrom ?danamReportURL ;
               crm:P12i_was_present_at ?event .
-    
+
     ?event rdfs:label ?eventName ;
-           prov:wasAttributedTo ?agent .
-    
-    ?agent rdfs:label ?agentName ;
-           prov:actedOnBehalfOf ?org .
-    
-    ?org rdfs:label ?organizationName .
-    
-    OPTIONAL { ?event prov:hadPrimarySource ?primarySource }
+           prov:wasDerivedFrom ?sourcePage ;
+           prov:wasGeneratedBy ?activity .
+
+    ?sourcePage prov:wasAttributedTo ?source .
+    ?source a prov:Organization ;
+            rdfs:label ?sourceName .
+
+    ?activity prov:wasAssociatedWith ?software .
+    ?software a prov:SoftwareAgent ;
+              rdfs:label ?softwareName ;
+              schema:codeRepository ?softwareRepository ;
+              prov:actedOnBehalfOf ?org .
+    ?org rdfs:label ?responsibleOrganization .
+    OPTIONAL { ?software schema:softwareVersion ?softwareCommit }
 }
+ORDER BY ?monumentName ?eventName
 LIMIT 25

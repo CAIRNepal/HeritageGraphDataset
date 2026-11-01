@@ -586,3 +586,105 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - **NWK0410:** `owl:sameAs` kept; record A is an empty duplicate of record B (see `SOURCE_ISSUES.md`).
 - **Deity traditions:** a deity takes the tradition(s) of the first monument that names it. Not changed; listed for later
   in `SYNC_PLAN.md` ("Not part of the sync").
+
+## F1: provenance: AI-agent attribution removed; DANAM pages attributed to DANAM; construction by the pipeline software on behalf of CAIR-Nepal
+
+- Test: `tests/test_fixes.py::test_f1_provenance_danam_source_and_pipeline_software`.
+- Triples: 224,782 → **226,436**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Removed the 'Antigravity AI Agent (DeepMind)' agent and its 12,259 prov:wasAttributedTo statements (5,098 events, 7,160 objects, the dataset). Each DANAM report page (and the DANAM site) is a prov:Entity prov:wasAttributedTo DANAM, a prov:Organization labelled as the site names itself ('Digital Archive of Nepalese Arts and Monuments (DANAM)'; comment: database of the Nepal Heritage Documentation Project, Heidelberg). Monuments, events and objects are prov:wasDerivedFrom their monument's page (events and objects newly). The construction activity prov:wasAssociatedWith a prov:SoftwareAgent (schema:codeRepository the GitHub repo, schema:softwareVersion the git commit of the build, '-dirty' if tracked files are modified), which prov:actedOnBehalfOf CAIR-Nepal. The dataset is attributed to CAIR-Nepal only.
+
+## F3: crm:P44_has_condition points to the crm:E3_Condition_State, not the crm:E14_Condition_Assessment
+
+- Test: `tests/test_fixes.py::test_f3_p44_points_to_the_condition_state`.
+- Triples: 226,436 → **226,436**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- 1,577 statements retargeted from assessment/<id> to condition_state/<id> (P44 has range crm:E3_Condition_State). The monument keeps crm:P34i_was_assessed_by the assessment, and the assessment crm:P35_has_identified the same state.
+
+## F4: deities get no religious tradition from monuments
+
+- Test: `tests/test_fixes.py::test_f4_deities_get_no_tradition_from_monuments`.
+- Triples: 226,436 → **226,055**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Removes 381 hg:hasReligiousTradition statements on 355 deities. They came from the first monument naming the deity, so 43 deities named by monuments of different traditions got whichever came first. DANAM states traditions per monument only, so no deity gets one. Monuments keep theirs (1,162 monuments, 1,373 statements). Resolves the open item 'Deity traditions' in Decisions (2026-11-01) and SYNC_PLAN.md.
+
+## F5: monument descriptions as dcterms:description @en / @ne, unchanged from DANAM
+
+- Test: `tests/test_fixes.py::test_f5_monument_descriptions_unchanged_from_danam`.
+- Triples: 226,055 → **229,102**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Adds 1,576 English and 1,471 Nepali descriptions (3,047 statements). The text is written exactly as in DANAM's record (staging/monuments.csv is identical to the raw JSON for both columns; checked for all 1,652 monuments); empty cells give nothing. No shape constrains dcterms:description.
+
+## F6: source funnel: no ID is missing; 3 blank rows in resourceids.csv; 7 failed fetches
+
+- Test: `tests/test_fixes.py::test_f6_every_listed_id_has_a_raw_file_and_seven_fetches_failed`.
+- Triples: 229,102 → **229,102**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- No graph change. resourceids.csv has 1,947 rows; rows 13-15 (file lines 14-16) are empty (""), so there are 1,944 distinct IDs, not 1,945 (the paper-facts script counted the blank as an ID). All 1,944 IDs have a raw JSON file. 7 of them record a failed fetch on 2026-03-16 (status 'error'; 4 page-load timeouts of 30 s, 3 connection resets; also in data_collection/scraper.log) and were not retried, which gives the 1,937 parsed records. Not re-crawled. tools/paper/stats.py reports the blank rows, IDs without a raw file (0) and the failed fetches in the funnel.
+
+## F7: metadata.json: objects = distinct object nodes; checksums verified after writing
+
+- Test: `tests/test_fixes.py::test_f7_metadata_counts_distinct_objects_and_checksums_match`.
+- Triples: 229,102 → **229,102**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- No graph change. publish_release.py counted every crm:E22_Human-Made_Object as an object, which includes the 1,652 monuments (v1.0.0: 8,806 = 7,154 + 1,652). It now counts the nodes linked to a monument (hgn:isObjectOf or crm:P46i_forms_part_of): 7,160 (7,154 DANAM object numbers; 6 numbers are used for two different objects and each row has its own node, R1). After writing checksums.sha256 the release step re-hashes every file and stops if one differs. Checked with a scratch release (test, tmp directory). The published v1.0.0 files in releases/v1.0.0/ and latest/ are not regenerated (never overwritten): their metadata.json still fails its checksum (the file was edited after the checksum was written; the three data files match) and still reports 8,806. Licence left alone (decision pending): graph dcterms:license CC BY-SA 4.0, metadata.json CC BY 4.0.
+
+## F2: event typing: destruction and modification by the event name (crm:E11_Modification); rules in event_typing.py
+
+- Test: `tests/test_fixes.py::test_f2_event_typing_rules_on_real_events, tests/test_fixes.py::test_f2_destruction_only_when_the_name_says_so`.
+- Triples: 229,102 → **229,145**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): **changed:** `02_historical_timeline.rq` 5313 → 5356
+- Query rows changed, accepted: query 02 lists one row per event and class: the 43 events with two classes (27 destruction + modification, 16 modification + transfer) add one row each (5,313 -> 5,356)
+- All event-typing rules moved to event_typing.py (13 rules, documented there; the builder and its skill copy import it). Destruction only when the event name has a damage word; renovation/restoration/rebuilding/repair in the name -> crm:E11_Modification (ontology 1.0.1 has no renovation class; crm:E11 is the CIDOC-CRM superclass of crm:E12_Production); names with both -> both classes (27); names with a repair word and an endowment/donation word -> crm:E11 and crm:E10 (16); ritual/worship/pūjā in the name -> ritual event, after a name check for endowment words. A repair word only in the description keeps the earlier result (production), so those 128 events keep their class unless another F2 decision applies. Per class (before -> after; two-class events count in both): E6 695 -> 265, E11 0 -> 1,280, E12 1,808 -> 1,074, E10 284 -> 272, ritual 85 -> 100, condition assessment 15 -> 18, historical 1,996 -> 1,917, consecration 128 and enshrinement 87 unchanged. 1,435 of 5,098 events change. Listed, not changed: 'grant' matches 'granthakūṭa' (a temple style), so 'Installing door to build new temple' is a transfer of custody; 'grant' occurs in 47 events and types 40 as transfers. Pre-change list: docs/fixes/F2_destruction_events_before.md. publish_release.py counts Modification; tests A2, A3, A5, A6 and S1 updated to the new counts.
+
+## F8: release script refuses to build from a working tree with uncommitted changes
+
+- Test: `tests/test_fixes.py::test_release_refuses_a_dirty_working_tree`.
+- Triples: 229,145 → **229,145**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- No graph change. publish_release.create_release (used by publish_release.py and build_kg.py --release) first runs git status on tracked files and stops with an error, before writing anything, if any tracked file has uncommitted changes; untracked files (e.g. the paper draft) do not count. The release's pipeline commit (F1) therefore always names code that exists. The F7 test stubs the check, since tests run on uncommitted work.
+
+## F9: event typing: 'grant' no longer matches 'granth…' (granthakūṭa, a temple style)
+
+- Test: `tests/test_fixes.py::test_f9_grant_does_not_match_granthakuta`.
+- Triples: 229,145 → **229,145**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- 2 events move: 'Installing door to build new temple' transfer of custody -> production, 'Falling down a cakra' transfer of custody -> historical event. E10 272 -> 270, E12 1,074 -> 1,075. The proposed 'guṭhī' and 'donation' transfer words were not added (they would move 381 events, many through the description); donations and guṭhī formations are handled separately.
+
+## F10: event typing: donations as crm:E8_Acquisition and guṭhī formations as crm:E66_Formation, by the event name
+
+- Test: `tests/test_fixes.py::test_f10_donations_and_guthi_formations_on_real_events, tests/test_fixes.py::test_f10_formation_pattern_accepts_decomposed_letters`.
+- Triples: 229,145 → **229,142**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): **changed:** `02_historical_timeline.rq` 5356 → 5353
+- Query rows changed, accepted: query 02 lists one row per event and class; events with two classes add one row each
+- Name-only rules (event_typing.py, now 18 rules): 'donation', 'donated', 'offering of' -> crm:E8_Acquisition (a donation transfers ownership, not custody); formation/establish…/founded/formed … guṭhī/guṭhi/guthi -> crm:E66_Formation (composed or decomposed letters). The donation rule runs before the consecration and enshrinement rules, which read the description (19 events move from them to E8, e.g. 'Donation of a Bell' whose description says it is installed). Combined names: repair + donation -> E11 + E8 (13); repair + guṭhī formation -> E11 + E66 (3); repair + endowment/grant (not donation) -> E11 + E10 (9, was 16); construction + guṭhī formation -> E12 + E66 (7). 784 events change class. Per class (F9 -> F10; two-class events count in both): E8 0 -> 750, E66 0 -> 34, historical 1,918 -> 1,310, E12 1,075 -> 981, E10 270 -> 245, consecration 128 -> 122, enshrinement 87 -> 74, ritual 100 -> 80, condition assessment 18 -> 16; E6 265 and E11 1,280 unchanged. Not caught: 'Renovation, new construction, land endowment and guṭhī formation' (the word order 'guṭhī formation' is not matched) stays E11 + E10. CIDOC-CRM terms only: SHACL 200, undeclared 0. Tests A2, A3, A6, S1 and the F2 examples updated (rule numbers and counts).

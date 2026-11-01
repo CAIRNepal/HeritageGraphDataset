@@ -56,6 +56,27 @@ def compute_sha256(filepath: str) -> str:
     return h.hexdigest()
 
 
+def dirty_files(repo_dir: str | None = None) -> list[str]:
+    """Tracked files with uncommitted changes in the git checkout that holds this script (untracked files do not count).
+    A release must be reproducible from a commit, so create_release refuses to run while this list is not empty."""
+    import subprocess
+    repo_dir = repo_dir or os.path.dirname(os.path.abspath(__file__))
+    out = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=repo_dir,
+                         capture_output=True, text=True, check=True).stdout
+    return [line[3:] for line in out.splitlines() if line.strip()]
+
+
+def verify_checksums(release_dir: str) -> list[str]:
+    """Files in release_dir whose SHA-256 differs from checksums.sha256 (empty list: all match)."""
+    bad = []
+    for line in open(os.path.join(release_dir, "checksums.sha256"), encoding="utf-8"):
+        if line.strip():
+            digest, name = line.split(None, 1)
+            if compute_sha256(os.path.join(release_dir, name.strip())) != digest:
+                bad.append(name.strip())
+    return bad
+
+
 def compute_graph_stats(g: rdflib.Graph) -> dict:
     """Compute detailed dataset and entity statistics from the RDF graph."""
     print("[*] Computing graph statistics...")
@@ -72,16 +93,19 @@ def compute_graph_stats(g: rdflib.Graph) -> dict:
             uri_str = str(CLASS_WRITTEN_AS[local])
         return len(set(g.subjects(RDF.type, URIRef(uri_str))))
 
+    # Objects: the nodes linked to a monument (housed in it, or part of it). Monuments are crm:E22_Human-Made_Object
+    # too, so counting that class would include them.
+    objs = set(g.subjects(URIRef("https://w3id.org/heritagegraph-nepal/vocab#isObjectOf"), None)) | \
+           set(g.subjects(URIRef(f"{crm_ns}P46i_forms_part_of"), None))
+
     def count_plain_objects() -> int:
         """Objects with no class more specific than crm:E22_Human-Made_Object (ontology_class HumanMadeObject)."""
         specific = {URIRef(hg_ns + c) for c in ("Murti", "IconographicObject", "ArchitecturalElement", "Paubha")}
-        objs = set(g.subjects(URIRef("https://w3id.org/heritagegraph-nepal/vocab#isObjectOf"), None)) | \
-               set(g.subjects(URIRef(f"{crm_ns}P46i_forms_part_of"), None))
         return sum(1 for o in objs if not specific & set(g.objects(o, RDF.type)))
 
     monuments_count = count_class(f"{hg_ns}ArchitecturalStructure")
     events_count = count_class(f"{crm_ns}E5_Event")
-    objects_count = count_class(f"{crm_ns}E22_Human-Made_Object")
+    objects_count = len(objs)
     places_count = count_class(f"{hg_ns}Place") or count_class("https://schema.org/Place")  # crm:E53_Place
     deities_count = count_class(f"{hg_ns}Deity")
     geometries_count = count_class("http://www.opengis.net/ont/geosparql#Geometry")
@@ -92,6 +116,9 @@ def compute_graph_stats(g: rdflib.Graph) -> dict:
         "HistoricalEvent": count_class(f"{hg_ns}HistoricalEvent"),
         "ConditionAssessment": count_class(f"{hg_ns}ConditionAssessment"),
         "DestructionEvent": count_class(f"{hg_ns}DestructionEvent"),
+        "Modification": count_class(f"{hg_ns}Modification"),  # crm:E11_Modification (renovation, repair …)
+        "Acquisition": count_class(f"{hg_ns}Acquisition"),  # crm:E8_Acquisition (donation)
+        "Formation": count_class(f"{hg_ns}Formation"),  # crm:E66_Formation (guṭhī formation)
         "TransferOfCustody": count_class(f"{hg_ns}TransferOfCustody"),
         "Consecration": count_class(f"{hg_ns}Consecration"),
         "Enshrinement": count_class(f"{hg_ns}Enshrinement"),
@@ -142,7 +169,11 @@ def create_release(
     base_dir: str = ".",
     notes: str = "",
 ) -> tuple[str, str]:
-    """Publish a new dataset release and update latest/."""
+    """Publish a new dataset release and update latest/. Refuses to run from a working tree with uncommitted changes."""
+    dirty = dirty_files()
+    if dirty:
+        raise RuntimeError("refusing to build a release from a working tree with uncommitted changes "
+                           f"(commit or stash them first): {', '.join(dirty)}")
     # Ensure version follows vX.Y.Z
     if not version.startswith("v"):
         version = f"v{version}"
@@ -320,6 +351,9 @@ def create_release(
     with open(checksums_dest, "w", encoding="utf-8") as f:
         f.write("\n".join(checksum_lines) + "\n")
     print(f"[+] Wrote SHA-256 checksums: {checksums_dest}")
+    bad = verify_checksums(release_dir)
+    if bad:
+        raise RuntimeError(f"checksums.sha256 does not match: {', '.join(bad)}")
 
     # Step 8: Update latest/
     if update_latest:
