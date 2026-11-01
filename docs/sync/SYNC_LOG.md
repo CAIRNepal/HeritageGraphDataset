@@ -667,3 +667,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 21.
 - Queries (rows without LIMIT): unchanged.
 - No graph change. publish_release.create_release (used by publish_release.py and build_kg.py --release) first runs git status on tracked files and stops with an error, before writing anything, if any tracked file has uncommitted changes; untracked files (e.g. the paper draft) do not count. The release's pipeline commit (F1) therefore always names code that exists. The F7 test stubs the check, since tests run on uncommitted work.
+
+## F9: event typing: 'grant' no longer matches 'granth…' (granthakūṭa, a temple style)
+
+- Test: `tests/test_fixes.py::test_f9_grant_does_not_match_granthakuta`.
+- Triples: 229,145 → **229,145**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- 2 events move: 'Installing door to build new temple' transfer of custody -> production, 'Falling down a cakra' transfer of custody -> historical event. E10 272 -> 270, E12 1,074 -> 1,075. The proposed 'guṭhī' and 'donation' transfer words were not added (they would move 381 events, many through the description); donations and guṭhī formations are handled separately.

@@ -18,7 +18,8 @@ below (RULES). Matching is case-insensitive and each keyword matches at the star
                            crm:E11_Modification and crm:E10_Transfer_of_Custody.
   6. Modification          name: REPAIR (renovat…, restor…, rebuil…, reconstruct…, repair…, refurbish…, renew…, retrofit…)
                            -> crm:E11_Modification
-  7. Transfer of custody   name: TRANSFER (endow…, guṭhi, guthi, handed, transfer, custody, allocated, grant…). Comes before
+  7. Transfer of custody   name: TRANSFER (endow…, guṭhi, guthi, handed, transfer, custody, allocated, grant… but not
+                           granth…: granthakūṭa is a temple style). Comes before
                            rule 8 so that 'Endowment of lands for daily worship' stays a transfer.
   8. Ritual event          name: ritual…, worship…, pūjā, puja
   9. Transfer of custody   text: TRANSFER
@@ -32,14 +33,13 @@ Rules 1, 2 and 9-13 are the builder's earlier rules, unchanged: a repair word on
 production (rule 11), as before. Rules 3-8 are fix F2 (docs/sync/SYNC_LOG.md); they replace the earlier destruction rule,
 which read the description too and typed renovations as destruction.
 
-Known limitation (listed, not changed): 'grant' also matches 'granthakūṭa' (a temple style), which makes
-'Installing door to build new temple' a transfer of custody.
+'grant' does not match 'granth…' (granthakūṭa, a temple style; fixed after F2).
 """
 import re
 
 DAMAGE = (r"destr|dismantl|collaps|burnt|burn|demolish|damage|devastat|washed away|earthquake|flood|fire|blaze")
 REPAIR = r"renovat|restor|rebuil|reconstruct|repair|refurbish|renew|retrofit"
-TRANSFER = r"endow|guṭhi|guthi|handed|transfer|custody|allocated|grant"
+TRANSFER = r"endow|guṭhi|guthi|handed|transfer|custody|allocated|grant(?!h)"
 
 RULES = [  # (class name(s), regex, what is searched: "name" or "text" = name + description)
     (("Consecration",), r"prāṇapratiṣṭhā|pranapratistha|consecrat", "text"),

@@ -141,7 +141,7 @@ def test_f2_destruction_only_when_the_name_says_so(graph):
     assert len(destr) == 265
     assert all(re.search(rf"\b({DAMAGE})", str(graph.value(e, RDFS.label)).lower()) for e in destr)
     assert len(set(graph.subjects(RDF.type, CRM["E11_Modification"]))) == 1280
-    assert len(set(graph.subjects(RDF.type, CRM["E12_Production"]))) == 1074
+    assert len(set(graph.subjects(RDF.type, CRM["E12_Production"]))) == 1075  # 1,074 at F2; F9 +1
     both = destr & set(graph.subjects(RDF.type, CRM["E11_Modification"]))
     assert len(both) == 27
 
@@ -166,3 +166,14 @@ def test_release_refuses_a_dirty_working_tree(graph, tmp_path, monkeypatch):
     with pytest.raises(RuntimeError, match="uncommitted changes"):
         publish_release.create_release("v0.0.0-test", graph=graph, base_dir=str(out))
     assert not os.path.exists(out)
+
+
+def test_f9_grant_does_not_match_granthakuta():
+    import csv
+    from conftest import EVENTS
+    from event_typing import classify_event
+    rows = {f"{r['resource_id']}_{r['event_index']}": r for r in csv.DictReader(open(EVENTS, encoding="utf-8-sig"))}
+    r = rows["0077a8d9-2e9d-4626-8dd0-04272b780ea9_5"]  # '… a door installed for constructing a śikhara-style (granthakūṭa) temple'
+    assert r["event_name"].strip() == "Installing door to build new temple" and "granthakūṭa" in r["event_description"]
+    assert classify_event(r["event_name"].strip(), r["event_description"].strip()) == ("Production",)
+    assert classify_event("Land grant", "") == ("TransferOfCustody",)
