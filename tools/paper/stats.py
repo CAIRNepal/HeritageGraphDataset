@@ -129,8 +129,8 @@ MONUMENT_FIELDS = {
     "coordinates_lat": "`geo:lat`; with the longitude, `geosparql:hasGeometry` → WKT point",
     "coordinates_lon": "`geo:long`",
     "coordinates_geojson": "not used (same point as lat/lon)",
-    "description_en": "not used (source text for event extraction; not written to the graph)",
-    "description_ne": "not used",
+    "description_en": "`dcterms:description @en`, unchanged",
+    "description_ne": "`dcterms:description @ne`, unchanged",
     "num_storeys": "`hgn:numberOfStoreys` (whole numbers only)",
     "monument_length": "not used", "monument_depth": "not used", "monument_height": "not used", "monument_diameter": "not used",
     "monument_shape": "`crm:P2_has_type` → `crm:E55_Type` in `res:scheme/shape`",
@@ -407,6 +407,46 @@ def main() -> int:
     province = Counter((("Province " + m["province"].strip()) if m["province"].strip() else "not stated") for m in mons)
     dist("Province (as DANAM states it)", "Province", province, nM)
 
+    # event and object classes (event_typing.py / classify_object); an event with two classes counts under both
+    ev_classes = [("crm:E11_Modification", CRM.E11_Modification), ("crm:E12_Production", CRM.E12_Production),
+                  ("crm:E8_Acquisition", CRM.E8_Acquisition), ("crm:E6_Destruction", CRM.E6_Destruction),
+                  ("crm:E10_Transfer_of_Custody", CRM.E10_Transfer_of_Custody), ("crm:E66_Formation", CRM.E66_Formation),
+                  ("hg:Consecration", HG.Consecration), ("hg:Enshrinement", HG.Enshrinement),
+                  ("hg:RitualEvent (all)", HG.RitualEvent), ("crm:E14_Condition_Assessment", CRM.E14_Condition_Assessment),
+                  ("hg:HistoricalEvent", HG.HistoricalEvent)]
+    L += ["", f"**Event classes** (of the {N('Events', len(events))} events; an event with two classes counts under both)", ""]
+    L += md_table(["class", "events"], [[c, N(f"Event Class {c}", len(typed[u] & events))]
+                                        for c, u in ev_classes])
+    pairs = [("E6 and E11", CRM.E6_Destruction, CRM.E11_Modification), ("E11 and E8", CRM.E11_Modification, CRM.E8_Acquisition),
+             ("E11 and E66", CRM.E11_Modification, CRM.E66_Formation), ("E11 and E10", CRM.E11_Modification, CRM.E10_Transfer_of_Custody),
+             ("E12 and E66", CRM.E12_Production, CRM.E66_Formation)]
+    L += ["", "**Events with two classes** (the event name reports two happenings)", ""]
+    L += md_table(["classes", "events"], [[k, N(f"Two Classes {k}", len(typed[a_] & typed[b_] & events))] for k, a_, b_ in pairs])
+    specific = {HG.Murti, HG.Paubha, HG.IconographicObject, HG.ArchitecturalElement}
+    ob_classes = [("hg:IconographicObject (all)", typed[HG.IconographicObject] & objects), ("hg:Murti", typed[HG.Murti] & objects),
+                  ("hg:Paubha", typed[HG.Paubha] & objects), ("hg:ArchitecturalElement", typed[HG.ArchitecturalElement] & objects),
+                  ("crm:E22_Human-Made_Object only", {o for o in objects if not specific & set(g.objects(o, RDF.type))})]
+    L += ["", f"**Object classes** (of the {N('Objects', len(objects))} objects)", ""]
+    L += md_table(["class", "objects"], [[c, N(f"Object Class {c}", len(v))] for c, v in ob_classes])
+
+    # condition by monument type (all values DANAM lists, hgn:conditionStatus)
+    statuses = ["Good", "Restored", "Damaged", "Ruined"]
+    L += ["", "**Condition by monument type** (every value DANAM lists, `hgn:conditionStatus`; a monument can have more than one, "
+          "so a row can add up to more than 100 %)", ""]
+    rows = []
+    for label, cls in (("Temple", HG.Temple), ("Pati", HG.Pati), ("BuddhistMonument", HGN.BuddhistMonument),
+                       ("DhungeDhara", HG.DhungeDhara), ("Sattal", HG.Sattal), ("Chaitya", HG.Chaitya)):
+        ms = typed[cls] & monuments
+        vals = {m_: {str(o) for o in g.objects(m_, HGN.conditionStatus)} for m_ in ms}
+        row = [label, N(f"Cond {label} N", len(ms))]
+        for st_ in statuses:
+            k = sum(1 for v in vals.values() if st_ in v)
+            row.append(f"{N(f'Cond {label} {st_}', k)} ({N(f'Cond {label} {st_} Pct', pct(k, len(ms)))})")
+        k = sum(1 for v in vals.values() if not v)
+        row.append(f"{N(f'Cond {label} None', k)} ({N(f'Cond {label} None Pct', pct(k, len(ms)))})")
+        rows.append(row)
+    L += md_table(["type", "monuments"] + statuses + ["no status"], rows)
+
     L += ["", "**File sizes** (this build, scratch directory)", ""]
     L += md_table(["file", "MB"], [[os.path.basename(p), N(f"Size {k}", os.path.getsize(p) / 1e6) + " MB"]
                                     for k, p in (("ttl", files["turtle"]), ("jsonld", files["json-ld"]), ("nt", files["nt"]), ("ntgz", files["nt.gz"]))])
@@ -672,9 +712,7 @@ def main() -> int:
         ["Missing event dates", "the event tables carry no dates; no event has a date, period or time-span",
          f"{N('UndatedEvents', len(undated))} of {N('Events', len(events))} events"],
         ["Event typing (keyword rules)", "events are still typed by keyword rules (`event_typing.py`), not checked against a "
-         "manual sample; e.g. the keyword 'grant' also matches 'granthakūṭa' (a temple style), so 'Installing door to build new "
-         "temple' is a transfer of custody",
-         f"{N('Events', len(events))} events; {N('GrantMatches', sum(1 for e in events if re.search(r'\bgranth', ' '.join(str(o) for p_ in (RDFS.label, DCTERMS.description) for o in g.objects(e, p_)).lower())))} events contain 'granth…'"],
+         "manual sample", f"{N('Events', len(events))} events"],
         ["Object typing (keyword rules)", "objects are typed by keyword rules; not evaluated against a manual sample", f"{N('Objects', len(objects))} objects"],
         ["Materials as text (found while compiling)", "the builder writes object materials as text on `crm:P45_consists_of`, where "
          "CIDOC-CRM expects a `crm:E57_Material`; the current export has no materials, so it does not show yet",
