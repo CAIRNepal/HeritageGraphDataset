@@ -97,3 +97,49 @@ def test_f7_metadata_counts_distinct_objects_and_checksums_match(graph, tmp_path
     assert meta["statistics"]["monuments"] == 1652
     assert publish_release.verify_checksums(rel) == [] and publish_release.verify_checksums(latest) == []
     assert meta["license"] == "https://creativecommons.org/licenses/by/4.0/"
+
+
+# F2: one real DANAM event per rule of event_typing.py: (event key, name, expected classes, rule number)
+F2_EXAMPLES = [
+    ("02509f50-336d-423f-ac40-60dffc2d905c_4", "Installation and consecration of a statue of Dīpaṅkara", ("Consecration",), 1),
+    ("0316e917-5197-44e7-b865-37ba1be3397b_1", "Addition of a statue", ("Enshrinement",), 2),
+    ("72fbb5ec-849f-482d-8003-7206e8ede0a6_1", "Collapse and reconstruction", ("DestructionEvent", "Modification"), 3),
+    ("017a4a8f-b183-4e57-9ff9-54ae1145378f_1", "Collapse", ("DestructionEvent",), 4),
+    ("0077a8d9-2e9d-4626-8dd0-04272b780ea9_16", "Damage by earthquake", ("DestructionEvent",), 4),
+    ("293c1896-a3bb-454a-8fe9-b56ebfadc51c_2", "Renovation and land endowment", ("Modification", "TransferOfCustody"), 5),
+    # the description says it followed the 1934 earthquake: background, not a destruction
+    ("5bfb6d40-eb4c-11e9-b125-0242ac130002_1", "Rebuilding of the temple", ("Modification",), 6),
+    ("02f204ae-8a02-4b50-a82c-b7551b103542_1", "Endowment of lands for daily worship", ("TransferOfCustody",), 7),
+    ("0d39368f-4f2c-4b8d-8fad-4040187b6a16_8", "Performance of pacification ritual (śāntisvasti)", ("RitualEvent",), 8),
+    ("013ba068-2100-462c-abb9-29c7a0dc6eef_0", "Construction of a phalcā", ("TransferOfCustody",), 9),  # endowment in the description
+    ("0077a8d9-2e9d-4626-8dd0-04272b780ea9_6", "Offering pinnacle to newly constructed two storied temple", ("Production",), 11),
+    ("34697056-9775-466d-b46d-c83f874b93d3_0", "Unknown event", ("ConditionAssessment",), 12),
+    # only the description mentions damage (a flood): not a destruction
+    ("e2a4580b-0699-44bf-b0b3-561da8d9fa93_4", "Cleaning of the hiti", ("HistoricalEvent",), 13),
+]
+
+
+def test_f2_event_typing_rules_on_real_events(graph):
+    import csv, unicodedata
+    from conftest import EVENTS
+    from event_typing import classify_event_rule
+    rows = {f"{r['resource_id']}_{r['event_index']}": r for r in csv.DictReader(open(EVENTS, encoding="utf-8-sig"))}
+    for key, name, classes, rule in F2_EXAMPLES:
+        r = rows[key]
+        assert unicodedata.normalize("NFC", r["event_name"].strip()) == unicodedata.normalize("NFC", name)
+        assert classify_event_rule(r["event_name"].strip(), r["event_description"].strip()) == (classes, rule), name
+    # in the graph: the mixed event has both classes
+    ev = RES["event/72fbb5ec-849f-482d-8003-7206e8ede0a6_1"]
+    assert {CRM["E6_Destruction"], CRM["E11_Modification"]} <= set(graph.objects(ev, RDF.type))
+
+
+def test_f2_destruction_only_when_the_name_says_so(graph):
+    import re
+    from event_typing import DAMAGE
+    destr = set(graph.subjects(RDF.type, CRM["E6_Destruction"]))
+    assert len(destr) == 265
+    assert all(re.search(rf"\b({DAMAGE})", str(graph.value(e, RDFS.label)).lower()) for e in destr)
+    assert len(set(graph.subjects(RDF.type, CRM["E11_Modification"]))) == 1280
+    assert len(set(graph.subjects(RDF.type, CRM["E12_Production"]))) == 1074
+    both = destr & set(graph.subjects(RDF.type, CRM["E11_Modification"]))
+    assert len(both) == 27

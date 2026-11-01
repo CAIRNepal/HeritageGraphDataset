@@ -1,6 +1,6 @@
 {
- "item": "F7",
- "triples": 229102,
+ "item": "F2",
+ "triples": 229145,
  "shacl_results": 200,
  "shacl_groups": 1,
  "undeclared": 0,
@@ -12,7 +12,7 @@
  "extension_terms": 21,
  "queries": {
   "01_monuments_by_aat_style.rq": 606,
-  "02_historical_timeline.rq": 5313,
+  "02_historical_timeline.rq": 5356,
   "03_spatial_geosparql.rq": 1626,
   "04_monument_sacred_objects.rq": 9001,
   "05_provenance_audit.rq": 5098,

@@ -39,6 +39,9 @@ from rdflib.namespace import DCAT, DCTERMS, OWL, RDF, RDFS, SKOS, VOID, XSD
 
 csv.field_size_limit(10**9)
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from event_typing import classify_event  # noqa: E402  all event-typing rules live in event_typing.py
+
 # ── Namespaces ────────────────────────────────────────────────────────────────
 HG = Namespace("https://cair-nepal.org/heritagegraph/")
 CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
@@ -92,6 +95,7 @@ CRM_CLASS_FOR = {
     "ConditionAssessment": CRM["E14_Condition_Assessment"],
     "Place": CRM["E53_Place"],
     "DestructionEvent": CRM["E6_Destruction"],
+    "Modification": CRM["E11_Modification"],  # renovation, restoration, rebuilding, repair (event_typing.py)
     "TransferOfCustody": CRM["E10_Transfer_of_Custody"],
 }
 
@@ -187,26 +191,6 @@ def slugify(text: str) -> str:
     cleaned = "".join(c for c in normalized if not unicodedata.combining(c))
     slug = re.sub(r"[^a-zA-Z0-9_\-]+", "_", cleaned).strip("_").lower()
     return slug or "unknown"
-
-
-def classify_event(name: str, desc: str) -> str:
-    """Map event description and name to CulturalHeritageOntology class."""
-    combined = f"{name} {desc}".lower()
-    if re.search(r"\b(prāṇapratiṣṭhā|pranapratistha|consecrat)", combined):
-        return "Consecration"
-    if re.search(r"\b(enshrin|install.*image|installed in.*sanctum|enshrined)", combined):
-        return "Enshrinement"
-    if re.search(r"\b(dismantl|collaps|burnt|burn|demolish|destroy|earthquake|flood|fire|damage)", combined):
-        return "DestructionEvent"
-    if re.search(r"\b(endow|guṭhi|guthi|handed|transfer|custody|allocated|grant)", combined):
-        return "TransferOfCustody"
-    if re.search(r"\b(puja|pūjā|jātrā|jatra|festival|bhajan|procession|purification|omen|blood)", combined):
-        return "RitualEvent"
-    if re.search(r"\b(built|construct|rebuil|renovat|install.*roof|install.*toraṇa|install.*door|repair|erect|found|offer.*pinnacle|offer.*gilded|restor)", combined):
-        return "Production"
-    if re.search(r"\b(assess|survey|document)", combined):
-        return "ConditionAssessment"
-    return "HistoricalEvent"
 
 
 def classify_object(name: str, otype: str) -> str:
@@ -588,20 +572,14 @@ def build_knowledge_graph(
             ev_name = r.get("event_name", "").strip() or "Historical event"
             ev_desc = r.get("event_description", "").strip()
 
-            # Classify event
-            ev_class_name = r.get("ontology_class", "").strip() or classify_event(ev_name, ev_desc)
-            g.add((ev_uri, RDF.type, hg_class(ev_class_name)))
+            # Classify event: a class given in the row, else the rules in event_typing.py (one or two classes)
+            given = [c.strip() for c in r.get("ontology_class", "").split("|") if c.strip()]
+            ev_class_names = given or classify_event(ev_name, ev_desc)
             g.add((ev_uri, RDF.type, CRM["E5_Event"]))
-            if ev_class_name == "Production":
-                g.add((ev_uri, RDF.type, CRM["E12_Production"]))
-            elif ev_class_name == "DestructionEvent":
-                g.add((ev_uri, RDF.type, CRM["E6_Destruction"]))
-            elif ev_class_name == "TransferOfCustody":
-                g.add((ev_uri, RDF.type, CRM["E10_Transfer_of_Custody"]))
-            elif ev_class_name == "ConditionAssessment":
-                g.add((ev_uri, RDF.type, CRM["E14_Condition_Assessment"]))
-            elif ev_class_name in ["RitualEvent", "Consecration", "Enshrinement"]:
-                g.add((ev_uri, RDF.type, HG.RitualEvent))
+            for ev_class_name in ev_class_names:
+                g.add((ev_uri, RDF.type, hg_class(ev_class_name)))
+                if ev_class_name in ["RitualEvent", "Consecration", "Enshrinement"]:
+                    g.add((ev_uri, RDF.type, HG.RitualEvent))
 
             g.add((ev_uri, RDFS.label, Literal(ev_name, lang="en")))
             if ev_desc:
