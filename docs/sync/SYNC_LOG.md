@@ -657,3 +657,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Queries (rows without LIMIT): **changed:** `02_historical_timeline.rq` 5313 → 5356
 - Query rows changed, accepted: query 02 lists one row per event and class: the 43 events with two classes (27 destruction + modification, 16 modification + transfer) add one row each (5,313 -> 5,356)
 - All event-typing rules moved to event_typing.py (13 rules, documented there; the builder and its skill copy import it). Destruction only when the event name has a damage word; renovation/restoration/rebuilding/repair in the name -> crm:E11_Modification (ontology 1.0.1 has no renovation class; crm:E11 is the CIDOC-CRM superclass of crm:E12_Production); names with both -> both classes (27); names with a repair word and an endowment/donation word -> crm:E11 and crm:E10 (16); ritual/worship/pūjā in the name -> ritual event, after a name check for endowment words. A repair word only in the description keeps the earlier result (production), so those 128 events keep their class unless another F2 decision applies. Per class (before -> after; two-class events count in both): E6 695 -> 265, E11 0 -> 1,280, E12 1,808 -> 1,074, E10 284 -> 272, ritual 85 -> 100, condition assessment 15 -> 18, historical 1,996 -> 1,917, consecration 128 and enshrinement 87 unchanged. 1,435 of 5,098 events change. Listed, not changed: 'grant' matches 'granthakūṭa' (a temple style), so 'Installing door to build new temple' is a transfer of custody; 'grant' occurs in 47 events and types 40 as transfers. Pre-change list: docs/fixes/F2_destruction_events_before.md. publish_release.py counts Modification; tests A2, A3, A5, A6 and S1 updated to the new counts.
+
+## F8: release script refuses to build from a working tree with uncommitted changes
+
+- Test: `tests/test_fixes.py::test_release_refuses_a_dirty_working_tree`.
+- Triples: 229,145 → **229,145**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- No graph change. publish_release.create_release (used by publish_release.py and build_kg.py --release) first runs git status on tracked files and stops with an error, before writing anything, if any tracked file has uncommitted changes; untracked files (e.g. the paper draft) do not count. The release's pipeline commit (F1) therefore always names code that exists. The F7 test stubs the check, since tests run on uncommitted work.

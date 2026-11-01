@@ -86,11 +86,12 @@ def test_f6_every_listed_id_has_a_raw_file_and_seven_fetches_failed():
     assert len(failed) == 7
 
 
-def test_f7_metadata_counts_distinct_objects_and_checksums_match(graph, tmp_path):
+def test_f7_metadata_counts_distinct_objects_and_checksums_match(graph, tmp_path, monkeypatch):
     """A scratch release (tmp_path, never releases/ or latest/): objects = distinct object nodes, not monuments too;
     every file matches checksums.sha256. The licence field is not changed here (decision pending)."""
     import json
     import publish_release
+    monkeypatch.setattr(publish_release, "dirty_files", lambda repo_dir=None: [])  # this test may run on uncommitted work
     rel, latest = publish_release.create_release("v0.0.0-test", graph=graph, base_dir=str(tmp_path))
     meta = json.load(open(f"{rel}/metadata.json", encoding="utf-8"))
     assert meta["statistics"]["objects"] == 7160  # 7,154 object numbers; 6 numbers are used twice, each row its own node
@@ -143,3 +144,25 @@ def test_f2_destruction_only_when_the_name_says_so(graph):
     assert len(set(graph.subjects(RDF.type, CRM["E12_Production"]))) == 1074
     both = destr & set(graph.subjects(RDF.type, CRM["E11_Modification"]))
     assert len(both) == 27
+
+
+def test_release_refuses_a_dirty_working_tree(graph, tmp_path, monkeypatch):
+    """dirty_files reads git: a modified tracked file counts, an untracked file does not; create_release stops before
+    writing anything while the list is not empty."""
+    import os, subprocess
+    import pytest
+    import publish_release
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    git = lambda *a: subprocess.run(["git", *a], cwd=repo, check=True, capture_output=True)
+    git("init", "-q"); git("config", "user.email", "t@example.org"); git("config", "user.name", "t")
+    (repo / "build_kg.py").write_text("a\n"); git("add", "."); git("commit", "-q", "-m", "x")
+    (repo / "notes.txt").write_text("untracked\n")
+    assert publish_release.dirty_files(str(repo)) == []
+    (repo / "build_kg.py").write_text("b\n")
+    assert publish_release.dirty_files(str(repo)) == ["build_kg.py"]
+    monkeypatch.setattr(publish_release, "dirty_files", lambda repo_dir=None: ["build_kg.py"])
+    out = tmp_path / "out"
+    with pytest.raises(RuntimeError, match="uncommitted changes"):
+        publish_release.create_release("v0.0.0-test", graph=graph, base_dir=str(out))
+    assert not os.path.exists(out)

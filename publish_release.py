@@ -56,6 +56,16 @@ def compute_sha256(filepath: str) -> str:
     return h.hexdigest()
 
 
+def dirty_files(repo_dir: str | None = None) -> list[str]:
+    """Tracked files with uncommitted changes in the git checkout that holds this script (untracked files do not count).
+    A release must be reproducible from a commit, so create_release refuses to run while this list is not empty."""
+    import subprocess
+    repo_dir = repo_dir or os.path.dirname(os.path.abspath(__file__))
+    out = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=repo_dir,
+                         capture_output=True, text=True, check=True).stdout
+    return [line[3:] for line in out.splitlines() if line.strip()]
+
+
 def verify_checksums(release_dir: str) -> list[str]:
     """Files in release_dir whose SHA-256 differs from checksums.sha256 (empty list: all match)."""
     bad = []
@@ -157,7 +167,11 @@ def create_release(
     base_dir: str = ".",
     notes: str = "",
 ) -> tuple[str, str]:
-    """Publish a new dataset release and update latest/."""
+    """Publish a new dataset release and update latest/. Refuses to run from a working tree with uncommitted changes."""
+    dirty = dirty_files()
+    if dirty:
+        raise RuntimeError("refusing to build a release from a working tree with uncommitted changes "
+                           f"(commit or stash them first): {', '.join(dirty)}")
     # Ensure version follows vX.Y.Z
     if not version.startswith("v"):
         version = f"v{version}"
