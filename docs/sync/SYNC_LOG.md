@@ -626,3 +626,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 21.
 - Queries (rows without LIMIT): unchanged.
 - Adds 1,576 English and 1,471 Nepali descriptions (3,047 statements). The text is written exactly as in DANAM's record (staging/monuments.csv is identical to the raw JSON for both columns; checked for all 1,652 monuments); empty cells give nothing. No shape constrains dcterms:description.
+
+## F6: source funnel: no ID is missing; 3 blank rows in resourceids.csv; 7 failed fetches
+
+- Test: `tests/test_fixes.py::test_f6_every_listed_id_has_a_raw_file_and_seven_fetches_failed`.
+- Triples: 229,102 → **229,102**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- No graph change. resourceids.csv has 1,947 rows; rows 13-15 (file lines 14-16) are empty (""), so there are 1,944 distinct IDs, not 1,945 (the paper-facts script counted the blank as an ID). All 1,944 IDs have a raw JSON file. 7 of them record a failed fetch on 2026-03-16 (status 'error'; 4 page-load timeouts of 30 s, 3 connection resets; also in data_collection/scraper.log) and were not retried, which gives the 1,937 parsed records. Not re-crawled. tools/paper/stats.py reports the blank rows, IDs without a raw file (0) and the failed fetches in the funnel.

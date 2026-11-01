@@ -260,6 +260,13 @@ def main() -> int:
     ids = read_csv(os.path.join(REPO, "data_collection", "resourceids.csv"))
     id_col = next(iter(ids[0]))
     raw_json = [f for f in os.listdir(RAW) if f.endswith(".json")]
+    id_values = [r[id_col].strip() for r in ids]
+    real_ids = {v for v in id_values if v}
+    no_raw = sorted(real_ids - {f[:-5] for f in raw_json})
+    raw_status = {f[:-5]: json.load(open(os.path.join(RAW, f), encoding="utf-8")) for f in raw_json}
+    failed = {k: v for k, v in raw_status.items() if v.get("status") != "ok"}
+    timeouts = sum("Timeout" in (v.get("error") or "") for v in failed.values())
+    resets = sum("ERR_CONNECTION_RESET" in (v.get("error") or "") for v in failed.values())
     export_mon = read_csv(os.path.join(EXPORTS, "monuments.csv"))
     skipped = read_csv(os.path.join(REPO, "staging", "skipped_rows.csv"))
     mons = read_csv(MONUMENTS)
@@ -270,8 +277,13 @@ def main() -> int:
     L += ["", "## B. Source funnel", ""]
     L += md_table(["stage", "count", "source"], [
         ["Record IDs listed", N("SourceIdRows", len(ids)), "`data_collection/resourceids.csv`, rows"],
-        ["Distinct record IDs", N("SourceIdsDistinct", len({r[id_col].strip() for r in ids})), "same file, distinct values"],
+        ["Blank rows", N("SourceIdBlank", sum(1 for v in id_values if not v)), "same file, rows with an empty ID (`\"\"`)"],
+        ["Distinct record IDs", N("SourceIdsDistinct", len(real_ids)), "same file, distinct non-empty values"],
+        ["IDs without a raw file", N("SourceIdsNoRaw", len(no_raw)), ", ".join(no_raw) or "every ID has one"],
         ["Records collected (raw JSON)", N("SourceRawJson", len(raw_json)), "`data_collection/data/raw/*.json`"],
+        ["Failed fetches", N("SourceFailed", len(failed)),
+         f"raw JSON with `status: error`, not retried: {N('SourceFailedTimeout', timeouts)} page-load timeouts (30 s), "
+         f"{N('SourceFailedReset', resets)} connection resets (`data_collection/scraper.log`)"],
         ["Records parsed (exported)", N("SourceParsed", len(export_mon)), "`data_collection/data/exports/monuments.csv`, rows"],
         ["DANAM fields per record", N("SourceFields", len(export_mon[0])), "columns of the export"],
         ["Empty records (skipped)", N("SourceEmpty", len(skipped)), "`staging/skipped_rows.csv`, rows"],

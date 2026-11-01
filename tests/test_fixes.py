@@ -69,3 +69,18 @@ def test_f5_monument_descriptions_unchanged_from_danam(graph):
     m = RES["monument/" + JOGESVARA]
     got = {o.language: str(o) for o in graph.objects(m, DCTERMS.description)}
     assert got == {"en": raw["description_en"], "ne": raw["description_ne"]}
+
+
+def test_f6_every_listed_id_has_a_raw_file_and_seven_fetches_failed():
+    """The '1,945 distinct IDs' counted the blank value: resourceids.csv has 3 rows with an empty ID."""
+    import csv, json, os
+    from conftest import REPO
+    rows = [r[0].strip() for r in csv.reader(open(os.path.join(REPO, "data_collection", "resourceids.csv"), encoding="utf-8-sig"))][1:]
+    assert len(rows) == 1947 and rows.count("") == 3
+    ids = set(rows) - {""}
+    assert len(ids) == 1944
+    raw = os.path.join(REPO, "data_collection", "data", "raw")
+    files = {f[:-5] for f in os.listdir(raw) if f.endswith(".json")}
+    assert ids == files
+    failed = [f for f in files if json.load(open(os.path.join(raw, f + ".json"), encoding="utf-8"))["status"] != "ok"]
+    assert len(failed) == 7
