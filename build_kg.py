@@ -413,6 +413,12 @@ def build_knowledge_graph(
 
         add_identifier(g, m_uri, "danam-resource", res_id, HGN.DanamResourceId)
 
+        # DANAM's descriptions, unchanged (not stripped or edited), English and Nepali.
+        for column, lang in (("description_en", "en"), ("description_ne", "ne")):
+            text = m.get(column) or ""
+            if text.strip():
+                g.add((m_uri, DCTERMS.description, Literal(text, lang=lang)))
+
         danam_code = m.get("danam_code", "").strip()
         if danam_code:
             add_identifier(g, m_uri, "danam-code", danam_code, HGN.DanamCode)

@@ -56,3 +56,16 @@ def test_f4_deities_get_no_tradition_from_monuments(graph):
     with_trad = {s for s in graph.subjects(HG.hasReligiousTradition, None) if s in monuments}
     assert len(with_trad) == 1162
     assert sum(1 for s, _ in graph.subject_objects(HG.hasReligiousTradition) if s in monuments) == 1373
+
+
+def test_f5_monument_descriptions_unchanged_from_danam(graph):
+    import csv, json, os
+    from conftest import MONUMENTS, REPO
+    monuments = set(graph.subjects(RDF.type, HG.ArchitecturalStructure))
+    descs = [(s, o) for s, o in graph.subject_objects(DCTERMS.description) if s in monuments]
+    assert sum(o.language == "en" for _, o in descs) == 1576
+    assert sum(o.language == "ne" for _, o in descs) == 1471
+    raw = json.load(open(os.path.join(REPO, "data_collection", "data", "raw", JOGESVARA + ".json"), encoding="utf-8"))
+    m = RES["monument/" + JOGESVARA]
+    got = {o.language: str(o) for o in graph.objects(m, DCTERMS.description)}
+    assert got == {"en": raw["description_en"], "ne": raw["description_ne"]}

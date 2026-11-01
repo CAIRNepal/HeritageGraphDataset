@@ -616,3 +616,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 21.
 - Queries (rows without LIMIT): unchanged.
 - Removes 381 hg:hasReligiousTradition statements on 355 deities. They came from the first monument naming the deity, so 43 deities named by monuments of different traditions got whichever came first. DANAM states traditions per monument only, so no deity gets one. Monuments keep theirs (1,162 monuments, 1,373 statements). Resolves the open item 'Deity traditions' in Decisions (2026-11-01) and SYNC_PLAN.md.
+
+## F5: monument descriptions as dcterms:description @en / @ne, unchanged from DANAM
+
+- Test: `tests/test_fixes.py::test_f5_monument_descriptions_unchanged_from_danam`.
+- Triples: 226,055 → **229,102**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Adds 1,576 English and 1,471 Nepali descriptions (3,047 statements). The text is written exactly as in DANAM's record (staging/monuments.csv is identical to the raw JSON for both columns; checked for all 1,652 monuments); empty cells give nothing. No shape constrains dcterms:description.
