@@ -34,3 +34,14 @@ def test_f1_provenance_danam_source_and_pipeline_software(graph):
     assert graph.value(soft, PROV.actedOnBehalfOf) == RES["agent/cair_nepal"]
     assert (RES["agent/cair_nepal"], RDF.type, PROV.Organization) in graph
     assert set(graph.objects(RES["dataset"], PROV.wasAttributedTo)) == {RES["agent/cair_nepal"]}
+
+
+def test_f3_p44_points_to_the_condition_state(graph):
+    targets = set(graph.objects(None, CRM["P44_has_condition"]))
+    assert len(targets) == 1577
+    assert targets <= set(graph.subjects(RDF.type, CRM["E3_Condition_State"]))
+    assert not targets & set(graph.subjects(RDF.type, CRM["E14_Condition_Assessment"]))
+    m = RES["monument/" + JOGESVARA]
+    assert graph.value(m, CRM["P44_has_condition"]) == RES["condition_state/" + JOGESVARA]
+    # the assessment still identifies the same state
+    assert (RES["assessment/" + JOGESVARA], CRM["P35_has_identified"], RES["condition_state/" + JOGESVARA]) in graph

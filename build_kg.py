@@ -521,7 +521,7 @@ def build_knowledge_graph(
         if assess or threats or cond_types:
             assess_uri = RES[f"assessment/{res_id}"]
             state_uri = RES[f"condition_state/{res_id}"]
-            g.add((m_uri, CRM["P44_has_condition"], assess_uri))
+            g.add((m_uri, CRM["P44_has_condition"], state_uri))  # P44 ranges over crm:E3_Condition_State
             g.add((m_uri, CRM["P34i_was_assessed_by"], assess_uri))
             g.add((assess_uri, RDF.type, CRM["E14_Condition_Assessment"]))
             g.add((assess_uri, CRM["P34_concerned"], m_uri))

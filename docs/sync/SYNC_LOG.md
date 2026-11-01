@@ -596,3 +596,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 21.
 - Queries (rows without LIMIT): unchanged.
 - Removed the 'Antigravity AI Agent (DeepMind)' agent and its 12,259 prov:wasAttributedTo statements (5,098 events, 7,160 objects, the dataset). Each DANAM report page (and the DANAM site) is a prov:Entity prov:wasAttributedTo DANAM, a prov:Organization labelled as the site names itself ('Digital Archive of Nepalese Arts and Monuments (DANAM)'; comment: database of the Nepal Heritage Documentation Project, Heidelberg). Monuments, events and objects are prov:wasDerivedFrom their monument's page (events and objects newly). The construction activity prov:wasAssociatedWith a prov:SoftwareAgent (schema:codeRepository the GitHub repo, schema:softwareVersion the git commit of the build, '-dirty' if tracked files are modified), which prov:actedOnBehalfOf CAIR-Nepal. The dataset is attributed to CAIR-Nepal only.
+
+## F3: crm:P44_has_condition points to the crm:E3_Condition_State, not the crm:E14_Condition_Assessment
+
+- Test: `tests/test_fixes.py::test_f3_p44_points_to_the_condition_state`.
+- Triples: 226,436 → **226,436**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- 1,577 statements retargeted from assessment/<id> to condition_state/<id> (P44 has range crm:E3_Condition_State). The monument keeps crm:P34i_was_assessed_by the assessment, and the assessment crm:P35_has_identified the same state.
