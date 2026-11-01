@@ -649,14 +649,16 @@ def main() -> int:
         ["`metadata.json` object count (F7)", "the release step counts distinct object nodes (not monuments too) and checks every checksum after writing; "
          "the published v1.0.0 files are not regenerated",
          f"next release: {N('NextReleaseObjects', next_objects)} objects"],
-        ["Event typing: renovations typed as destruction (F2)", f"all {N('EventRules', len(RULES) + 1)} event-typing rules are in "
+        ["Event typing: renovations typed as destruction (F2, F9, F10)", f"all {N('EventRules', len(RULES) + 1)} event-typing rules are in "
          "`event_typing.py`; destruction (`crm:E6_Destruction`) only when the event name says so; renovation, restoration, "
-         "rebuilding and repair in the name give `crm:E11_Modification`; names with both give both classes; names with a repair "
-         "and an endowment or donation word give `crm:E11` and `crm:E10`",
+         "rebuilding and repair in the name give `crm:E11_Modification`; donations in the name give `crm:E8_Acquisition`, guṭhī "
+         "formations `crm:E66_Formation`; names that report two happenings give both classes",
          f"{N('DestructionEvents', len(destr))} destruction events ({N('DestructionWithoutDamageName', len(destr_no_damage_name))} "
          f"without a damage word in the name; {N('DestructionRenovation', len(destr_reno_only))} with a repair word in the name but no "
          f"`crm:E11`); {N('ModificationEvents', len(modif))} modification events; {N('DestructionAndModification', len(destr & modif))} "
-         f"both; {N('ModificationAndTransfer', len(modif & typed[CRM.E10_Transfer_of_Custody]))} modification and transfer"],
+         f"both; {N('ModificationAndTransfer', len(modif & typed[CRM.E10_Transfer_of_Custody]))} modification and transfer; "
+         f"{N('AcquisitionEvents', len(typed[CRM.E8_Acquisition]))} donations (`crm:E8_Acquisition`, F10); "
+         f"{N('FormationEvents', len(typed[CRM.E66_Formation]))} guṭhī formations (`crm:E66_Formation`, F10)"],
     ])
     L += ["", "## K2. Known open issues (not fixed yet)", ""]
     L += md_table(["issue", "what is wrong", "affected"], [
