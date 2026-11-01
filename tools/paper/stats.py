@@ -180,7 +180,7 @@ OBJECT_FIELDS = {
 
 QUESTIONS = {
     "01_monuments_by_aat_style.rq": "Which monuments have which architectural style (Getty AAT concept), and what are their DANAM codes?",
-    "02_historical_timeline.rq": "What events happened at each monument, of what type, and in which period or era year?",
+    "02_historical_timeline.rq": "What events happened at each monument, of what type (one row per event and type), and in which period or era year?",
     "03_spatial_geosparql.rq": "Where is each monument: coordinates, point geometry, district, municipality and tola?",
     "04_monument_sacred_objects.rq": "Which objects does each monument contain or consist of, with class, DANAM number, material and position?",
     "05_provenance_audit.rq": "For each event, which DANAM page is it derived from, who is that page attributed to, and which software (repository, commit) built the graph on whose behalf?",
@@ -618,7 +618,10 @@ def main() -> int:
     undated = [e for e in events if not any((e, p_, None) in g for p_ in date_props)]
     reno = re.compile(r"renovat|restor|rebuil|repair|reconstruct|refurbish", re.I)
     destr = typed[CRM.E6_Destruction]
-    reno_destr = [e for e in destr if reno.search(" ".join(str(o) for p_ in (RDFS.label, DCTERMS.description) for o in g.objects(e, p_)))]
+    from event_typing import DAMAGE, RULES
+    modif = typed[CRM.E11_Modification]
+    destr_no_damage_name = [e for e in destr if not re.search(rf"\b({DAMAGE})", str(g.value(e, RDFS.label)).lower())]
+    destr_reno_only = [e for e in destr - modif if reno.search(str(g.value(e, RDFS.label)))]
     deity_trad = list(g.subject_objects(HG.hasReligiousTradition))
     deity_trad = [(s_, o_) for s_, o_ in deity_trad if s_ in typed[HG.Deity]]
     naming = defaultdict(set)
@@ -646,6 +649,14 @@ def main() -> int:
         ["`metadata.json` object count (F7)", "the release step counts distinct object nodes (not monuments too) and checks every checksum after writing; "
          "the published v1.0.0 files are not regenerated",
          f"next release: {N('NextReleaseObjects', next_objects)} objects"],
+        ["Event typing: renovations typed as destruction (F2)", f"all {N('EventRules', len(RULES) + 1)} event-typing rules are in "
+         "`event_typing.py`; destruction (`crm:E6_Destruction`) only when the event name says so; renovation, restoration, "
+         "rebuilding and repair in the name give `crm:E11_Modification`; names with both give both classes; names with a repair "
+         "and an endowment or donation word give `crm:E11` and `crm:E10`",
+         f"{N('DestructionEvents', len(destr))} destruction events ({N('DestructionWithoutDamageName', len(destr_no_damage_name))} "
+         f"without a damage word in the name; {N('DestructionRenovation', len(destr_reno_only))} with a repair word in the name but no "
+         f"`crm:E11`); {N('ModificationEvents', len(modif))} modification events; {N('DestructionAndModification', len(destr & modif))} "
+         f"both; {N('ModificationAndTransfer', len(modif & typed[CRM.E10_Transfer_of_Custody]))} modification and transfer"],
     ])
     L += ["", "## K2. Known open issues (not fixed yet)", ""]
     L += md_table(["issue", "what is wrong", "affected"], [
@@ -658,9 +669,10 @@ def main() -> int:
          f"{N('ResIris', len(res_iris))} IRIs in {N('ResTriples', res_triples)} triples"],
         ["Missing event dates", "the event tables carry no dates; no event has a date, period or time-span",
          f"{N('UndatedEvents', len(undated))} of {N('Events', len(events))} events"],
-        ["Event typing (keyword rules)", "events are typed by keyword rules; e.g. events typed `crm:E6_Destruction` whose name or "
-         "description mentions renovation, restoration, rebuilding or repair (keyword check, not a manual audit)",
-         f"{N('DestructionRenovation', len(reno_destr))} of {N('DestructionEvents', len(destr))} destruction events"],
+        ["Event typing (keyword rules)", "events are still typed by keyword rules (`event_typing.py`), not checked against a "
+         "manual sample; e.g. the keyword 'grant' also matches 'granthakūṭa' (a temple style), so 'Installing door to build new "
+         "temple' is a transfer of custody",
+         f"{N('Events', len(events))} events; {N('GrantMatches', sum(1 for e in events if re.search(r'\bgranth', ' '.join(str(o) for p_ in (RDFS.label, DCTERMS.description) for o in g.objects(e, p_)).lower())))} events contain 'granth…'"],
         ["Object typing (keyword rules)", "objects are typed by keyword rules; not evaluated against a manual sample", f"{N('Objects', len(objects))} objects"],
         ["Materials as text (found while compiling)", "the builder writes object materials as text on `crm:P45_consists_of`, where "
          "CIDOC-CRM expects a `crm:E57_Material`; the current export has no materials, so it does not show yet",
