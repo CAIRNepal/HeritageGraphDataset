@@ -23,12 +23,12 @@ def test_a1_human_made_object_is_crm_e22(graph):
 
 def test_a2_production_is_crm_e12(graph):
     assert not typed(graph, HG.Production)
-    assert len(typed(graph, CRM["E12_Production"])) == 1075  # 1,808 at A2; F2 moved renovations to crm:E11; F9 +1
+    assert len(typed(graph, CRM["E12_Production"])) == 981  # 1,808 at A2; F2 1,074 (renovations to crm:E11); F9 1,075; F10 981 (donations to crm:E8)
 
 
 def test_a3_condition_assessment_is_crm_e14(graph):
     assert not typed(graph, HG.ConditionAssessment)
-    assert len(typed(graph, CRM["E14_Condition_Assessment"])) == 1595  # 1,577 monument assessments + 18 events (15 before F2)
+    assert len(typed(graph, CRM["E14_Condition_Assessment"])) == 1593  # 1,577 monument assessments + 16 events (15 before F2, 18 after F2)
 
 
 def test_a4_place_is_crm_e53(graph):
@@ -44,7 +44,7 @@ def test_a5_destruction_is_crm_e6(graph):
 
 def test_a6_transfer_is_crm_e10(graph):
     assert not typed(graph, HG.TransferOfCustody)
-    assert len(typed(graph, CRM["E10_Transfer_of_Custody"])) == 270  # 284 at A6; changed by F2 (272) and F9
+    assert len(typed(graph, CRM["E10_Transfer_of_Custody"])) == 245  # 284 at A6; F2 272; F9 270; F10 245
 
 
 def test_a7_current_location_is_crm_p55(graph):
@@ -239,7 +239,8 @@ def test_s1_release_statistics_follow_changed_terms(graph):
     import publish_release
     st = publish_release.compute_graph_stats(graph)
     flat = {k: v for d in st.values() if isinstance(d, dict) for k, v in d.items()}
-    assert flat["Production"] == 1075 and flat["DestructionEvent"] == 265 and flat["TransferOfCustody"] == 270  # after F2, F9
+    assert flat["Production"] == 981 and flat["DestructionEvent"] == 265 and flat["TransferOfCustody"] == 245  # after F2, F9, F10
+    assert flat["Acquisition"] == 750 and flat["Formation"] == 34
     assert flat["Modification"] == 1280
     assert flat["HumanMadeObject"] > 3700
 

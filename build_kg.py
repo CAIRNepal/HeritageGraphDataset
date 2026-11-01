@@ -96,6 +96,8 @@ CRM_CLASS_FOR = {
     "Place": CRM["E53_Place"],
     "DestructionEvent": CRM["E6_Destruction"],
     "Modification": CRM["E11_Modification"],  # renovation, restoration, rebuilding, repair (event_typing.py)
+    "Acquisition": CRM["E8_Acquisition"],  # donation (event_typing.py)
+    "Formation": CRM["E66_Formation"],  # formation of a guṭhī (event_typing.py)
     "TransferOfCustody": CRM["E10_Transfer_of_Custody"],
 }
 

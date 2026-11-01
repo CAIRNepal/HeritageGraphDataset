@@ -117,6 +117,8 @@ def compute_graph_stats(g: rdflib.Graph) -> dict:
         "ConditionAssessment": count_class(f"{hg_ns}ConditionAssessment"),
         "DestructionEvent": count_class(f"{hg_ns}DestructionEvent"),
         "Modification": count_class(f"{hg_ns}Modification"),  # crm:E11_Modification (renovation, repair …)
+        "Acquisition": count_class(f"{hg_ns}Acquisition"),  # crm:E8_Acquisition (donation)
+        "Formation": count_class(f"{hg_ns}Formation"),  # crm:E66_Formation (guṭhī formation)
         "TransferOfCustody": count_class(f"{hg_ns}TransferOfCustody"),
         "Consecration": count_class(f"{hg_ns}Consecration"),
         "Enshrinement": count_class(f"{hg_ns}Enshrinement"),

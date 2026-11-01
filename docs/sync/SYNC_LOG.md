@@ -677,3 +677,14 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 21.
 - Queries (rows without LIMIT): unchanged.
 - 2 events move: 'Installing door to build new temple' transfer of custody -> production, 'Falling down a cakra' transfer of custody -> historical event. E10 272 -> 270, E12 1,074 -> 1,075. The proposed 'guṭhī' and 'donation' transfer words were not added (they would move 381 events, many through the description); donations and guṭhī formations are handled separately.
+
+## F10: event typing: donations as crm:E8_Acquisition and guṭhī formations as crm:E66_Formation, by the event name
+
+- Test: `tests/test_fixes.py::test_f10_donations_and_guthi_formations_on_real_events, tests/test_fixes.py::test_f10_formation_pattern_accepts_decomposed_letters`.
+- Triples: 229,145 → **229,142**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): **changed:** `02_historical_timeline.rq` 5356 → 5353
+- Query rows changed, accepted: query 02 lists one row per event and class; events with two classes add one row each
+- Name-only rules (event_typing.py, now 18 rules): 'donation', 'donated', 'offering of' -> crm:E8_Acquisition (a donation transfers ownership, not custody); formation/establish…/founded/formed … guṭhī/guṭhi/guthi -> crm:E66_Formation (composed or decomposed letters). The donation rule runs before the consecration and enshrinement rules, which read the description (19 events move from them to E8, e.g. 'Donation of a Bell' whose description says it is installed). Combined names: repair + donation -> E11 + E8 (13); repair + guṭhī formation -> E11 + E66 (3); repair + endowment/grant (not donation) -> E11 + E10 (9, was 16); construction + guṭhī formation -> E12 + E66 (7). 784 events change class. Per class (F9 -> F10; two-class events count in both): E8 0 -> 750, E66 0 -> 34, historical 1,918 -> 1,310, E12 1,075 -> 981, E10 270 -> 245, consecration 128 -> 122, enshrinement 87 -> 74, ritual 100 -> 80, condition assessment 18 -> 16; E6 265 and E11 1,280 unchanged. Not caught: 'Renovation, new construction, land endowment and guṭhī formation' (the word order 'guṭhī formation' is not matched) stays E11 + E10. CIDOC-CRM terms only: SHACL 200, undeclared 0. Tests A2, A3, A6, S1 and the F2 examples updated (rule numbers and counts).

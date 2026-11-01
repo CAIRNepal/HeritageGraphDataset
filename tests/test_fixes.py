@@ -100,23 +100,23 @@ def test_f7_metadata_counts_distinct_objects_and_checksums_match(graph, tmp_path
     assert meta["license"] == "https://creativecommons.org/licenses/by/4.0/"
 
 
-# F2: one real DANAM event per rule of event_typing.py: (event key, name, expected classes, rule number)
+# F2: real DANAM events for the rules of event_typing.py (rule numbers as of F10): (event key, name, expected classes, rule number)
 F2_EXAMPLES = [
-    ("02509f50-336d-423f-ac40-60dffc2d905c_4", "Installation and consecration of a statue of Dīpaṅkara", ("Consecration",), 1),
-    ("0316e917-5197-44e7-b865-37ba1be3397b_1", "Addition of a statue", ("Enshrinement",), 2),
-    ("72fbb5ec-849f-482d-8003-7206e8ede0a6_1", "Collapse and reconstruction", ("DestructionEvent", "Modification"), 3),
-    ("017a4a8f-b183-4e57-9ff9-54ae1145378f_1", "Collapse", ("DestructionEvent",), 4),
-    ("0077a8d9-2e9d-4626-8dd0-04272b780ea9_16", "Damage by earthquake", ("DestructionEvent",), 4),
-    ("293c1896-a3bb-454a-8fe9-b56ebfadc51c_2", "Renovation and land endowment", ("Modification", "TransferOfCustody"), 5),
+    ("02509f50-336d-423f-ac40-60dffc2d905c_4", "Installation and consecration of a statue of Dīpaṅkara", ("Consecration",), 3),
+    ("0316e917-5197-44e7-b865-37ba1be3397b_1", "Addition of a statue", ("Enshrinement",), 4),
+    ("72fbb5ec-849f-482d-8003-7206e8ede0a6_1", "Collapse and reconstruction", ("DestructionEvent", "Modification"), 5),
+    ("017a4a8f-b183-4e57-9ff9-54ae1145378f_1", "Collapse", ("DestructionEvent",), 6),
+    ("0077a8d9-2e9d-4626-8dd0-04272b780ea9_16", "Damage by earthquake", ("DestructionEvent",), 6),
+    ("293c1896-a3bb-454a-8fe9-b56ebfadc51c_2", "Renovation and land endowment", ("Modification", "TransferOfCustody"), 8),
     # the description says it followed the 1934 earthquake: background, not a destruction
-    ("5bfb6d40-eb4c-11e9-b125-0242ac130002_1", "Rebuilding of the temple", ("Modification",), 6),
-    ("02f204ae-8a02-4b50-a82c-b7551b103542_1", "Endowment of lands for daily worship", ("TransferOfCustody",), 7),
-    ("0d39368f-4f2c-4b8d-8fad-4040187b6a16_8", "Performance of pacification ritual (śāntisvasti)", ("RitualEvent",), 8),
-    ("013ba068-2100-462c-abb9-29c7a0dc6eef_0", "Construction of a phalcā", ("TransferOfCustody",), 9),  # endowment in the description
-    ("0077a8d9-2e9d-4626-8dd0-04272b780ea9_6", "Offering pinnacle to newly constructed two storied temple", ("Production",), 11),
-    ("34697056-9775-466d-b46d-c83f874b93d3_0", "Unknown event", ("ConditionAssessment",), 12),
+    ("5bfb6d40-eb4c-11e9-b125-0242ac130002_1", "Rebuilding of the temple", ("Modification",), 9),
+    ("02f204ae-8a02-4b50-a82c-b7551b103542_1", "Endowment of lands for daily worship", ("TransferOfCustody",), 12),
+    ("0d39368f-4f2c-4b8d-8fad-4040187b6a16_8", "Performance of pacification ritual (śāntisvasti)", ("RitualEvent",), 13),
+    ("013ba068-2100-462c-abb9-29c7a0dc6eef_0", "Construction of a phalcā", ("TransferOfCustody",), 14),  # endowment in the description
+    ("0077a8d9-2e9d-4626-8dd0-04272b780ea9_6", "Offering pinnacle to newly constructed two storied temple", ("Production",), 16),
+    ("34697056-9775-466d-b46d-c83f874b93d3_0", "Unknown event", ("ConditionAssessment",), 17),
     # only the description mentions damage (a flood): not a destruction
-    ("e2a4580b-0699-44bf-b0b3-561da8d9fa93_4", "Cleaning of the hiti", ("HistoricalEvent",), 13),
+    ("e2a4580b-0699-44bf-b0b3-561da8d9fa93_4", "Cleaning of the hiti", ("HistoricalEvent",), 18),
 ]
 
 
@@ -141,7 +141,7 @@ def test_f2_destruction_only_when_the_name_says_so(graph):
     assert len(destr) == 265
     assert all(re.search(rf"\b({DAMAGE})", str(graph.value(e, RDFS.label)).lower()) for e in destr)
     assert len(set(graph.subjects(RDF.type, CRM["E11_Modification"]))) == 1280
-    assert len(set(graph.subjects(RDF.type, CRM["E12_Production"]))) == 1075  # 1,074 at F2; F9 +1
+    assert len(set(graph.subjects(RDF.type, CRM["E12_Production"]))) == 981  # 1,074 at F2; F9 1,075; F10 981
     both = destr & set(graph.subjects(RDF.type, CRM["E11_Modification"]))
     assert len(both) == 27
 
@@ -177,3 +177,39 @@ def test_f9_grant_does_not_match_granthakuta():
     assert r["event_name"].strip() == "Installing door to build new temple" and "granthakūṭa" in r["event_description"]
     assert classify_event(r["event_name"].strip(), r["event_description"].strip()) == ("Production",)
     assert classify_event("Land grant", "") == ("TransferOfCustody",)
+
+
+# F10: donations (crm:E8_Acquisition) and guṭhī formations (crm:E66_Formation), by the event name
+F10_EXAMPLES = [
+    ("7ff6b8c8-7d01-4e4c-bd40-cbae9cba70c7_0", "Renovation and donation", ("Modification", "Acquisition"), 1),
+    ("788cd320-e6a8-11e9-8bc4-0242ac130002_0", "Donation of a small bell", ("Acquisition",), 2),
+    ("01c33990-cd66-4e1e-8d92-e3fb8e2ab5ee_4", "Offering of a patāḥ", ("Acquisition",), 2),
+    # the description says the bell is installed (enshrinement rule); the name decides: a donation
+    ("443544db-8f01-4d16-8f90-1de79f599e98_7", "Donation of a Bell", ("Acquisition",), 2),
+    ("d134c8da-df36-486b-9582-93e5f2cf9146_2", "Minor renovation and formation of a guṭhī", ("Modification", "Formation"), 7),
+    ("293c1896-a3bb-454a-8fe9-b56ebfadc51c_2", "Renovation and land endowment", ("Modification", "TransferOfCustody"), 8),
+    ("1fd94780-2644-42d6-bae5-74e6bdfa2abc_4", "Initial Construction of the Temple and Establishment of a Guṭhī", ("Production", "Formation"), 10),
+    ("0274d17a-ceb6-4480-bcbd-8d893d078724_5", "Formation of a guṭhī", ("Formation",), 11),
+]
+
+
+def test_f10_donations_and_guthi_formations_on_real_events(graph):
+    import csv, unicodedata
+    from conftest import EVENTS
+    from event_typing import classify_event_rule
+    rows = {f"{r['resource_id']}_{r['event_index']}": r for r in csv.DictReader(open(EVENTS, encoding="utf-8-sig"))}
+    for key, name, classes, rule in F10_EXAMPLES:
+        r = rows[key]
+        assert unicodedata.normalize("NFC", r["event_name"].strip()) == unicodedata.normalize("NFC", name)
+        assert classify_event_rule(r["event_name"].strip(), r["event_description"].strip()) == (classes, rule), name
+    ev = RES["event/1fd94780-2644-42d6-bae5-74e6bdfa2abc_4"]
+    assert {CRM["E12_Production"], CRM["E66_Formation"]} <= set(graph.objects(ev, RDF.type))
+    assert len(set(graph.subjects(RDF.type, CRM["E8_Acquisition"]))) == 750
+    assert len(set(graph.subjects(RDF.type, CRM["E66_Formation"]))) == 34
+
+
+def test_f10_formation_pattern_accepts_decomposed_letters():
+    import unicodedata
+    from event_typing import classify_event
+    name = "Formation of a guṭhī"
+    assert classify_event(unicodedata.normalize("NFD", name), "") == classify_event(name, "") == ("Formation",)
