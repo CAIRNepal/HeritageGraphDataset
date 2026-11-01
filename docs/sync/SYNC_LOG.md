@@ -606,3 +606,13 @@ Every `hg:Temple` must have one `hg:hasArchitecturalStyle` (`sh:minCount 1`). DA
 - Extension terms used: 21.
 - Queries (rows without LIMIT): unchanged.
 - 1,577 statements retargeted from assessment/<id> to condition_state/<id> (P44 has range crm:E3_Condition_State). The monument keeps crm:P34i_was_assessed_by the assessment, and the assessment crm:P35_has_identified the same state.
+
+## F4: deities get no religious tradition from monuments
+
+- Test: `tests/test_fixes.py::test_f4_deities_get_no_tradition_from_monuments`.
+- Triples: 226,436 → **226,055**.
+- SHACL results: 200 → **200** (1 groups).
+- Undeclared terms: 0 → **0** (0 classes, 0 properties, 0 IRI values).
+- Extension terms used: 21.
+- Queries (rows without LIMIT): unchanged.
+- Removes 381 hg:hasReligiousTradition statements on 355 deities. They came from the first monument naming the deity, so 43 deities named by monuments of different traditions got whichever came first. DANAM states traditions per monument only, so no deity gets one. Monuments keep theirs (1,162 monuments, 1,373 statements). Resolves the open item 'Deity traditions' in Decisions (2026-11-01) and SYNC_PLAN.md.

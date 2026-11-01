@@ -45,3 +45,14 @@ def test_f3_p44_points_to_the_condition_state(graph):
     assert graph.value(m, CRM["P44_has_condition"]) == RES["condition_state/" + JOGESVARA]
     # the assessment still identifies the same state
     assert (RES["assessment/" + JOGESVARA], CRM["P35_has_identified"], RES["condition_state/" + JOGESVARA]) in graph
+
+
+def test_f4_deities_get_no_tradition_from_monuments(graph):
+    deities = set(graph.subjects(RDF.type, HG.Deity))
+    assert len(deities) == 355
+    assert not any((d, HG.hasReligiousTradition, None) in graph for d in deities)
+    # monuments keep theirs: 1,162 monuments, 1,373 statements
+    monuments = set(graph.subjects(RDF.type, HG.ArchitecturalStructure))
+    with_trad = {s for s in graph.subjects(HG.hasReligiousTradition, None) if s in monuments}
+    assert len(with_trad) == 1162
+    assert sum(1 for s, _ in graph.subject_objects(HG.hasReligiousTradition) if s in monuments) == 1373

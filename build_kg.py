@@ -448,8 +448,7 @@ def build_knowledge_graph(
                 deities_cache[d_slug] = True
                 g.add((d_uri, RDF.type, HG.Deity))
                 g.add((d_uri, RDFS.label, Literal(main_deity, lang="en")))
-                for t in traditions:  # as before: the tradition of the first monument naming the deity
-                    g.add((d_uri, HG.hasReligiousTradition, t))
+                # No tradition for the deity: DANAM states traditions per monument, not per deity.
 
         # Geographic Location & Place
         district = m.get("district", "").strip()
