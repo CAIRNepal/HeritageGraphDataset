@@ -199,6 +199,7 @@ def main() -> int:
     ap.add_argument("--out-dir", default=os.path.join(REPO, "docs", "paper"))
     ap.add_argument("--skip-owlrl", action="store_true")
     ap.add_argument("--check-iris", action="store_true")
+    ap.add_argument("--skip-figures", action="store_true", help="do not write the PDF figures (docs/paper/figures/)")
     a = ap.parse_args()
     for d in (a.build_dir, a.out_dir):
         if os.path.abspath(d).startswith((os.path.join(REPO, "releases"), os.path.join(REPO, "latest"))):
@@ -718,6 +719,22 @@ def main() -> int:
          "CIDOC-CRM expects a `crm:E57_Material`; the current export has no materials, so it does not show yet",
          f"{N('MaterialLiterals', p45_literals)} statements now"],
     ])
+
+    # ── figures ──────────────────────────────────────────────────────────────────────────────────────────────────
+    if not a.skip_figures:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import figures
+        fig = figures.make_all(g, os.path.join(a.out_dir, "figures"))
+        L += ["", "## L. Figures", "", f"Written to `{os.path.relpath(os.path.join(a.out_dir, 'figures'), REPO)}/` by "
+              "`tools/paper/figures.py`.", ""]
+        L += md_table(["figure", "shows"], [
+            ["`alignment_progress.pdf`", f"SHACL results and undeclared terms after each of the {N('AlignmentSteps', len(fig['steps']) - 1)} "
+             "alignment steps (S0 to B5)"],
+            ["`monument_map.pdf`", f"{N('MapMonuments', sum(fig['map_counts']))} monuments with coordinates: "
+             + ", ".join(f"{lbl} {N('Map ' + lbl, c)}" for (lbl, _), c in zip(figures.TYPE_GROUPS, fig["map_counts"]))
+             + f", other {N('Map Other', fig['map_counts'][-1])}; province boundaries from geoBoundaries (NPL ADM1, CC BY 3.0 IGO)"],
+            ["`condition_by_type.pdf`", "share of each monument type by its first condition value (one value per monument)"],
+        ])
 
     # ── write ────────────────────────────────────────────────────────────────────────────────────────────────────
     with open(os.path.join(a.out_dir, "FACTS.md"), "w", encoding="utf-8") as f:
