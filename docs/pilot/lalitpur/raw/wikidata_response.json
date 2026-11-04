@@ -1,0 +1,1204 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "label_ne", "coord", "classes", "p131", "image", "heritage", "inception", "commons", "osmNode", "osmWay", "osmRel", "sitelinks" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13183200"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Krishna Mandir"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "पाटनको कृष्ण मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.324915492 27.673599022)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple; temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7144236"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Lalitpur%20Patan%20Durbar%20Square%202023%2002.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "culture"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Krishna Mandir, Patan"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "6"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1517030"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kirtipur"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "कीर्तिपुर नगरपालिका"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.283333333 27.666666666)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "city; municipality of Nepal"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797472"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Kirtipur%2C%201950%20-%201955.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "Tentative World Heritage Site"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Kirtipur"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4900869"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhaktapur Durbar Square"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "भक्तपुर दरवार क्षेत्र"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.42845278 27.67218333)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Durbar Square; square"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843138"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20Bhaktapur%20Durbar%20Square.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "part of UNESCO World Heritage Site"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Bhaktapur Durbar Square"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "18"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7144236"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Patan Durbar Square"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "पाटन दरवार क्षेत्र"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.32571389 27.67306667)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Durbar Square"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6647"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Patan%20Durbar%20Square%20at%20Night.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "part of UNESCO World Heritage Site"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Patan Durbar Square"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "18"
+      },
+      "osmNode" : {
+        "type" : "literal",
+        "value" : "2230569085"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q854699"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhairavnath temple"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.42952778 27.67105556)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bhaktapur-Bhairava%20Mandir%20am%20Taumadhi%20Tole-02-2007-gje.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Bhairavnath Temple, Bhaktapur"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1513892"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nyatapola Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "न्यातपोल मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.4293 27.6714)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843138"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Nyatapol%20by%20GP15.JPG"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Nyatapola Temple, Bhaktapur"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "11"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3811730"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maitighar Mandala"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "माइतीघर मण्डला"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.32027 27.69444)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "monument"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3037"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Maitighar%20Mandala.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "5"
+      },
+      "osmWay" : {
+        "type" : "literal",
+        "value" : "120106732"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5210100"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dakshinkali Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "दक्षिणकाली भगवती"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.25 27.58333333)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797472"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Dakshin%20Kali%20main%20Temple.JPG"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Dakshinkali Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "13"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5769439"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hiranya Varna Mahavihar"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "हिरण्यवर्ण महाविहार"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.3246 27.67523)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "temple"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/2015-03-30%2004-15%20Nepal%20926%20Patan%2C%20Lalitpur%2C%20Golden%20Temple%20%2816769604853%29.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Hiranyabarna Mahavihar, Patan"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "6"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1409-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7461663"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shahid Gate"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "शहिदगेट"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.315 27.699444444)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "gate; monument"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3037"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Sahid%20gate%20%28Martyrs%20Gate%29.JPG"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Shahid Gate, Kathmandu"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "8"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7495631"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sheshnarayan Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "शेषनारायण मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.27 27.63)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797472"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Lord%20Bishnu-Shesh%20Narayan.JPG"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Sheshnarayan Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "5"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7647436"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Suryavinayak Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "सूर्यविनायक"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.4234 27.6563)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "temple"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Suryavinayak Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "6"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13181210"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jal Binayak Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "जलविनायक"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.29333333 27.65833333)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797472"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Chobhar-Jal%20Binayak-04-von%20oben-2007-gje.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Jalbinayak Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "5"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16058104"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Adinath Lokeshwar"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.2913 27.6657)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797472"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Chobhar-Adinath%20Lokeshwar-04-2007-gje.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Adinath Lokeshwar Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18344056"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kumbheshwar Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "कुम्भेश्वर मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.3258 27.6767)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6647"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/A%20morning%20at%20Kumbeshwar%20Temple%2C%20Patan%20%28January%202023%29%20-%20IMG%2009.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Kumbeshwar Temple, Patan"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "9"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1392-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18416909"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Assumption of the Blessed Virgin Mary Cathedral, Kathmandu"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.306527777 27.672777777)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Catholic cathedral"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3037"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Kathmandu%2C%20catholic%20Assumption%20cathedral.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Assumption of the Blessed Virgin Mary Cathedral in Patan, Nepal"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "9"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1995-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19680989"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bagh Bhairab Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "बाघभैरव मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.276463597 27.679442602)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1517030"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bagh%20Bhairab%20Kritipur%20IMG%208037%2003.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Bagh Bhairab Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "6"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21129901"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Karya Binayak Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "कार्यविनायक मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.302375 27.63186944)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797472"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/KaryaBinayak%20Temple.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "5"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q68093718"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gurdwara Guru Nanak Satsang Lalitpur"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.315188 27.688688)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "gurdwara"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1108338"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "0"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q82280564"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chyasilin Mandap"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.42856 27.67205)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843138"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bhaktapur-Palastplatz%2053-Siddhilakshmi-Cyasilim-2014-gje.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Chyasilin Mandap"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q82281675"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shilu Mahadev Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "शिलु महादेव मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.428955 27.672323)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843138"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bhaktapur%20Durbar%20Square%20Nepal%202024%2010.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Shilu Mahadev Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q85746836"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhadrakali Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "भद्रकाली मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.3168 27.6993)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3037"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bhadrakali%20Temple.JPG"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Bhadrakali Temple (near Tundikhel, Kathmandu)"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "4"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1817-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97279813"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhimsen Temple"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.32523 27.67387)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bhimsen%20temple%20and%20water%20taps%20at%20Patan%20Durbar%20Square%201.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q99777433"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tusha Hiti"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.325111111 27.672722222)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Lho Hiti (Dhunge Dhara)"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6647"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Tusha%20Hiti%2C%20Sundari%20Chowk.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Tusha Hiti"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "3"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1650-01-01T00:00:00Z"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106554965"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Balkumari temple"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.3341 27.6719)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1108338"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Balkumari%20Devi%20Temple%20Balkumari%20Lalitpur%20Nepal%20Rajesh%20Dhungana%20%282%29.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Balkumari Temple, Patan"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "3"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106597868"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Balkumari temple"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.385 27.6759)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28451"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q108544589"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Degutale Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "देगुतले मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.324906655 27.672949759)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/01.%20Degutalle%20Temple.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Degutale Temple, Patan"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q108861272"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Matatirtha Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "मातातीर्थ मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(85.231064003 27.679622357)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3421452"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Matatirtha%20Temple-9020.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Matatirtha Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "3"
+      }
+    } ]
+  }
+}
