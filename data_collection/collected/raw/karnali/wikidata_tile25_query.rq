@@ -1,0 +1,52 @@
+# Tangible heritage in Karnali Province, Nepal (Q25104017): items with coordinates in the province boundary's bounding
+# box, one tile of it (83.00..83.50 E, 28.16..28.50 N); the polygon is applied in build.py.
+# Kept if the item is (via P31/P279*) a temple Q44539, stupa Q180987, monument Q4989906, heritage site Q358, Buddhist
+# monastery Q160742, archaeological site Q839954, fort Q57821, palace Q16560, museum Q33506, place of worship Q1370598,
+# religious building Q24398318, shrine Q697295 or ruins Q109607, or has any heritage designation (P1435).
+# Fields: labels (en, ne), description, classes, heritage designation, religion P140, architectural style P149,
+# dedicated to P825, material P186, height P2048, inception P571, image P18, Commons category P373, GeoNames ID P1566,
+# OSM node/way/relation IDs, located in P131, English and Nepali Wikipedia articles, number of sitelinks.
+SELECT ?item ?itemLabel ?label_ne ?description ?coord
+       (GROUP_CONCAT(DISTINCT ?clsLabel; separator="; ") AS ?classes)
+       (GROUP_CONCAT(DISTINCT ?heritageLabel; separator="; ") AS ?heritage)
+       (SAMPLE(?p131) AS ?p131) (SAMPLE(?image) AS ?image) (SAMPLE(?inception) AS ?inception)
+       (SAMPLE(?commons) AS ?commons) (SAMPLE(?osmNode) AS ?osmNode) (SAMPLE(?osmWay) AS ?osmWay)
+       (SAMPLE(?osmRel) AS ?osmRel) (SAMPLE(?sitelinks) AS ?sitelinks)
+       (GROUP_CONCAT(DISTINCT ?religionLabel; separator="; ") AS ?religion)
+       (GROUP_CONCAT(DISTINCT ?styleLabel; separator="; ") AS ?style)
+       (GROUP_CONCAT(DISTINCT ?dedicatedLabel; separator="; ") AS ?dedicated_to)
+       (GROUP_CONCAT(DISTINCT ?materialLabel; separator="; ") AS ?material)
+       (SAMPLE(?height) AS ?height) (SAMPLE(?geonames) AS ?geonames) (SAMPLE(?enwiki) AS ?enwiki) (SAMPLE(?newiki) AS ?newiki)
+WHERE {
+  SERVICE wikibase:box {
+    ?item wdt:P625 ?coord .
+    bd:serviceParam wikibase:cornerSouthWest "Point(83.00 28.16)"^^geo:wktLiteral .
+    bd:serviceParam wikibase:cornerNorthEast "Point(83.50 28.50)"^^geo:wktLiteral .
+  }
+  FILTER (EXISTS { ?item wdt:P31/wdt:P279* ?cls .
+                    VALUES ?cls { wd:Q44539 wd:Q180987 wd:Q4989906 wd:Q358 wd:Q160742 wd:Q839954 wd:Q57821 wd:Q16560
+                                  wd:Q33506 wd:Q1370598 wd:Q24398318 wd:Q697295 wd:Q109607 } }
+          || EXISTS { ?item wdt:P1435 ?anyDesignation })
+  OPTIONAL { ?item wdt:P31 ?c31 . ?c31 rdfs:label ?clsLabel FILTER(LANG(?clsLabel) = "en") }
+  OPTIONAL { ?item rdfs:label ?itemLabel FILTER(LANG(?itemLabel) = "en") }
+  OPTIONAL { ?item rdfs:label ?label_ne FILTER(LANG(?label_ne) = "ne") }
+  OPTIONAL { ?item schema:description ?description FILTER(LANG(?description) = "en") }
+  OPTIONAL { ?item wdt:P131 ?p131 }
+  OPTIONAL { ?item wdt:P18 ?image }
+  OPTIONAL { ?item wdt:P1435 ?h . ?h rdfs:label ?heritageLabel FILTER(LANG(?heritageLabel) = "en") }
+  OPTIONAL { ?item wdt:P571 ?inception }
+  OPTIONAL { ?item wdt:P373 ?commons }
+  OPTIONAL { ?item wdt:P11693 ?osmNode }
+  OPTIONAL { ?item wdt:P10689 ?osmWay }
+  OPTIONAL { ?item wdt:P402 ?osmRel }
+  OPTIONAL { ?item wikibase:sitelinks ?sitelinks }
+  OPTIONAL { ?item wdt:P140 ?rl . ?rl rdfs:label ?religionLabel FILTER(LANG(?religionLabel) = "en") }
+  OPTIONAL { ?item wdt:P149 ?st . ?st rdfs:label ?styleLabel FILTER(LANG(?styleLabel) = "en") }
+  OPTIONAL { ?item wdt:P825 ?dd . ?dd rdfs:label ?dedicatedLabel FILTER(LANG(?dedicatedLabel) = "en") }
+  OPTIONAL { ?item wdt:P186 ?mt . ?mt rdfs:label ?materialLabel FILTER(LANG(?materialLabel) = "en") }
+  OPTIONAL { ?item wdt:P2048 ?height }
+  OPTIONAL { ?item wdt:P1566 ?geonames }
+  OPTIONAL { ?enwiki schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> }
+  OPTIONAL { ?newiki schema:about ?item ; schema:isPartOf <https://ne.wikipedia.org/> }
+}
+GROUP BY ?item ?itemLabel ?label_ne ?description ?coord

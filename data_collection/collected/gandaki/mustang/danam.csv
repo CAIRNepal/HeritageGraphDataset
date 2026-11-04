@@ -1,0 +1,2 @@
+resource_id,danam_code,url,monument_name,anglicized_name,name_ne,ontology_class,monument_type,religion,main_deity,condition_types,events,objects,lat,lon,danam_province,danam_district,danam_municipality,quality_flags
+fe6ac976-a5a9-433d-96fa-23480b8ce6ba,MUS0100,https://danam.cats.uni-heidelberg.de/report/fe6ac976-a5a9-433d-96fa-23480b8ce6ba,Gönpa Gang (1684-96 CE),Gonpa Gang,,BuddhistMonument,Monastic building (bāhāḥ),Buddhist,Maitreya,Ruined,2,2,28.910353022419017,83.81224882142698,4,,Chhusang,

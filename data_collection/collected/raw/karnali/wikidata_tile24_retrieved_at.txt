@@ -1,0 +1,1 @@
+2026-11-04T11:36:09Z https://query.wikidata.org/sparql

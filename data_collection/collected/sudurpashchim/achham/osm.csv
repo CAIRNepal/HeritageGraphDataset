@@ -1,0 +1,12 @@
+osm_id,url,name,name_en,name_ne,lat,lon,category,heritage_tagged,historic,heritage,amenity,building,religion,denomination,tourism,wikidata,start_date,recent_looking,recent_signals,duplicate_group,quality_flags,tags_json
+node/4573188370,https://www.openstreetmap.org/node/4573188370,,Bajagaun,,29.0430656,81.311071,attraction,,,,,,,,attraction,,,,,,,"{""name:en"": ""Bajagaun"", ""tourism"": ""attraction""}"
+node/5714352423,https://www.openstreetmap.org/node/5714352423,,Baskada,,28.9743371,81.3604406,attraction,,,,,,,,attraction,,,,,,,"{""name:en"": ""Baskada"", ""tourism"": ""attraction""}"
+node/5714352623,https://www.openstreetmap.org/node/5714352623,कमलबजार,Kamal Bazzar,,29.0531432,81.3398496,attraction,,,,,,,,attraction,,,,,,,"{""name"": ""कमलबजार"", ""name:en"": ""Kamal Bazzar"", ""tourism"": ""attraction""}"
+node/7262527987,https://www.openstreetmap.org/node/7262527987,,,,29.2030707,81.2500591,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,no_name,"{""amenity"": ""place_of_worship"", ""religion"": ""hindu""}"
+node/10855564332,https://www.openstreetmap.org/node/10855564332,,,,28.9981741,81.2703001,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,no_name,"{""amenity"": ""place_of_worship"", ""religion"": ""hindu""}"
+node/11047498905,https://www.openstreetmap.org/node/11047498905,,Temple,,29.0679565,81.4597482,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,,"{""amenity"": ""place_of_worship"", ""name:en"": ""Temple"", ""religion"": ""hindu""}"
+node/11059624005,https://www.openstreetmap.org/node/11059624005,,Devi temple,,29.0993513,81.5171116,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,,"{""amenity"": ""place_of_worship"", ""name:en"": ""Devi temple"", ""religion"": ""hindu""}"
+node/11826857485,https://www.openstreetmap.org/node/11826857485,,,,29.2709035,81.1742571,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,no_name,"{""amenity"": ""place_of_worship"", ""religion"": ""hindu""}"
+node/11829792571,https://www.openstreetmap.org/node/11829792571,,,,29.2131297,81.2040825,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,no_name,"{""amenity"": ""place_of_worship"", ""religion"": ""hindu""}"
+node/11829792600,https://www.openstreetmap.org/node/11829792600,,,,29.2132377,81.2042598,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,no_name,"{""amenity"": ""place_of_worship"", ""religion"": ""hindu""}"
+way/1273994226,https://www.openstreetmap.org/way/1273994226,,,,29.2126948,81.20456,monastery,,,,monastery,,,,,,,,,,no_name,"{""amenity"": ""monastery""}"

@@ -1,0 +1,3 @@
+osm_id,url,name,name_en,name_ne,lat,lon,category,heritage_tagged,historic,heritage,amenity,building,religion,denomination,tourism,wikidata,start_date,recent_looking,recent_signals,duplicate_group,quality_flags,tags_json
+node/7040568800,https://www.openstreetmap.org/node/7040568800,Kamal tal Temple,,,28.6148025,82.6250368,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,,"{""amenity"": ""place_of_worship"", ""name"": ""Kamal tal Temple"", ""religion"": ""hindu""}"
+way/456256208,https://www.openstreetmap.org/way/456256208,Jumli pokhari,,,28.635636,82.4832068,pond,,,,,,,,,,,,,,,"{""name"": ""Jumli pokhari"", ""natural"": ""water""}"

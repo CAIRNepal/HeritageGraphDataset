@@ -1,0 +1,4 @@
+osm_id,url,name,name_en,name_ne,lat,lon,category,heritage_tagged,historic,heritage,amenity,building,religion,denomination,tourism,wikidata,start_date,recent_looking,recent_signals,duplicate_group,quality_flags,tags_json
+node/9695214540,https://www.openstreetmap.org/node/9695214540,Barah Temple,,,28.4489912,82.7214923,place_of_worship,,,,place_of_worship,,hindu,,,,,,,,,"{""amenity"": ""place_of_worship"", ""name"": ""Barah Temple"", ""religion"": ""hindu""}"
+way/1062233759,https://www.openstreetmap.org/way/1062233759,धार्मिक क्षेत्र,,,28.1590419,82.4903566,religious_compound,,,,,,hindu,,,,,,,,,"{""landuse"": ""religious"", ""name"": ""धार्मिक क्षेत्र"", ""religion"": ""hindu""}"
+way/1095423777,https://www.openstreetmap.org/way/1095423777,पोखरी,,,28.2375096,82.5250221,pond,,,,,,,,,,,,,,,"{""name"": ""पोखरी"", ""natural"": ""water"", ""water"": ""pond""}"
