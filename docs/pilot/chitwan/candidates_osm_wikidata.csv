@@ -1,0 +1,4 @@
+pair_no,likely,distance_m,name_similarity,linked_by_source,kinds_conflict,osm_id,osm_name,osm_kind,osm_url,wikidata_id,wikidata_name,wikidata_kind,wikidata_url,decision (same/different/unsure),note
+1,yes,33.4,1.0,,,node/9771408086,Shree Gayatri Harihar Mandir,amenity=place_of_worship; religion=hindu,https://www.openstreetmap.org/node/9771408086,Q5657387,Harihar Temple,Hindu temple,http://www.wikidata.org/entity/Q5657387,,
+2,yes,3119.8,1.0,yes,,relation/6083166,Chitwan National Park,heritage=1,https://www.openstreetmap.org/relation/6083166,Q1075023,Chitwan National Park,national park,http://www.wikidata.org/entity/Q1075023,,
+3,,20.7,0.36,,,node/3079590595,shiva mandir,amenity=place_of_worship; religion=hindu,https://www.openstreetmap.org/node/3079590595,Q5657387,Harihar Temple,Hindu temple,http://www.wikidata.org/entity/Q5657387,,

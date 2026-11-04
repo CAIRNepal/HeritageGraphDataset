@@ -1,0 +1,70 @@
+{
+ "district": "Chitwan",
+ "rel": 4589410,
+ "qid": "Q28583",
+ "osm_base": "2026-11-04T05:35:18Z",
+ "counts": {
+  "danam": 0,
+  "osm": 265,
+  "wikidata": 5
+ },
+ "wikidata_outside": 4,
+ "danam_district_field": 0,
+ "pairs": {
+  "danam-osm": {
+   "candidates": 0,
+   "likely": 0,
+   "linked": 0
+  },
+  "danam-wikidata": {
+   "candidates": 0,
+   "likely": 0,
+   "linked": 0
+  },
+  "osm-wikidata": {
+   "candidates": 3,
+   "likely": 2,
+   "linked": 1
+  }
+ },
+ "with_likely_match": {
+  "danam": {
+   "osm": 0,
+   "wikidata": 0
+  },
+  "osm": {
+   "danam": 0,
+   "wikidata": 2
+  },
+  "wikidata": {
+   "danam": 0,
+   "osm": 2
+  }
+ },
+ "unique": {
+  "danam": 0,
+  "osm": 263,
+  "wikidata": 3
+ },
+ "unique_named_osm": 222,
+ "osm_no_heritage_tag": 254,
+ "osm_recent": 16,
+ "osm_recent_signals": {
+  "name": 9,
+  "religion": 14
+ },
+ "osm_recent_examples": [
+  "Trinity Church (node/3392281231; name: church)",
+  "Bharatpur Baptist chruch (node/3392360967; religion=christian)",
+  "Nawa Jiwan AG Chruch (node/3392360974; religion=christian)",
+  "Bharatpur Christian Fellowship (node/3415398777; religion=christian, name: fellowship)",
+  "Chitwan church (node/5549468721; name: church)",
+  "Getshamane Baptist Church (node/5759777204; religion=christian, name: church)",
+  "Shantikunja Church (node/8838526427; religion=christian, name: church)",
+  "Yesu Mandali (node/9771408075; religion=christian)",
+  "AG Church (node/9771408076; religion=christian, name: church)",
+  "Bharatpur Gospel Church (way/245134465; religion=christian, name: church)"
+ ],
+ "osm_place_of_worship": 247,
+ "osm_historic": 10
+}

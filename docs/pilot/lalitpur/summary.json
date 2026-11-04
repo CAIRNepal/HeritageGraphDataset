@@ -1,0 +1,70 @@
+{
+ "district": "Lalitpur",
+ "rel": 4583253,
+ "qid": "Q1108338",
+ "osm_base": "2026-11-04T04:56:50Z",
+ "counts": {
+  "danam": 562,
+  "osm": 604,
+  "wikidata": 11
+ },
+ "wikidata_outside": 17,
+ "danam_district_field": 97,
+ "pairs": {
+  "danam-osm": {
+   "candidates": 1509,
+   "likely": 122,
+   "linked": 0
+  },
+  "danam-wikidata": {
+   "candidates": 59,
+   "likely": 4,
+   "linked": 0
+  },
+  "osm-wikidata": {
+   "candidates": 74,
+   "likely": 10,
+   "linked": 4
+  }
+ },
+ "with_likely_match": {
+  "danam": {
+   "osm": 101,
+   "wikidata": 4
+  },
+  "osm": {
+   "danam": 93,
+   "wikidata": 10
+  },
+  "wikidata": {
+   "danam": 3,
+   "osm": 7
+  }
+ },
+ "unique": {
+  "danam": 461,
+  "osm": 504,
+  "wikidata": 3
+ },
+ "unique_named_osm": 396,
+ "osm_no_heritage_tag": 469,
+ "osm_recent": 46,
+ "osm_recent_signals": {
+  "religion": 37,
+  "name": 38
+ },
+ "osm_recent_examples": [
+  "St. Marys School Church (node/1892823655; religion=christian, name: school)",
+  "Everest Sharansthan Babtist Church (node/1937660001; religion=christian, name: church)",
+  "Love Church and Love library (node/1937660002; religion=christian, name: church)",
+  "Holy Christian Church (node/1937710527; religion=christian, name: church)",
+  "Nepal Naya Darsan Mandali (node/2684769395; religion=christian)",
+  "Bulu New Creation Chruch (node/3415408930; religion=christian)",
+  "Fruits worship (node/3415418903; religion=christian)",
+  "Crossway Community Church (node/3415419787; religion=christian, name: church)",
+  "Church (node/4373099104; religion=christian, name: church)",
+  "Bodhigram Church (node/4486686789; religion=christian, name: church)"
+ ],
+ "osm_place_of_worship": 449,
+ "osm_historic": 134
+}

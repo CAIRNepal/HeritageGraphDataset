@@ -1,0 +1,62 @@
+{
+ "district": "Kanchanpur",
+ "rel": 4586286,
+ "qid": "Q28981",
+ "osm_base": "2026-11-04T05:49:30Z",
+ "counts": {
+  "danam": 0,
+  "osm": 100,
+  "wikidata": 0
+ },
+ "wikidata_outside": 0,
+ "danam_district_field": 0,
+ "pairs": {
+  "danam-osm": {
+   "candidates": 0,
+   "likely": 0,
+   "linked": 0
+  },
+  "danam-wikidata": {
+   "candidates": 0,
+   "likely": 0,
+   "linked": 0
+  },
+  "osm-wikidata": {
+   "candidates": 0,
+   "likely": 0,
+   "linked": 0
+  }
+ },
+ "with_likely_match": {
+  "danam": {
+   "osm": 0,
+   "wikidata": 0
+  },
+  "osm": {
+   "danam": 0,
+   "wikidata": 0
+  },
+  "wikidata": {
+   "danam": 0,
+   "osm": 0
+  }
+ },
+ "unique": {
+  "danam": 0,
+  "osm": 100,
+  "wikidata": 0
+ },
+ "unique_named_osm": 86,
+ "osm_no_heritage_tag": 96,
+ "osm_recent": 3,
+ "osm_recent_signals": {
+  "name": 3
+ },
+ "osm_recent_examples": [
+  "Radha Soami Satsang Beas Nepal (node/9530825960; name: satsang)",
+  "Shree Bandebi Niranjandev Aashram (node/9530825964; name: ashram)",
+  "Jagdaguru Ashram Mahakali Shardapeeth (node/9801965342; name: ashram)"
+ ],
+ "osm_place_of_worship": 88,
+ "osm_historic": 4
+}

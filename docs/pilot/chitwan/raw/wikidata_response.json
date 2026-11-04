@@ -1,0 +1,376 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "label_ne", "coord", "classes", "p131", "image", "heritage", "inception", "commons", "osmNode", "osmWay", "osmRel", "sitelinks" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1075023"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chitwan National Park"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "चितवन राष्ट्रिय निकुञ्ज"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(84.333333 27.5)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "national park"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q50822475"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Chitwan%20swamp.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "World Heritage Site"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1973-01-01T00:00:00Z"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Chitwan National Park"
+      },
+      "osmRel" : {
+        "type" : "literal",
+        "value" : "6083166"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "60"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4880120"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bishazari Tal"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "बिसहजारी ताल"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(84.43638889 27.61805556)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "group of lakes"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25104015"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Bishazaari%20Taal.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "Ramsar site"
+      },
+      "inception" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2003-01-01T00:00:00Z"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Bishazari Tal"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "6"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104845865"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Valmiki Ashram"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(83.953475 27.445316666)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple; ashram"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2089152"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : "State Protected Monument"
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Valmiki Ashram, Bithoor"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "3"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25620569"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kelidighat"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "केलादीघाट"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(83.931666666 27.875)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19830253"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29418925"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ramghatdham"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "रामघाटधाम"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(83.912777777 27.873888888)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5072905"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106808162"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shashwat Dham"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "सिजी मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(84.211388888 27.677222222)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple; religious complex"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3412583"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Shashwat%20Dham%20%28%20CG%20temple%29.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "CG Saswat Dham"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "3"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5520885"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganeshthan Temple"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(84.44861111 27.70611111)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28583"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5657387"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Harihar Temple"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(84.5039 27.6253)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28583"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "0"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6792424"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maula Kalika Temple"
+      },
+      "label_ne" : {
+        "xml:lang" : "ne",
+        "type" : "literal",
+        "value" : "मौलाकालिका मन्दिर"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(84.4088 27.7275)"
+      },
+      "classes" : {
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "p131" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4382922"
+      },
+      "image" : {
+        "type" : "uri",
+        "value" : "http://commons.wikimedia.org/wiki/Special:FilePath/Maula%20Kalika%20Temple%2020171007%20105131.jpg"
+      },
+      "heritage" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "commons" : {
+        "type" : "literal",
+        "value" : "Maula Kalika Temple"
+      },
+      "sitelinks" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "8"
+      }
+    } ]
+  }
+}

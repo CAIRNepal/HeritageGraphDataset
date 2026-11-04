@@ -1,0 +1,5125 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-04T05:35:18Z",
+    "timestamp_areas_base": "2026-11-04T03:01:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1537553879,
+  "lat": 27.6307662,
+  "lon": 84.4934109,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 1905854277,
+  "lat": 27.7039914,
+  "lon": 84.4318973,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "Temple",
+    "name": "Gaureshwar Pashupati Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 1905854279,
+  "lat": 27.6995719,
+  "lon": 84.4237078,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chitrawan Buddha Bihar",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 1905884122,
+  "lat": 27.7022606,
+  "lon": 84.4405014,
+  "tags": {
+    "addr:city": "Narayangarh",
+    "addr:housenumber": "Bypass Road",
+    "addr:street": "Mini Ring Road",
+    "amenity": "place_of_worship",
+    "name": "Tinkhol Mahabauddha Gomba",
+    "religion": "buddhist",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 1905912682,
+  "lat": 27.6976864,
+  "lon": 84.4322446,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Rameshwor Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 1905962475,
+  "lat": 27.6981233,
+  "lon": 84.4218202,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durga Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 1979213282,
+  "lat": 27.6893049,
+  "lon": 84.4227811,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "Osho Meditation Center"
+  }
+},
+{
+  "type": "node",
+  "id": 1979213286,
+  "lat": 27.7180753,
+  "lon": 84.4319946,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bageshwori Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 1999614244,
+  "lat": 27.6893119,
+  "lon": 84.4163641,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bhagawati Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 1999614245,
+  "lat": 27.6998184,
+  "lon": 84.4243834,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Harihar Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 1999614246,
+  "lat": 27.6987789,
+  "lon": 84.4225489,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ishwarimy",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3079590595,
+  "lat": 27.6253166,
+  "lon": 84.5041091,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "shiva mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3341395246,
+  "lat": 27.6998758,
+  "lon": 84.4247029,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "harihar mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 3341422352,
+  "lat": 27.7001878,
+  "lon": 84.4341316,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion"
+  }
+},
+{
+  "type": "node",
+  "id": 3341437696,
+  "lat": 27.6999908,
+  "lon": 84.4251091,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "harihar"
+  }
+},
+{
+  "type": "node",
+  "id": 3341437917,
+  "lat": 27.6964406,
+  "lon": 84.4277301,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion"
+  }
+},
+{
+  "type": "node",
+  "id": 3341630938,
+  "lat": 27.6978041,
+  "lon": 84.4245752,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bhimshen Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3343357224,
+  "lat": 27.7006319,
+  "lon": 84.4261753,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "janaki mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3343358064,
+  "lat": 27.7004747,
+  "lon": 84.4260621,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "ram janaki temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3343358207,
+  "lat": 27.7002314,
+  "lon": 84.4255730,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "siddi ganesh mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 3345309115,
+  "lat": 27.7011821,
+  "lon": 84.4272000,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "gujesori mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 3345309625,
+  "lat": 27.7009886,
+  "lon": 84.4269126,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "biswokarma sarodaye upasana mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 3349167647,
+  "lat": 27.6870837,
+  "lon": 84.4324774,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3351191421,
+  "lat": 27.6876465,
+  "lon": 84.4288134,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3353621764,
+  "lat": 27.6913606,
+  "lon": 84.4428097,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3390758128,
+  "lat": 27.6869610,
+  "lon": 84.4323382,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Chitwan Kalika Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3390856272,
+  "lat": 27.6977711,
+  "lon": 84.4245951,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "bhimsen"
+  }
+},
+{
+  "type": "node",
+  "id": 3392281231,
+  "lat": 27.6643227,
+  "lon": 84.4338159,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Trinity Church"
+  }
+},
+{
+  "type": "node",
+  "id": 3392281634,
+  "lat": 27.6772671,
+  "lon": 84.4239055,
+  "tags": {
+    "historic": "monastery",
+    "name": "sprinkle kids garden",
+    "phone": "056524705"
+  }
+},
+{
+  "type": "node",
+  "id": 3392356512,
+  "lat": 27.7001761,
+  "lon": 84.4395646,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "tinkhole gumba"
+  }
+},
+{
+  "type": "node",
+  "id": 3392360967,
+  "lat": 27.6864580,
+  "lon": 84.4360891,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bharatpur Baptist chruch",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 3392360974,
+  "lat": 27.6773765,
+  "lon": 84.4405041,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Nawa Jiwan AG Chruch",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 3392361353,
+  "lat": 27.6830324,
+  "lon": 84.4525284,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Naurange chruch"
+  }
+},
+{
+  "type": "node",
+  "id": 3392362890,
+  "lat": 27.6892238,
+  "lon": 84.4400213,
+  "tags": {
+    "addr:city": "Bharatpur",
+    "addr:street": "Bypass Road",
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "fixme": "religion",
+    "name": "Ganesh Tample",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3392364616,
+  "lat": 27.6877965,
+  "lon": 84.4442473,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Grace chruch"
+  }
+},
+{
+  "type": "node",
+  "id": 3392364900,
+  "lat": 27.7076441,
+  "lon": 84.4585406,
+  "tags": {
+    "amenity": "place_of_worship",
+    "fixme": "religion",
+    "name": "jakadimai Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 3412133118,
+  "lat": 27.6991423,
+  "lon": 84.4275370,
+  "tags": {
+    "addr:country": "NP",
+    "amenity": "place_of_worship",
+    "name": "Lilachok Mosque",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 3415398777,
+  "lat": 27.6882252,
+  "lon": 84.4325222,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bharatpur Christian Fellowship",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 3453357290,
+  "lat": 27.6907797,
+  "lon": 84.4963731,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Radha soami satsong beas nepal",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3453895582,
+  "lat": 27.6839571,
+  "lon": 84.5144251,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "shree sangakugn gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 3455072941,
+  "lat": 27.6760944,
+  "lon": 84.5313050,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "dhekun tharbling gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 3455073194,
+  "lat": 27.6791000,
+  "lon": 84.5295164,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Temple of Tharus Kul Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3455125670,
+  "lat": 27.6942317,
+  "lon": 84.4846895,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3455126472,
+  "lat": 27.6960427,
+  "lon": 84.5008067,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3455126474,
+  "lat": 27.6963915,
+  "lon": 84.5008537,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3456809358,
+  "lat": 27.6810987,
+  "lon": 84.5029162,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3456809832,
+  "lat": 27.6829305,
+  "lon": 84.5060234,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3458642319,
+  "lat": 27.6833217,
+  "lon": 84.4892115,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bhimsen Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3458899426,
+  "lat": 27.6859462,
+  "lon": 84.4895131,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3458933045,
+  "lat": 27.6898531,
+  "lon": 84.4870081,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Nagh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3472529421,
+  "lat": 27.6003449,
+  "lon": 84.6017167,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 3472568133,
+  "lat": 27.5782431,
+  "lon": 84.6033190,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 4451677489,
+  "lat": 27.6434086,
+  "lon": 84.2927522,
+  "tags": {
+    "amenity": "post_office",
+    "email": "alpabiram06@gmail.com",
+    "historic": "castle",
+    "name:en": "काफ्ले निवास",
+    "phone": "9845144902"
+  }
+},
+{
+  "type": "node",
+  "id": 4542525791,
+  "lat": 27.6314196,
+  "lon": 84.4922244,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Ganesh chok"
+  }
+},
+{
+  "type": "node",
+  "id": 4542527095,
+  "lat": 27.6313233,
+  "lon": 84.4932777,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Krishnamandir"
+  }
+},
+{
+  "type": "node",
+  "id": 4550798291,
+  "lat": 27.6715748,
+  "lon": 84.5405280,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Vadreswor mahadev temple"
+  }
+},
+{
+  "type": "node",
+  "id": 4553848091,
+  "lat": 27.6753599,
+  "lon": 84.5318424,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Shivalaya Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 4553853189,
+  "lat": 27.6967364,
+  "lon": 84.5694637,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Kalika Temple Jutpani"
+  }
+},
+{
+  "type": "node",
+  "id": 4585354092,
+  "lat": 27.6668158,
+  "lon": 84.3302611,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "शिव मन्दिर",
+    "name:en": "Shiva Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 4641270296,
+  "lat": 27.5664216,
+  "lon": 84.5600008,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Janakpur Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 4753156722,
+  "lat": 27.6707773,
+  "lon": 84.3408760,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "लक्ष्मी नारायण मन्दिर",
+    "name:en": "Laxmi Narayan Temple",
+    "opening_hours": "24/7",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4887194925,
+  "lat": 27.6748632,
+  "lon": 84.3977712,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Harikritan Mandir",
+    "name:ne": "हरिकिर्तन मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4924267821,
+  "lat": 27.8571030,
+  "lon": 84.5600697,
+  "tags": {
+    "addr:street": "Prithvi Highway",
+    "amenity": "place_of_worship",
+    "name": "Triveni Mandir",
+    "name:en": "Triveni Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 5156202422,
+  "lat": 27.6236100,
+  "lon": 84.3964805,
+  "tags": {
+    "historic": "castle",
+    "name:en": "Adhikari HOUSE"
+  }
+},
+{
+  "type": "node",
+  "id": 5414617123,
+  "lat": 27.5831950,
+  "lon": 84.2758712,
+  "tags": {
+    "addr:postcode": "+977",
+    "amenity": "place_of_worship",
+    "name:en": "Siva Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 5452570121,
+  "lat": 27.6540159,
+  "lon": 84.4069915,
+  "tags": {
+    "historic": "castle",
+    "name:en": "Subash Dai"
+  }
+},
+{
+  "type": "node",
+  "id": 5472432322,
+  "lat": 27.5773056,
+  "lon": 84.4941649,
+  "tags": {
+    "historic": "monument",
+    "name:en": "Rhinoceros statue"
+  }
+},
+{
+  "type": "node",
+  "id": 5549468721,
+  "lat": 27.5909131,
+  "lon": 84.2845941,
+  "tags": {
+    "addr:street": "amrit chowk",
+    "amenity": "place_of_worship",
+    "name:en": "Chitwan church"
+  }
+},
+{
+  "type": "node",
+  "id": 5587310925,
+  "lat": 27.5943285,
+  "lon": 84.3769652,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Shiva Mandir"
+  }
+},
+{
+  "type": "node",
+  "id": 5759757121,
+  "lat": 27.7062632,
+  "lon": 84.4431462,
+  "tags": {
+    "addr:city": "Narayangarh",
+    "addr:housenumber": "Ganesthan",
+    "addr:street": "Bypass Road",
+    "amenity": "place_of_worship",
+    "denomination": "Hindu",
+    "name": "Goddess Parvati Temple",
+    "religion": "hindu",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 5759765327,
+  "lat": 27.7062152,
+  "lon": 84.4429823,
+  "tags": {
+    "addr:city": "Narayangarh",
+    "addr:housenumber": "Ganeshthan",
+    "addr:street": "Bypass Road",
+    "amenity": "place_of_worship",
+    "denomination": "Hindu",
+    "name": "Shiva Temple",
+    "name:ks": "شیو مندر",
+    "name:pa": "ਸ਼ਿਵ ਮੰਦਰ",
+    "name:ur": "شیو مندر",
+    "religion": "hindu",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 5759766917,
+  "lat": 27.7061253,
+  "lon": 84.4430185,
+  "tags": {
+    "addr:city": "Narayangarh",
+    "addr:housenumber": "Ganeshthan",
+    "addr:street": "Bypass Road",
+    "amenity": "place_of_worship",
+    "denomination": "Hindu",
+    "name": "Ganesh Temple",
+    "religion": "hindu",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 5759777204,
+  "lat": 27.7051385,
+  "lon": 84.4399054,
+  "tags": {
+    "addr:city": "Bharatpur",
+    "addr:housenumber": "Aanptari",
+    "addr:street": "Jaldevi",
+    "amenity": "place_of_worship",
+    "denomination": "baptist",
+    "name": "Getshamane Baptist Church",
+    "religion": "christian",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 5759786191,
+  "lat": 27.7028692,
+  "lon": 84.4370717,
+  "tags": {
+    "addr:city": "Narayangarh",
+    "addr:housenumber": "Aanptari",
+    "addr:postcode": "44207",
+    "addr:street": "Samata Street",
+    "amenity": "place_of_worship",
+    "denomination": "Hindu",
+    "name": "Shiva Temple",
+    "name:ks": "شیو مندر",
+    "name:pa": "ਸ਼ਿਵ ਮੰਦਰ",
+    "name:ur": "شیو مندر",
+    "religion": "hindu",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 5853169086,
+  "lat": 27.6512763,
+  "lon": 84.3500696,
+  "tags": {
+    "historic": "memorial",
+    "name:en": "Shahid Balaram Sharma (Pathak) Smriti Park"
+  }
+},
+{
+  "type": "node",
+  "id": 6064385361,
+  "lat": 27.6774875,
+  "lon": 84.3765148,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Radha Krishna Temple",
+    "name:en": "Lord Krishna Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6064385362,
+  "lat": 27.6782570,
+  "lon": 84.3777808,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "Hindu",
+    "name": "Mukundeshwor Mahadev Temple",
+    "name:en": "Mukundeshwor Mahadev Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6085467817,
+  "lat": 27.6364657,
+  "lon": 84.5745275,
+  "tags": {
+    "addr:city": "Khairahani -03- Chitwan",
+    "amenity": "place_of_worship",
+    "name": "Pipal Bot",
+    "religion": "hindu",
+    "service_times": "Always Open"
+  }
+},
+{
+  "type": "node",
+  "id": 6085655535,
+  "lat": 27.6347618,
+  "lon": 84.5785109,
+  "tags": {
+    "addr:city": "Khairahani -03 Chitwan",
+    "amenity": "place_of_worship",
+    "name": "Seti Devi Than",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6439616689,
+  "lat": 27.7029325,
+  "lon": 84.4374811,
+  "tags": {
+    "addr:postcode": "+977",
+    "addr:street": "Ganeshsthan Marga",
+    "amenity": "place_of_worship",
+    "name:en": "Ramesh home रमेश निवास",
+    "name:hi": "रमेशको घर"
+  }
+},
+{
+  "type": "node",
+  "id": 8237786585,
+  "lat": 27.7049174,
+  "lon": 84.4492807,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 8244364017,
+  "lat": 27.4385220,
+  "lon": 84.3611634,
+  "tags": {
+    "addr:street": "Madi-Thori",
+    "historic": "castle",
+    "name:en": "Krishna Dahal",
+    "phone": "9845672049"
+  }
+},
+{
+  "type": "node",
+  "id": 8357534363,
+  "lat": 27.8566817,
+  "lon": 84.5591900,
+  "tags": {
+    "addr:city": "Mugling",
+    "addr:postcode": "44206",
+    "amenity": "place_of_worship",
+    "name": "Sarswati Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8408117518,
+  "lat": 27.6683015,
+  "lon": 84.4273532,
+  "tags": {
+    "historic": "castle",
+    "name:en": "Poudel's House"
+  }
+},
+{
+  "type": "node",
+  "id": 8528347126,
+  "lat": 27.6528965,
+  "lon": 84.3790360,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Rameshwor Shiva Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8838526426,
+  "lat": 27.6594578,
+  "lon": 84.5041800,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Buddha Temple",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 8838526427,
+  "lat": 27.6460685,
+  "lon": 84.5024610,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shantikunja Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 8926210117,
+  "lat": 27.6816071,
+  "lon": 84.3700901,
+  "tags": {
+    "amenity": "place_of_worship",
+    "internet_access": "no",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9522020405,
+  "lat": 27.8547449,
+  "lon": 84.5598744,
+  "tags": {
+    "addr:city": "Mugling",
+    "addr:street": "Bharatpur-Mugling Highway",
+    "amenity": "place_of_worship",
+    "check_date": "2025-12-11",
+    "name": "Mugling Masjid",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 9522020406,
+  "lat": 27.8531938,
+  "lon": 84.5592730,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Gumba",
+    "religion": "buddhist",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 9530259558,
+  "lat": 27.6204187,
+  "lon": 84.3574655,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Panchang Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9572589926,
+  "lat": 27.6200019,
+  "lon": 84.3670565,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bhuddhist Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408074,
+  "lat": 27.6061739,
+  "lon": 84.5195679,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Masjid Rashid",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408075,
+  "lat": 27.6080061,
+  "lon": 84.5087503,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Yesu Mandali",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408076,
+  "lat": 27.6135161,
+  "lon": 84.5121374,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "AG Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408077,
+  "lat": 27.6163518,
+  "lon": 84.5176169,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408078,
+  "lat": 27.6233632,
+  "lon": 84.5090197,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Saraswoti Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408079,
+  "lat": 27.6273183,
+  "lon": 84.5325313,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Saraswoti Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408080,
+  "lat": 27.6214995,
+  "lon": 84.5298185,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Siddhiganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408081,
+  "lat": 27.6167140,
+  "lon": 84.5281023,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Rameshworam Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408082,
+  "lat": 27.6176452,
+  "lon": 84.5330948,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Kairkali Mukteshwor Mahadev Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408083,
+  "lat": 27.6192341,
+  "lon": 84.5157687,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Rahamania Jame Masjid",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408084,
+  "lat": 27.6192698,
+  "lon": 84.5184067,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Maharudra Siwalaya Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408085,
+  "lat": 27.6243270,
+  "lon": 84.5008033,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Nipani Brahmasthan",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408086,
+  "lat": 27.6253186,
+  "lon": 84.5042384,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Gayatri Harihar Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408087,
+  "lat": 27.6311583,
+  "lon": 84.4938666,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Krishna Pranami Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408088,
+  "lat": 27.6288336,
+  "lon": 84.4781402,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durga Mandir",
+    "religion": "hindu",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408089,
+  "lat": 27.6294468,
+  "lon": 84.4786745,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiv Ganesh Dharmik Mandir",
+    "religion": "hindu",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408090,
+  "lat": 27.6087183,
+  "lon": 84.5007933,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jaspal Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408091,
+  "lat": 27.5976667,
+  "lon": 84.4952017,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Baghmara Brahmasthan",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408092,
+  "lat": 27.6020385,
+  "lon": 84.4905616,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hardi Brahmasthan",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408093,
+  "lat": 27.6033417,
+  "lon": 84.4996776,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sri Siddha Icchakamana Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408094,
+  "lat": 27.5965633,
+  "lon": 84.5038690,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chitrasen Baba Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408095,
+  "lat": 27.6299955,
+  "lon": 84.5097909,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree SwetaBaraha Bishnu Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408096,
+  "lat": 27.6298025,
+  "lon": 84.5057774,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Baidik Sanatan Dharma Panchayan Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408097,
+  "lat": 27.5820172,
+  "lon": 84.4842271,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiv Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408098,
+  "lat": 27.5823689,
+  "lon": 84.4838817,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Tasi Urgen Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408099,
+  "lat": 27.5858471,
+  "lon": 84.4939897,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Dhaneshwor Mahadev Dhan Dhanya Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408100,
+  "lat": 27.5860522,
+  "lon": 84.5064338,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408101,
+  "lat": 27.5875255,
+  "lon": 84.5135398,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Dorangi Brahmasthan",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408102,
+  "lat": 27.5810113,
+  "lon": 84.5108963,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bachhyauli Brahmasthan",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408103,
+  "lat": 27.5824628,
+  "lon": 84.5075496,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Tharu Cultural Museum",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408104,
+  "lat": 27.5844454,
+  "lon": 84.5276969,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durga Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408105,
+  "lat": 27.5798209,
+  "lon": 84.5192129,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jalpa Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408106,
+  "lat": 27.5880733,
+  "lon": 84.5256500,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kailaseshwor Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408107,
+  "lat": 27.5971594,
+  "lon": 84.5195595,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jaleshwor Mahadev Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408108,
+  "lat": 27.6597478,
+  "lon": 84.5056121,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sange chhoiling Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408109,
+  "lat": 27.6465692,
+  "lon": 84.4999646,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Panchakanya Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408110,
+  "lat": 27.6436866,
+  "lon": 84.4941053,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Aatma Shanti Boudhha Stupa Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408111,
+  "lat": 27.6423201,
+  "lon": 84.4946248,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Panchakanya Bhagwati Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408112,
+  "lat": 27.6619667,
+  "lon": 84.5031183,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiv Panchayan Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408113,
+  "lat": 27.6539782,
+  "lon": 84.5029538,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Krishna Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408114,
+  "lat": 27.6480668,
+  "lon": 84.5043012,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shivalaya Mandir, Salghari",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408115,
+  "lat": 27.6476989,
+  "lon": 84.5036002,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chyasang gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771408116,
+  "lat": 27.6433856,
+  "lon": 84.5122565,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ram Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411017,
+  "lat": 27.6292419,
+  "lon": 84.5239763,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bishwo Buddha Gumba",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411018,
+  "lat": 27.6353966,
+  "lon": 84.5012560,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411019,
+  "lat": 27.6373424,
+  "lon": 84.5322603,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bouddha Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411020,
+  "lat": 27.6337746,
+  "lon": 84.5460304,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Dakshinkali Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411021,
+  "lat": 27.6312817,
+  "lon": 84.5325940,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ramleela Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411022,
+  "lat": 27.6306486,
+  "lon": 84.5252746,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Laurighol Bagheswari Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411023,
+  "lat": 27.6370412,
+  "lon": 84.5406821,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411024,
+  "lat": 27.6327465,
+  "lon": 84.5266211,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kamakhya Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411025,
+  "lat": 27.6584855,
+  "lon": 84.5412459,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Siwalaya Mandir",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411026,
+  "lat": 27.6687269,
+  "lon": 84.5329727,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Dokun Tharpaling Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411027,
+  "lat": 27.6673908,
+  "lon": 84.5362521,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ram Janki Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411028,
+  "lat": 27.6688472,
+  "lon": 84.5394889,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ram Krishna Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411029,
+  "lat": 27.6559382,
+  "lon": 84.5356126,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Panchayan Devta Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411030,
+  "lat": 27.6524300,
+  "lon": 84.5346333,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Gupteshwori Kalika Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411031,
+  "lat": 27.6384301,
+  "lon": 84.5298028,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411032,
+  "lat": 27.6255698,
+  "lon": 84.5123298,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kailash Dham",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411033,
+  "lat": 27.6672018,
+  "lon": 84.5484450,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bhadrakali Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411034,
+  "lat": 27.6581098,
+  "lon": 84.5534258,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Siwalaya Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411035,
+  "lat": 27.6505233,
+  "lon": 84.5504388,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9771411036,
+  "lat": 27.6502061,
+  "lon": 84.5467695,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bandevi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9794160105,
+  "lat": 27.6308983,
+  "lon": 84.5975643,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "शिव मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935805,
+  "lat": 27.6696529,
+  "lon": 84.4547987,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "सिद्धेश्वर मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935806,
+  "lat": 27.6707275,
+  "lon": 84.3828766,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "श्रीराधाकृष्ण पञ्चाङ्ग मन्दिर, आनन्दपुर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935807,
+  "lat": 27.5972195,
+  "lon": 84.3624482,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "श्री गणेश मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935808,
+  "lat": 27.5877925,
+  "lon": 84.3226171,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "शिव मन्दिर , पहारिलाेटार",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935809,
+  "lat": 27.7061617,
+  "lon": 84.4431341,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "गणेशस्थान मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935810,
+  "lat": 27.6595902,
+  "lon": 84.4412231,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Tripureshwor Shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935811,
+  "lat": 27.6033658,
+  "lon": 84.3141333,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Temple Of Mahadev",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935812,
+  "lat": 27.7019750,
+  "lon": 84.4329412,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sri Shesha Laxmi Narayana Mandir, Khetrapur",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935813,
+  "lat": 27.5701524,
+  "lon": 84.3813783,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sitamai Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935814,
+  "lat": 27.6308819,
+  "lon": 84.4031702,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Simhabahini Durga Panchayan Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935815,
+  "lat": 27.6525739,
+  "lon": 84.4260373,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Panchayan Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798935816,
+  "lat": 27.6721083,
+  "lon": 84.4276391,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Mandir",
+    "name:en": "Shiva Mandir",
+    "name:hi": "शिव मंदिर",
+    "name:ks": "شیو مندر",
+    "name:pa": "ਸ਼ਿਵ ਮੰਦਰ",
+    "name:pnb": "شو مندر",
+    "name:ur": "شیو مندر",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944117,
+  "lat": 27.7063149,
+  "lon": 84.4377714,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Ganesh Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944118,
+  "lat": 27.7012475,
+  "lon": 84.4381191,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shilashwar Mahadev Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944119,
+  "lat": 27.6395078,
+  "lon": 84.4085215,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "shankat mochan sitaram mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944120,
+  "lat": 27.6781489,
+  "lon": 84.3778516,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mukundeshwor Shivalaya, Shivghat",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944122,
+  "lat": 27.6346659,
+  "lon": 84.3669510,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Manakamana mai Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944123,
+  "lat": 27.6939612,
+  "lon": 84.4359751,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mahakaleswar Shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944124,
+  "lat": 27.6560390,
+  "lon": 84.4266819,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Maha Laxmi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944125,
+  "lat": 27.6846112,
+  "lon": 84.4579661,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kamala Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944126,
+  "lat": 27.6473928,
+  "lon": 84.4149931,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "KALIKA TEMPLE",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944127,
+  "lat": 27.6864623,
+  "lon": 84.4324834,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kalika Mandir Entrance Gate",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944128,
+  "lat": 27.6995315,
+  "lon": 84.4519890,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "ISKCON CHITWAN",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944129,
+  "lat": 27.6152052,
+  "lon": 84.3881777,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ichhapurna Bhagwati Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944130,
+  "lat": 27.5678821,
+  "lon": 84.3381496,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944131,
+  "lat": 27.7030072,
+  "lon": 84.4373373,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944132,
+  "lat": 27.6527588,
+  "lon": 84.3964835,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944133,
+  "lat": 27.6873173,
+  "lon": 84.4323288,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944134,
+  "lat": 27.6151517,
+  "lon": 84.3827711,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944135,
+  "lat": 27.6802865,
+  "lon": 84.4386449,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durga temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944136,
+  "lat": 27.6112701,
+  "lon": 84.3922814,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durga Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9798944139,
+  "lat": 27.6668183,
+  "lon": 84.3302498,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Bijayanagar Shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11027154990,
+  "lat": 27.8250153,
+  "lon": 84.5214218,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "श्री दुर्गा मन्दिर",
+    "name:en": "Shree Durga Mandir",
+    "name:ne": "श्री दुर्गा मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11431954973,
+  "lat": 27.4921680,
+  "lon": 84.2623269,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "गोद्दक नाथ मन्दिर",
+    "name:en": "Goddak Nath Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 11991293967,
+  "lat": 27.6814403,
+  "lon": 84.3229343,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Siddhi Ganesh Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12019692755,
+  "lat": 27.8773342,
+  "lon": 84.5915900,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Manakamana",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12067770360,
+  "lat": 27.6672072,
+  "lon": 84.3163794,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "Radha Krishna Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12956488720,
+  "lat": 27.5633456,
+  "lon": 84.2348931,
+  "tags": {
+    "historic": "wayside_shrine",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 185412136,
+  "center": {
+    "lat": 27.6938195,
+    "lon": 84.4360842
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 185414505,
+  "center": {
+    "lat": 27.6832355,
+    "lon": 84.4353294
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 185414506,
+  "center": {
+    "lat": 27.6815148,
+    "lon": 84.4364684
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 245134465,
+  "center": {
+    "lat": 27.6973082,
+    "lon": 84.4467578
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "protestant",
+    "name": "Bharatpur Gospel Church",
+    "religion": "christian",
+    "service_times": "sunset,sunrise"
+  }
+},
+{
+  "type": "way",
+  "id": 245137969,
+  "center": {
+    "lat": 27.7061248,
+    "lon": 84.4430181
+  },
+  "tags": {
+    "addr:housenumber": "Ganeshthan",
+    "addr:street": "Ganeshthan Marga",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "Mandir",
+    "name": "Ganesh Mandir",
+    "religion": "hindu",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 315122357,
+  "center": {
+    "lat": 27.6937274,
+    "lon": 84.4361729
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Mandir",
+    "name:en": "Shiva Mandir",
+    "name:hi": "शिव मंदिर",
+    "name:ks": "شیو مندر",
+    "name:pa": "ਸ਼ਿਵ ਮੰਦਰ",
+    "name:pnb": "شو مندر",
+    "name:ur": "شیو مندر",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 327539288,
+  "center": {
+    "lat": 27.7022617,
+    "lon": 84.4405023
+  },
+  "tags": {
+    "access": "yes",
+    "addr:city": "Narayangarh",
+    "addr:street": "Bypass Road",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Tinkhole Ghumba",
+    "religion": "buddhist",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 327730392,
+  "center": {
+    "lat": 27.7029401,
+    "lon": 84.4294961
+  },
+  "tags": {
+    "addr:street": "Narayeni path",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "building:adjacency": "detached",
+    "building:groundslope": "flat",
+    "building:irregularity": "regular",
+    "building:levels": "2",
+    "building:levels:underground": "0",
+    "building:use": "commercial",
+    "column:size:breadth": "9",
+    "column:size:length": "9",
+    "floor:material": "rcc",
+    "name": "urasia reukai",
+    "physical:condition": "good",
+    "roof:cover:material": "concrete_without_covering",
+    "roof:material": "rcc",
+    "roof:shape": "flat",
+    "roof_shade:present": "no",
+    "shape:plan": "square",
+    "wall:material": "brick",
+    "wall:thickness": "9"
+  }
+},
+{
+  "type": "way",
+  "id": 328098328,
+  "center": {
+    "lat": 27.6870220,
+    "lon": 84.4325077
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 328525841,
+  "center": {
+    "lat": 27.6893033,
+    "lon": 84.4163564
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 329295276,
+  "center": {
+    "lat": 27.6997570,
+    "lon": 84.4241301
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 329626430,
+  "center": {
+    "lat": 27.7051502,
+    "lon": 84.4399111
+  },
+  "tags": {
+    "addr:street": "Aaptadi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "building:adjacency": "detached",
+    "building:groundslope": "flat",
+    "building:irregularity": "regular",
+    "building:levels": "1",
+    "building:levels:underground": "0",
+    "building:use": "residential",
+    "column:size:breadth": "9",
+    "column:size:length": "9",
+    "denomination": "baptist",
+    "name": "Gethsamane Baptisth Church",
+    "physical:condition": "good",
+    "religion": "christian",
+    "roof:cover:material": "concrete_without_covering",
+    "roof:material": "rcc",
+    "roof:shape": "flat",
+    "roof_shade:present": "no",
+    "shape:plan": "l_shaped",
+    "wall:material": "brick",
+    "wall:thickness": "4"
+  }
+},
+{
+  "type": "way",
+  "id": 330461150,
+  "center": {
+    "lat": 27.6694504,
+    "lon": 84.4343999
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Malika Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 330880182,
+  "center": {
+    "lat": 27.7062138,
+    "lon": 84.4429825
+  },
+  "tags": {
+    "addr:housenumber": "Shiva Mandir",
+    "addr:street": "Ganeshthan marga",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "hindu",
+    "name": "Shiva Mandir",
+    "name:en": "Shiva Mandir",
+    "name:hi": "शिव मंदिर",
+    "name:ks": "شیو مندر",
+    "name:pa": "ਸ਼ਿਵ ਮੰਦਰ",
+    "name:pnb": "شو مندر",
+    "name:ur": "شیو مندر",
+    "religion": "hindu",
+    "service_times": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 330880212,
+  "center": {
+    "lat": 27.7062584,
+    "lon": 84.4431435
+  },
+  "tags": {
+    "addr:city": "Narayangarh",
+    "addr:housenumber": "Ganeshthan",
+    "addr:street": "Ganeshthan marga",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "Hindu",
+    "name": "Goddess Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 330880228,
+  "center": {
+    "lat": 27.7061678,
+    "lon": 84.4431869
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 330914545,
+  "center": {
+    "lat": 27.7407499,
+    "lon": 84.5195528
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "simaldhap gospel chruch",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 338426725,
+  "center": {
+    "lat": 27.6804323,
+    "lon": 84.5265685
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "note": "Ashaya Mahila, Balbalika Ashram",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338427449,
+  "center": {
+    "lat": 27.6885422,
+    "lon": 84.5141620
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "poudel kul mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338428783,
+  "center": {
+    "lat": 27.6932944,
+    "lon": 84.4903105
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "baramtham",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338431682,
+  "center": {
+    "lat": 27.6860793,
+    "lon": 84.5268318
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jyotibindu Mukteshowr Mahadev Mandir",
+    "opening_hours": "24/7",
+    "religion": "hindu",
+    "service_times": "sunset,sunrise",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 338435089,
+  "center": {
+    "lat": 27.6907852,
+    "lon": 84.4899685
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Pratima Smiriti Swaroswoti Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338441189,
+  "center": {
+    "lat": 27.6894036,
+    "lon": 84.4868201
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "brahma kumari ragyog sewa kendra",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338565253,
+  "center": {
+    "lat": 27.6909306,
+    "lon": 84.5120309
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "ShivaTemple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338565259,
+  "center": {
+    "lat": 27.6908762,
+    "lon": 84.5119226
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Devi Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338565267,
+  "center": {
+    "lat": 27.6910243,
+    "lon": 84.5096076
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338567675,
+  "center": {
+    "lat": 27.6908483,
+    "lon": 84.5213771
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "hindu mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338567676,
+  "center": {
+    "lat": 27.6909515,
+    "lon": 84.5212058
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kalpeshor Mahadev",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338630776,
+  "center": {
+    "lat": 27.6831248,
+    "lon": 84.5145420
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "bhimbali temple",
+    "religion": "hindu",
+    "service_times": "0:00 - 24:00"
+  }
+},
+{
+  "type": "way",
+  "id": 338630780,
+  "center": {
+    "lat": 27.6856937,
+    "lon": 84.5113345
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "church",
+    "name": "habron chruch",
+    "opening_hours": "Sa 7:00 - 10:00",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 338725888,
+  "center": {
+    "lat": 27.6922296,
+    "lon": 84.5101242
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Bhramathan Gadauli",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338725889,
+  "center": {
+    "lat": 27.6980866,
+    "lon": 84.5092264
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 338725895,
+  "center": {
+    "lat": 27.6801198,
+    "lon": 84.5164769
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338732349,
+  "center": {
+    "lat": 27.6887096,
+    "lon": 84.5273649
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Atmagyan Prachar Shang",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 338732359,
+  "center": {
+    "lat": 27.7039923,
+    "lon": 84.5366873
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 338750570,
+  "center": {
+    "lat": 27.6881074,
+    "lon": 84.5247087
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Om Shanti",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 342653554,
+  "center": {
+    "lat": 27.6608009,
+    "lon": 84.4231100
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 342755366,
+  "center": {
+    "lat": 27.5875408,
+    "lon": 84.6032862
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 344598002,
+  "center": {
+    "lat": 27.6575038,
+    "lon": 84.5206631
+  },
+  "tags": {
+    "addr:city": "Jamunapur",
+    "addr:postcode": "44200",
+    "addr:street": "Bakhular - Shaktikhor Road",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Shamba Sadha Shiva Mandhir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 344603244,
+  "center": {
+    "lat": 27.6538540,
+    "lon": 84.5028188
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Shree Krishna Mandir, Dharma Dham",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 345627789,
+  "center": {
+    "lat": 27.6126076,
+    "lon": 84.4458585
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 345627994,
+  "center": {
+    "lat": 27.6132823,
+    "lon": 84.4449313
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 345628410,
+  "center": {
+    "lat": 27.6140321,
+    "lon": 84.4446080
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 345628901,
+  "center": {
+    "lat": 27.6137764,
+    "lon": 84.4507158
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 345629473,
+  "center": {
+    "lat": 27.6184859,
+    "lon": 84.4527882
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 345633748,
+  "center": {
+    "lat": 27.6204336,
+    "lon": 84.4510969
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 345633828,
+  "center": {
+    "lat": 27.6204754,
+    "lon": 84.4520857
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 345634021,
+  "center": {
+    "lat": 27.6202895,
+    "lon": 84.4521182
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 345634063,
+  "center": {
+    "lat": 27.6194741,
+    "lon": 84.4533522
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 374897309,
+  "center": {
+    "lat": 27.6391029,
+    "lon": 84.4977827
+  },
+  "tags": {
+    "addr:city": "Ratnanagar",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "Jain",
+    "name": "Shree Satya Sai Bhajan Samuha",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 374897310,
+  "center": {
+    "lat": 27.6391778,
+    "lon": 84.4977726
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 541307762,
+  "center": {
+    "lat": 27.6696348,
+    "lon": 84.3254569
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Mandir",
+    "name:en": "Shiva Mandir",
+    "name:hi": "शिव मंदिर",
+    "name:ks": "شیو مندر",
+    "name:pa": "ਸ਼ਿਵ ਮੰਦਰ",
+    "name:pnb": "شو مندر",
+    "name:ur": "شیو مندر",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 556168040,
+  "center": {
+    "lat": 27.6668191,
+    "lon": 84.3302425
+  },
+  "tags": {
+    "addr:city": "Bharatpur Sub Metro",
+    "addr:street": "Bijayanagar",
+    "amenity": "place_of_worship",
+    "description": "Bijayanagar Durga Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 568053961,
+  "center": {
+    "lat": 27.5953624,
+    "lon": 84.3925570
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "shiiva mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 610063812,
+  "center": {
+    "lat": 27.5683643,
+    "lon": 84.6183967
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 809171016,
+  "center": {
+    "lat": 27.6519566,
+    "lon": 84.3498097
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 826182868,
+  "center": {
+    "lat": 27.6897545,
+    "lon": 84.4597385
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "1",
+    "name": "gumba",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "way",
+  "id": 852027340,
+  "center": {
+    "lat": 27.6931190,
+    "lon": 84.3574839
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 885591353,
+  "center": {
+    "lat": 27.6752693,
+    "lon": 84.4398650
+  },
+  "tags": {
+    "addr:street": "Radharkrishna Mandir Marga",
+    "amenity": "place_of_worship",
+    "building": "temple",
+    "name": "Radhakrishna Temple",
+    "name:ne": "राधाकृष्ण मन्दिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 954906759,
+  "center": {
+    "lat": 27.6480654,
+    "lon": 84.5042959
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "-1",
+    "name": "Shivalaya Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 954906760,
+  "center": {
+    "lat": 27.6433788,
+    "lon": 84.5121852
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Ram Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1020053421,
+  "center": {
+    "lat": 27.5796128,
+    "lon": 84.2278861
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "baptist",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 1022510417,
+  "center": {
+    "lat": 27.5723184,
+    "lon": 84.2316196
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1022534501,
+  "center": {
+    "lat": 27.6661485,
+    "lon": 84.3176753
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 1026989528,
+  "center": {
+    "lat": 27.6611570,
+    "lon": 84.3109411
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 1029450526,
+  "center": {
+    "lat": 27.5616510,
+    "lon": 84.2287542
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1029450527,
+  "center": {
+    "lat": 27.5617918,
+    "lon": 84.2285744
+  },
+  "tags": {
+    "building": "temple"
+  }
+},
+{
+  "type": "way",
+  "id": 1056155945,
+  "center": {
+    "lat": 27.7005821,
+    "lon": 84.4408302
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Durga Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1182058326,
+  "center": {
+    "lat": 27.6067572,
+    "lon": 84.5714320
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "1",
+    "name": "amarnath temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1302697266,
+  "center": {
+    "lat": 27.6764793,
+    "lon": 84.4531938
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "historic": "wayside_shrine",
+    "name": "Dhanghada Shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "relation",
+  "id": 6083166,
+  "center": {
+    "lat": 27.5170510,
+    "lon": 84.3082115
+  },
+  "tags": {
+    "boundary": "national_park",
+    "description": "Nawalparasi part",
+    "heritage": "1",
+    "heritage:operator": "whc",
+    "int_name": "Chitwan National Park",
+    "name": "चितवन राष्ट्रिय निकुञ्‍ज",
+    "name:cs": "národní park Čitvan",
+    "name:en": "Chitwan National Park",
+    "name:fa": "پارک ملی چیتوان",
+    "name:ne": "चितवन राष्ट्रिय निकुञ्‍ज",
+    "name:ur": "چتوان قومی پارک",
+    "name:zh": "奇特旺国家公园",
+    "protect_class": "2",
+    "ref:whc": "284",
+    "sorting_name:cs": "Čitvan",
+    "type": "boundary",
+    "whc:criteria": "vii, ix, x (natural)",
+    "wikidata": "Q1075023",
+    "wikipedia": "en:Chitwan National Park"
+  }
+},
+{
+  "type": "relation",
+  "id": 4589410,
+  "bounds": {
+    "minlat": 27.3561319,
+    "minlon": 83.9193619,
+    "maxlat": 27.8808790,
+    "maxlon": 84.7963669
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 1190036767,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6990424, "lon": 84.3583624 },
+         { "lat": 27.7025633, "lon": 84.3491348 },
+         { "lat": 27.7027140, "lon": 84.3452344 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405749452,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7027140, "lon": 84.3452344 },
+         { "lat": 27.6954483, "lon": 84.3289141 },
+         { "lat": 27.6932054, "lon": 84.3251891 },
+         { "lat": 27.6908177, "lon": 84.3244255 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 327754734,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6908177, "lon": 84.3244255 },
+         { "lat": 27.6872302, "lon": 84.3233069 },
+         { "lat": 27.6831883, "lon": 84.3179129 },
+         { "lat": 27.6772256, "lon": 84.3094634 },
+         { "lat": 27.6699349, "lon": 84.2961496 },
+         { "lat": 27.6630445, "lon": 84.2715068 },
+         { "lat": 27.6567305, "lon": 84.2626126 },
+         { "lat": 27.6509768, "lon": 84.2585686 },
+         { "lat": 27.6508635, "lon": 84.2548806 },
+         { "lat": 27.6540485, "lon": 84.2510416 },
+         { "lat": 27.6521567, "lon": 84.2429311 },
+         { "lat": 27.6504079, "lon": 84.2361275 },
+         { "lat": 27.6449338, "lon": 84.2281453 },
+         { "lat": 27.6425007, "lon": 84.2159573 },
+         { "lat": 27.6392312, "lon": 84.2068593 },
+         { "lat": 27.6345929, "lon": 84.2017094 },
+         { "lat": 27.6261522, "lon": 84.1865174 },
+         { "lat": 27.6153397, "lon": 84.1724857 },
+         { "lat": 27.5973272, "lon": 84.1511551 },
+         { "lat": 27.5850039, "lon": 84.1354481 },
+         { "lat": 27.5767877, "lon": 84.1298691 },
+         { "lat": 27.5712337, "lon": 84.1261784 },
+         { "lat": 27.5654512, "lon": 84.1254918 },
+         { "lat": 27.5624986, "lon": 84.1224003 },
+         { "lat": 27.5599728, "lon": 84.1192261 },
+         { "lat": 27.5558665, "lon": 84.1190888 },
+         { "lat": 27.5539633, "lon": 84.1154592 },
+         { "lat": 27.5530277, "lon": 84.1117495 },
+         { "lat": 27.5512550, "lon": 84.1080398 },
+         { "lat": 27.5521732, "lon": 84.0989987 },
+         { "lat": 27.5545702, "lon": 84.0894429 },
+         { "lat": 27.5596684, "lon": 84.0792290 },
+         { "lat": 27.5596684, "lon": 84.0751092 },
+         { "lat": 27.5575378, "lon": 84.0709035 },
+         { "lat": 27.5517546, "lon": 84.0677277 },
+         { "lat": 27.5517546, "lon": 84.0627495 },
+         { "lat": 27.5551789, "lon": 84.0570847 },
+         { "lat": 27.5567008, "lon": 84.0509907 },
+         { "lat": 27.5547224, "lon": 84.0461842 },
+         { "lat": 27.5506132, "lon": 84.0432660 },
+         { "lat": 27.5449057, "lon": 84.0414635 },
+         { "lat": 27.5395023, "lon": 84.0382020 },
+         { "lat": 27.5379802, "lon": 84.0338246 },
+         { "lat": 27.5369030, "lon": 84.0265221 },
+         { "lat": 27.5391101, "lon": 84.0155358 },
+         { "lat": 27.5445895, "lon": 84.0068669 },
+         { "lat": 27.5458072, "lon": 83.9995713 },
+         { "lat": 27.5433719, "lon": 83.9936490 },
+         { "lat": 27.5442851, "lon": 83.9834351 },
+         { "lat": 27.5487751, "lon": 83.9767403 },
+         { "lat": 27.5506014, "lon": 83.9672989 },
+         { "lat": 27.5499165, "lon": 83.9611191 },
+         { "lat": 27.5474550, "lon": 83.9559150 },
+         { "lat": 27.5427631, "lon": 83.9543385 },
+         { "lat": 27.5400994, "lon": 83.9487595 },
+         { "lat": 27.5412888, "lon": 83.9462676 },
+         { "lat": 27.5423086, "lon": 83.9399784 },
+         { "lat": 27.5455028, "lon": 83.9313359 },
+         { "lat": 27.5452745, "lon": 83.9261860 },
+         { "lat": 27.5427631, "lon": 83.9220662 },
+         { "lat": 27.5379668, "lon": 83.9193619 },
+         { "lat": 27.5273152, "lon": 83.9195700 },
+         { "lat": 27.5246192, "lon": 83.9224099 },
+         { "lat": 27.5208358, "lon": 83.9217093 },
+         { "lat": 27.5166702, "lon": 83.9233573 },
+         { "lat": 27.5132009, "lon": 83.9298396 },
+         { "lat": 27.5143427, "lon": 83.9380794 },
+         { "lat": 27.5190318, "lon": 83.9465530 },
+         { "lat": 27.5262382, "lon": 83.9508961 },
+         { "lat": 27.5273973, "lon": 83.9526877 },
+         { "lat": 27.5278099, "lon": 83.9541705 },
+         { "lat": 27.5223353, "lon": 83.9655130 },
+         { "lat": 27.5179433, "lon": 83.9690407 },
+         { "lat": 27.5136020, "lon": 83.9698825 },
+         { "lat": 27.5096325, "lon": 83.9686008 },
+         { "lat": 27.5050782, "lon": 83.9649701 },
+         { "lat": 27.5004780, "lon": 83.9573484 },
+         { "lat": 27.4969073, "lon": 83.9487589 },
+         { "lat": 27.4933175, "lon": 83.9402423 },
+         { "lat": 27.4895753, "lon": 83.9385901 },
+         { "lat": 27.4837638, "lon": 83.9396694 },
+         { "lat": 27.4755247, "lon": 83.9433945 },
+         { "lat": 27.4694837, "lon": 83.9449835 },
+         { "lat": 27.4663754, "lon": 83.9442287 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405328698,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4663754, "lon": 83.9442287 },
+         { "lat": 27.4620568, "lon": 83.9431799 },
+         { "lat": 27.4548108, "lon": 83.9394668 },
+         { "lat": 27.4485451, "lon": 83.9340205 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 45325026,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4485451, "lon": 83.9340205 },
+         { "lat": 27.4483344, "lon": 83.9349148 },
+         { "lat": 27.4483190, "lon": 83.9355509 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 741190641,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4392703, "lon": 84.0313410 },
+         { "lat": 27.4388162, "lon": 84.0309046 },
+         { "lat": 27.4386225, "lon": 84.0304306 },
+         { "lat": 27.4386159, "lon": 84.0301748 },
+         { "lat": 27.4389030, "lon": 84.0297985 },
+         { "lat": 27.4393438, "lon": 84.0293546 },
+         { "lat": 27.4397378, "lon": 84.0286247 },
+         { "lat": 27.4398313, "lon": 84.0280980 },
+         { "lat": 27.4397645, "lon": 84.0275713 },
+         { "lat": 27.4391167, "lon": 84.0262545 },
+         { "lat": 27.4387027, "lon": 84.0257203 },
+         { "lat": 27.4381751, "lon": 84.0254720 },
+         { "lat": 27.4377410, "lon": 84.0255848 },
+         { "lat": 27.4372068, "lon": 84.0259310 },
+         { "lat": 27.4370599, "lon": 84.0264878 },
+         { "lat": 27.4369330, "lon": 84.0268113 },
+         { "lat": 27.4367994, "lon": 84.0269242 },
+         { "lat": 27.4361316, "lon": 84.0271123 },
+         { "lat": 27.4354921, "lon": 84.0273953 },
+         { "lat": 27.4347035, "lon": 84.0272357 },
+         { "lat": 27.4339715, "lon": 84.0272517 },
+         { "lat": 27.4335277, "lon": 84.0271453 },
+         { "lat": 27.4334562, "lon": 84.0270232 },
+         { "lat": 27.4333718, "lon": 84.0268792 },
+         { "lat": 27.4333718, "lon": 84.0265813 },
+         { "lat": 27.4335654, "lon": 84.0264217 },
+         { "lat": 27.4338440, "lon": 84.0263259 },
+         { "lat": 27.4340802, "lon": 84.0263153 },
+         { "lat": 27.4342879, "lon": 84.0260865 },
+         { "lat": 27.4345429, "lon": 84.0255597 },
+         { "lat": 27.4345099, "lon": 84.0252192 },
+         { "lat": 27.4341510, "lon": 84.0248148 },
+         { "lat": 27.4336504, "lon": 84.0245116 },
+         { "lat": 27.4331074, "lon": 84.0242600 },
+         { "lat": 27.4328382, "lon": 84.0241589 },
+         { "lat": 27.4326729, "lon": 84.0238929 },
+         { "lat": 27.4326871, "lon": 84.0232970 },
+         { "lat": 27.4330980, "lon": 84.0222914 },
+         { "lat": 27.4333010, "lon": 84.0220360 },
+         { "lat": 27.4335985, "lon": 84.0216210 },
+         { "lat": 27.4336363, "lon": 84.0212858 },
+         { "lat": 27.4336599, "lon": 84.0209878 },
+         { "lat": 27.4338677, "lon": 84.0208122 },
+         { "lat": 27.4342407, "lon": 84.0207324 },
+         { "lat": 27.4347413, "lon": 84.0205515 },
+         { "lat": 27.4350813, "lon": 84.0202749 },
+         { "lat": 27.4353127, "lon": 84.0195140 },
+         { "lat": 27.4356500, "lon": 84.0193139 },
+         { "lat": 27.4361508, "lon": 84.0190957 },
+         { "lat": 27.4363445, "lon": 84.0188775 },
+         { "lat": 27.4363445, "lon": 84.0185765 },
+         { "lat": 27.4361642, "lon": 84.0183357 },
+         { "lat": 27.4356767, "lon": 84.0183207 },
+         { "lat": 27.4350489, "lon": 84.0180573 },
+         { "lat": 27.4347551, "lon": 84.0175156 },
+         { "lat": 27.4345080, "lon": 84.0168534 },
+         { "lat": 27.4344746, "lon": 84.0161837 },
+         { "lat": 27.4346816, "lon": 84.0156269 },
+         { "lat": 27.4352293, "lon": 84.0151303 },
+         { "lat": 27.4361041, "lon": 84.0146111 },
+         { "lat": 27.4370257, "lon": 84.0142725 },
+         { "lat": 27.4373529, "lon": 84.0139264 },
+         { "lat": 27.4375599, "lon": 84.0132041 },
+         { "lat": 27.4375800, "lon": 84.0128354 },
+         { "lat": 27.4374130, "lon": 84.0114734 },
+         { "lat": 27.4372527, "lon": 84.0105479 },
+         { "lat": 27.4374130, "lon": 84.0092763 },
+         { "lat": 27.4376534, "lon": 84.0087646 },
+         { "lat": 27.4380942, "lon": 84.0084411 },
+         { "lat": 27.4385216, "lon": 84.0084035 },
+         { "lat": 27.4392094, "lon": 84.0085013 },
+         { "lat": 27.4398438, "lon": 84.0087345 },
+         { "lat": 27.4401577, "lon": 84.0087722 },
+         { "lat": 27.4404782, "lon": 84.0085088 },
+         { "lat": 27.4406184, "lon": 84.0082003 },
+         { "lat": 27.4403847, "lon": 84.0072071 },
+         { "lat": 27.4400975, "lon": 84.0063794 },
+         { "lat": 27.4398304, "lon": 84.0056420 },
+         { "lat": 27.4397703, "lon": 84.0052883 },
+         { "lat": 27.4400041, "lon": 84.0051303 },
+         { "lat": 27.4401577, "lon": 84.0051604 },
+         { "lat": 27.4405650, "lon": 84.0056871 },
+         { "lat": 27.4410525, "lon": 84.0059129 },
+         { "lat": 27.4422011, "lon": 84.0056495 },
+         { "lat": 27.4424815, "lon": 84.0049497 },
+         { "lat": 27.4423613, "lon": 84.0047842 },
+         { "lat": 27.4419139, "lon": 84.0044080 },
+         { "lat": 27.4416201, "lon": 84.0040393 },
+         { "lat": 27.4413730, "lon": 84.0036405 },
+         { "lat": 27.4415066, "lon": 84.0033621 },
+         { "lat": 27.4420608, "lon": 84.0032567 },
+         { "lat": 27.4424415, "lon": 84.0031363 },
+         { "lat": 27.4425617, "lon": 84.0029031 },
+         { "lat": 27.4424281, "lon": 84.0023839 },
+         { "lat": 27.4420742, "lon": 84.0019625 },
+         { "lat": 27.4414264, "lon": 84.0015186 },
+         { "lat": 27.4408388, "lon": 84.0014283 },
+         { "lat": 27.4405049, "lon": 84.0012026 },
+         { "lat": 27.4404915, "lon": 84.0008865 },
+         { "lat": 27.4409456, "lon": 84.0003899 },
+         { "lat": 27.4422478, "lon": 83.9994644 },
+         { "lat": 27.4423547, "lon": 83.9990355 },
+         { "lat": 27.4422612, "lon": 83.9986518 },
+         { "lat": 27.4418939, "lon": 83.9985991 },
+         { "lat": 27.4416001, "lon": 83.9985163 },
+         { "lat": 27.4413463, "lon": 83.9981401 },
+         { "lat": 27.4413997, "lon": 83.9979294 },
+         { "lat": 27.4416067, "lon": 83.9975306 },
+         { "lat": 27.4419340, "lon": 83.9972372 },
+         { "lat": 27.4423747, "lon": 83.9974178 },
+         { "lat": 27.4428288, "lon": 83.9976585 },
+         { "lat": 27.4432161, "lon": 83.9975833 },
+         { "lat": 27.4435299, "lon": 83.9972823 },
+         { "lat": 27.4444715, "lon": 83.9969061 },
+         { "lat": 27.4447319, "lon": 83.9969061 },
+         { "lat": 27.4451125, "lon": 83.9968835 },
+         { "lat": 27.4458337, "lon": 83.9968158 },
+         { "lat": 27.4460941, "lon": 83.9966202 },
+         { "lat": 27.4463212, "lon": 83.9961386 },
+         { "lat": 27.4464147, "lon": 83.9957398 },
+         { "lat": 27.4462878, "lon": 83.9950250 },
+         { "lat": 27.4459472, "lon": 83.9944305 },
+         { "lat": 27.4451326, "lon": 83.9933621 },
+         { "lat": 27.4444515, "lon": 83.9919926 },
+         { "lat": 27.4444247, "lon": 83.9907436 },
+         { "lat": 27.4443914, "lon": 83.9892161 },
+         { "lat": 27.4439306, "lon": 83.9882153 },
+         { "lat": 27.4437102, "lon": 83.9876736 },
+         { "lat": 27.4436969, "lon": 83.9868459 },
+         { "lat": 27.4441309, "lon": 83.9851303 },
+         { "lat": 27.4437369, "lon": 83.9837910 },
+         { "lat": 27.4427754, "lon": 83.9821958 },
+         { "lat": 27.4410458, "lon": 83.9800814 },
+         { "lat": 27.4396368, "lon": 83.9788248 },
+         { "lat": 27.4390224, "lon": 83.9781251 },
+         { "lat": 27.4390224, "lon": 83.9776360 },
+         { "lat": 27.4391626, "lon": 83.9773576 },
+         { "lat": 27.4394565, "lon": 83.9771394 },
+         { "lat": 27.4399440, "lon": 83.9773199 },
+         { "lat": 27.4407186, "lon": 83.9778090 },
+         { "lat": 27.4418138, "lon": 83.9783132 },
+         { "lat": 27.4423947, "lon": 83.9781100 },
+         { "lat": 27.4426952, "lon": 83.9776661 },
+         { "lat": 27.4430491, "lon": 83.9762063 },
+         { "lat": 27.4431827, "lon": 83.9745359 },
+         { "lat": 27.4430491, "lon": 83.9733395 },
+         { "lat": 27.4425817, "lon": 83.9726999 },
+         { "lat": 27.4425082, "lon": 83.9719324 },
+         { "lat": 27.4426752, "lon": 83.9712176 },
+         { "lat": 27.4430759, "lon": 83.9705479 },
+         { "lat": 27.4438505, "lon": 83.9700438 },
+         { "lat": 27.4443780, "lon": 83.9700814 },
+         { "lat": 27.4449055, "lon": 83.9702620 },
+         { "lat": 27.4453129, "lon": 83.9701567 },
+         { "lat": 27.4455733, "lon": 83.9699159 },
+         { "lat": 27.4465148, "lon": 83.9685539 },
+         { "lat": 27.4468420, "lon": 83.9677865 },
+         { "lat": 27.4468954, "lon": 83.9671995 },
+         { "lat": 27.4467485, "lon": 83.9664471 },
+         { "lat": 27.4463546, "lon": 83.9655366 },
+         { "lat": 27.4449142, "lon": 83.9623432 },
+         { "lat": 27.4446214, "lon": 83.9610769 },
+         { "lat": 27.4443759, "lon": 83.9601830 },
+         { "lat": 27.4438848, "lon": 83.9594807 },
+         { "lat": 27.4433749, "lon": 83.9590231 },
+         { "lat": 27.4426666, "lon": 83.9582144 },
+         { "lat": 27.4423833, "lon": 83.9575333 },
+         { "lat": 27.4423549, "lon": 83.9565437 },
+         { "lat": 27.4424683, "lon": 83.9555328 },
+         { "lat": 27.4429310, "lon": 83.9530428 },
+         { "lat": 27.4429688, "lon": 83.9522660 },
+         { "lat": 27.4428649, "lon": 83.9513721 },
+         { "lat": 27.4424683, "lon": 83.9498611 },
+         { "lat": 27.4422794, "lon": 83.9489566 },
+         { "lat": 27.4422322, "lon": 83.9482010 },
+         { "lat": 27.4423950, "lon": 83.9471099 },
+         { "lat": 27.4423416, "lon": 83.9468842 },
+         { "lat": 27.4429405, "lon": 83.9459362 },
+         { "lat": 27.4437098, "lon": 83.9457355 },
+         { "lat": 27.4449456, "lon": 83.9450907 },
+         { "lat": 27.4461899, "lon": 83.9438576 },
+         { "lat": 27.4474259, "lon": 83.9427977 },
+         { "lat": 27.4480981, "lon": 83.9427432 },
+         { "lat": 27.4485846, "lon": 83.9422101 },
+         { "lat": 27.4483914, "lon": 83.9413624 },
+         { "lat": 27.4477228, "lon": 83.9399062 },
+         { "lat": 27.4479380, "lon": 83.9378290 },
+         { "lat": 27.4481490, "lon": 83.9363384 },
+         { "lat": 27.4483190, "lon": 83.9355509 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 339887626,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4528339, "lon": 84.2540802 },
+         { "lat": 27.4534288, "lon": 84.2523669 },
+         { "lat": 27.4534760, "lon": 84.2511964 },
+         { "lat": 27.4537593, "lon": 84.2508027 },
+         { "lat": 27.4537310, "lon": 84.2483233 },
+         { "lat": 27.4533061, "lon": 84.2472060 },
+         { "lat": 27.4532116, "lon": 84.2464717 },
+         { "lat": 27.4536082, "lon": 84.2457481 },
+         { "lat": 27.4544392, "lon": 84.2451416 },
+         { "lat": 27.4551946, "lon": 84.2442158 },
+         { "lat": 27.4548152, "lon": 84.2421379 },
+         { "lat": 27.4538270, "lon": 84.2406180 },
+         { "lat": 27.4527853, "lon": 84.2394592 },
+         { "lat": 27.4544279, "lon": 84.2336202 },
+         { "lat": 27.4563642, "lon": 84.2318746 },
+         { "lat": 27.4563909, "lon": 84.2309114 },
+         { "lat": 27.4553627, "lon": 84.2299032 },
+         { "lat": 27.4546549, "lon": 84.2296624 },
+         { "lat": 27.4538003, "lon": 84.2289250 },
+         { "lat": 27.4526384, "lon": 84.2278866 },
+         { "lat": 27.4515300, "lon": 84.2264419 },
+         { "lat": 27.4513965, "lon": 84.2249972 },
+         { "lat": 27.4507688, "lon": 84.2233719 },
+         { "lat": 27.4484318, "lon": 84.2212350 },
+         { "lat": 27.4480578, "lon": 84.2202418 },
+         { "lat": 27.4472031, "lon": 84.2203922 },
+         { "lat": 27.4460412, "lon": 84.2209039 },
+         { "lat": 27.4428894, "lon": 84.2210544 },
+         { "lat": 27.4409261, "lon": 84.2193087 },
+         { "lat": 27.4408860, "lon": 84.2183907 },
+         { "lat": 27.4419144, "lon": 84.2170062 },
+         { "lat": 27.4418877, "lon": 84.2162387 },
+         { "lat": 27.4423017, "lon": 84.2156217 },
+         { "lat": 27.4419278, "lon": 84.2138460 },
+         { "lat": 27.4421815, "lon": 84.2106255 },
+         { "lat": 27.4421148, "lon": 84.2095420 },
+         { "lat": 27.4426623, "lon": 84.2091056 },
+         { "lat": 27.4428360, "lon": 84.2078114 },
+         { "lat": 27.4432900, "lon": 84.2075405 },
+         { "lat": 27.4441982, "lon": 84.2076007 },
+         { "lat": 27.4458676, "lon": 84.2063065 },
+         { "lat": 27.4468559, "lon": 84.2063065 },
+         { "lat": 27.4482982, "lon": 84.2072696 },
+         { "lat": 27.4494601, "lon": 84.2075555 },
+         { "lat": 27.4529990, "lon": 84.2075706 },
+         { "lat": 27.4534664, "lon": 84.2081575 },
+         { "lat": 27.4541475, "lon": 84.2077813 },
+         { "lat": 27.4544546, "lon": 84.2072846 },
+         { "lat": 27.4554294, "lon": 84.2072245 },
+         { "lat": 27.4559102, "lon": 84.2076458 },
+         { "lat": 27.4568717, "lon": 84.2076910 },
+         { "lat": 27.4592077, "lon": 84.2041325 },
+         { "lat": 27.4627330, "lon": 84.2059685 },
+         { "lat": 27.4651365, "lon": 84.2087977 },
+         { "lat": 27.4659110, "lon": 84.2087977 },
+         { "lat": 27.4668990, "lon": 84.2072326 },
+         { "lat": 27.4679405, "lon": 84.2071122 },
+         { "lat": 27.4695695, "lon": 84.2057578 },
+         { "lat": 27.4704241, "lon": 84.2045238 },
+         { "lat": 27.4708780, "lon": 84.2026878 },
+         { "lat": 27.4722666, "lon": 84.1988654 },
+         { "lat": 27.4726138, "lon": 84.1960362 },
+         { "lat": 27.4722478, "lon": 84.1953439 },
+         { "lat": 27.4729275, "lon": 84.1948332 },
+         { "lat": 27.4732108, "lon": 84.1941521 },
+         { "lat": 27.4726443, "lon": 84.1932795 },
+         { "lat": 27.4707938, "lon": 84.1923644 },
+         { "lat": 27.4696103, "lon": 84.1913886 },
+         { "lat": 27.4695302, "lon": 84.1908017 },
+         { "lat": 27.4709054, "lon": 84.1895075 },
+         { "lat": 27.4718801, "lon": 84.1889657 },
+         { "lat": 27.4725344, "lon": 84.1880628 },
+         { "lat": 27.4728415, "lon": 84.1863472 },
+         { "lat": 27.4728415, "lon": 84.1852788 },
+         { "lat": 27.4724276, "lon": 84.1845263 },
+         { "lat": 27.4724543, "lon": 84.1839093 },
+         { "lat": 27.4741099, "lon": 84.1823593 },
+         { "lat": 27.4739840, "lon": 84.1811981 },
+         { "lat": 27.4749376, "lon": 84.1796126 },
+         { "lat": 27.4745316, "lon": 84.1786229 },
+         { "lat": 27.4745410, "lon": 84.1780909 },
+         { "lat": 27.4741256, "lon": 84.1776120 },
+         { "lat": 27.4743050, "lon": 84.1759946 },
+         { "lat": 27.4761649, "lon": 84.1731640 },
+         { "lat": 27.4762876, "lon": 84.1713231 },
+         { "lat": 27.4787989, "lon": 84.1713869 },
+         { "lat": 27.4796202, "lon": 84.1700249 },
+         { "lat": 27.4796674, "lon": 84.1680243 },
+         { "lat": 27.4803188, "lon": 84.1672901 },
+         { "lat": 27.4819237, "lon": 84.1669921 },
+         { "lat": 27.4840812, "lon": 84.1641846 },
+         { "lat": 27.4846004, "lon": 84.1622585 },
+         { "lat": 27.4848741, "lon": 84.1593641 },
+         { "lat": 27.4842605, "lon": 84.1577998 },
+         { "lat": 27.4842794, "lon": 84.1567357 },
+         { "lat": 27.4846193, "lon": 84.1560653 },
+         { "lat": 27.4845437, "lon": 84.1539903 },
+         { "lat": 27.4863846, "lon": 84.1520962 },
+         { "lat": 27.4862902, "lon": 84.1489145 },
+         { "lat": 27.4871209, "lon": 84.1486378 },
+         { "lat": 27.4875834, "lon": 84.1491166 },
+         { "lat": 27.4889144, "lon": 84.1489996 },
+         { "lat": 27.4904067, "lon": 84.1474812 },
+         { "lat": 27.4913601, "lon": 84.1470449 },
+         { "lat": 27.4935784, "lon": 84.1456616 },
+         { "lat": 27.4942203, "lon": 84.1458638 },
+         { "lat": 27.4952397, "lon": 84.1456935 },
+         { "lat": 27.4966462, "lon": 84.1446932 },
+         { "lat": 27.4974579, "lon": 84.1450550 },
+         { "lat": 27.5009470, "lon": 84.1497602 },
+         { "lat": 27.5017682, "lon": 84.1495048 },
+         { "lat": 27.5023156, "lon": 84.1486641 },
+         { "lat": 27.5029103, "lon": 84.1486322 },
+         { "lat": 27.5044370, "lon": 84.1492652 },
+         { "lat": 27.5059453, "lon": 84.1488589 },
+         { "lat": 27.5068797, "lon": 84.1496866 },
+         { "lat": 27.5076005, "lon": 84.1497016 },
+         { "lat": 27.5081210, "lon": 84.1492050 },
+         { "lat": 27.5092289, "lon": 84.1493254 },
+         { "lat": 27.5098428, "lon": 84.1504089 },
+         { "lat": 27.5117515, "lon": 84.1505443 },
+         { "lat": 27.5122587, "lon": 84.1500628 },
+         { "lat": 27.5127792, "lon": 84.1501380 },
+         { "lat": 27.5130995, "lon": 84.1504992 },
+         { "lat": 27.5138336, "lon": 84.1504842 },
+         { "lat": 27.5142474, "lon": 84.1509055 },
+         { "lat": 27.5165811, "lon": 84.1508640 },
+         { "lat": 27.5164610, "lon": 84.1494344 },
+         { "lat": 27.5187032, "lon": 84.1455518 },
+         { "lat": 27.5171817, "lon": 84.1440017 },
+         { "lat": 27.5170616, "lon": 84.1426925 },
+         { "lat": 27.5178090, "lon": 84.1419551 },
+         { "lat": 27.5177957, "lon": 84.1403298 },
+         { "lat": 27.5173152, "lon": 84.1397128 },
+         { "lat": 27.5173419, "lon": 84.1393516 },
+         { "lat": 27.5177690, "lon": 84.1389302 },
+         { "lat": 27.5173419, "lon": 84.1378618 },
+         { "lat": 27.5158871, "lon": 84.1369513 },
+         { "lat": 27.5157191, "lon": 84.1359720 },
+         { "lat": 27.5150302, "lon": 84.1353441 },
+         { "lat": 27.5146338, "lon": 84.1341310 },
+         { "lat": 27.5146716, "lon": 84.1333649 },
+         { "lat": 27.5120385, "lon": 84.1302683 },
+         { "lat": 27.5119913, "lon": 84.1288211 },
+         { "lat": 27.5116704, "lon": 84.1282890 },
+         { "lat": 27.5116138, "lon": 84.1255117 },
+         { "lat": 27.5111513, "lon": 84.1236282 },
+         { "lat": 27.5119158, "lon": 84.1225322 },
+         { "lat": 27.5121706, "lon": 84.1208083 },
+         { "lat": 27.5127274, "lon": 84.1203081 },
+         { "lat": 27.5126236, "lon": 84.1190844 },
+         { "lat": 27.5133786, "lon": 84.1177968 },
+         { "lat": 27.5139260, "lon": 84.1177543 },
+         { "lat": 27.5145772, "lon": 84.1173499 },
+         { "lat": 27.5188322, "lon": 84.1173169 },
+         { "lat": 27.5192663, "lon": 84.1156675 },
+         { "lat": 27.5190586, "lon": 84.1141458 },
+         { "lat": 27.5198419, "lon": 84.1128902 },
+         { "lat": 27.5198231, "lon": 84.1105704 },
+         { "lat": 27.5203798, "lon": 84.1093999 },
+         { "lat": 27.5213236, "lon": 84.1093147 },
+         { "lat": 27.5216067, "lon": 84.1089104 },
+         { "lat": 27.5216350, "lon": 84.1081655 },
+         { "lat": 27.5211820, "lon": 84.1074312 },
+         { "lat": 27.5211661, "lon": 84.1056177 },
+         { "lat": 27.5189373, "lon": 84.1034206 },
+         { "lat": 27.5189012, "lon": 84.1027537 },
+         { "lat": 27.5182783, "lon": 84.1022110 },
+         { "lat": 27.5174384, "lon": 84.1004126 },
+         { "lat": 27.5173251, "lon": 84.0986036 },
+         { "lat": 27.5163153, "lon": 84.0972309 },
+         { "lat": 27.5124132, "lon": 84.0995317 },
+         { "lat": 27.5087324, "lon": 84.0997019 },
+         { "lat": 27.5079396, "lon": 84.0984463 },
+         { "lat": 27.5055234, "lon": 84.0988719 },
+         { "lat": 27.5046739, "lon": 84.0975099 },
+         { "lat": 27.5027107, "lon": 84.0984888 },
+         { "lat": 27.5009987, "lon": 84.0985259 },
+         { "lat": 27.4997973, "lon": 84.0977735 },
+         { "lat": 27.4984892, "lon": 84.0978186 },
+         { "lat": 27.4980353, "lon": 84.0974424 },
+         { "lat": 27.4955791, "lon": 84.0970511 },
+         { "lat": 27.4940306, "lon": 84.0961633 },
+         { "lat": 27.4922952, "lon": 84.0957870 },
+         { "lat": 27.4906532, "lon": 84.0959225 },
+         { "lat": 27.4892381, "lon": 84.0947336 },
+         { "lat": 27.4889711, "lon": 84.0910466 },
+         { "lat": 27.4869820, "lon": 84.0911068 },
+         { "lat": 27.4861275, "lon": 84.0895869 },
+         { "lat": 27.4853532, "lon": 84.0884733 },
+         { "lat": 27.4848993, "lon": 84.0860805 },
+         { "lat": 27.4832973, "lon": 84.0838683 },
+         { "lat": 27.4833738, "lon": 84.0822192 },
+         { "lat": 27.4836809, "lon": 84.0816323 },
+         { "lat": 27.4837076, "lon": 84.0808949 },
+         { "lat": 27.4844685, "lon": 84.0800521 },
+         { "lat": 27.4843350, "lon": 84.0777496 },
+         { "lat": 27.4829733, "lon": 84.0765608 },
+         { "lat": 27.4827330, "lon": 84.0753719 },
+         { "lat": 27.4806235, "lon": 84.0731748 },
+         { "lat": 27.4806369, "lon": 84.0719709 },
+         { "lat": 27.4809039, "lon": 84.0714592 },
+         { "lat": 27.4818919, "lon": 84.0713839 },
+         { "lat": 27.4820254, "lon": 84.0711281 },
+         { "lat": 27.4815848, "lon": 84.0702854 },
+         { "lat": 27.4808505, "lon": 84.0702402 },
+         { "lat": 27.4781002, "lon": 84.0685999 },
+         { "lat": 27.4767918, "lon": 84.0678475 },
+         { "lat": 27.4733871, "lon": 84.0682237 },
+         { "lat": 27.4722389, "lon": 84.0669897 },
+         { "lat": 27.4701025, "lon": 84.0668241 },
+         { "lat": 27.4690077, "lon": 84.0654998 },
+         { "lat": 27.4682733, "lon": 84.0630017 },
+         { "lat": 27.4670849, "lon": 84.0621289 },
+         { "lat": 27.4660968, "lon": 84.0617827 },
+         { "lat": 27.4647882, "lon": 84.0617978 },
+         { "lat": 27.4629589, "lon": 84.0605788 },
+         { "lat": 27.4622245, "lon": 84.0606541 },
+         { "lat": 27.4621711, "lon": 84.0581861 },
+         { "lat": 27.4613432, "lon": 84.0582312 },
+         { "lat": 27.4609292, "lon": 84.0585924 },
+         { "lat": 27.4591532, "lon": 84.0586225 },
+         { "lat": 27.4572570, "lon": 84.0611958 },
+         { "lat": 27.4558816, "lon": 84.0611657 },
+         { "lat": 27.4547598, "lon": 84.0598565 },
+         { "lat": 27.4540120, "lon": 84.0582162 },
+         { "lat": 27.4523561, "lon": 84.0582763 },
+         { "lat": 27.4506734, "lon": 84.0562297 },
+         { "lat": 27.4506601, "lon": 84.0555525 },
+         { "lat": 27.4496184, "lon": 84.0542583 },
+         { "lat": 27.4487370, "lon": 84.0538670 },
+         { "lat": 27.4473413, "lon": 84.0537377 },
+         { "lat": 27.4462270, "lon": 84.0525885 },
+         { "lat": 27.4434317, "lon": 84.0518649 },
+         { "lat": 27.4430161, "lon": 84.0480553 },
+         { "lat": 27.4433183, "lon": 84.0471189 },
+         { "lat": 27.4433561, "lon": 84.0460548 },
+         { "lat": 27.4438094, "lon": 84.0454802 },
+         { "lat": 27.4434128, "lon": 84.0440117 },
+         { "lat": 27.4436583, "lon": 84.0435435 },
+         { "lat": 27.4429784, "lon": 84.0424794 },
+         { "lat": 27.4429784, "lon": 84.0404150 },
+         { "lat": 27.4433750, "lon": 84.0395850 },
+         { "lat": 27.4429595, "lon": 84.0373077 },
+         { "lat": 27.4414107, "lon": 84.0362223 },
+         { "lat": 27.4412731, "lon": 84.0344863 },
+         { "lat": 27.4416810, "lon": 84.0332748 },
+         { "lat": 27.4417011, "lon": 84.0326352 },
+         { "lat": 27.4416476, "lon": 84.0317925 },
+         { "lat": 27.4413805, "lon": 84.0314238 },
+         { "lat": 27.4408530, "lon": 84.0312658 },
+         { "lat": 27.4404389, "lon": 84.0312959 },
+         { "lat": 27.4399448, "lon": 84.0313862 },
+         { "lat": 27.4392703, "lon": 84.0313410 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406273931,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4440807, "lon": 84.2593562 },
+         { "lat": 27.4446261, "lon": 84.2596029 },
+         { "lat": 27.4459860, "lon": 84.2597519 },
+         { "lat": 27.4470059, "lon": 84.2591773 },
+         { "lat": 27.4486317, "lon": 84.2562723 },
+         { "lat": 27.4501615, "lon": 84.2546442 },
+         { "lat": 27.4510114, "lon": 84.2544100 },
+         { "lat": 27.4522012, "lon": 84.2546654 },
+         { "lat": 27.4528339, "lon": 84.2540802 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192479912,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4345815, "lon": 84.2663067 },
+         { "lat": 27.4355032, "lon": 84.2642851 },
+         { "lat": 27.4355221, "lon": 84.2623271 },
+         { "lat": 27.4375999, "lon": 84.2599647 },
+         { "lat": 27.4397531, "lon": 84.2586027 },
+         { "lat": 27.4429263, "lon": 84.2586665 },
+         { "lat": 27.4440807, "lon": 84.2593562 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406273940,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3879752, "lon": 84.2968964 },
+         { "lat": 27.3871601, "lon": 84.2960687 },
+         { "lat": 27.3860243, "lon": 84.2957076 },
+         { "lat": 27.3849153, "lon": 84.2939619 },
+         { "lat": 27.3856368, "lon": 84.2922162 },
+         { "lat": 27.3870532, "lon": 84.2899890 },
+         { "lat": 27.3899795, "lon": 84.2877015 },
+         { "lat": 27.3925450, "lon": 84.2848422 },
+         { "lat": 27.3936807, "lon": 84.2846466 },
+         { "lat": 27.3961659, "lon": 84.2830665 },
+         { "lat": 27.3968607, "lon": 84.2829461 },
+         { "lat": 27.3974352, "lon": 84.2810499 },
+         { "lat": 27.3969257, "lon": 84.2800766 },
+         { "lat": 27.3965667, "lon": 84.2779909 },
+         { "lat": 27.3960943, "lon": 84.2774589 },
+         { "lat": 27.3960754, "lon": 84.2766501 },
+         { "lat": 27.3966989, "lon": 84.2762670 },
+         { "lat": 27.3981161, "lon": 84.2762245 },
+         { "lat": 27.3987396, "lon": 84.2757988 },
+         { "lat": 27.4002512, "lon": 84.2756711 },
+         { "lat": 27.4006102, "lon": 84.2751178 },
+         { "lat": 27.4015549, "lon": 84.2751816 },
+         { "lat": 27.4029909, "lon": 84.2766927 },
+         { "lat": 27.4046536, "lon": 84.2780760 },
+         { "lat": 27.4075255, "lon": 84.2789486 },
+         { "lat": 27.4087346, "lon": 84.2781612 },
+         { "lat": 27.4103783, "lon": 84.2776717 },
+         { "lat": 27.4121354, "lon": 84.2782463 },
+         { "lat": 27.4149126, "lon": 84.2784591 },
+         { "lat": 27.4171607, "lon": 84.2776078 },
+         { "lat": 27.4195600, "lon": 84.2753306 },
+         { "lat": 27.4208257, "lon": 84.2742452 },
+         { "lat": 27.4225826, "lon": 84.2732024 },
+         { "lat": 27.4253217, "lon": 84.2728619 },
+         { "lat": 27.4261151, "lon": 84.2723085 },
+         { "lat": 27.4267007, "lon": 84.2726703 },
+         { "lat": 27.4292509, "lon": 84.2726703 },
+         { "lat": 27.4308376, "lon": 84.2703080 },
+         { "lat": 27.4311587, "lon": 84.2692864 },
+         { "lat": 27.4326510, "lon": 84.2676902 },
+         { "lat": 27.4345815, "lon": 84.2663067 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406273926,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3911153, "lon": 84.3002523 },
+         { "lat": 27.3905674, "lon": 84.2992892 },
+         { "lat": 27.3898994, "lon": 84.2989431 },
+         { "lat": 27.3897123, "lon": 84.2974382 },
+         { "lat": 27.3890175, "lon": 84.2972576 },
+         { "lat": 27.3887903, "lon": 84.2969115 },
+         { "lat": 27.3879752, "lon": 84.2968964 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192479908,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3871201, "lon": 84.3105458 },
+         { "lat": 27.3880554, "lon": 84.3080176 },
+         { "lat": 27.3882558, "lon": 84.3057452 },
+         { "lat": 27.3898325, "lon": 84.3027956 },
+         { "lat": 27.3911153, "lon": 84.3002523 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406273935,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3755719, "lon": 84.3476140 },
+         { "lat": 27.3755501, "lon": 84.3470432 },
+         { "lat": 27.3769509, "lon": 84.3412606 },
+         { "lat": 27.3783140, "lon": 84.3385368 },
+         { "lat": 27.3784209, "lon": 84.3370921 },
+         { "lat": 27.3782873, "lon": 84.3324269 },
+         { "lat": 27.3795301, "lon": 84.3310725 },
+         { "lat": 27.3805189, "lon": 84.3289957 },
+         { "lat": 27.3812272, "lon": 84.3272350 },
+         { "lat": 27.3813207, "lon": 84.3239393 },
+         { "lat": 27.3820289, "lon": 84.3220431 },
+         { "lat": 27.3821492, "lon": 84.3197858 },
+         { "lat": 27.3830311, "lon": 84.3169115 },
+         { "lat": 27.3841670, "lon": 84.3158881 },
+         { "lat": 27.3843140, "lon": 84.3150003 },
+         { "lat": 27.3863450, "lon": 84.3127279 },
+         { "lat": 27.3871201, "lon": 84.3105458 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192479900,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3748316, "lon": 84.3590602 },
+         { "lat": 27.3756635, "lon": 84.3560882 },
+         { "lat": 27.3749832, "lon": 84.3534279 },
+         { "lat": 27.3756824, "lon": 84.3505122 },
+         { "lat": 27.3755719, "lon": 84.3476140 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192479899,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3712143, "lon": 84.4046204 },
+         { "lat": 27.3709136, "lon": 84.4038571 },
+         { "lat": 27.3709003, "lon": 84.4021566 },
+         { "lat": 27.3712611, "lon": 84.4012988 },
+         { "lat": 27.3709003, "lon": 84.3994478 },
+         { "lat": 27.3704459, "lon": 84.3989361 },
+         { "lat": 27.3705929, "lon": 84.3979881 },
+         { "lat": 27.3715417, "lon": 84.3966638 },
+         { "lat": 27.3711007, "lon": 84.3953696 },
+         { "lat": 27.3692565, "lon": 84.3924802 },
+         { "lat": 27.3691362, "lon": 84.3912311 },
+         { "lat": 27.3716754, "lon": 84.3894403 },
+         { "lat": 27.3729583, "lon": 84.3877699 },
+         { "lat": 27.3738270, "lon": 84.3864004 },
+         { "lat": 27.3738671, "lon": 84.3849106 },
+         { "lat": 27.3745753, "lon": 84.3835110 },
+         { "lat": 27.3755509, "lon": 84.3804109 },
+         { "lat": 27.3763661, "lon": 84.3773560 },
+         { "lat": 27.3766467, "lon": 84.3720889 },
+         { "lat": 27.3754841, "lon": 84.3696811 },
+         { "lat": 27.3749896, "lon": 84.3677398 },
+         { "lat": 27.3745085, "lon": 84.3668067 },
+         { "lat": 27.3745753, "lon": 84.3643086 },
+         { "lat": 27.3753504, "lon": 84.3634207 },
+         { "lat": 27.3755910, "lon": 84.3623522 },
+         { "lat": 27.3745674, "lon": 84.3600041 },
+         { "lat": 27.3748316, "lon": 84.3590602 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 196476584,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3589062, "lon": 84.4862269 },
+         { "lat": 27.3614568, "lon": 84.4813349 },
+         { "lat": 27.3619780, "lon": 84.4787164 },
+         { "lat": 27.3630339, "lon": 84.4772717 },
+         { "lat": 27.3629537, "lon": 84.4756013 },
+         { "lat": 27.3598395, "lon": 84.4736149 },
+         { "lat": 27.3591846, "lon": 84.4728173 },
+         { "lat": 27.3577358, "lon": 84.4729166 },
+         { "lat": 27.3567333, "lon": 84.4720738 },
+         { "lat": 27.3561319, "lon": 84.4698767 },
+         { "lat": 27.3563324, "lon": 84.4691694 },
+         { "lat": 27.3580699, "lon": 84.4660242 },
+         { "lat": 27.3605292, "lon": 84.4649106 },
+         { "lat": 27.3609702, "lon": 84.4643237 },
+         { "lat": 27.3609301, "lon": 84.4635712 },
+         { "lat": 27.3604624, "lon": 84.4618105 },
+         { "lat": 27.3612776, "lon": 84.4608624 },
+         { "lat": 27.3618657, "lon": 84.4586954 },
+         { "lat": 27.3633492, "lon": 84.4574463 },
+         { "lat": 27.3638037, "lon": 84.4550836 },
+         { "lat": 27.3637368, "lon": 84.4526156 },
+         { "lat": 27.3642714, "lon": 84.4510204 },
+         { "lat": 27.3642313, "lon": 84.4481461 },
+         { "lat": 27.3650733, "lon": 84.4460543 },
+         { "lat": 27.3657416, "lon": 84.4449858 },
+         { "lat": 27.3680804, "lon": 84.4440076 },
+         { "lat": 27.3694436, "lon": 84.4437668 },
+         { "lat": 27.3705795, "lon": 84.4424726 },
+         { "lat": 27.3711943, "lon": 84.4409828 },
+         { "lat": 27.3711542, "lon": 84.4401250 },
+         { "lat": 27.3707265, "lon": 84.4393274 },
+         { "lat": 27.3708067, "lon": 84.4371303 },
+         { "lat": 27.3704325, "lon": 84.4361069 },
+         { "lat": 27.3707132, "lon": 84.4339249 },
+         { "lat": 27.3714749, "lon": 84.4326307 },
+         { "lat": 27.3714749, "lon": 84.4316374 },
+         { "lat": 27.3722233, "lon": 84.4307796 },
+         { "lat": 27.3720897, "lon": 84.4276495 },
+         { "lat": 27.3728514, "lon": 84.4251513 },
+         { "lat": 27.3730652, "lon": 84.4234207 },
+         { "lat": 27.3714749, "lon": 84.4209376 },
+         { "lat": 27.3707399, "lon": 84.4202604 },
+         { "lat": 27.3707533, "lon": 84.4172808 },
+         { "lat": 27.3718758, "lon": 84.4158210 },
+         { "lat": 27.3717422, "lon": 84.4130671 },
+         { "lat": 27.3706998, "lon": 84.4124350 },
+         { "lat": 27.3694836, "lon": 84.4103733 },
+         { "lat": 27.3706597, "lon": 84.4072431 },
+         { "lat": 27.3717021, "lon": 84.4058586 },
+         { "lat": 27.3712143, "lon": 84.4046204 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406273894,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3589062, "lon": 84.4862269 },
+         { "lat": 27.3667530, "lon": 84.4837985 },
+         { "lat": 27.3691996, "lon": 84.4874838 },
+         { "lat": 27.3718197, "lon": 84.4875374 },
+         { "lat": 27.3720124, "lon": 84.4886050 },
+         { "lat": 27.3735537, "lon": 84.4930199 },
+         { "lat": 27.3766284, "lon": 84.4947618 },
+         { "lat": 27.3768072, "lon": 84.5019577 },
+         { "lat": 27.3801466, "lon": 84.5023754 },
+         { "lat": 27.3814945, "lon": 84.5040821 },
+         { "lat": 27.3813230, "lon": 84.5103047 },
+         { "lat": 27.3830522, "lon": 84.5118168 },
+         { "lat": 27.3838190, "lon": 84.5160126 },
+         { "lat": 27.3843144, "lon": 84.5207332 },
+         { "lat": 27.3820159, "lon": 84.5289883 },
+         { "lat": 27.3810707, "lon": 84.5311931 },
+         { "lat": 27.3832428, "lon": 84.5314935 },
+         { "lat": 27.3846908, "lon": 84.5329955 },
+         { "lat": 27.3849120, "lon": 84.5355972 },
+         { "lat": 27.3853005, "lon": 84.5382741 },
+         { "lat": 27.3861886, "lon": 84.5396742 },
+         { "lat": 27.3879488, "lon": 84.5395615 },
+         { "lat": 27.3888560, "lon": 84.5387301 },
+         { "lat": 27.3915497, "lon": 84.5361927 },
+         { "lat": 27.3931881, "lon": 84.5355503 },
+         { "lat": 27.3943004, "lon": 84.5352582 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 328160808,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.3943004, "lon": 84.5352582 },
+         { "lat": 27.4033348, "lon": 84.5351681 },
+         { "lat": 27.4036015, "lon": 84.5466265 },
+         { "lat": 27.4103449, "lon": 84.5453391 },
+         { "lat": 27.4105666, "lon": 84.5412835 },
+         { "lat": 27.4125165, "lon": 84.5391164 },
+         { "lat": 27.4123641, "lon": 84.5346961 },
+         { "lat": 27.4141858, "lon": 84.5323571 },
+         { "lat": 27.4150308, "lon": 84.5328078 },
+         { "lat": 27.4149668, "lon": 84.5352754 },
+         { "lat": 27.4157927, "lon": 84.5364985 },
+         { "lat": 27.4194879, "lon": 84.5415196 },
+         { "lat": 27.4177356, "lon": 84.5476994 },
+         { "lat": 27.4268628, "lon": 84.5477388 },
+         { "lat": 27.4300977, "lon": 84.5500891 },
+         { "lat": 27.4382299, "lon": 84.5517922 },
+         { "lat": 27.4413134, "lon": 84.5554709 },
+         { "lat": 27.4586291, "lon": 84.5577364 },
+         { "lat": 27.4620790, "lon": 84.5605802 },
+         { "lat": 27.4637467, "lon": 84.5646573 },
+         { "lat": 27.4598781, "lon": 84.5720147 },
+         { "lat": 27.4545555, "lon": 84.5761969 },
+         { "lat": 27.4546437, "lon": 84.5817470 },
+         { "lat": 27.4572183, "lon": 84.5831189 },
+         { "lat": 27.4549762, "lon": 84.5876253 },
+         { "lat": 27.4535858, "lon": 84.5935862 },
+         { "lat": 27.4554653, "lon": 84.5959261 },
+         { "lat": 27.4519536, "lon": 84.6006711 },
+         { "lat": 27.4546794, "lon": 84.6068260 },
+         { "lat": 27.4523134, "lon": 84.6104845 },
+         { "lat": 27.4518381, "lon": 84.6212001 },
+         { "lat": 27.4503395, "lon": 84.6221641 },
+         { "lat": 27.4509918, "lon": 84.6280125 },
+         { "lat": 27.4453090, "lon": 84.6346886 },
+         { "lat": 27.4442813, "lon": 84.6422504 },
+         { "lat": 27.4292264, "lon": 84.6471553 },
+         { "lat": 27.4329654, "lon": 84.6567810 },
+         { "lat": 27.4305825, "lon": 84.6635225 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 328160799,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.4305825, "lon": 84.6635225 },
+         { "lat": 27.4346695, "lon": 84.6653982 },
+         { "lat": 27.4398368, "lon": 84.6655585 },
+         { "lat": 27.4451934, "lon": 84.6673924 },
+         { "lat": 27.4464101, "lon": 84.6746390 },
+         { "lat": 27.4475375, "lon": 84.6758485 },
+         { "lat": 27.4488750, "lon": 84.6790190 },
+         { "lat": 27.4482430, "lon": 84.6800695 },
+         { "lat": 27.4484168, "lon": 84.6809241 },
+         { "lat": 27.4509818, "lon": 84.6811769 },
+         { "lat": 27.4504866, "lon": 84.6827402 },
+         { "lat": 27.4531884, "lon": 84.6848412 },
+         { "lat": 27.4544050, "lon": 84.6861053 },
+         { "lat": 27.4558270, "lon": 84.6856068 },
+         { "lat": 27.4569701, "lon": 84.6849539 },
+         { "lat": 27.4574170, "lon": 84.6886805 },
+         { "lat": 27.4596066, "lon": 84.6925079 },
+         { "lat": 27.4625558, "lon": 84.6903424 },
+         { "lat": 27.4618856, "lon": 84.6863640 },
+         { "lat": 27.4623526, "lon": 84.6858942 },
+         { "lat": 27.4636897, "lon": 84.6860685 },
+         { "lat": 27.4648515, "lon": 84.6888383 },
+         { "lat": 27.4663261, "lon": 84.6904498 },
+         { "lat": 27.4677559, "lon": 84.6916081 },
+         { "lat": 27.4682474, "lon": 84.6926657 },
+         { "lat": 27.4701688, "lon": 84.6929175 },
+         { "lat": 27.4720007, "lon": 84.6905505 },
+         { "lat": 27.4731624, "lon": 84.6903995 },
+         { "lat": 27.4751283, "lon": 84.6963419 },
+         { "lat": 27.4758879, "lon": 84.6966441 },
+         { "lat": 27.4778538, "lon": 84.6940254 },
+         { "lat": 27.4801324, "lon": 84.6959390 },
+         { "lat": 27.4818748, "lon": 84.6941764 },
+         { "lat": 27.4859850, "lon": 84.6925146 },
+         { "lat": 27.4921216, "lon": 84.6924203 },
+         { "lat": 27.5032730, "lon": 84.6871764 },
+         { "lat": 27.5113577, "lon": 84.6800757 },
+         { "lat": 27.5151167, "lon": 84.6797879 },
+         { "lat": 27.5214069, "lon": 84.6808311 },
+         { "lat": 27.5247342, "lon": 84.6790731 },
+         { "lat": 27.5279023, "lon": 84.6785879 },
+         { "lat": 27.5322419, "lon": 84.6820752 },
+         { "lat": 27.5368637, "lon": 84.6808665 },
+         { "lat": 27.5416194, "lon": 84.6823522 },
+         { "lat": 27.5437627, "lon": 84.6834097 },
+         { "lat": 27.5484510, "lon": 84.6806651 },
+         { "lat": 27.5515318, "lon": 84.6799349 },
+         { "lat": 27.5548617, "lon": 84.6815718 },
+         { "lat": 27.5557440, "lon": 84.6844202 },
+         { "lat": 27.5592322, "lon": 84.6860403 },
+         { "lat": 27.5600375, "lon": 84.6864143 },
+         { "lat": 27.5628471, "lon": 84.6879812 },
+         { "lat": 27.5650596, "lon": 84.6903846 },
+         { "lat": 27.5637942, "lon": 84.6939102 },
+         { "lat": 27.5618211, "lon": 84.6957975 },
+         { "lat": 27.5600148, "lon": 84.7010105 },
+         { "lat": 27.5606531, "lon": 84.7079226 },
+         { "lat": 27.5617803, "lon": 84.7104584 },
+         { "lat": 27.5661364, "lon": 84.7144092 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406215727,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.5661364, "lon": 84.7144092 },
+         { "lat": 27.5664010, "lon": 84.7142215 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 391307254,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.5664010, "lon": 84.7142215 },
+         { "lat": 27.5745349, "lon": 84.7218627 },
+         { "lat": 27.5775989, "lon": 84.7254954 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 339583648,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.5775989, "lon": 84.7254954 },
+         { "lat": 27.5814592, "lon": 84.7308204 },
+         { "lat": 27.5841263, "lon": 84.7321297 },
+         { "lat": 27.5856885, "lon": 84.7320416 },
+         { "lat": 27.5874312, "lon": 84.7335020 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 391307261,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.5874312, "lon": 84.7335020 },
+         { "lat": 27.5880726, "lon": 84.7338463 },
+         { "lat": 27.5885496, "lon": 84.7338747 },
+         { "lat": 27.5889095, "lon": 84.7332452 },
+         { "lat": 27.5899335, "lon": 84.7329906 },
+         { "lat": 27.5907107, "lon": 84.7334357 },
+         { "lat": 27.5912709, "lon": 84.7340633 },
+         { "lat": 27.5927786, "lon": 84.7336799 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 333872940,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.5927786, "lon": 84.7336799 },
+         { "lat": 27.5934717, "lon": 84.7334678 },
+         { "lat": 27.5944466, "lon": 84.7333199 },
+         { "lat": 27.5965850, "lon": 84.7325961 },
+         { "lat": 27.5976062, "lon": 84.7351030 },
+         { "lat": 27.5984687, "lon": 84.7357437 },
+         { "lat": 27.5995003, "lon": 84.7361863 },
+         { "lat": 27.5999995, "lon": 84.7361943 },
+         { "lat": 27.6004464, "lon": 84.7362801 },
+         { "lat": 27.6013235, "lon": 84.7365993 },
+         { "lat": 27.6025096, "lon": 84.7373664 },
+         { "lat": 27.6033808, "lon": 84.7381864 },
+         { "lat": 27.6036814, "lon": 84.7383749 },
+         { "lat": 27.6038501, "lon": 84.7383749 },
+         { "lat": 27.6039737, "lon": 84.7382703 },
+         { "lat": 27.6040950, "lon": 84.7381389 },
+         { "lat": 27.6042016, "lon": 84.7378321 },
+         { "lat": 27.6046142, "lon": 84.7362147 },
+         { "lat": 27.6056931, "lon": 84.7361718 },
+         { "lat": 27.6063988, "lon": 84.7366389 },
+         { "lat": 27.6073016, "lon": 84.7357670 },
+         { "lat": 27.6090199, "lon": 84.7355470 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406215716,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6090199, "lon": 84.7355470 },
+         { "lat": 27.6119218, "lon": 84.7342531 },
+         { "lat": 27.6133218, "lon": 84.7340460 },
+         { "lat": 27.6161889, "lon": 84.7345551 },
+         { "lat": 27.6169887, "lon": 84.7315148 },
+         { "lat": 27.6191832, "lon": 84.7308666 },
+         { "lat": 27.6196252, "lon": 84.7307360 },
+         { "lat": 27.6201245, "lon": 84.7305885 },
+         { "lat": 27.6243335, "lon": 84.7314198 },
+         { "lat": 27.6265642, "lon": 84.7265269 },
+         { "lat": 27.6266189, "lon": 84.7245053 },
+         { "lat": 27.6266572, "lon": 84.7230890 },
+         { "lat": 27.6266849, "lon": 84.7230867 },
+         { "lat": 27.6295914, "lon": 84.7228416 },
+         { "lat": 27.6302258, "lon": 84.7228691 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 333872946,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6302258, "lon": 84.7228691 },
+         { "lat": 27.6303996, "lon": 84.7226761 },
+         { "lat": 27.6341398, "lon": 84.7185225 },
+         { "lat": 27.6353327, "lon": 84.7183767 },
+         { "lat": 27.6383922, "lon": 84.7171560 },
+         { "lat": 27.6443086, "lon": 84.7205736 },
+         { "lat": 27.6468908, "lon": 84.7220853 },
+         { "lat": 27.6464865, "lon": 84.7296953 },
+         { "lat": 27.6499836, "lon": 84.7271207 },
+         { "lat": 27.6534025, "lon": 84.7308616 },
+         { "lat": 27.6538216, "lon": 84.7316246 },
+         { "lat": 27.6542764, "lon": 84.7317115 },
+         { "lat": 27.6551426, "lon": 84.7313011 },
+         { "lat": 27.6557566, "lon": 84.7314130 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1191981274,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6557566, "lon": 84.7314130 },
+         { "lat": 27.6558890, "lon": 84.7330494 },
+         { "lat": 27.6569985, "lon": 84.7351973 },
+         { "lat": 27.6557766, "lon": 84.7455018 },
+         { "lat": 27.6532606, "lon": 84.7459110 },
+         { "lat": 27.6503823, "lon": 84.7426692 },
+         { "lat": 27.6503089, "lon": 84.7425561 },
+         { "lat": 27.6478065, "lon": 84.7432584 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 333883272,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6478065, "lon": 84.7432584 },
+         { "lat": 27.6475196, "lon": 84.7437291 },
+         { "lat": 27.6477950, "lon": 84.7445440 },
+         { "lat": 27.6493753, "lon": 84.7470274 },
+         { "lat": 27.6494656, "lon": 84.7478514 },
+         { "lat": 27.6495405, "lon": 84.7485346 },
+         { "lat": 27.6499320, "lon": 84.7521075 },
+         { "lat": 27.6520526, "lon": 84.7528122 },
+         { "lat": 27.6543371, "lon": 84.7534971 },
+         { "lat": 27.6546220, "lon": 84.7535870 },
+         { "lat": 27.6545656, "lon": 84.7540714 },
+         { "lat": 27.6543875, "lon": 84.7554400 },
+         { "lat": 27.6539090, "lon": 84.7592217 },
+         { "lat": 27.6566248, "lon": 84.7669050 },
+         { "lat": 27.6619806, "lon": 84.7702820 },
+         { "lat": 27.6682338, "lon": 84.7696535 },
+         { "lat": 27.6684233, "lon": 84.7749354 },
+         { "lat": 27.6715966, "lon": 84.7796090 },
+         { "lat": 27.6761688, "lon": 84.7818015 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192399487,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6761688, "lon": 84.7818015 },
+         { "lat": 27.6802426, "lon": 84.7831521 },
+         { "lat": 27.6869402, "lon": 84.7918765 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 539246400,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7350687, "lon": 84.7580014 },
+         { "lat": 27.7328209, "lon": 84.7581941 },
+         { "lat": 27.7296122, "lon": 84.7633804 },
+         { "lat": 27.7249419, "lon": 84.7677189 },
+         { "lat": 27.7222460, "lon": 84.7703576 },
+         { "lat": 27.7215622, "lon": 84.7731042 },
+         { "lat": 27.7206001, "lon": 84.7754850 },
+         { "lat": 27.7203545, "lon": 84.7787721 },
+         { "lat": 27.7186449, "lon": 84.7808535 },
+         { "lat": 27.7152908, "lon": 84.7879307 },
+         { "lat": 27.7135219, "lon": 84.7903095 },
+         { "lat": 27.7129240, "lon": 84.7911135 },
+         { "lat": 27.7106569, "lon": 84.7941622 },
+         { "lat": 27.7104274, "lon": 84.7944708 },
+         { "lat": 27.7090174, "lon": 84.7963669 },
+         { "lat": 27.7053835, "lon": 84.7956338 },
+         { "lat": 27.7003211, "lon": 84.7929708 },
+         { "lat": 27.6971135, "lon": 84.7920246 },
+         { "lat": 27.6955691, "lon": 84.7908052 },
+         { "lat": 27.6918472, "lon": 84.7862121 },
+         { "lat": 27.6869402, "lon": 84.7918765 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190328146,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7343423, "lon": 84.7460483 },
+         { "lat": 27.7350120, "lon": 84.7528679 },
+         { "lat": 27.7350687, "lon": 84.7580014 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 327750626,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7264024, "lon": 84.6988489 },
+         { "lat": 27.7271864, "lon": 84.7003503 },
+         { "lat": 27.7276990, "lon": 84.7025643 },
+         { "lat": 27.7281211, "lon": 84.7081164 },
+         { "lat": 27.7271864, "lon": 84.7116588 },
+         { "lat": 27.7259502, "lon": 84.7149628 },
+         { "lat": 27.7277894, "lon": 84.7183690 },
+         { "lat": 27.7296420, "lon": 84.7247282 },
+         { "lat": 27.7268309, "lon": 84.7283331 },
+         { "lat": 27.7321177, "lon": 84.7366544 },
+         { "lat": 27.7339042, "lon": 84.7439847 },
+         { "lat": 27.7340805, "lon": 84.7450775 },
+         { "lat": 27.7343423, "lon": 84.7460483 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 539248081,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7214079, "lon": 84.6929315 },
+         { "lat": 27.7248045, "lon": 84.6957860 },
+         { "lat": 27.7264024, "lon": 84.6988489 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192378173,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7257632, "lon": 84.6844974 },
+         { "lat": 27.7254689, "lon": 84.6849428 },
+         { "lat": 27.7254689, "lon": 84.6884168 },
+         { "lat": 27.7214079, "lon": 84.6929315 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406215735,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7303520, "lon": 84.6753742 },
+         { "lat": 27.7301642, "lon": 84.6783434 },
+         { "lat": 27.7311742, "lon": 84.6807448 },
+         { "lat": 27.7281441, "lon": 84.6822946 },
+         { "lat": 27.7264979, "lon": 84.6830774 },
+         { "lat": 27.7257632, "lon": 84.6844974 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190328152,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7513051, "lon": 84.6793736 },
+         { "lat": 27.7477500, "lon": 84.6773245 },
+         { "lat": 27.7470959, "lon": 84.6748897 },
+         { "lat": 27.7435308, "lon": 84.6751060 },
+         { "lat": 27.7384103, "lon": 84.6692664 },
+         { "lat": 27.7336246, "lon": 84.6730513 },
+         { "lat": 27.7303520, "lon": 84.6753742 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406140990,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7806973, "lon": 84.6487573 },
+         { "lat": 27.7799311, "lon": 84.6499444 },
+         { "lat": 27.7812409, "lon": 84.6618978 },
+         { "lat": 27.7797792, "lon": 84.6744920 },
+         { "lat": 27.7750143, "lon": 84.6730243 },
+         { "lat": 27.7662614, "lon": 84.6684839 },
+         { "lat": 27.7637712, "lon": 84.6726752 },
+         { "lat": 27.7635387, "lon": 84.6754443 },
+         { "lat": 27.7634602, "lon": 84.6763790 },
+         { "lat": 27.7595777, "lon": 84.6814443 },
+         { "lat": 27.7576110, "lon": 84.6815156 },
+         { "lat": 27.7533046, "lon": 84.6797584 },
+         { "lat": 27.7513051, "lon": 84.6793736 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192369459,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7946507, "lon": 84.6372613 },
+         { "lat": 27.7864325, "lon": 84.6389742 },
+         { "lat": 27.7830835, "lon": 84.6376895 },
+         { "lat": 27.7847151, "lon": 84.6469404 },
+         { "lat": 27.7806973, "lon": 84.6487573 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405896000,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8093445, "lon": 84.6179835 },
+         { "lat": 27.8091589, "lon": 84.6183705 },
+         { "lat": 27.8090280, "lon": 84.6188606 },
+         { "lat": 27.8090196, "lon": 84.6194657 },
+         { "lat": 27.8090718, "lon": 84.6198395 },
+         { "lat": 27.8091473, "lon": 84.6204232 },
+         { "lat": 27.8092293, "lon": 84.6206951 },
+         { "lat": 27.8091763, "lon": 84.6208954 },
+         { "lat": 27.8092401, "lon": 84.6216824 },
+         { "lat": 27.8092981, "lon": 84.6220563 },
+         { "lat": 27.8093561, "lon": 84.6223120 },
+         { "lat": 27.8095122, "lon": 84.6236367 },
+         { "lat": 27.8096392, "lon": 84.6240389 },
+         { "lat": 27.8096731, "lon": 84.6242667 },
+         { "lat": 27.8096392, "lon": 84.6245944 },
+         { "lat": 27.8094020, "lon": 84.6248721 },
+         { "lat": 27.8090717, "lon": 84.6252552 },
+         { "lat": 27.8087244, "lon": 84.6256574 },
+         { "lat": 27.8084702, "lon": 84.6259543 },
+         { "lat": 27.8082330, "lon": 84.6261937 },
+         { "lat": 27.8080043, "lon": 84.6263948 },
+         { "lat": 27.8078010, "lon": 84.6267109 },
+         { "lat": 27.8075638, "lon": 84.6270365 },
+         { "lat": 27.8074622, "lon": 84.6274292 },
+         { "lat": 27.8076146, "lon": 84.6284539 },
+         { "lat": 27.8078095, "lon": 84.6290764 },
+         { "lat": 27.8079450, "lon": 84.6294403 },
+         { "lat": 27.8080297, "lon": 84.6297755 },
+         { "lat": 27.8079789, "lon": 84.6300245 },
+         { "lat": 27.8078688, "lon": 84.6301682 },
+         { "lat": 27.8076062, "lon": 84.6303597 },
+         { "lat": 27.8073775, "lon": 84.6304555 },
+         { "lat": 27.8072250, "lon": 84.6305609 },
+         { "lat": 27.8067977, "lon": 84.6308977 },
+         { "lat": 27.8064982, "lon": 84.6311686 },
+         { "lat": 27.8064203, "lon": 84.6315072 },
+         { "lat": 27.8065401, "lon": 84.6321911 },
+         { "lat": 27.8067617, "lon": 84.6324349 },
+         { "lat": 27.8070013, "lon": 84.6325907 },
+         { "lat": 27.8072589, "lon": 84.6327803 },
+         { "lat": 27.8074326, "lon": 84.6329157 },
+         { "lat": 27.8076003, "lon": 84.6332069 },
+         { "lat": 27.8075601, "lon": 84.6334621 },
+         { "lat": 27.8075225, "lon": 84.6337013 },
+         { "lat": 27.8073368, "lon": 84.6338977 },
+         { "lat": 27.8071930, "lon": 84.6340060 },
+         { "lat": 27.8070133, "lon": 84.6341550 },
+         { "lat": 27.8068336, "lon": 84.6342972 },
+         { "lat": 27.8067318, "lon": 84.6344801 },
+         { "lat": 27.8067018, "lon": 84.6347306 },
+         { "lat": 27.8067917, "lon": 84.6348729 },
+         { "lat": 27.8069893, "lon": 84.6350083 },
+         { "lat": 27.8071391, "lon": 84.6351031 },
+         { "lat": 27.8073128, "lon": 84.6352047 },
+         { "lat": 27.8073428, "lon": 84.6353130 },
+         { "lat": 27.8073008, "lon": 84.6355162 },
+         { "lat": 27.8072589, "lon": 84.6356110 },
+         { "lat": 27.8070253, "lon": 84.6358345 },
+         { "lat": 27.8067977, "lon": 84.6359157 },
+         { "lat": 27.8066240, "lon": 84.6360309 },
+         { "lat": 27.8064922, "lon": 84.6362950 },
+         { "lat": 27.8064323, "lon": 84.6366945 },
+         { "lat": 27.8064562, "lon": 84.6371144 },
+         { "lat": 27.8063844, "lon": 84.6373717 },
+         { "lat": 27.8061987, "lon": 84.6376900 },
+         { "lat": 27.8060010, "lon": 84.6378661 },
+         { "lat": 27.8057794, "lon": 84.6380218 },
+         { "lat": 27.8054978, "lon": 84.6382182 },
+         { "lat": 27.8033770, "lon": 84.6398356 },
+         { "lat": 27.8042637, "lon": 84.6393624 },
+         { "lat": 27.8040901, "lon": 84.6395320 },
+         { "lat": 27.8038386, "lon": 84.6397758 },
+         { "lat": 27.8036948, "lon": 84.6400602 },
+         { "lat": 27.8035570, "lon": 84.6404394 },
+         { "lat": 27.8034672, "lon": 84.6407984 },
+         { "lat": 27.8032277, "lon": 84.6411591 },
+         { "lat": 27.8028677, "lon": 84.6414703 },
+         { "lat": 27.8026771, "lon": 84.6415709 },
+         { "lat": 27.8022069, "lon": 84.6420114 },
+         { "lat": 27.8019782, "lon": 84.6424041 },
+         { "lat": 27.8018808, "lon": 84.6427105 },
+         { "lat": 27.8016605, "lon": 84.6430840 },
+         { "lat": 27.8013894, "lon": 84.6435102 },
+         { "lat": 27.8011522, "lon": 84.6436539 },
+         { "lat": 27.8007541, "lon": 84.6439460 },
+         { "lat": 27.8005296, "lon": 84.6441710 },
+         { "lat": 27.8004067, "lon": 84.6445062 },
+         { "lat": 27.8002796, "lon": 84.6451048 },
+         { "lat": 27.8003601, "lon": 84.6455453 },
+         { "lat": 27.8003898, "lon": 84.6457800 },
+         { "lat": 27.8003601, "lon": 84.6459763 },
+         { "lat": 27.8001907, "lon": 84.6460769 },
+         { "lat": 27.8000297, "lon": 84.6460960 },
+         { "lat": 27.7998857, "lon": 84.6460912 },
+         { "lat": 27.7997163, "lon": 84.6460433 },
+         { "lat": 27.7996061, "lon": 84.6459236 },
+         { "lat": 27.7994875, "lon": 84.6456794 },
+         { "lat": 27.7992758, "lon": 84.6452772 },
+         { "lat": 27.7991987, "lon": 84.6451184 },
+         { "lat": 27.7990023, "lon": 84.6449463 },
+         { "lat": 27.7987124, "lon": 84.6449755 },
+         { "lat": 27.7983354, "lon": 84.6451000 },
+         { "lat": 27.7980050, "lon": 84.6452868 },
+         { "lat": 27.7977339, "lon": 84.6453586 },
+         { "lat": 27.7973103, "lon": 84.6454639 },
+         { "lat": 27.7970138, "lon": 84.6455310 },
+         { "lat": 27.7966749, "lon": 84.6455022 },
+         { "lat": 27.7963445, "lon": 84.6454113 },
+         { "lat": 27.7958997, "lon": 84.6452724 },
+         { "lat": 27.7956117, "lon": 84.6451192 },
+         { "lat": 27.7949974, "lon": 84.6453442 },
+         { "lat": 27.7945696, "lon": 84.6455118 },
+         { "lat": 27.7942816, "lon": 84.6453921 },
+         { "lat": 27.7937161, "lon": 84.6446224 },
+         { "lat": 27.7933507, "lon": 84.6438030 },
+         { "lat": 27.7932748, "lon": 84.6433237 },
+         { "lat": 27.7932488, "lon": 84.6431597 },
+         { "lat": 27.7932488, "lon": 84.6420829 },
+         { "lat": 27.7931530, "lon": 84.6414938 },
+         { "lat": 27.7930152, "lon": 84.6411755 },
+         { "lat": 27.7929433, "lon": 84.6409114 },
+         { "lat": 27.7929313, "lon": 84.6405186 },
+         { "lat": 27.7930152, "lon": 84.6401123 },
+         { "lat": 27.7931710, "lon": 84.6395705 },
+         { "lat": 27.7933866, "lon": 84.6392048 },
+         { "lat": 27.7935963, "lon": 84.6388188 },
+         { "lat": 27.7942313, "lon": 84.6381349 },
+         { "lat": 27.7945129, "lon": 84.6378301 },
+         { "lat": 27.7946626, "lon": 84.6375796 },
+         { "lat": 27.7946507, "lon": 84.6372613 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405899034,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8152904, "lon": 84.6215986 },
+         { "lat": 27.8127437, "lon": 84.6210791 },
+         { "lat": 27.8100677, "lon": 84.6182378 },
+         { "lat": 27.8093445, "lon": 84.6179835 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192369469,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8161646, "lon": 84.6221695 },
+         { "lat": 27.8152904, "lon": 84.6215986 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405899039,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8259541, "lon": 84.6651325 },
+         { "lat": 27.8242418, "lon": 84.6643549 },
+         { "lat": 27.8238316, "lon": 84.6538839 },
+         { "lat": 27.8220477, "lon": 84.6479616 },
+         { "lat": 27.8221995, "lon": 84.6428547 },
+         { "lat": 27.8231158, "lon": 84.6415033 },
+         { "lat": 27.8221236, "lon": 84.6390352 },
+         { "lat": 27.8195352, "lon": 84.6317092 },
+         { "lat": 27.8161646, "lon": 84.6221695 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 407266800,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8506452, "lon": 84.6592437 },
+         { "lat": 27.8499595, "lon": 84.6600074 },
+         { "lat": 27.8480062, "lon": 84.6610285 },
+         { "lat": 27.8453737, "lon": 84.6616483 },
+         { "lat": 27.8433329, "lon": 84.6626303 },
+         { "lat": 27.8415169, "lon": 84.6637537 },
+         { "lat": 27.8408076, "lon": 84.6641096 },
+         { "lat": 27.8390050, "lon": 84.6636697 },
+         { "lat": 27.8358748, "lon": 84.6630055 },
+         { "lat": 27.8310506, "lon": 84.6610056 },
+         { "lat": 27.8285120, "lon": 84.6614410 },
+         { "lat": 27.8259541, "lon": 84.6651325 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 407269221,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8592560, "lon": 84.6496558 },
+         { "lat": 27.8584936, "lon": 84.6496805 },
+         { "lat": 27.8576264, "lon": 84.6491622 },
+         { "lat": 27.8564739, "lon": 84.6480044 },
+         { "lat": 27.8556493, "lon": 84.6471730 },
+         { "lat": 27.8545993, "lon": 84.6466571 },
+         { "lat": 27.8536081, "lon": 84.6471612 },
+         { "lat": 27.8526805, "lon": 84.6495626 },
+         { "lat": 27.8524404, "lon": 84.6537560 },
+         { "lat": 27.8522551, "lon": 84.6559662 },
+         { "lat": 27.8515674, "lon": 84.6577692 },
+         { "lat": 27.8512810, "lon": 84.6585210 },
+         { "lat": 27.8506452, "lon": 84.6592437 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 407269224,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8695233, "lon": 84.6327609 },
+         { "lat": 27.8613955, "lon": 84.6343701 },
+         { "lat": 27.8606790, "lon": 84.6348772 },
+         { "lat": 27.8604025, "lon": 84.6357772 },
+         { "lat": 27.8597330, "lon": 84.6393356 },
+         { "lat": 27.8606560, "lon": 84.6460189 },
+         { "lat": 27.8601650, "lon": 84.6474832 },
+         { "lat": 27.8592560, "lon": 84.6496558 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192369472,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8699182, "lon": 84.6310280 },
+         { "lat": 27.8695233, "lon": 84.6327609 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 327750704,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8760649, "lon": 84.5979371 },
+         { "lat": 27.8764124, "lon": 84.5992242 },
+         { "lat": 27.8761094, "lon": 84.6025987 },
+         { "lat": 27.8749434, "lon": 84.6037638 },
+         { "lat": 27.8732613, "lon": 84.6042276 },
+         { "lat": 27.8720082, "lon": 84.6051866 },
+         { "lat": 27.8714723, "lon": 84.6069818 },
+         { "lat": 27.8726461, "lon": 84.6127679 },
+         { "lat": 27.8729562, "lon": 84.6137662 },
+         { "lat": 27.8736161, "lon": 84.6139289 },
+         { "lat": 27.8764392, "lon": 84.6139527 },
+         { "lat": 27.8793116, "lon": 84.6174202 },
+         { "lat": 27.8808790, "lon": 84.6191220 },
+         { "lat": 27.8806111, "lon": 84.6222462 },
+         { "lat": 27.8790242, "lon": 84.6258133 },
+         { "lat": 27.8777877, "lon": 84.6273054 },
+         { "lat": 27.8751498, "lon": 84.6277717 },
+         { "lat": 27.8734598, "lon": 84.6262796 },
+         { "lat": 27.8702859, "lon": 84.6290540 },
+         { "lat": 27.8699182, "lon": 84.6310280 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 407273822,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8634332, "lon": 84.5760665 },
+         { "lat": 27.8653065, "lon": 84.5775836 },
+         { "lat": 27.8667286, "lon": 84.5776303 },
+         { "lat": 27.8691980, "lon": 84.5765000 },
+         { "lat": 27.8717369, "lon": 84.5776769 },
+         { "lat": 27.8745192, "lon": 84.5808477 },
+         { "lat": 27.8760237, "lon": 84.5839018 },
+         { "lat": 27.8782803, "lon": 84.5869444 },
+         { "lat": 27.8789295, "lon": 84.5887512 },
+         { "lat": 27.8799496, "lon": 84.5898936 },
+         { "lat": 27.8791974, "lon": 84.5925748 },
+         { "lat": 27.8770561, "lon": 84.5939121 },
+         { "lat": 27.8760649, "lon": 84.5979371 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192369474,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8579518, "lon": 84.5592411 },
+         { "lat": 27.8581923, "lon": 84.5610322 },
+         { "lat": 27.8581566, "lon": 84.5625566 },
+         { "lat": 27.8582132, "lon": 84.5643124 },
+         { "lat": 27.8586025, "lon": 84.5659491 },
+         { "lat": 27.8599336, "lon": 84.5699284 },
+         { "lat": 27.8611786, "lon": 84.5729156 },
+         { "lat": 27.8617407, "lon": 84.5736668 },
+         { "lat": 27.8634332, "lon": 84.5760665 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405899036,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8491545, "lon": 84.5579815 },
+         { "lat": 27.8510898, "lon": 84.5571327 },
+         { "lat": 27.8530155, "lon": 84.5568516 },
+         { "lat": 27.8564455, "lon": 84.5578451 },
+         { "lat": 27.8575558, "lon": 84.5579980 },
+         { "lat": 27.8579518, "lon": 84.5592411 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192369466,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8390988, "lon": 84.5567654 },
+         { "lat": 27.8421346, "lon": 84.5577185 },
+         { "lat": 27.8460412, "lon": 84.5587678 },
+         { "lat": 27.8481149, "lon": 84.5584374 },
+         { "lat": 27.8491545, "lon": 84.5579815 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 327750718,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8326965, "lon": 84.5224381 },
+         { "lat": 27.8330553, "lon": 84.5235429 },
+         { "lat": 27.8337821, "lon": 84.5293279 },
+         { "lat": 27.8330907, "lon": 84.5334356 },
+         { "lat": 27.8332587, "lon": 84.5381028 },
+         { "lat": 27.8339063, "lon": 84.5391758 },
+         { "lat": 27.8332375, "lon": 84.5418163 },
+         { "lat": 27.8318333, "lon": 84.5455949 },
+         { "lat": 27.8327005, "lon": 84.5498200 },
+         { "lat": 27.8357782, "lon": 84.5549698 },
+         { "lat": 27.8380457, "lon": 84.5566263 },
+         { "lat": 27.8390988, "lon": 84.5567654 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406783202,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8162277, "lon": 84.5172226 },
+         { "lat": 27.8168851, "lon": 84.5182574 },
+         { "lat": 27.8197408, "lon": 84.5196334 },
+         { "lat": 27.8228025, "lon": 84.5206654 },
+         { "lat": 27.8279755, "lon": 84.5202577 },
+         { "lat": 27.8312432, "lon": 84.5207019 },
+         { "lat": 27.8326965, "lon": 84.5224381 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405899035,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8210135, "lon": 84.4961240 },
+         { "lat": 27.8194511, "lon": 84.5036280 },
+         { "lat": 27.8167278, "lon": 84.5081427 },
+         { "lat": 27.8156061, "lon": 84.5116596 },
+         { "lat": 27.8162277, "lon": 84.5172226 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 406588322,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8210449, "lon": 84.4526978 },
+         { "lat": 27.8205407, "lon": 84.4540990 },
+         { "lat": 27.8195767, "lon": 84.4584589 },
+         { "lat": 27.8194338, "lon": 84.4631519 },
+         { "lat": 27.8188537, "lon": 84.4648966 },
+         { "lat": 27.8199382, "lon": 84.4662421 },
+         { "lat": 27.8211131, "lon": 84.4663443 },
+         { "lat": 27.8237941, "lon": 84.4655949 },
+         { "lat": 27.8247361, "lon": 84.4658878 },
+         { "lat": 27.8232896, "lon": 84.4767700 },
+         { "lat": 27.8218357, "lon": 84.4797817 },
+         { "lat": 27.8213141, "lon": 84.4816693 },
+         { "lat": 27.8212354, "lon": 84.4849367 },
+         { "lat": 27.8207834, "lon": 84.4883830 },
+         { "lat": 27.8209144, "lon": 84.4892822 },
+         { "lat": 27.8205944, "lon": 84.4901283 },
+         { "lat": 27.8200147, "lon": 84.4908415 },
+         { "lat": 27.8195788, "lon": 84.4914457 },
+         { "lat": 27.8192128, "lon": 84.4925852 },
+         { "lat": 27.8193068, "lon": 84.4935410 },
+         { "lat": 27.8210135, "lon": 84.4961240 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190002871,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.8057563, "lon": 84.4311243 },
+         { "lat": 27.8136683, "lon": 84.4326265 },
+         { "lat": 27.8154650, "lon": 84.4351857 },
+         { "lat": 27.8155403, "lon": 84.4381831 },
+         { "lat": 27.8165043, "lon": 84.4402269 },
+         { "lat": 27.8174987, "lon": 84.4413050 },
+         { "lat": 27.8195169, "lon": 84.4416745 },
+         { "lat": 27.8212039, "lon": 84.4428837 },
+         { "lat": 27.8230414, "lon": 84.4449785 },
+         { "lat": 27.8233974, "lon": 84.4461599 },
+         { "lat": 27.8210449, "lon": 84.4526978 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405767629,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7526838, "lon": 84.4717961 },
+         { "lat": 27.7557368, "lon": 84.4717683 },
+         { "lat": 27.7613130, "lon": 84.4703036 },
+         { "lat": 27.7658643, "lon": 84.4678852 },
+         { "lat": 27.7693906, "lon": 84.4653646 },
+         { "lat": 27.7708674, "lon": 84.4629803 },
+         { "lat": 27.7737004, "lon": 84.4609706 },
+         { "lat": 27.7770155, "lon": 84.4536814 },
+         { "lat": 27.7783415, "lon": 84.4485695 },
+         { "lat": 27.7782187, "lon": 84.4394065 },
+         { "lat": 27.7830427, "lon": 84.4342635 },
+         { "lat": 27.7913597, "lon": 84.4299717 },
+         { "lat": 27.7989723, "lon": 84.4306980 },
+         { "lat": 27.8054771, "lon": 84.4310002 },
+         { "lat": 27.8057563, "lon": 84.4311243 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 405753272,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7526838, "lon": 84.4717961 },
+         { "lat": 27.7519682, "lon": 84.4713808 },
+         { "lat": 27.7517385, "lon": 84.4707761 },
+         { "lat": 27.7519951, "lon": 84.4679895 },
+         { "lat": 27.7525118, "lon": 84.4661771 },
+         { "lat": 27.7535953, "lon": 84.4636208 },
+         { "lat": 27.7565196, "lon": 84.4607884 },
+         { "lat": 27.7584374, "lon": 84.4590074 },
+         { "lat": 27.7594248, "lon": 84.4568616 },
+         { "lat": 27.7598235, "lon": 84.4542867 },
+         { "lat": 27.7596376, "lon": 84.4533574 },
+         { "lat": 27.7594243, "lon": 84.4522910 },
+         { "lat": 27.7591589, "lon": 84.4509640 },
+         { "lat": 27.7577206, "lon": 84.4484835 },
+         { "lat": 27.7513564, "lon": 84.4437284 },
+         { "lat": 27.7434992, "lon": 84.4381720 },
+         { "lat": 27.7412706, "lon": 84.4342452 },
+         { "lat": 27.7412896, "lon": 84.4306833 },
+         { "lat": 27.7419538, "lon": 84.4287383 },
+         { "lat": 27.7422202, "lon": 84.4279581 },
+         { "lat": 27.7426057, "lon": 84.4261310 },
+         { "lat": 27.7423066, "lon": 84.4241977 },
+         { "lat": 27.7414135, "lon": 84.4222193 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 327610322,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7414135, "lon": 84.4222193 },
+         { "lat": 27.7392542, "lon": 84.4222461 },
+         { "lat": 27.7338601, "lon": 84.4252581 },
+         { "lat": 27.7257826, "lon": 84.4266567 },
+         { "lat": 27.7239038, "lon": 84.4270654 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190036746,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7239038, "lon": 84.4270654 },
+         { "lat": 27.7110370, "lon": 84.4312003 },
+         { "lat": 27.7080483, "lon": 84.4315978 },
+         { "lat": 27.7054471, "lon": 84.4303639 },
+         { "lat": 27.7043753, "lon": 84.4288248 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190036752,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.7043753, "lon": 84.4288248 },
+         { "lat": 27.6998427, "lon": 84.4186355 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192475887,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6998427, "lon": 84.4186355 },
+         { "lat": 27.6971674, "lon": 84.4096018 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190036753,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6971674, "lon": 84.4096018 },
+         { "lat": 27.6949085, "lon": 84.4048457 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190036756,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6949085, "lon": 84.4048457 },
+         { "lat": 27.6893921, "lon": 84.3950961 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1192475877,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6893921, "lon": 84.3950961 },
+         { "lat": 27.6874045, "lon": 84.3905421 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190036758,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6874045, "lon": 84.3905421 },
+         { "lat": 27.6802470, "lon": 84.3819055 },
+         { "lat": 27.6820173, "lon": 84.3753817 }
+      ]
+    },
+    {
+      "type": "way",
+      "ref": 1190036768,
+      "role": "outer",
+      "geometry": [
+         { "lat": 27.6820173, "lon": 84.3753817 },
+         { "lat": 27.6873990, "lon": 84.3672558 },
+         { "lat": 27.6990424, "lon": 84.3583624 }
+      ]
+    },
+    {
+      "type": "relation",
+      "ref": 12393267,
+      "role": "subarea"
+    },
+    {
+      "type": "relation",
+      "ref": 12393268,
+      "role": "subarea"
+    },
+    {
+      "type": "relation",
+      "ref": 12393262,
+      "role": "subarea"
+    },
+    {
+      "type": "relation",
+      "ref": 12393263,
+      "role": "subarea"
+    },
+    {
+      "type": "relation",
+      "ref": 12393264,
+      "role": "subarea"
+    },
+    {
+      "type": "relation",
+      "ref": 12393265,
+      "role": "subarea"
+    },
+    {
+      "type": "relation",
+      "ref": 12393266,
+      "role": "subarea"
+    },
+    {
+      "type": "node",
+      "ref": 567090203,
+      "role": "admin_centre",
+      "lat": 27.6811896,
+      "lon": 84.4301652
+    }
+  ],
+  "tags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "int_name": "Chitwan",
+    "name": "चितवन जिल्ला",
+    "name:en": "Chitwan",
+    "name:fa": "ناحیه چیتوان",
+    "name:ja": "チトワン",
+    "name:ne": "चितवन जिल्ला",
+    "name:pl": "Chitwan",
+    "name:ur": "چتوان ضلع",
+    "type": "boundary",
+    "wikidata": "Q28583",
+    "wikipedia": "ne:चितवन जिल्ला"
+  }
+}
+
+  ]
+}

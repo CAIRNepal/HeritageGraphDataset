@@ -14,6 +14,10 @@ Candidate: less than 50 m apart. Likely: a candidate with name similarity ≥ 0.
 
 OSM places of worship by `religion`: hindu 253, not tagged 89, buddhist 65, christian 37, bahai 2, buddhist;hindu 1, WAaaaa 1, sikh 1.
 
+OSM features without a `historic=*` or `heritage=*` tag: 469 of 604. Of these, **46 look like recent buildings** rather than heritage (heuristic: religion Christian, a name with words such as church, fellowship, satsang, ashram, school, hall or bhawan, or a start_date from 1950 on; signals: name 38, religion 37). The rest cannot be dated from OSM alone.
+
+Possible OSM tagging errors: 2 feature(s) tagged `religion=bahai`: IBahi (node/2218571376); Konti Bahi (node/2224201461). Names ending in *bahī*/*bahi* are Newar Buddhist monasteries, not Bahá'í places of worship.
+
 ## 2. Overlaps
 
 | pair | candidate pairs (< 50 m) | likely pairs | already linked by a source |

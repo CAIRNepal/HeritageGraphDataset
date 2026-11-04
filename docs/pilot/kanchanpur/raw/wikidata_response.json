@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "label_ne", "coord", "classes", "p131", "image", "heritage", "inception", "commons", "osmNode", "osmWay", "osmRel", "sitelinks" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}
